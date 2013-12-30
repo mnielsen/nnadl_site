@@ -94,10 +94,10 @@ $('#toc_the_future_of_neural_nets_reveal').click(function() {
    $('#toc_the_future_of_neural_nets').toggle('fast', function() {});  
 });</script><p class="toc_not_mainchapter">Further reading</p><p class="toc_not_mainchapter">Acknowledgements</p>
 <hr>
-<!-- <b>Sponsors</b><br/>
-<a href='http://www.blackcloudbsg.com/'><img src='https://s3.amazonaws.com/BlackcloudStatic/img/header/logo.png' width='160px' style="padding: 0px 0px 10px 0px;"></a></p><p><a href='http://www.tineye.com'><img src='assets/tineye.png' width='140px'
-style="padding: 0px 0px 10px 10px;"></a></p><p><a href='http://www.visionsmarts.com'><img src='assets/visionsmarts.png' width='160px' style="padding: 0px 0px 0px 0px;"></a>
-<br/> -->
+<b>Sponsors</b><br/>
+<a href='http://www.ersatz1.com/'><img src='assets/ersatz.png' width='140px' style="padding: 0px 0px 10px 10px;"></a></p><p><a href='http://gsquaredcapital.com/'><img src='assets/gsquared.png' width='150px' style="padding: 0px 0px 10px 10px;"></a></p><p><!-- <a href='http://www.tineye.com'><img src='assets/tineye.png' width='145px'
+style="padding: 0px 0px 10px 10px;"></a> --></p><p><a href='http://www.visionsmarts.com'><img src='assets/visionsmarts.png' width='160px' style="padding: 0px 0px 0px 0px;"></a>
+<br/>
 Thanks to all the <a href="supporters.html">supporters</a> who made
 the book possible.
 <hr>
@@ -475,7 +475,141 @@ is of modest size that there's much deviation from the perceptron
 model.</p><p>What about the algebraic form of $\sigma$?  How can we understand
 that?  In fact, the exact form of $\sigma$ isn't so important - what
 really matters is the shape of the function when plotted.  Here's the
-shape:</p><p><center><img src="images/sigmoid.png" width="440px"></center></p><p>This shape is a smoothed out version of a step function:</p><p><center><img src="images/step.png" width="440px"></center></p><p>If $\sigma$ had in fact been a step function, then the sigmoid neuron
+shape:</p><p>
+<style>
+path {
+    stroke: blue;
+    stroke-width: 1;
+    fill: none;
+}
+.axis {
+    shape-rendering: crispEdges;
+}
+.axis text {
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 11px;
+}
+.axis line, .axis path {
+    stroke: grey;
+}
+</style>
+<div id="sigmoid_graph"></div>
+<script src="http://d3js.org/d3.v2.js"></script>
+<script>
+function s(x) {return 1/(1+Math.exp(-x));}
+var m = [40, 120, 50, 120];
+var height = 290 - m[0] - m[2];
+var width = 600 - m[1] - m[3];
+var xmin = -5;
+var xmax = 5;
+var sample = 400;
+var x1 = d3.scale.linear().domain([0, sample]).range([xmin, xmax]);
+var data = d3.range(sample).map(function(d){ return {
+        x: x1(d), 
+        y: s(x1(d))}; 
+    });
+var x = d3.scale.linear().domain([xmin, xmax]).range([0, width]);
+var y = d3.scale.linear()
+                .domain([0,1])
+                .range([height, 0]);
+var line = d3.svg.line()
+    .x(function(d) { return x(d.x); })
+    .y(function(d) { return y(d.y); })
+var graph = d3.select("#sigmoid_graph")
+    .append("svg")
+    .attr("width", width + m[1] + m[3])
+    .attr("height", height + m[0] + m[2])
+    .append("g")
+    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+var xAxis = d3.svg.axis()
+                  .scale(x)
+                  .tickValues(d3.range(-4, 5, 1))
+                  .orient("bottom")
+graph.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0, " + height + ")")
+    .call(xAxis);
+var yAxis = d3.svg.axis()
+                  .scale(y)
+                  .tickValues(d3.range(0, 1.01, 0.2))
+                  .orient("left")
+                  .ticks(5)
+graph.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
+graph.append("path").attr("d", line(data));
+graph.append("text")
+     .attr("class", "x label")
+     .attr("text-anchor", "end")
+     .attr("x", width/2)
+     .attr("y", height+35)
+     .text("z");
+graph.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", -10)
+        .attr("text-anchor", "middle")  
+        .style("font-size", "16px") 
+        .text("sigmoid function");
+</script>
+</p><p>This shape is a smoothed out version of a step function:</p><p>
+<div id="step_graph"></div>
+<script>
+function s(x) {return x < 0 ? 0 : 1;}
+var m = [40, 120, 50, 120];
+var height = 290 - m[0] - m[2];
+var width = 600 - m[1] - m[3];
+var xmin = -5;
+var xmax = 5;
+var sample = 400;
+var x1 = d3.scale.linear().domain([0, sample]).range([xmin, xmax]);
+var data = d3.range(sample).map(function(d){ return {
+        x: x1(d), 
+        y: s(x1(d))}; 
+    });
+var x = d3.scale.linear().domain([xmin, xmax]).range([0, width]);
+var y = d3.scale.linear()
+                .domain([0,1])
+                .range([height, 0]);
+var line = d3.svg.line()
+    .x(function(d) { return x(d.x); })
+    .y(function(d) { return y(d.y); })
+var graph = d3.select("#step_graph")
+    .append("svg")
+    .attr("width", width + m[1] + m[3])
+    .attr("height", height + m[0] + m[2])
+    .append("g")
+    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+var xAxis = d3.svg.axis()
+                  .scale(x)
+                  .tickValues(d3.range(-4, 5, 1))
+                  .orient("bottom")
+graph.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0, " + height + ")")
+    .call(xAxis);
+var yAxis = d3.svg.axis()
+                  .scale(y)
+                  .tickValues(d3.range(0, 1.01, 0.2))
+                  .orient("left")
+                  .ticks(5)
+graph.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
+graph.append("path").attr("d", line(data));
+graph.append("text")
+     .attr("class", "x label")
+     .attr("text-anchor", "end")
+     .attr("x", width/2)
+     .attr("y", height+35)
+     .text("z");
+graph.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", -10)
+        .attr("text-anchor", "middle")  
+        .style("font-size", "16px") 
+        .text("step function");
+</script>
+</p><p>If $\sigma$ had in fact been a step function, then the sigmoid neuron
 would <em>be</em> a perceptron, since the output would be $1$ or $0$
 depending on whether $w\cdot x+b$ was positive or
 negative*<span class="marginnote">
@@ -508,26 +642,26 @@ while sigmoid neurons have much of the same qualitative behaviour as
 perceptrons, they make it much easier to figure out how changing the
 weights and biases will change the output.</p><p>If it's the smoothness of $\sigma$ which matters, and not its exact
 form, then why use the particular form used for $\sigma$ in
-Equation <span id="margin_915307665802_reveal" class="equation_link">(3)</span>
-<span id="margin_915307665802" class="marginequation" style="display: none;">
+Equation <span id="margin_52218945865_reveal" class="equation_link">(3)</span>
+<span id="margin_52218945865" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   \sigma(z) \equiv \frac{1}{1+e^{-z}}$</a>
 </span>
 <script>
-  $('#margin_915307665802_reveal').click(function() {
-    $('#margin_915307665802').toggle('slow', function() {});
+  $('#margin_52218945865_reveal').click(function() {
+    $('#margin_52218945865').toggle('slow', function() {});
   });
 </script>?  The main thing that would change if we'd
 used a different function is that the particular values for the
-partial derivatives in Equation <span id="margin_590312552211_reveal" class="equation_link">(5)</span>
-<span id="margin_590312552211" class="marginequation" style="display: none;">
+partial derivatives in Equation <span id="margin_643008675287_reveal" class="equation_link">(5)</span>
+<span id="margin_643008675287" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn5" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   \Delta \mbox{output} \approx \sum_j \frac{\partial \, \mbox{output}}{\partial w_j}
   \Delta w_j + \frac{\partial \, \mbox{output}}{\partial b} \Delta b$</a>
 </span>
 <script>
-  $('#margin_590312552211_reveal').click(function() {
-    $('#margin_590312552211').toggle('slow', function() {});
+  $('#margin_643008675287_reveal').click(function() {
+    $('#margin_643008675287').toggle('slow', function() {});
   });
 </script> would
 change.  It turns out that when we compute those partial derivatives
@@ -816,28 +950,28 @@ improvement in the cost.  That's why we focus first on minimizing the
 quadratic cost, and only after that will we examine the classification
 accuracy.</p><p></p><p>Even given that we want to use a smooth cost function, you may still
 wonder why we choose the quadratic function used in
-Equation <span id="margin_405427323016_reveal" class="equation_link">(6)</span>
-<span id="margin_405427323016" class="marginequation" style="display: none;">
+Equation <span id="margin_536780885996_reveal" class="equation_link">(6)</span>
+<span id="margin_536780885996" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$  C(w,b) \equiv
   \frac{1}{2} \sum_x \| y(x) - h_{w,b}(x)\|^2$</a>
 </span>
 <script>
-  $('#margin_405427323016_reveal').click(function() {
-    $('#margin_405427323016').toggle('slow', function() {});
+  $('#margin_536780885996_reveal').click(function() {
+    $('#margin_536780885996').toggle('slow', function() {});
   });
 </script>.  Isn't this a rather <em>ad
   hoc</em> choice?  Perhaps if we chose a different cost function we'd get
 a totally different set of minimizing weights and biases?  This is a
 valid concern, and later we'll revisit the cost function, and make
 some modifications.  However, the quadratic cost function of
-Equation <span id="margin_653414246549_reveal" class="equation_link">(6)</span>
-<span id="margin_653414246549" class="marginequation" style="display: none;">
+Equation <span id="margin_311921657316_reveal" class="equation_link">(6)</span>
+<span id="margin_311921657316" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$  C(w,b) \equiv
   \frac{1}{2} \sum_x \| y(x) - h_{w,b}(x)\|^2$</a>
 </span>
 <script>
-  $('#margin_653414246549_reveal').click(function() {
-    $('#margin_653414246549').toggle('slow', function() {});
+  $('#margin_311921657316_reveal').click(function() {
+    $('#margin_311921657316').toggle('slow', function() {});
   });
 </script> works perfectly well for
 understanding the basics of learning in neural networks, so we'll
@@ -944,15 +1078,15 @@ notational flag-waving, telling you "hey, $\nabla C$ is a gradient
 vector".  There are more advanced points of view where $\nabla$ can
 be viewed as an independent mathematical entity in its own right (for
 example, as a differential operator), but we won't need such points of
-view.</p><p>With these definitions, the expression <span id="margin_502505326054_reveal" class="equation_link">(8)</span>
-<span id="margin_502505326054" class="marginequation" style="display: none;">
+view.</p><p>With these definitions, the expression <span id="margin_419236772506_reveal" class="equation_link">(8)</span>
+<span id="margin_419236772506" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn8" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   \nabla C \equiv \left( \frac{\partial C}{\partial v_1}, 
   \frac{\partial C}{\partial v_2} \right)^T$</a>
 </span>
 <script>
-  $('#margin_502505326054_reveal').click(function() {
-    $('#margin_502505326054').toggle('slow', function() {});
+  $('#margin_419236772506_reveal').click(function() {
+    $('#margin_419236772506').toggle('slow', function() {});
   });
 </script> for
 $\Delta C$ can be rewritten as
@@ -970,59 +1104,59 @@ we choose
 \tag{10}\end{eqnarray}
 where $\eta$ is a small, positive parameter (known as the
 <em>learning rate</em>).
-Then Equation <span id="margin_109227036363_reveal" class="equation_link">(9)</span>
-<span id="margin_109227036363" class="marginequation" style="display: none;">
+Then Equation <span id="margin_414536942558_reveal" class="equation_link">(9)</span>
+<span id="margin_414536942558" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn9" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   \Delta C \approx \nabla C \cdot \Delta v$</a>
 </span>
 <script>
-  $('#margin_109227036363_reveal').click(function() {
-    $('#margin_109227036363').toggle('slow', function() {});
+  $('#margin_414536942558_reveal').click(function() {
+    $('#margin_414536942558').toggle('slow', function() {});
   });
 </script> tell us us that $\Delta C \approx
 -\eta \nabla C \cdot \nabla C = -\eta \|\nabla C\|^2$.  Because $\|
 \nabla C \|^2 \geq 0$, this guarantees that $\Delta C \leq 0$, i.e.,
 $C$ will always decrease, never increase, if we change $v$ according
-to the prescription in <span id="margin_151581648593_reveal" class="equation_link">(10)</span>
-<span id="margin_151581648593" class="marginequation" style="display: none;">
+to the prescription in <span id="margin_131457949270_reveal" class="equation_link">(10)</span>
+<span id="margin_131457949270" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn10" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   \Delta v = -\eta \nabla C$</a>
 </span>
 <script>
-  $('#margin_151581648593_reveal').click(function() {
-    $('#margin_151581648593').toggle('slow', function() {});
+  $('#margin_131457949270_reveal').click(function() {
+    $('#margin_131457949270').toggle('slow', function() {});
   });
 </script>.  (Within, of
 course, the limits of the approximation in
-Equation <span id="margin_391719915162_reveal" class="equation_link">(9)</span>
-<span id="margin_391719915162" class="marginequation" style="display: none;">
+Equation <span id="margin_474890996624_reveal" class="equation_link">(9)</span>
+<span id="margin_474890996624" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn9" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   \Delta C \approx \nabla C \cdot \Delta v$</a>
 </span>
 <script>
-  $('#margin_391719915162_reveal').click(function() {
-    $('#margin_391719915162').toggle('slow', function() {});
+  $('#margin_474890996624_reveal').click(function() {
+    $('#margin_474890996624').toggle('slow', function() {});
   });
 </script>).  This is exactly the property we wanted!
-And so we'll take Equation <span id="margin_630263559377_reveal" class="equation_link">(10)</span>
-<span id="margin_630263559377" class="marginequation" style="display: none;">
+And so we'll take Equation <span id="margin_496989148740_reveal" class="equation_link">(10)</span>
+<span id="margin_496989148740" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn10" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   \Delta v = -\eta \nabla C$</a>
 </span>
 <script>
-  $('#margin_630263559377_reveal').click(function() {
-    $('#margin_630263559377').toggle('slow', function() {});
+  $('#margin_496989148740_reveal').click(function() {
+    $('#margin_496989148740').toggle('slow', function() {});
   });
 </script> to define the
 "law of motion" for the ball in our gradient descent algorithm.
-That is, we'll use Equation <span id="margin_837588388403_reveal" class="equation_link">(10)</span>
-<span id="margin_837588388403" class="marginequation" style="display: none;">
+That is, we'll use Equation <span id="margin_494336683107_reveal" class="equation_link">(10)</span>
+<span id="margin_494336683107" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn10" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   \Delta v = -\eta \nabla C$</a>
 </span>
 <script>
-  $('#margin_837588388403_reveal').click(function() {
-    $('#margin_837588388403').toggle('slow', function() {});
+  $('#margin_494336683107_reveal').click(function() {
+    $('#margin_494336683107').toggle('slow', function() {});
   });
 </script> to compute a
 value for $\Delta v$, then move the ball's position $v$ by that
@@ -1043,14 +1177,14 @@ is guaranteed to roll down into the valley.  By contrast, our rule for
 choosing $\Delta v$ just says "go down, right now".  That's still a
 pretty good rule for finding the minimum!</p><p>To make gradient descent work correctly, we need to choose the
 learning rate $\eta$ to be small
-enough that Equation <span id="margin_24961015205_reveal" class="equation_link">(9)</span>
-<span id="margin_24961015205" class="marginequation" style="display: none;">
+enough that Equation <span id="margin_143949322984_reveal" class="equation_link">(9)</span>
+<span id="margin_143949322984" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn9" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   \Delta C \approx \nabla C \cdot \Delta v$</a>
 </span>
 <script>
-  $('#margin_24961015205_reveal').click(function() {
-    $('#margin_24961015205').toggle('slow', function() {});
+  $('#margin_143949322984_reveal').click(function() {
+    $('#margin_143949322984').toggle('slow', function() {});
   });
 </script> is a good approximation.  If
 we don't, we might end up with $\Delta C > 0$, which obviously would
@@ -1058,14 +1192,14 @@ not be good!  At the same time, we don't want $\eta$ to be too small,
 since that will make the changes $\Delta v$ tiny, and thus the
 gradient descent algorithm will work very slowly.  In practical
 implementations, $\eta$ is often varied so that
-Equation <span id="margin_844467851648_reveal" class="equation_link">(9)</span>
-<span id="margin_844467851648" class="marginequation" style="display: none;">
+Equation <span id="margin_633707971701_reveal" class="equation_link">(9)</span>
+<span id="margin_633707971701" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn9" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   \Delta C \approx \nabla C \cdot \Delta v$</a>
 </span>
 <script>
-  $('#margin_844467851648_reveal').click(function() {
-    $('#margin_844467851648').toggle('slow', function() {});
+  $('#margin_633707971701_reveal').click(function() {
+    $('#margin_633707971701').toggle('slow', function() {});
   });
 </script> remains a good approximation, but the
 algorithm isn't too slow.  We'll see later how this
@@ -1088,14 +1222,14 @@ choose
   \Delta v = -\eta \nabla C,
 \tag{14}\end{eqnarray}
 and we're guaranteed that our (approximate)
-expression <span id="margin_301414727943_reveal" class="equation_link">(12)</span>
-<span id="margin_301414727943" class="marginequation" style="display: none;">
+expression <span id="margin_822759581503_reveal" class="equation_link">(12)</span>
+<span id="margin_822759581503" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn12" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   \Delta C \approx \nabla C \cdot \Delta v$</a>
 </span>
 <script>
-  $('#margin_301414727943_reveal').click(function() {
-    $('#margin_301414727943').toggle('slow', function() {});
+  $('#margin_822759581503_reveal').click(function() {
+    $('#margin_822759581503').toggle('slow', function() {});
   });
 </script> for $\Delta C$ will be negative.
 This gives us a way of following the gradient to a minimum, even when
@@ -1155,14 +1289,14 @@ descent (and variations) as our main approach to learning in neural
 networks.</p><p>How can we apply gradient descent to learn in a neural network?  The
 idea is to use gradient descent to find the weights $w_k$ and biases
 $b_l$ which minimize the cost in
-Equation <span id="margin_152789982592_reveal" class="equation_link">(6)</span>
-<span id="margin_152789982592" class="marginequation" style="display: none;">
+Equation <span id="margin_339058542999_reveal" class="equation_link">(6)</span>
+<span id="margin_339058542999" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$  C(w,b) \equiv
   \frac{1}{2} \sum_x \| y(x) - h_{w,b}(x)\|^2$</a>
 </span>
 <script>
-  $('#margin_152789982592_reveal').click(function() {
-    $('#margin_152789982592').toggle('slow', function() {});
+  $('#margin_339058542999_reveal').click(function() {
+    $('#margin_339058542999').toggle('slow', function() {});
   });
 </script>.  To see how this works, let's
 restate the gradient descent update rule, with the weights and biases
@@ -1181,14 +1315,14 @@ this is a rule which can be used to learn in a neural network.</p><p>There are a
 rule.  We'll look into those in depth in the next chapter.  But for
 now I just want to mention one problem.  To understand what the
 problem is, let's look back at the quadratic cost in
-Equation <span id="margin_977090810254_reveal" class="equation_link">(6)</span>
-<span id="margin_977090810254" class="marginequation" style="display: none;">
+Equation <span id="margin_590111521016_reveal" class="equation_link">(6)</span>
+<span id="margin_590111521016" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$  C(w,b) \equiv
   \frac{1}{2} \sum_x \| y(x) - h_{w,b}(x)\|^2$</a>
 </span>
 <script>
-  $('#margin_977090810254_reveal').click(function() {
-    $('#margin_977090810254').toggle('slow', function() {});
+  $('#margin_590111521016_reveal').click(function() {
+    $('#margin_590111521016').toggle('slow', function() {});
   });
 </script>.  Notice that this cost
 function has the form $C = \sum_x C_x$, that is, it's a sum over costs
@@ -1233,48 +1367,48 @@ mini-batch.  Then we pick out another randomly chosen mini-batch and
 train with those.  And so on, until we've exhausted the training
 inputs, which is said to complete an
 <em>epoch</em> of training.  At that point
-we start over with a new training epoch.</p><p>Notice, by the way, that the $\eta$ in Equations <span id="margin_124206446318_reveal" class="equation_link">(20)</span>
-<span id="margin_124206446318" class="marginequation" style="display: none;">
+we start over with a new training epoch.</p><p>Notice, by the way, that the $\eta$ in Equations <span id="margin_335160310407_reveal" class="equation_link">(20)</span>
+<span id="margin_335160310407" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn20" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   w_k & \rightarrow & w_k' = w_k-\eta \sum_j \frac{\partial C_{X_j}}{\partial w_k} $</a>
 </span>
 <script>
-  $('#margin_124206446318_reveal').click(function() {
-    $('#margin_124206446318').toggle('slow', function() {});
+  $('#margin_335160310407_reveal').click(function() {
+    $('#margin_335160310407').toggle('slow', function() {});
   });
 </script>
-and <span id="margin_91464434793_reveal" class="equation_link">(21)</span>
-<span id="margin_91464434793" class="marginequation" style="display: none;">
+and <span id="margin_716494225498_reveal" class="equation_link">(21)</span>
+<span id="margin_716494225498" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn21" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$  
   b_l & \rightarrow & b_l' = b_l-\eta \sum_j \frac{\partial C_{X_j}}{\partial b_l}$</a>
 </span>
 <script>
-  $('#margin_91464434793_reveal').click(function() {
-    $('#margin_91464434793').toggle('slow', function() {});
+  $('#margin_716494225498_reveal').click(function() {
+    $('#margin_716494225498').toggle('slow', function() {});
   });
 </script> should really be $\frac{n}{m} \eta$ in order to
 approximate ordinary gradient descent - what is sometimes called
 <em>batch</em> gradient descent - with learning rate $\eta$.  The
 equations I've written instead approximate batch gradient descent with
 a learning rate $\frac{m}{n} \eta$.  Of course, this is just a
-rescaling, and in practice Equations <span id="margin_891893749595_reveal" class="equation_link">(20)</span>
-<span id="margin_891893749595" class="marginequation" style="display: none;">
+rescaling, and in practice Equations <span id="margin_66735737167_reveal" class="equation_link">(20)</span>
+<span id="margin_66735737167" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn20" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   w_k & \rightarrow & w_k' = w_k-\eta \sum_j \frac{\partial C_{X_j}}{\partial w_k} $</a>
 </span>
 <script>
-  $('#margin_891893749595_reveal').click(function() {
-    $('#margin_891893749595').toggle('slow', function() {});
+  $('#margin_66735737167_reveal').click(function() {
+    $('#margin_66735737167').toggle('slow', function() {});
   });
 </script> and
-<span id="margin_2389994436_reveal" class="equation_link">(21)</span>
-<span id="margin_2389994436" class="marginequation" style="display: none;">
+<span id="margin_606534328487_reveal" class="equation_link">(21)</span>
+<span id="margin_606534328487" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn21" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$  
   b_l & \rightarrow & b_l' = b_l-\eta \sum_j \frac{\partial C_{X_j}}{\partial b_l}$</a>
 </span>
 <script>
-  $('#margin_2389994436_reveal').click(function() {
-    $('#margin_2389994436').toggle('slow', function() {});
+  $('#margin_606534328487_reveal').click(function() {
+    $('#margin_606534328487').toggle('slow', function() {});
   });
 </script> are conventionally taken to define stochastic
 gradient descent.</p><p>Stochastic gradient descent is a bit like political polling: we get a
@@ -1390,47 +1524,47 @@ and add the vector $b$ of biases.  We then apply the function $\sigma$
 elementwise to every entry in the vector $w a +b$.  (This is called
 <em>vectorizing</em> the function
 $\sigma$.)  It's easy to verify that
-Equation <span id="margin_397703077554_reveal" class="equation_link">(22)</span>
-<span id="margin_397703077554" class="marginequation" style="display: none;">
+Equation <span id="margin_397642559884_reveal" class="equation_link">(22)</span>
+<span id="margin_397642559884" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn22" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   a' = \sigma(w a + b)$</a>
 </span>
 <script>
-  $('#margin_397703077554_reveal').click(function() {
-    $('#margin_397703077554').toggle('slow', function() {});
+  $('#margin_397642559884_reveal').click(function() {
+    $('#margin_397642559884').toggle('slow', function() {});
   });
 </script> gives the same result as our
-earlier rule, Equation <span id="margin_127153945214_reveal" class="equation_link">(4)</span>
-<span id="margin_127153945214" class="marginequation" style="display: none;">
+earlier rule, Equation <span id="margin_907233788146_reveal" class="equation_link">(4)</span>
+<span id="margin_907233788146" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   \frac{1}{1+\exp(-\sum_j w_j x_j-b)}$</a>
 </span>
 <script>
-  $('#margin_127153945214_reveal').click(function() {
-    $('#margin_127153945214').toggle('slow', function() {});
+  $('#margin_907233788146_reveal').click(function() {
+    $('#margin_907233788146').toggle('slow', function() {});
   });
 </script>, for
-computing the output of a sigmoid neuron.</p><p><h4><a name="exercises_634684"></a><a href="#exercises_634684">Exercises</a></h4><ul>
+computing the output of a sigmoid neuron.</p><p><h4><a name="exercises_598736"></a><a href="#exercises_598736">Exercises</a></h4><ul>
 <li> Let $f(x)$ be the function $f(x) = x^2$.  What is $f\left(
-    \left[ \begin{array}{c} 2 \\ 3 \end{array} \right] \right)$?</p><p><li> Write out Equation <span id="margin_749576503229_reveal" class="equation_link">(22)</span>
-<span id="margin_749576503229" class="marginequation" style="display: none;">
+    \left[ \begin{array}{c} 2 \\ 3 \end{array} \right] \right)$?</p><p><li> Write out Equation <span id="margin_124626739604_reveal" class="equation_link">(22)</span>
+<span id="margin_124626739604" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn22" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   a' = \sigma(w a + b)$</a>
 </span>
 <script>
-  $('#margin_749576503229_reveal').click(function() {
-    $('#margin_749576503229').toggle('slow', function() {});
+  $('#margin_124626739604_reveal').click(function() {
+    $('#margin_124626739604').toggle('slow', function() {});
   });
 </script> in component
   form, and verify that it gives the same result as the
-  rule <span id="margin_726119286165_reveal" class="equation_link">(4)</span>
-<span id="margin_726119286165" class="marginequation" style="display: none;">
+  rule <span id="margin_508362862046_reveal" class="equation_link">(4)</span>
+<span id="margin_508362862046" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   \frac{1}{1+\exp(-\sum_j w_j x_j-b)}$</a>
 </span>
 <script>
-  $('#margin_726119286165_reveal').click(function() {
-    $('#margin_726119286165').toggle('slow', function() {});
+  $('#margin_508362862046_reveal').click(function() {
+    $('#margin_508362862046').toggle('slow', function() {});
   });
 </script> for computing the output
   of a sigmoid neuron.
@@ -1443,14 +1577,14 @@ function:
 </pre></div></p><p>We then add a <tt>feedforward</tt> method to the <tt>Network</tt> class,
 which, given an input <tt>a</tt> for the network, returns the
 corresponding output.  All the method does is applies
-Equation <span id="margin_783971714227_reveal" class="equation_link">(22)</span>
-<span id="margin_783971714227" class="marginequation" style="display: none;">
+Equation <span id="margin_477988142502_reveal" class="equation_link">(22)</span>
+<span id="margin_477988142502" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn22" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">$ 
   a' = \sigma(w a + b)$</a>
 </span>
 <script>
-  $('#margin_783971714227_reveal').click(function() {
-    $('#margin_783971714227').toggle('slow', function() {});
+  $('#margin_477988142502_reveal').click(function() {
+    $('#margin_477988142502').toggle('slow', function() {});
   });
 </script> for each layer:
 <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">feedforward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
@@ -2037,7 +2171,7 @@ means you're free to copy, share, and build on this book, but not to sell it.  I
 please <a href="mailto:mn@michaelnielsen.org">contact me</a>
 </span>
 <span class="right_footer">
-Last update: Tue Dec 24 08:32:00 2013
+Last update: Sun Dec 29 22:03:02 2013
 <br/>
 <br/>
 <br/>
