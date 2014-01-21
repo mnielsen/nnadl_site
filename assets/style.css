@@ -164,6 +164,24 @@ tt {
     font-stle: monospace;
 }
 
+
+/* d3 styling */
+path {
+    stroke: blue;
+    stroke-width: 1;
+    fill: none;
+}
+.axis {
+    shape-rendering: crispEdges;
+}
+.axis text {
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 11px;
+}
+.axis line, .axis path {
+    stroke: grey;
+}
+
 /* Table of contents, and margin notes */
 
 #toc, .marginnote, .marginequation {
