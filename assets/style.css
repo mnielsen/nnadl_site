@@ -1,5 +1,3 @@
-/*
-
 /* Layout: 980px fixed-width: 40px margin, 600px main tex,           */
 /* 40px margin, 240px for toc and marginalia, 40px margin            */
 /*                                                                   */
@@ -10,8 +8,9 @@
 /* HSV: 207, 65, 31                                                  */
 /* Decimal RGB: 28, 57, 80                                           */
 /*                                                                   */
-/* #2A6EA6; link colour                                              */
+/* #2A6EA6; link colour, graph line colour, d3 paths, widgets        */
 /* HSV: 207, 75, 65                                                  */
+/* Decimal RGB: 42, 110, 166                                         */
 /*                                                                   */
 /* #eee: header text                                                 */
 
@@ -125,6 +124,16 @@ h4 {
     font-family: "Helvetica", "Arial", sans-serif;
 }
 
+h5 {
+    color: #1C3950;
+    margin: 20px 0px 10px 0px;
+    padding: 0;
+    padding-left: 0px;
+    font-size: 26px;
+    line-height: 1.2;
+    font-family: "Helvetica", "Arial", sans-serif;
+}
+
 .section {
     width: 600px;
     margin-left: 40px;
@@ -167,7 +176,7 @@ tt {
 
 /* d3 styling */
 path {
-    stroke: blue;
+    stroke: rgb(42, 110, 166);
     stroke-width: 1;
     fill: none;
 }
@@ -181,6 +190,14 @@ path {
 .axis line, .axis path {
     stroke: grey;
 }
+
+.axisLabel {
+  font-size: 18px;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-style: italic;
+  font-weight: bold;
+}
+
 
 /* Table of contents, and margin notes */
 

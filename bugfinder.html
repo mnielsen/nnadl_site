@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Produced from a LaTeX source file.  Note that the production is done -->
+<!-- by a very rough-and-ready (and buggy) script, so the HTML and other  -->
+<!-- code is quite ugly!  Later versions should be better.                -->
+    <meta charset="utf-8">
+    <link rel="icon" href="nnadl_favicon.ICO" />
+    <title>Neural networks and deep learning</title>
+    <script src="assets/jquery.min.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$']]},
+        "HTML-CSS": 
+          {scale: 92},
+        TeX: { equationNumbers: { autoNumber: "AMS" }}});
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="assets/style.css" rel="stylesheet">
+    <link href="assets/pygments.css" rel="stylesheet">
+  </head>
+  <body><div class="nonumber_header"><h2><a href="index.html">Bugfinder Hall of Fame</a></h2></div><div class="section"><div id="toc"> 
+<b><a href="index.html">Neural Networks and Deep Learning</a></b> (draft contents)<br/><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">Using neural nets to recognize handwritten digits</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
+<script>
+$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() { 
+   var src = $('#toc_img_using_neural_nets_to_recognize_handwritten_digits').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow.png');
+   };
+   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});  
+});</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">How the backpropagation algorithm works</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output_from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output
+  from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
+<script>
+$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() { 
+   var src = $('#toc_img_how_the_backpropagation_algorithm_works').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow.png');
+   };
+   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});  
+});</script><p class='toc_mainchapter'><a id="toc_improving_the_way_neural_networks_learn_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_improving_the_way_neural_networks_learn" src="images/arrow.png" width="15px"></a>Improving the way neural networks learn<div id="toc_improving_the_way_neural_networks_learn" style="display: none;"><p class="toc_section"><ul><li>The cross-entropy cost function</li><li>Overfitting and regularization</li><li>Initializing the weights</li><li>Handwriting recognition revisited</li><li>Convolutional neural networks</li><li>How to expand the training data</li><li>Gradient descent with momentum</li><li>Other kinds of artificial neuron</li></ul></p></div>
+<script>
+$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() { 
+   var src = $('#toc_img_improving_the_way_neural_networks_learn').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow.png');
+   };
+   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});  
+});</script><p class='toc_mainchapter'><a id="toc_neural_nets_the_big_picture_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_neural_nets_the_big_picture" src="images/arrow.png" width="15px"></a>Neural nets: the big picture<div id="toc_neural_nets_the_big_picture" style="display: none;"><p class="toc_section"><ul><li>Comparing artificial neurons and biological neurons</li><li>Is there a universal thinking algorithm?</li><li>Isn't this all just inane model building?</li><li>What do classification accuracies really mean?</li><li>Neural networks for speech recognition and natural language processing</li><li>Why sigmoid neurons can compute any function</li></ul></p></div>
+<script>
+$('#toc_neural_nets_the_big_picture_reveal').click(function() { 
+   var src = $('#toc_img_neural_nets_the_big_picture').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_neural_nets_the_big_picture").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_neural_nets_the_big_picture").attr('src', 'images/arrow.png');
+   };
+   $('#toc_neural_nets_the_big_picture').toggle('fast', function() {});  
+});</script><p class='toc_mainchapter'><a id="toc_deep_learning_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_deep_learning" src="images/arrow.png" width="15px"></a>Deep learning<div id="toc_deep_learning" style="display: none;"><p class="toc_section"><ul><li>Why deep neural networks are hard to train</li><li>Autoencoders</li><li>Comparison to Principal Component Analysis</li><li>Pretraining and deep autoencoders</li><li>Using deep autoencoders to do supervised learning</li><li>Feature discovery</li><li>Other techniques for deep learning</li></ul></p></div>
+<script>
+$('#toc_deep_learning_reveal').click(function() { 
+   var src = $('#toc_img_deep_learning').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_deep_learning").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_deep_learning").attr('src', 'images/arrow.png');
+   };
+   $('#toc_deep_learning').toggle('fast', function() {});  
+});</script><p class='toc_mainchapter'><a id="toc_the_state_of_the_art_in_image_recognition_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_the_state_of_the_art_in_image_recognition" src="images/arrow.png" width="15px"></a>The state of the art in image recognition<div id="toc_the_state_of_the_art_in_image_recognition" style="display: none;"><p class="toc_section"><ul><li>Classifying ImageNet using deep neural nets</li><li>Finding a ``cat neuron'' using unlabelled YouTube images</li><li>Image recognition in the future</li></ul></p></div>
+<script>
+$('#toc_the_state_of_the_art_in_image_recognition_reveal').click(function() { 
+   var src = $('#toc_img_the_state_of_the_art_in_image_recognition').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_the_state_of_the_art_in_image_recognition").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_the_state_of_the_art_in_image_recognition").attr('src', 'images/arrow.png');
+   };
+   $('#toc_the_state_of_the_art_in_image_recognition').toggle('fast', function() {});  
+});</script><p class='toc_mainchapter'><a id="toc_the_future_of_neural_nets_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_the_future_of_neural_nets" src="images/arrow.png" width="15px"></a>The future of neural nets<div id="toc_the_future_of_neural_nets" style="display: none;"><p class="toc_section"><ul><li>Will neural networks ever lead to artificial intelligence?</li><li>Could neural networks be used to simulate a human brain?</li></ul></p></div>
+<script>
+$('#toc_the_future_of_neural_nets_reveal').click(function() { 
+   var src = $('#toc_img_the_future_of_neural_nets').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_the_future_of_neural_nets").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_the_future_of_neural_nets").attr('src', 'images/arrow.png');
+   };
+   $('#toc_the_future_of_neural_nets').toggle('fast', function() {});  
+});</script><p class="toc_not_mainchapter">Further reading</p><p class="toc_not_mainchapter">Acknowledgements</p>
+<hr>
+<b>Sponsors</b><br/>
+<a href='http://www.ersatz1.com/'><img src='assets/ersatz.png' width='140px' style="padding: 0px 0px 10px 8px; border-style: none;"></a>
+
+<a href='http://gsquaredcapital.com/'><img src='assets/gsquared.png' width='150px' style="padding: 0px 0px 10px 10px; border-style: none;"></a>
+
+<a href='http://www.tineye.com'><img src='assets/tineye.png' width='150px'
+style="padding: 0px 0px 10px 8px; border-style: none;"></a>
+
+<a href='http://www.visionsmarts.com'><img
+src='assets/visionsmarts.png' width='160px' style="padding: 0px 0px
+0px 0px; border-style: none;"></a> <br/> 
+
+Thanks to all the <a href="supporters.html">supporters</a> who made
+the book possible.  And thanks also to all of the contributors to the
+<a href="bugfinder.html">Bugfinder Hall of Fame</a>.
+
+<hr>
+<b>Resources</b><br/>
+<a href="https://github.com/mnielsen/neural-networks-and-deep-learning">Code repository</a><br/>
+<a href="http://eepurl.com/BYr9L">Mailing list for book announcements</a>
+
+<hr>
+<a href="http://michaelnielsen.org"><img src="assets/Michael_Nielsen_Web_Small.jpg" width="160px" style="border-style: none;"/></a>
+<br/>
+By <a href="http://michaelnielsen.org">Michael Nielsen</a> /
+April 2014
+</div>
+<p>
+Thankyou to the following people for their help in finding and
+eliminating bugs and other errors in the book:</p>
+
+<p>Kartik Agaram, Charles Brauer, Jen Dodd, Chris Ferrie, Tim Gowers,
+Jay Huie, Juergen Schmidhuber, and Sharad Sundararajan.
+</p>
+
+<br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+</div><div class="footer"> 
+<span class="left_footer">
+In academic journals, please cite this work as:
+Michael A. Nielsen, "Neural Networks and Deep Learning",</br>
+Determination Press, 2014
+<br/>
+<br/>
+This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_GB" style="color: #eee;">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.  This<br/>
+means you're free to copy, share, and build on this book, but not to sell it.  If you're interested in commercial use, </br>
+please <a href="mailto:mn@michaelnielsen.org">contact me</a>
+</span>
+<span class="right_footer">
+Last update: Mon Apr 14 14:24:24 2014
+<br/>
+<br/>
+<br/>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_GB"><img alt="Creative Commons Licence" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a>
+</span>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44208967-1', 'neuralnetworksanddeeplearning.com');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
