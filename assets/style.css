@@ -12,6 +12,8 @@
 /* HSV: 207, 75, 65                                                  */
 /* Decimal RGB: 42, 110, 166                                         */
 /*                                                                   */
+/* #FFA933: complement to #2A6EA6, for use on graphs                 */
+/*                                                                   */
 /* #eee: header text                                                 */
 
 
@@ -276,11 +278,12 @@ span.left_footer, span.right_footer {
     font-style: bold;
     line-height: 1.5;
     color: #eee;
-    white-space: nowrap;
 }
 
 span.left_footer {
-    left: 40px;
+    display: block;
+    width: 600px;
+    word-wrap:break-word;
 }
 
 span.right_footer {

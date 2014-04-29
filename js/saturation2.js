@@ -46,7 +46,7 @@ cost2 = quadratic_cost;
 
 // A path for the graph.  
 costGraph2 = new Path();
-costGraph2.strokeColor = "blue";
+costGraph2.strokeColor = "#2A6EA6";
 
 
 // BODY CODE
@@ -82,7 +82,7 @@ var weightTick = new Path(new Point(165, 57), new Point(165, 71));
 weightTick.strokeColor = "black";
 var weightSlider = new Path.Line(
     new Point(165, 61.5), new Point(165+weight*20, 61.5));
-weightSlider.strokeColor = "blue";
+weightSlider.strokeColor = "#2A6EA6";
 weightSlider.strokeWidth = 9;
 
 // The bias text and bar
@@ -95,7 +95,7 @@ var biasTick = new Path(new Point(275, 88), new Point(275, 102));
 biasTick.strokeColor = "black";
 var biasSlider = new Path.Line(
     new Point(275, 92.5), new Point(275+bias*20, 92.5));
-biasSlider.strokeColor = "blue";
+biasSlider.strokeColor = "#2A6EA6";
 biasSlider.strokeWidth = 9;
 
 // Axes for the graph
