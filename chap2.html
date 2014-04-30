@@ -173,8 +173,8 @@ shows examples of these notations in use:
 With these notations, the activation $a^{l}_j$ of the $j^{\rm th}$
 neuron in the $l^{\rm th}$ layer is related to the activations in the
 $(l-1)^{\rm th}$ layer by the equation (compare
-Equation <span id="margin_862222815722_reveal" class="equation_link">(4)</span><span id="margin_862222815722" class="marginequation" style="display: none;"><a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{1}{1+\exp(-\sum_j w_j x_j-b)} \nonumber\end{eqnarray}</a></span><script>$('#margin_862222815722_reveal').click(function() {$('#margin_862222815722').toggle('slow', function() {});});</script> and surrounding
+Equation <span id="margin_982718460756_reveal" class="equation_link">(4)</span><span id="margin_982718460756" class="marginequation" style="display: none;"><a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \frac{1}{1+\exp(-\sum_j w_j x_j-b)} \nonumber\end{eqnarray}</a></span><script>$('#margin_982718460756_reveal').click(function() {$('#margin_982718460756').toggle('slow', function() {});});</script> and surrounding
 discussion in the last chapter)
 <a class="displaced_anchor" name="eqtn23"></a>\begin{eqnarray} 
   a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right),
@@ -188,8 +188,8 @@ Similarly, for each layer $l$ we define a <em>bias vector</em>, $b^l$.
 You can probably guess how this works - the components of the bias
 vector are just the values $b^l_j$, one component for each neuron in
 the $l^{\rm th}$ layer.  And finally, we define an activation vector $a^l$
-whose components are the activations $a^l_j$.</p><p>The last ingredient we need to rewrite <span id="margin_98003610931_reveal" class="equation_link">(23)</span><span id="margin_98003610931" class="marginequation" style="display: none;"><a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber\end{eqnarray}</a></span><script>$('#margin_98003610931_reveal').click(function() {$('#margin_98003610931').toggle('slow', function() {});});</script> in a
+whose components are the activations $a^l_j$.</p><p>The last ingredient we need to rewrite <span id="margin_892764547290_reveal" class="equation_link">(23)</span><span id="margin_892764547290" class="marginequation" style="display: none;"><a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber\end{eqnarray}</a></span><script>$('#margin_892764547290_reveal').click(function() {$('#margin_892764547290').toggle('slow', function() {});});</script> in a
 matrix form is the idea of vectorizing a function such as $\sigma$.
 We met vectorization briefly in the last chapter, but to recap, the
 idea is that we want to apply a function such as $\sigma$ to every
@@ -203,8 +203,8 @@ vectorized form of $f$ has the effect
   = \left[ \begin{array}{c} f(2) \\ f(3) \end{array} \right]
   = \left[ \begin{array}{c} 4 \\ 9 \end{array} \right],
 \tag{24}\end{eqnarray}
-that is, the vectorized $f$ just squares every element of the vector.</p><p>With these notations in mind, Equation <span id="margin_400808367699_reveal" class="equation_link">(23)</span><span id="margin_400808367699" class="marginequation" style="display: none;"><a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber\end{eqnarray}</a></span><script>$('#margin_400808367699_reveal').click(function() {$('#margin_400808367699').toggle('slow', function() {});});</script> can
+that is, the vectorized $f$ just squares every element of the vector.</p><p>With these notations in mind, Equation <span id="margin_670877115051_reveal" class="equation_link">(23)</span><span id="margin_670877115051" class="marginequation" style="display: none;"><a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber\end{eqnarray}</a></span><script>$('#margin_670877115051_reveal').click(function() {$('#margin_670877115051').toggle('slow', function() {});});</script> can
 be rewritten in the beautiful and compact vectorized form
 <a class="displaced_anchor" name="eqtn25"></a>\begin{eqnarray} 
   a^{l} = \sigma(w^l a^{l-1}+b^l).
@@ -217,8 +217,8 @@ the bias vector, and finally apply the $\sigma$ function*<span class="marginnote
   the way, it's this expression that motivates the quirk in the
   $w^l_{jk}$ notation mentioned earlier.  If we used $j$ to index the
   input neuron, and $k$ to index the output neuron, then we'd need to
-  replace the weight matrix in Equation <span id="margin_961496174973_reveal" class="equation_link">(25)</span><span id="margin_961496174973" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_961496174973_reveal').click(function() {$('#margin_961496174973').toggle('slow', function() {});});</script>
+  replace the weight matrix in Equation <span id="margin_936258458665_reveal" class="equation_link">(25)</span><span id="margin_936258458665" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_936258458665_reveal').click(function() {$('#margin_936258458665').toggle('slow', function() {});});</script>
   by the transpose of the weight matrix.  That's a small change, but
   annoying, and we'd lose the easy simplicity of saying (and thinking)
   "apply the weight matrix to the activations".</span>.  That global view
@@ -230,14 +230,14 @@ libraries provide fast ways of implementing matrix multiplication,
 vector addition, and vectorization.  Indeed, the
 <a href="chap1.html#implementing_our_network_to_classify_digits">code</a>
 in the last chapter made implicit use of this expression to compute
-the behaviour of the network.</p><p>When using Equation <span id="margin_248681978689_reveal" class="equation_link">(25)</span><span id="margin_248681978689" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_248681978689_reveal').click(function() {$('#margin_248681978689').toggle('slow', function() {});});</script> to compute $a^l$,
+the behaviour of the network.</p><p>When using Equation <span id="margin_278347505195_reveal" class="equation_link">(25)</span><span id="margin_278347505195" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_278347505195_reveal').click(function() {$('#margin_278347505195').toggle('slow', function() {});});</script> to compute $a^l$,
 we compute the intermediate quantity $z^l \equiv w^l a^{l-1}+b^l$
 along the way.  This quantity turns out to be useful enough to be
 worth naming: we call $z^l$ the <em>weighted input</em> to the neurons
 in layer $l$.  We'll make considerable use of the weighted input $z^l$
-later in the chapter.  Equation <span id="margin_309326316569_reveal" class="equation_link">(25)</span><span id="margin_309326316569" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_309326316569_reveal').click(function() {$('#margin_309326316569').toggle('slow', function() {});});</script> is
+later in the chapter.  Equation <span id="margin_188955779703_reveal" class="equation_link">(25)</span><span id="margin_188955779703" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_188955779703_reveal').click(function() {$('#margin_188955779703').toggle('slow', function() {});});</script> is
 sometimes written in terms of the weighted input, as $a^l =
 \sigma(z^l)$.  It's also worth noting that $z^l$ has components $z^l_j
 = \sum_k w^l_{jk} a^{l-1}_k+b^l_j$, that is, $z^l_j$ is just the
@@ -248,8 +248,8 @@ network.  For backpropagation to work we need to make two main
 assumptions about the form of the cost function.  Before stating those
 assumptions, though, it's useful to have an example cost function in
 mind.  We'll use the quadratic cost function from last chapter
-(c.f. Equation <span id="margin_312430615319_reveal" class="equation_link">(6)</span><span id="margin_312430615319" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv
-  \frac{1}{2} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_312430615319_reveal').click(function() {$('#margin_312430615319').toggle('slow', function() {});});</script>).  In the notation of
+(c.f. Equation <span id="margin_517446195551_reveal" class="equation_link">(6)</span><span id="margin_517446195551" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv
+  \frac{1}{2} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_517446195551_reveal').click(function() {$('#margin_517446195551').toggle('slow', function() {});});</script>).  In the notation of
 the last section, the quadratic cost has the form
 <a class="displaced_anchor" name="eqtn26"></a>\begin{eqnarray}
   C = \frac{1}{2} \sum_x \|y(x)-a^L(x)\|^2,
@@ -393,8 +393,8 @@ changing as a function of the $j^{\rm th}$ output activation.  If, for
 example, $C$ doesn't depend much on a particular output neuron, $j$,
 then $\delta^L_j$ will be small, which is what we'd expect.  The
 second term on the right, $\sigma'(z^L_j)$, measures how fast the
-activation function $\sigma$ is changing at $z^L_j$.</p><p>Notice that everything in <span id="margin_539091666317_reveal" class="equation_link">(BP1)</span><span id="margin_539091666317" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_539091666317_reveal').click(function() {$('#margin_539091666317').toggle('slow', function() {});});</script> is easily computed.  In
+activation function $\sigma$ is changing at $z^L_j$.</p><p>Notice that everything in <span id="margin_878518180429_reveal" class="equation_link">(BP1)</span><span id="margin_878518180429" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_878518180429_reveal').click(function() {$('#margin_878518180429').toggle('slow', function() {});});</script> is easily computed.  In
 particular, we compute $z^L_j$ while computing the behaviour of the
 network, and it's only a small additional overhead to compute
 $\sigma'(z^L_j)$.  The exact form of $\partial C / \partial a^L_j$
@@ -403,8 +403,8 @@ provided the cost function is known there should be little trouble
 computing $\partial C / \partial a^L_j$.  For example, if we're using
 the quadratic cost function then $C = \frac{1}{2} \sum_j (y_j-a_j)^2$,
 and so $\partial C / \partial a^L_j = (a_j-y_j)$, which obviously is
-easily computable.</p><p>Equation <span id="margin_83959511545_reveal" class="equation_link">(BP1)</span><span id="margin_83959511545" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_83959511545_reveal').click(function() {$('#margin_83959511545').toggle('slow', function() {});});</script> is a componentwise expression for $\delta^L$.
+easily computable.</p><p>Equation <span id="margin_865587920241_reveal" class="equation_link">(BP1)</span><span id="margin_865587920241" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_865587920241_reveal').click(function() {$('#margin_865587920241').toggle('slow', function() {});});</script> is a componentwise expression for $\delta^L$.
 It's a perfectly good expression, but not the matrix-based form we
 want for backpropagation. However, it's easy to rewrite the equation
 in a matrix-based form, as
@@ -414,15 +414,15 @@ in a matrix-based form, as
 Here, $\nabla_a C$ is defined to be a vector whose components are the
 partial derivatives $\partial C / \partial a^L_j$.  You can think of
 $\nabla_a C$ as expressing the rate of change of $C$ with respect to
-the output activations.  It's easy to see that Equations <span id="margin_637678392658_reveal" class="equation_link">(BP1a)</span><span id="margin_637678392658" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1a" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L = \nabla_a C \odot \sigma'(z^L) \nonumber\end{eqnarray}</a></span><script>$('#margin_637678392658_reveal').click(function() {$('#margin_637678392658').toggle('slow', function() {});});</script>
-and <span id="margin_311827092845_reveal" class="equation_link">(BP1)</span><span id="margin_311827092845" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_311827092845_reveal').click(function() {$('#margin_311827092845').toggle('slow', function() {});});</script> are equivalent, and for that reason from now on we'll
-use <span id="margin_579790264533_reveal" class="equation_link">(BP1)</span><span id="margin_579790264533" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_579790264533_reveal').click(function() {$('#margin_579790264533').toggle('slow', function() {});});</script> interchangeably to refer to both equations.  As an
+the output activations.  It's easy to see that Equations <span id="margin_371959865254_reveal" class="equation_link">(BP1a)</span><span id="margin_371959865254" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1a" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L = \nabla_a C \odot \sigma'(z^L) \nonumber\end{eqnarray}</a></span><script>$('#margin_371959865254_reveal').click(function() {$('#margin_371959865254').toggle('slow', function() {});});</script>
+and <span id="margin_760722342975_reveal" class="equation_link">(BP1)</span><span id="margin_760722342975" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_760722342975_reveal').click(function() {$('#margin_760722342975').toggle('slow', function() {});});</script> are equivalent, and for that reason from now on we'll
+use <span id="margin_828326957138_reveal" class="equation_link">(BP1)</span><span id="margin_828326957138" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_828326957138_reveal').click(function() {$('#margin_828326957138').toggle('slow', function() {});});</script> interchangeably to refer to both equations.  As an
 example, in the case of the quadratic cost we have $\nabla_a C =
-(a^L-y)$, and so the fully matrix-based form of <span id="margin_116006561656_reveal" class="equation_link">(BP1)</span><span id="margin_116006561656" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_116006561656_reveal').click(function() {$('#margin_116006561656').toggle('slow', function() {});});</script> becomes
+(a^L-y)$, and so the fully matrix-based form of <span id="margin_562304469212_reveal" class="equation_link">(BP1)</span><span id="margin_562304469212" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_562304469212_reveal').click(function() {$('#margin_562304469212').toggle('slow', function() {});});</script> becomes
 <a class="displaced_anchor" name="eqtn30"></a>\begin{eqnarray}
   \delta^L = (a^L-y) \odot \sigma'(z^L).
 \tag{30}\end{eqnarray}
@@ -441,16 +441,16 @@ this as moving the error <em>backward</em> through the network, giving
 us some sort of measure of the error at the output of the $l^{\rm th}$
 layer.  We then take the Hadamard product $\odot \sigma'(z^l)$.  This
 moves the error backward through the activation function in layer $l$,
-giving us the error $\delta^l$ in the weighted input to layer $l$.</p><p>By combining <span id="margin_855184537042_reveal" class="equation_link">(BP2)</span><span id="margin_855184537042" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_855184537042_reveal').click(function() {$('#margin_855184537042').toggle('slow', function() {});});</script> with <span id="margin_513179138534_reveal" class="equation_link">(BP1)</span><span id="margin_513179138534" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_513179138534_reveal').click(function() {$('#margin_513179138534').toggle('slow', function() {});});</script> we can compute the error
+giving us the error $\delta^l$ in the weighted input to layer $l$.</p><p>By combining <span id="margin_26504129235_reveal" class="equation_link">(BP2)</span><span id="margin_26504129235" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_26504129235_reveal').click(function() {$('#margin_26504129235').toggle('slow', function() {});});</script> with <span id="margin_346637654263_reveal" class="equation_link">(BP1)</span><span id="margin_346637654263" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_346637654263_reveal').click(function() {$('#margin_346637654263').toggle('slow', function() {});});</script> we can compute the error
 $\delta^l$ for any layer in the network.  We start by
-using <span id="margin_12291716628_reveal" class="equation_link">(BP1)</span><span id="margin_12291716628" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_12291716628_reveal').click(function() {$('#margin_12291716628').toggle('slow', function() {});});</script> to compute $\delta^L$, then apply
-Equation <span id="margin_106669629038_reveal" class="equation_link">(BP2)</span><span id="margin_106669629038" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_106669629038_reveal').click(function() {$('#margin_106669629038').toggle('slow', function() {});});</script> to compute $\delta^{L-1}$, then
-Equation <span id="margin_883450907280_reveal" class="equation_link">(BP2)</span><span id="margin_883450907280" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_883450907280_reveal').click(function() {$('#margin_883450907280').toggle('slow', function() {});});</script> again to compute $\delta^{L-2}$, and so on, all
+using <span id="margin_620723325201_reveal" class="equation_link">(BP1)</span><span id="margin_620723325201" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_620723325201_reveal').click(function() {$('#margin_620723325201').toggle('slow', function() {});});</script> to compute $\delta^L$, then apply
+Equation <span id="margin_67014002079_reveal" class="equation_link">(BP2)</span><span id="margin_67014002079" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_67014002079_reveal').click(function() {$('#margin_67014002079').toggle('slow', function() {});});</script> to compute $\delta^{L-1}$, then
+Equation <span id="margin_700754684714_reveal" class="equation_link">(BP2)</span><span id="margin_700754684714" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_700754684714_reveal').click(function() {$('#margin_700754684714').toggle('slow', function() {});});</script> again to compute $\delta^{L-2}$, and so on, all
 the way back through the network.</p><p><strong>An equation for the rate of change of the cost with respect to
   any bias in the network:</strong> In particular:
 <a class="displaced_anchor" name="eqtnBP3"></a>\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
@@ -458,11 +458,11 @@ the way back through the network.</p><p><strong>An equation for the rate of chan
 \tag{BP3}\end{eqnarray}
 That is, the error $\delta^l_j$ is <em>exactly equal</em> to the rate of
 change $\partial C / \partial b^l_j$.  This is great news, since
-<span id="margin_737224170384_reveal" class="equation_link">(BP1)</span><span id="margin_737224170384" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_737224170384_reveal').click(function() {$('#margin_737224170384').toggle('slow', function() {});});</script> and <span id="margin_417367022205_reveal" class="equation_link">(BP2)</span><span id="margin_417367022205" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_417367022205_reveal').click(function() {$('#margin_417367022205').toggle('slow', function() {});});</script> have already told us how to compute
-$\delta^l_j$.  We can rewrite <span id="margin_400006089353_reveal" class="equation_link">(BP3)</span><span id="margin_400006089353" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
-  \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_400006089353_reveal').click(function() {$('#margin_400006089353').toggle('slow', function() {});});</script> in shorthand as
+<span id="margin_41471189962_reveal" class="equation_link">(BP1)</span><span id="margin_41471189962" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_41471189962_reveal').click(function() {$('#margin_41471189962').toggle('slow', function() {});});</script> and <span id="margin_934283323573_reveal" class="equation_link">(BP2)</span><span id="margin_934283323573" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_934283323573_reveal').click(function() {$('#margin_934283323573').toggle('slow', function() {});});</script> have already told us how to compute
+$\delta^l_j$.  We can rewrite <span id="margin_362212380501_reveal" class="equation_link">(BP3)</span><span id="margin_362212380501" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
+  \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_362212380501_reveal').click(function() {$('#margin_362212380501').toggle('slow', function() {});});</script> in shorthand as
 <a class="displaced_anchor" name="eqtn31"></a>\begin{eqnarray}
   \frac{\partial C}{\partial b} = \delta,
 \tag{31}\end{eqnarray}
@@ -488,20 +488,20 @@ depict this as:
 <center>
 <img src="images/tikz20.png"/>
 </center>
-A nice consequence of Equation <span id="margin_376151479116_reveal" class="equation_link">(32)</span><span id="margin_376151479116" class="marginequation" style="display: none;"><a href="chap2.html#eqtn32" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
-    C}{\partial w} = a_{\rm in} \delta_{\rm out} \nonumber\end{eqnarray}</a></span><script>$('#margin_376151479116_reveal').click(function() {$('#margin_376151479116').toggle('slow', function() {});});</script> is
+A nice consequence of Equation <span id="margin_617851849955_reveal" class="equation_link">(32)</span><span id="margin_617851849955" class="marginequation" style="display: none;"><a href="chap2.html#eqtn32" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
+    C}{\partial w} = a_{\rm in} \delta_{\rm out} \nonumber\end{eqnarray}</a></span><script>$('#margin_617851849955_reveal').click(function() {$('#margin_617851849955').toggle('slow', function() {});});</script> is
 that when the activation $a_{\rm in}$ is small, $a_{\rm in} \approx
 0$, the gradient term $\partial C / \partial w$ will also tend to be
 small.  In this case, we'll say the weight <em>learns slowly</em>,
 meaning that it's not changing much during gradient descent.  In other
-words, one consequence of <span id="margin_39559124969_reveal" class="equation_link">(BP4)</span><span id="margin_39559124969" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
-  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_39559124969_reveal').click(function() {$('#margin_39559124969').toggle('slow', function() {});});</script> is that weights output from
+words, one consequence of <span id="margin_806805967368_reveal" class="equation_link">(BP4)</span><span id="margin_806805967368" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_806805967368_reveal').click(function() {$('#margin_806805967368').toggle('slow', function() {});});</script> is that weights output from
 low-activation neurons learn slowly.</p><p>There are other insights along these lines which can be obtained
-from <span id="margin_351790702982_reveal" class="equation_link">(BP1)</span><span id="margin_351790702982" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_351790702982_reveal').click(function() {$('#margin_351790702982').toggle('slow', function() {});});</script>-<span id="margin_499217425839_reveal" class="equation_link">(BP4)</span><span id="margin_499217425839" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
-  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_499217425839_reveal').click(function() {$('#margin_499217425839').toggle('slow', function() {});});</script>.  Let's start by looking at the output
-layer.  Consider the term $\sigma'(z^L_j)$ in <span id="margin_908822177589_reveal" class="equation_link">(BP1)</span><span id="margin_908822177589" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_908822177589_reveal').click(function() {$('#margin_908822177589').toggle('slow', function() {});});</script>.  Recall
+from <span id="margin_279613241669_reveal" class="equation_link">(BP1)</span><span id="margin_279613241669" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_279613241669_reveal').click(function() {$('#margin_279613241669').toggle('slow', function() {});});</script>-<span id="margin_983148776215_reveal" class="equation_link">(BP4)</span><span id="margin_983148776215" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_983148776215_reveal').click(function() {$('#margin_983148776215').toggle('slow', function() {});});</script>.  Let's start by looking at the output
+layer.  Consider the term $\sigma'(z^L_j)$ in <span id="margin_295300251449_reveal" class="equation_link">(BP1)</span><span id="margin_295300251449" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_295300251449_reveal').click(function() {$('#margin_295300251449').toggle('slow', function() {});});</script>.  Recall
 from the <a href="chap1.html#sigmoid_graph">graph of the sigmoid
   function in the last chapter</a> that the $\sigma$ function becomes
 very flat when $\sigma(z^L_j)$ is approximately $0$ or $1$.  When this
@@ -512,8 +512,8 @@ neuron is either low activation ($\approx 0$) or high activation
 <em>saturated</em> and, as a result, the weight has stopped learning (or
 is learning slowly).  Similar remarks hold also for the biases of
 output neuron.</p><p>We can obtain similar insights for earlier layers.  In particular,
-note the $\sigma'(z^l)$ term in <span id="margin_636349259326_reveal" class="equation_link">(BP2)</span><span id="margin_636349259326" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_636349259326_reveal').click(function() {$('#margin_636349259326').toggle('slow', function() {});});</script>.  This means that
+note the $\sigma'(z^l)$ term in <span id="margin_124096168006_reveal" class="equation_link">(BP2)</span><span id="margin_124096168006" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_124096168006_reveal').click(function() {$('#margin_124096168006').toggle('slow', function() {});});</script>.  This means that
 $\delta^l_j$ is likely to get small if the neuron is near saturation.
 And this, in turn, means that any weights input to a saturated neuron
 will learn slowly*<span class="marginnote">
@@ -536,19 +536,19 @@ is always positive, and never gets close to zero.  That would prevent
 the slow-down of learning that occurs when ordinary sigmoid neurons
 saturate.  Later in the book we'll see examples where this kind of
 modification is made to the activation function.  Keeping the four
-equations <span id="margin_738039435818_reveal" class="equation_link">(BP1)</span><span id="margin_738039435818" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_738039435818_reveal').click(function() {$('#margin_738039435818').toggle('slow', function() {});});</script>-<span id="margin_698523561569_reveal" class="equation_link">(BP4)</span><span id="margin_698523561569" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
-  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_698523561569_reveal').click(function() {$('#margin_698523561569').toggle('slow', function() {});});</script> in mind can help explain why such
+equations <span id="margin_377926982781_reveal" class="equation_link">(BP1)</span><span id="margin_377926982781" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_377926982781_reveal').click(function() {$('#margin_377926982781').toggle('slow', function() {});});</script>-<span id="margin_105907411659_reveal" class="equation_link">(BP4)</span><span id="margin_105907411659" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_105907411659_reveal').click(function() {$('#margin_105907411659').toggle('slow', function() {});});</script> in mind can help explain why such
 modifications are tried, and what impact they can have.</p><p><center>
 <img src="images/tikz21.png"/>
 </center></p><p><h3><a name="proof_of_the_four_fundamental_equations_(optional)"></a><a href="#proof_of_the_four_fundamental_equations_(optional)">Proof of the four fundamental equations (optional)</a></h3> </p><p>We'll now prove the four fundamental
-equations <span id="margin_246137836592_reveal" class="equation_link">(BP1)</span><span id="margin_246137836592" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_246137836592_reveal').click(function() {$('#margin_246137836592').toggle('slow', function() {});});</script>-<span id="margin_265037681650_reveal" class="equation_link">(BP4)</span><span id="margin_265037681650" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
-  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_265037681650_reveal').click(function() {$('#margin_265037681650').toggle('slow', function() {});});</script>.  All four are consequences of the
+equations <span id="margin_792142711726_reveal" class="equation_link">(BP1)</span><span id="margin_792142711726" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_792142711726_reveal').click(function() {$('#margin_792142711726').toggle('slow', function() {});});</script>-<span id="margin_934203393081_reveal" class="equation_link">(BP4)</span><span id="margin_934203393081" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_934203393081_reveal').click(function() {$('#margin_934203393081').toggle('slow', function() {});});</script>.  All four are consequences of the
 chain rule from multivariable calculus.  If you're comfortable with
 the chain rule, then I strongly encourage you to attempt the
-derivation yourself before reading on.</p><p>Let's begin with Equation <span id="margin_150250245045_reveal" class="equation_link">(BP1)</span><span id="margin_150250245045" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_150250245045_reveal').click(function() {$('#margin_150250245045').toggle('slow', function() {});});</script>, which gives an expression for
+derivation yourself before reading on.</p><p>Let's begin with Equation <span id="margin_900831585817_reveal" class="equation_link">(BP1)</span><span id="margin_900831585817" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_900831585817_reveal').click(function() {$('#margin_900831585817').toggle('slow', function() {});});</script>, which gives an expression for
 the output error, $\delta^L$.  To prove this equation, recall that by
 definition
 <a class="displaced_anchor" name="eqtn33"></a>\begin{eqnarray}
@@ -573,9 +573,9 @@ can be written as $\sigma'(z^L_j)$, and the equation becomes
 <a class="displaced_anchor" name="eqtn36"></a>\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j),
 \tag{36}\end{eqnarray}
-which is just <span id="margin_603423985570_reveal" class="equation_link">(BP1)</span><span id="margin_603423985570" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_603423985570_reveal').click(function() {$('#margin_603423985570').toggle('slow', function() {});});</script>, in component form.</p><p>Next, we'll prove <span id="margin_463099300928_reveal" class="equation_link">(BP2)</span><span id="margin_463099300928" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_463099300928_reveal').click(function() {$('#margin_463099300928').toggle('slow', function() {});});</script>, which gives an equation for the error
+which is just <span id="margin_458773989191_reveal" class="equation_link">(BP1)</span><span id="margin_458773989191" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_458773989191_reveal').click(function() {$('#margin_458773989191').toggle('slow', function() {});});</script>, in component form.</p><p>Next, we'll prove <span id="margin_928745199372_reveal" class="equation_link">(BP2)</span><span id="margin_928745199372" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_928745199372_reveal').click(function() {$('#margin_928745199372').toggle('slow', function() {});});</script>, which gives an equation for the error
 $\delta^l$ in terms of the error in the next layer, $\delta^{l+1}$.
 To do this, we want to rewrite $\delta^l_j = \partial C / \partial
 z^l_j$ in terms of $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$.
@@ -595,21 +595,21 @@ Differentiating, we obtain
 <a class="displaced_anchor" name="eqtn41"></a>\begin{eqnarray}
   \frac{\partial z^{l+1}_k}{\partial z^l_j} = w^{l+1}_{kj} \sigma'(z^l_j).
 \tag{41}\end{eqnarray}
-Substituting back into <span id="margin_913452491470_reveal" class="equation_link">(39)</span><span id="margin_913452491470" class="marginequation" style="display: none;"><a href="chap2.html#eqtn39" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  & = & \sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k \nonumber\end{eqnarray}</a></span><script>$('#margin_913452491470_reveal').click(function() {$('#margin_913452491470').toggle('slow', function() {});});</script> we obtain
+Substituting back into <span id="margin_965066950691_reveal" class="equation_link">(39)</span><span id="margin_965066950691" class="marginequation" style="display: none;"><a href="chap2.html#eqtn39" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  & = & \sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k \nonumber\end{eqnarray}</a></span><script>$('#margin_965066950691_reveal').click(function() {$('#margin_965066950691').toggle('slow', function() {});});</script> we obtain
 <a class="displaced_anchor" name="eqtn42"></a>\begin{eqnarray}
   \delta^l_j = \sum_k w^{l+1}_{kj}  \delta^{l+1}_k \sigma'(z^l_j).
 \tag{42}\end{eqnarray}
-This is just <span id="margin_25390736794_reveal" class="equation_link">(BP2)</span><span id="margin_25390736794" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_25390736794_reveal').click(function() {$('#margin_25390736794').toggle('slow', function() {});});</script> written in component form.</p><p>The final two equations we want to prove are <span id="margin_344319457839_reveal" class="equation_link">(BP3)</span><span id="margin_344319457839" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
-  \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_344319457839_reveal').click(function() {$('#margin_344319457839').toggle('slow', function() {});});</script>
-and <span id="margin_423133754179_reveal" class="equation_link">(BP4)</span><span id="margin_423133754179" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
-  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_423133754179_reveal').click(function() {$('#margin_423133754179').toggle('slow', function() {});});</script>.  These also follow from the chain rule, in a manner
+This is just <span id="margin_481776051651_reveal" class="equation_link">(BP2)</span><span id="margin_481776051651" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_481776051651_reveal').click(function() {$('#margin_481776051651').toggle('slow', function() {});});</script> written in component form.</p><p>The final two equations we want to prove are <span id="margin_470656316093_reveal" class="equation_link">(BP3)</span><span id="margin_470656316093" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
+  \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_470656316093_reveal').click(function() {$('#margin_470656316093').toggle('slow', function() {});});</script>
+and <span id="margin_997449430651_reveal" class="equation_link">(BP4)</span><span id="margin_997449430651" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_997449430651_reveal').click(function() {$('#margin_997449430651').toggle('slow', function() {});});</script>.  These also follow from the chain rule, in a manner
 similar to the proofs of the two equations above.  I leave them to you
-as an exercise. </p><p><h4><a name="exercise_916555"></a><a href="#exercise_916555">Exercise</a></h4><ul>
-<li> Prove Equations <span id="margin_730033728056_reveal" class="equation_link">(BP3)</span><span id="margin_730033728056" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
-  \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_730033728056_reveal').click(function() {$('#margin_730033728056').toggle('slow', function() {});});</script> and <span id="margin_79065485381_reveal" class="equation_link">(BP4)</span><span id="margin_79065485381" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
-  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_79065485381_reveal').click(function() {$('#margin_79065485381').toggle('slow', function() {});});</script>.
+as an exercise. </p><p><h4><a name="exercise_36747"></a><a href="#exercise_36747">Exercise</a></h4><ul>
+<li> Prove Equations <span id="margin_192941315244_reveal" class="equation_link">(BP3)</span><span id="margin_192941315244" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
+  \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_192941315244_reveal').click(function() {$('#margin_192941315244').toggle('slow', function() {});});</script> and <span id="margin_509089836800_reveal" class="equation_link">(BP4)</span><span id="margin_509089836800" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_509089836800_reveal').click(function() {$('#margin_509089836800').toggle('slow', function() {});});</script>.
 </ul></p><p>That completes the proof of the four fundamental equations of
 backpropagation.  The proof may seem complicated.  But it's really
 just the outcome of carefully applying the chain rule.  A little less
@@ -775,9 +775,9 @@ where $\epsilon > 0$ is a small positive number, and $e_j$ is the unit
 vector in the $j^{\rm th}$ direction.  In other words, we can estimate
 $\partial C / \partial w_j$ by computing the cost $C$ for two slightly
 different values of $w_j$, and then applying
-Equation <span id="margin_309608590966_reveal" class="equation_link">(43)</span><span id="margin_309608590966" class="marginequation" style="display: none;"><a href="chap2.html#eqtn43" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
+Equation <span id="margin_52531730205_reveal" class="equation_link">(43)</span><span id="margin_52531730205" class="marginequation" style="display: none;"><a href="chap2.html#eqtn43" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
     C}{\partial w_{j}} \approx \frac{C(w+\epsilon
-    e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_309608590966_reveal').click(function() {$('#margin_309608590966').toggle('slow', function() {});});</script>.  The same idea will let us
+    e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_52531730205_reveal').click(function() {$('#margin_52531730205').toggle('slow', function() {});});</script>.  The same idea will let us
 compute the partial derivatives $\partial C / \partial b$ with respect
 to the biases.</p><p>This approach looks very promising.  It's simple conceptually, and
 extremely easy to implement, using just a few lines of code.
@@ -805,13 +805,13 @@ forward pass*<span class="marginnote">
 backpropagation is roughly the same as making just two forward passes
 through the network.  Compare that to the million and one forward
 passes we needed for the approach based
-on <span id="margin_52546891132_reveal" class="equation_link">(43)</span><span id="margin_52546891132" class="marginequation" style="display: none;"><a href="chap2.html#eqtn43" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
+on <span id="margin_70502000977_reveal" class="equation_link">(43)</span><span id="margin_70502000977" class="marginequation" style="display: none;"><a href="chap2.html#eqtn43" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
     C}{\partial w_{j}} \approx \frac{C(w+\epsilon
-    e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_52546891132_reveal').click(function() {$('#margin_52546891132').toggle('slow', function() {});});</script>!  And so even though backpropagation
+    e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_70502000977_reveal').click(function() {$('#margin_70502000977').toggle('slow', function() {});});</script>!  And so even though backpropagation
 appears superficially more complex than the approach based
-on <span id="margin_371325350305_reveal" class="equation_link">(43)</span><span id="margin_371325350305" class="marginequation" style="display: none;"><a href="chap2.html#eqtn43" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
+on <span id="margin_197663932767_reveal" class="equation_link">(43)</span><span id="margin_197663932767" class="marginequation" style="display: none;"><a href="chap2.html#eqtn43" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
     C}{\partial w_{j}} \approx \frac{C(w+\epsilon
-    e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_371325350305_reveal').click(function() {$('#margin_371325350305').toggle('slow', function() {});});</script>, it's actually much, much faster.</p><p>This speedup was first fully appreciated in 1986, and it greatly
+    e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_197663932767_reveal').click(function() {$('#margin_197663932767').toggle('slow', function() {});});</script>, it's actually much, much faster.</p><p>This speedup was first fully appreciated in 1986, and it greatly
 expanded the range of problems that neural networks could solve.
 That, in turn, caused a rush of people using neural networks.  Of
 course, backpropagation is not a panacea.  Even in the late 1980s
@@ -879,8 +879,8 @@ In fact, it'll cause the following change:
 <a class="displaced_anchor" name="eqtn46"></a>\begin{eqnarray}
   \Delta a^{l+1}_q \approx \frac{\partial a^{l+1}_q}{\partial a^l_j} \Delta a^l_j.
 \tag{46}\end{eqnarray}
-Substituting in the expression from Equation <span id="margin_339342646012_reveal" class="equation_link">(45)</span><span id="margin_339342646012" class="marginequation" style="display: none;"><a href="chap2.html#eqtn45" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \Delta a^l_j \approx \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk} \nonumber\end{eqnarray}</a></span><script>$('#margin_339342646012_reveal').click(function() {$('#margin_339342646012').toggle('slow', function() {});});</script>,
+Substituting in the expression from Equation <span id="margin_864057183916_reveal" class="equation_link">(45)</span><span id="margin_864057183916" class="marginequation" style="display: none;"><a href="chap2.html#eqtn45" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \Delta a^l_j \approx \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk} \nonumber\end{eqnarray}</a></span><script>$('#margin_864057183916_reveal').click(function() {$('#margin_864057183916').toggle('slow', function() {});});</script>,
 we get:
 <a class="displaced_anchor" name="eqtn47"></a>\begin{eqnarray}
   \Delta a^{l+1}_q \approx \frac{\partial a^{l+1}_q}{\partial a^l_j} \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk}.
@@ -916,8 +916,8 @@ the weight and the final cost, i.e.,
   \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk},
 \tag{49}\end{eqnarray}
 where we've summed over all possible choices for the intermediate
-neurons along the path.  Comparing with <span id="margin_175637807717_reveal" class="equation_link">(44)</span><span id="margin_175637807717" class="marginequation" style="display: none;"><a href="chap2.html#eqtn44" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \Delta C \approx \frac{\partial C}{\partial w^l_{jk}} \Delta w^l_{jk} \nonumber\end{eqnarray}</a></span><script>$('#margin_175637807717_reveal').click(function() {$('#margin_175637807717').toggle('slow', function() {});});</script> we
+neurons along the path.  Comparing with <span id="margin_830118453582_reveal" class="equation_link">(44)</span><span id="margin_830118453582" class="marginequation" style="display: none;"><a href="chap2.html#eqtn44" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \Delta C \approx \frac{\partial C}{\partial w^l_{jk}} \Delta w^l_{jk} \nonumber\end{eqnarray}</a></span><script>$('#margin_830118453582_reveal').click(function() {$('#margin_830118453582').toggle('slow', function() {});});</script> we
 see that
 <a class="displaced_anchor" name="eqtn50"></a>\begin{eqnarray} 
   \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
@@ -926,12 +926,12 @@ see that
   \frac{\partial a^{l+1}_q}{\partial a^l_j} 
   \frac{\partial a^l_j}{\partial w^l_{jk}}.
 \tag{50}\end{eqnarray}
-Now, Equation <span id="margin_557508621700_reveal" class="equation_link">(50)</span><span id="margin_557508621700" class="marginequation" style="display: none;"><a href="chap2.html#eqtn50" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+Now, Equation <span id="margin_156008122919_reveal" class="equation_link">(50)</span><span id="margin_156008122919" class="marginequation" style="display: none;"><a href="chap2.html#eqtn50" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
   \frac{\partial a^{l+1}_q}{\partial a^l_j} 
-  \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_557508621700_reveal').click(function() {$('#margin_557508621700').toggle('slow', function() {});});</script> looks complicated.  However,
+  \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_156008122919_reveal').click(function() {$('#margin_156008122919').toggle('slow', function() {});});</script> looks complicated.  However,
 it has a nice intuitive interpretation.  We're computing the rate of
 change of $C$ with respect to a weight in the network.  What the
 equation tells us is that every edge between two neurons in the
@@ -951,12 +951,12 @@ thinking about what's going on when you perturb a weight in a network.
 Let me sketch out a line of thinking you could use to further develop
 this argument.  First, you could derive explicit expressions for all
 the individual partial derivatives in
-Equation <span id="margin_263337832108_reveal" class="equation_link">(50)</span><span id="margin_263337832108" class="marginequation" style="display: none;"><a href="chap2.html#eqtn50" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+Equation <span id="margin_434399516320_reveal" class="equation_link">(50)</span><span id="margin_434399516320" class="marginequation" style="display: none;"><a href="chap2.html#eqtn50" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
   \frac{\partial a^{l+1}_q}{\partial a^l_j} 
-  \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_263337832108_reveal').click(function() {$('#margin_263337832108').toggle('slow', function() {});});</script>.  That's easy to do with a bit of
+  \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_434399516320_reveal').click(function() {$('#margin_434399516320').toggle('slow', function() {});});</script>.  That's easy to do with a bit of
 calculus.  Having done that, you could then try to figure out how to
 write all the sums over indices as matrix multiplications.  This turns
 out to be tedious, and requires some persistence, but not
@@ -985,12 +985,12 @@ that out.  And then several more obvious simplifications jump out at
 you. So you repeat again.  The result after a few iterations is the
 proof we saw earlier*<span class="marginnote">
 *There is one clever step required.  In
-  Equation <span id="margin_100046418751_reveal" class="equation_link">(50)</span><span id="margin_100046418751" class="marginequation" style="display: none;"><a href="chap2.html#eqtn50" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  Equation <span id="margin_647570345279_reveal" class="equation_link">(50)</span><span id="margin_647570345279" class="marginequation" style="display: none;"><a href="chap2.html#eqtn50" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
   \frac{\partial a^{l+1}_q}{\partial a^l_j} 
-  \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_100046418751_reveal').click(function() {$('#margin_100046418751').toggle('slow', function() {});});</script> the intermediate variables are
+  \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_647570345279_reveal').click(function() {$('#margin_647570345279').toggle('slow', function() {});});</script> the intermediate variables are
   activations like $a_q^{l+1}$.  The clever idea is to switch to using
   weighted inputs, like $z^{l+1}_q$, as the intermediate variables. If
   you don't have this idea, and instead continue using the activations
@@ -1017,7 +1017,7 @@ commercial use, please <a
 href="mailto:mn@michaelnielsen.org">contact me</a>.
 </span>
 <span class="right_footer">
-Last update: Tue Apr 29 12:14:38 2014
+Last update: Tue Apr 29 21:13:03 2014
 <br/>
 <br/>
 <br/>
