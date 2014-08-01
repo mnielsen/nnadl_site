@@ -1,4 +1,4 @@
-// Note that this script relies on globals defined in simple_model.js,
+// Note that this script relies on globals defined in simple_data.js,
 // such as data, width, height, and so on.  
 
 var svg = d3.select("#polynomial_fit").append("svg") 
