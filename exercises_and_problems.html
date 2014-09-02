@@ -20,11 +20,38 @@
         TeX: { equationNumbers: { autoNumber: "AMS" }}});
     </script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
     <link href="assets/style.css" rel="stylesheet">
     <link href="assets/pygments.css" rel="stylesheet">
+
+<style>
+/* Adapted from */
+/* https://groups.google.com/d/msg/mathjax-users/jqQxrmeG48o/oAaivLgLN90J, */
+/* by David Cervone */
+
+@font-face {
+    font-family: 'MJX_Math';
+    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot'); /* IE9 Compat Modes */
+    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot?iefix') format('eot'),
+    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff')  format('woff'),
+    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf')  format('opentype'),
+    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/svg/MathJax_Math-Italic.svg#MathJax_Math-Italic') format('svg');
+}
+
+@font-face {
+    font-family: 'MJX_Main';
+    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot'); /* IE9 Compat Modes */
+    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot?iefix') format('eot'),
+    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff')  format('woff'),
+    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf')  format('opentype'),
+    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/svg/MathJax_Main-Regular.svg#MathJax_Main-Regular') format('svg');
+}
+</style>
+
   </head>
   <body><div class="nonumber_header"><h2>On the exercises and problems</h2></div><div class="section"><div id="toc"> 
-<b><a href="index.html">Neural Networks and Deep Learning</a></b> (draft contents)<br/><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">Using neural nets to recognize handwritten digits</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
+<p class="toc_title"><a href="index.html">Neural Networks and Deep Learning</a> (draft contents)</p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">Using neural nets to recognize handwritten digits</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
 <script>
 $('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() { 
    var src = $('#toc_img_using_neural_nets_to_recognize_handwritten_digits').attr('src');
@@ -54,7 +81,27 @@ $('#toc_improving_the_way_neural_networks_learn_reveal').click(function() {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow.png');
    };
    $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});  
-});</script><p class='toc_mainchapter'><a id="toc_why_neural_networks_are_universal_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_why_neural_networks_are_universal" src="images/arrow.png" width="15px"></a>Why neural networks are universal<p class='toc_mainchapter'><a id="toc_deep_learning_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_deep_learning" src="images/arrow.png" width="15px"></a>Deep learning<div id="toc_deep_learning" style="display: none;"><p class="toc_section"><ul><li>Why deep neural networks are hard to train</li><li>Convolutional neural networks</li><li>Pretraining</li><li>Feature discovery</li><li>The state of the art in image recognition</li></ul></p></div>
+});</script><p class='toc_mainchapter'><a id="toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_a_visual_proof_that_neural_nets_can_compute_any_function" src="images/arrow.png" width="15px"></a><a href="chap4.html">A visual proof that neural nets can compute any function</a><div id="toc_a_visual_proof_that_neural_nets_can_compute_any_function" style="display: none;"><p class="toc_section"><ul><a href="chap4.html#two_caveats"><li>Two caveats</li></a><a href="chap4.html#universality_with_one_input_and_one_output"><li>Universality with one input and one output</li></a><a href="chap4.html#many_input_variables"><li>Many input variables</li></a><a href="chap4.html#extension_beyond_sigmoid_neurons"><li>Extension beyond sigmoid neurons</li></a><a href="chap4.html#fixing_up_the_step_functions"><li>Fixing up the step functions</li></a><a href="chap4.html#conclusion"><li>Conclusion</li></a></ul></p></div>
+<script>
+$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() { 
+   var src = $('#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow.png');
+   };
+   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});  
+});</script><p class='toc_mainchapter'><a id="toc_why_deep_neural_networks_are_hard_to_train_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_why_deep_neural_networks_are_hard_to_train" src="images/arrow.png" width="15px"></a>Why deep neural networks are hard to train<div id="toc_why_deep_neural_networks_are_hard_to_train" style="display: none;"><p class="toc_section"><ul><li>The vanishing gradient problem</li><li>What's causing the vanishing gradient problem?  Unstable gradients in deep neural nets</li><li>How should we approach deep learning?</li></ul></p></div>
+<script>
+$('#toc_why_deep_neural_networks_are_hard_to_train_reveal').click(function() { 
+   var src = $('#toc_img_why_deep_neural_networks_are_hard_to_train').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_why_deep_neural_networks_are_hard_to_train").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_why_deep_neural_networks_are_hard_to_train").attr('src', 'images/arrow.png');
+   };
+   $('#toc_why_deep_neural_networks_are_hard_to_train').toggle('fast', function() {});  
+});</script><p class='toc_mainchapter'><a id="toc_deep_learning_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_deep_learning" src="images/arrow.png" width="15px"></a>Deep learning<div id="toc_deep_learning" style="display: none;"><p class="toc_section"><ul><li>Convolutional neural networks</li><li>Pretraining</li><li>Feature discovery</li><li>The state of the art in image recognition</li></ul></p></div>
 <script>
 $('#toc_deep_learning_reveal').click(function() { 
    var src = $('#toc_img_deep_learning').attr('src');
@@ -76,7 +123,8 @@ $('#toc_the_future_of_neural_nets_reveal').click(function() {
    $('#toc_the_future_of_neural_nets').toggle('fast', function() {});  
 });</script><p class="toc_not_mainchapter">Further reading</p><p class="toc_not_mainchapter">Acknowledgements</p>
 <hr>
-<b>Sponsors</b><br/>
+<span class="sidebar_title">Sponsors</span>
+<br/>
 <a href='http://www.ersatz1.com/'><img src='assets/ersatz.png' width='140px' style="padding: 0px 0px 10px 8px; border-style: none;"></a>
 
 <a href='http://gsquaredcapital.com/'><img src='assets/gsquared.png' width='150px' style="padding: 0px 0px 10px 10px; border-style: none;"></a>
@@ -88,23 +136,35 @@ style="padding: 0px 0px 10px 8px; border-style: none;"></a>
 src='assets/visionsmarts.png' width='160px' style="padding: 0px 0px
 0px 0px; border-style: none;"></a> <br/> 
 
-<p>Thanks to all the <a href="supporters.html">supporters</a> who made
-the book possible.  Thanks also to all the contributors to the <a
+<p class="sidebar">Thanks to all the <a
+href="supporters.html">supporters</a> who made the book possible.
+Thanks also to all the contributors to the <a
 href="bugfinder.html">Bugfinder Hall of Fame</a>.  </p>
 
-<p>The book is currently a beta release, and is still under active
-development.  Please send error reports to mn@michaelnielsen.org.</p>
+<p class="sidebar">The book is currently a beta release, and is still
+under active development.  Please send error reports to
+mn@michaelnielsen.org.</p>
 
 <hr>
-<b>Resources</b><br/>
-<a href="https://github.com/mnielsen/neural-networks-and-deep-learning">Code repository</a><br/>
+<span class="sidebar_title">Resources</span>
+
+<p class="sidebar">
+<a href="https://github.com/mnielsen/neural-networks-and-deep-learning">Code repository</a></p>
+
+<p class="sidebar">
 <a href="http://eepurl.com/BYr9L">Mailing list for book announcements</a>
+</p>
+
+<p class="sidebar">
+<a href="http://eepurl.com/0Xxjb">Michael Nielsen's project announcement mailing list</a>
+</p>
 
 <hr>
 <a href="http://michaelnielsen.org"><img src="assets/Michael_Nielsen_Web_Small.jpg" width="160px" style="border-style: none;"/></a>
-<br/>
-By <a href="http://michaelnielsen.org">Michael Nielsen</a> /
-Aug 2014
+
+<p class="sidebar">
+By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
+</p>
 </div>
 </p><p>It's not uncommon for technical books to include an admonition fromthe author that readers must do the exercises and problems.  I alwaysfeel a little peculiar when I read such warnings.  Will something badhappen to me if I don't do the exercises and problems?  Of course not.I'll gain some time, but at the expense of depth of understanding.Sometimes that's worth it.  Sometimes it's not.</p><p>So what's worth doing in this book?  My advice is that you reallyshould attempt most of the exercises, and you should aim <em>not</em> todo most of the problems.</p><p>You should do most of the exercises because they're basic checks thatyou've understood the material.  If you can't solve an exerciserelatively easily, you've probably missed something fundamental.  Ofcourse, if you do get stuck on an occasional exercise, just move on- chances are it's just a small misunderstanding on your part, ormaybe I've worded something poorly.  But if most exercises are astruggle, then you probably need to reread some earlier material.</p><p>The problems are another matter.  They're more difficult than theexercises, and you'll likely struggle to solve some problems.  That'sannoying, but, of course, patience in the face of such frustration isthe only way to truly understand and internalize a subject.</p><p>With that said, I don't recommend working through all the problems.What's even better is to find your own project.  Maybe you want to useneural nets to classify your music collection.  Or to predict stockprices.  Or whatever.  But <em>find a project you care about</em>.  Thenyou can ignore the problems in the book, or use them simply asinspiration for work on your own project.  Struggling with a projectyou care about will teach you far more than working through any numberof set problems.  Emotional commitment is a key to achieving mastery.</p><p>Of course, you may not have such a project in mind, at least up front.That's fine.  Work through those problems you feel motivated to workon.  And use the material in the book to help you search for ideas forcreative personal projects.</p><p><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></p><p></p><p></p><p></p><p></div><div class="footer"> <span class="left_footer"> In academic work,
 please cite this book as: Michael A. Nielsen, "Neural Networks and
@@ -122,7 +182,7 @@ commercial use, please <a
 href="mailto:mn@michaelnielsen.org">contact me</a>.
 </span>
 <span class="right_footer">
-Last update: Sat Aug  2 20:21:37 2014
+Last update: Tue Sep  2 08:44:20 2014
 <br/>
 <br/>
 <br/>
