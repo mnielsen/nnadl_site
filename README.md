@@ -3,6 +3,9 @@
 
 著者からの許諾にもとづき、無料のオンライン本 "Neural Networks and Deep Learning" を翻訳します。
 
+オリジナルサイトはこちら： http://neuralnetworksanddeeplearning.com/
+日本語版はこちら： http://nnadl-ja.github.io/nnadl_site_ja
+
 
 Michaelからのメール
 -----------
