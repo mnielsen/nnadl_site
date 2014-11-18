@@ -10,7 +10,8 @@
     <meta name="citation_fulltext_html_url" content="http://neuralnetworksanddeeplearning.com">
     <meta name="citation_publisher" content="Determination Press">
     <link rel="icon" href="nnadl_favicon.ICO" />
-    <title>Neural networks and deep learning</title>
+    <!--    <title>Neural networks and deep learning</title>-->
+    <title>ニューラルネットワークと深層学習</title>
     <script src="assets/jquery.min.js"></script>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
@@ -50,7 +51,11 @@
 </style>
 
   </head>
-  <body><div class="nonumber_header"><h2><a href="index.html">Neural Networks and Deep Learning</a></h2></div><div class="section"><div id="toc"> 
+<body>
+  <!--<div class="nonumber_header"><h2><a href="index.html">Neural Networks and Deep Learning</a></h2></div>-->
+<div class="nonumber_header"><h2><a href="index.html">ニューラルネットワークと深層学習</a></h2></div>
+
+  <div class="section"><div id="toc"> 
 <p class="toc_title"><a href="index.html">Neural Networks and Deep Learning</a> (draft contents)</p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">Using neural nets to recognize handwritten digits</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
 <script>
 $('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() { 
@@ -61,7 +66,7 @@ $('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(functio
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow.png');
    };
    $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});  
-});</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">How the backpropagation algorithm works</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output_from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output  from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
+});</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">How the backpropagation algorithm works</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output _from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output   from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
 <script>
 $('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() { 
    var src = $('#toc_img_how_the_backpropagation_algorithm_works').attr('src');
@@ -166,50 +171,83 @@ mn@michaelnielsen.org.</p>
 By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 </p>
 </div>
-<p>
-<em>Neural Networks and Deep Learning</em> is a free online book.  The
-book will teach you about:
-<ul>
-<li>Neural networks, a beautiful biologically-inspired programming
-paradigm which enables a computer to learn from observational data
+      <p> 
+	<!--
+<em>Neural Networks and Deep Learning</em> is a free online book.  The 
+book will teach you about: 
+-->
+	「ニューラルネットワークと深層学習」は無料のオンライン書籍です。
+	この本では、次のような内容を扱います。
+	<!--
+<ul> 
+<li>Neural networks, a beautiful biologically-inspired programming 
+paradigm which enables a computer to learn from observational data 
+ 
+<li>Deep learning, a powerful set of techniques for learning in neural 
+networks 
+ 
+</ul>-->
 
-<li>Deep learning, a powerful set of techniques for learning in neural
-networks
 
+<ul> 
+  <li>ニューラルネットワーク：コンピュータに、観測データにもとづいて学習する能力を与える、生物学にヒントを得たプログラミングパラダイム。
+  <li>深層学習：ニューラルネットワークに学習をさせるための強力な手法。
 </ul>
-Neural networks and deep learning currently provide the best solutions
-to many problems in image recognition, speech recognition, and natural
-language processing.  This book will teach you the core concepts
-behind neural networks and deep learning.
-</p>
 
-<p>
-The book is currently an incomplete beta draft.  More chapters will be
-added over the coming months. For now, you can:</p>
 
-<p>
-<ul>
+<!--
+Neural networks and deep learning currently provide the best solutions 
+to many problems in image recognition, speech recognition, and natural 
+language processing.  This book will teach you the core concepts 
+behind neural networks and deep learning. -->
 
-<li><b><a href="chap1.html">Read Chapter 1</a></b>, which explains how
-neural networks can learn to recognize handwriting
+ニューラルネットワークと深層学習は、現時点において、画像認識、音声認識、自然言語処理などの分野の様々な
+問題に対して、最も優れた解決策を与える手法です。この本では、ニューラルネットワークと深層学習の背後にある
+核心的概念を扱います。
 
-<li><b><a href="chap2.html">Read Chapter 2</a></b>, which explains
-backpropagation, the most important algorithm used to learn in neural
-networks.
+</p> 
+ 
+<p> 
+<!--
+  The book is currently an incomplete beta draft.  More chapters will be 
+added over the coming months. For now, you can:
+  -->
+この本は現時点では未完成のベータ版原稿です。著者によれば、数ヶ月のうちに追加の章を執筆するつもりのようです。
+今は、以下の章が読めます。。
 
-<li><b><a href="chap3.html">Read Chapter 3</a></b>, which explains
-many techniques which can be used to improve the performance of
-backpropagation.
+</p> 
+ 
+<p> 
+<ul> 
+ 
+<!--<li><b><a href="chap1.html">Read Chapter 1</a></b>, which explains how 
+neural networks can learn to recognize handwriting -->
+<li><b><a href="chap1.html">第1章</a></b>では、ニューラルネットワークが手書き文字を認識するしくみを説明します。
+ 
+<!--<li><b><a href="chap2.html">Read Chapter 2</a></b>, which explains 
+backpropagation, the most important algorithm used to learn in neural 
+  networks.-->
+<li><b><a href="chap2.html">第2章</a></b>では、ニューラルネットワークを学習させる最も重要なアルゴリズムである、逆伝播という手法を説明します。
 
-<li><b><a href="chap4.html">Read Chapter 4</a></b>, which explains why
-neural networks can compute any function.
+ 
+<!--<li><b><a href="chap3.html">Read Chapter 3</a></b>, which explains 
+many techniques which can be used to improve the performance of 
+  backpropagation.-->
+<li><b><a href="chap3.html">第3章</a></b>では、逆伝播の性能を向上させるための様々な技法を紹介します。
 
-<li><b><a href="about.html">Learn more about the approach taken in
-this book</a></b>
-</ul>
-</p>
-
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+ 
+<!--<li><b><a href="chap4.html">Read Chapter 4</a></b>, which explains why 
+  neural networks can compute any function.-->
+  <li><b><a href="chap4.html">第4章</a></b>では、ニューラルネットワークがなぜ任意の関数を計算できるのかを証明します。
+ 
+<!--<li><b><a href="about.html">Learn more about the approach taken in 
+this book</a></b> 
+  -->
+<li><b><a href="about.html">この本について</a></b>では、この本で採用したアプローチについて説明します。
+</ul> 
+</p> 
+ 
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> 
 </div><div class="footer"> <span class="left_footer"> In academic work,
 please cite this book as: Michael A. Nielsen, "Neural Networks and
 Deep Learning", Determination Press, 2014

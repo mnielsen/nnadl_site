@@ -1,3 +1,4 @@
+backpropagation		バックプロパゲーション？逆伝播
 computer vision		コンピュータ視覚？
 deep learning		深層学習
 handwritten digits	手書き数字
