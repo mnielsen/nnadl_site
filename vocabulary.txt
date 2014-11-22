@@ -1,6 +1,8 @@
-backpropagation		バックプロパゲーション？逆伝播
+backpropagation		逆伝播
+bias			バイアス(パーセプトロンの)
 computer vision		コンピュータ視覚？
 deep learning		深層学習
 handwritten digits	手書き数字
 network	 		ニューラルネットワーク(network単体でニューラルネットワークを意味している場合。)
 training example        訓練例        
+weight	 		重み(パーセプトロンの)

@@ -264,12 +264,15 @@ worth taking the time to first understand perceptrons. -->
 
 </p><p>
 
-
+<!--
   So how do perceptrons work?  A perceptron takes several binary inputs,
-$x_1, x_2, \ldots$, and produces a single binary output:
+  $x_1, x_2, \ldots$, and produces a single binary output:-->
+さて、パーセプトロンとは何でしょうか？パーセプトロンは複数の二進数($0$または$1$)
+$x_1, x_2, \ldots$ を入力にとり、ひとつの二進数($0$または$1$)を出力します。
 <center>
 <img src="images/tikz0.png"/>
 </center>
+<!--
 In the example shown the perceptron has three inputs, $x_1, x_2, x_3$.
 In general it could have more or fewer inputs.  Rosenblatt proposed a
 simple rule to compute the output.  He introduced
@@ -280,12 +283,25 @@ $\sum_j w_j x_j$ is less than or greater than some <em>threshold
   value</em>.  Just like the weights, the
 threshold is a real number which is a parameter of the neuron.  To put
 it in more precise algebraic terms:
+-->
+
+上図の例では、パーセプトロンは三つの入力 $x_1, x_2, x_3$ をとっています。
+一般的には、入力はいくつでも構いません。
+ローゼンブラット（カタカナ表記は正しい？）は、出力を計算する簡単なルールを提案しました。
+彼は<em>重み</em>, $w_1,w_2,\ldots$という概念を導入しました。
+重みとは、それぞれの入力が出力に及ぼす影響の大きさを表す実数です。
+パーセプトロンの出力が$0$になるか$1$になるかは、入力の重みつき和
+$\sum_j w_j x_j$と<em>閾値</em>の大小比較で決まります。
+重みと同じく、閾値もパーセプトロンの挙動を決める実数パラメータです。
+より正確に、数式で表現するなら、
+
 <a class="displaced_anchor" name="eqtn1"></a>\begin{eqnarray}
   \mbox{output} & = & \left\{ \begin{array}{ll}
       0 & \mbox{if } \sum_j w_j x_j \leq \mbox{ threshold} \\
       1 & \mbox{if } \sum_j w_j x_j > \mbox{ threshold}
       \end{array} \right.
 \tag{1}\end{eqnarray}
+<!--
 That's all there is to how a perceptron works!</p><p>That's the basic mathematical model.  A way you can think about the
 perceptron is that it's a device that makes decisions by weighing up
 evidence.  Let me give an example.  It's not a very realistic example,
@@ -293,17 +309,46 @@ but it's easy to understand, and we'll soon get to more realistic
 examples.  Suppose the weekend is coming up, and you've heard that
 there's going to be a cheese festival in your city.  You like cheese,
 and are trying to decide whether or not to go to the festival.  You
-might make your decision by weighing up three factors:
+  might make your decision by weighing up three factors:
+-->
+
+パーセプトロンを動かすルールは、たったこれだけです！
+</p><p>
+まずは基礎的となる数学モデルをご紹介しましたが、直感的にいえば、パーセプトロンとは、
+複数の事実に、重みをつけながら決定をくだす機械だと言えます。例を出しましょう。
+今から出すのは簡単な例ですが、あまり現実的な例ではありません。すぐに、もっと現実的な例が出てきます。
+</p><p>
+  週末が近づいているとしましょう。週末には、あなたの住んでいる街で「チーズ祭り」が催されるそうです。あなたはチーズが好物で、チーズ祭りに行くかどうか決めようとしています。あなたの判断に影響を及ぼしそうなファクターは、三つあります。
+<!--
 <ol>
 <li> Is the weather good?
 <li> Does your boyfriend or girlfriend want to accompany you?
 <li> Is the festival near public transit? (You don't own a car).
 </ol>
+-->
+<ol>
+<li> 天気はいいか？
+<li> あなたの恋人も一緒に行きたがっているか？
+<li> 祭りの会場は駅から近いか？（あなたは自家用車を持っていません。）
+</ol>
+
+<!--
 We can represent these three factors by corresponding binary variables
 $x_1, x_2$, and $x_3$.  For instance, we'd have $x_1 = 1$ if the
 weather is good, and $x_1 = 0$ if the weather is bad.  Similarly, $x_2
 = 1$ if your boyfriend or girlfriend wants to go, and $x_2 = 0$ if
-not.  And similarly again for $x_3$ and public transit.</p><p>Now, suppose you absolutely adore cheese, so much so that you're happy
+not.  And similarly again for $x_3$ and public transit.
+-->
+
+これらの三つのファクターは、対応する二進数値$x_1, x_2$ $x_3$で表現することができます。
+例えば、天気が良いなら$x_1 = 1$、天気が悪いなら$x_1 = 0$と決めましょう。
+同じく、$x_2 = 1$ならあなたの恋人は行きたがっており、$x_2 = 0$ならそうではありません。
+$x_3$と駅も同様です。
+
+
+</p><p>
+<!--
+  Now, suppose you absolutely adore cheese, so much so that you're happy
 to go to the festival even if your boyfriend or girlfriend is
 uninterested and the festival is hard to get to.  But perhaps you
 really loathe bad weather, and there's no way you'd go to the festival
@@ -317,18 +362,44 @@ threshold of $5$ for the perceptron.  With these choices, the
 perceptron implements the desired decision-making model, outputting
 $1$ whenever the weather is good, and $0$ whenever the weather is bad.
 It makes no difference to the output whether your boyfriend or
-girlfriend wants to go, or whether public transit is nearby.</p><p>By varying the weights and the threshold, we can get different models
+  girlfriend wants to go, or whether public transit is nearby.
+-->
+さて、あなたはチーズが大好物で、あなたの大切な人が何と言おうが、会場が駅から遠かろうが、喜んでチーズ祭りに行くつもりだとしましょう。
+いっぽう、あなたは雨が何より苦手で、もし天気が悪かったら絶対に行くつもりはありません。
+パーセプトロンは、このような意思決定を表現することができます。一つの方法は、
+天気の条件の重みを $w_1 = 6$、他の重みを $w_2 = 2$ と $w_3 = 2$ にすることです。
+$w_1$の値が大きいことは、あなたにとって天気がとても重要であること---恋人の意思や駅からの距離よりもずっとずっと重要であることを表しています。
+最後に、パーセプトロンの閾値を $5$ に設定します。
+以上ののパラメータ設定により、パーセプトロンであなたの意思決定モデルを実装できました。このパーセプトロンは、天気が良ければ必ず$1$を出力し、天気が悪ければ必ず$0$を出力します。あなたの恋人の意思や、駅からの距離によって結論が変わることはありません。
+
+</p><p>
+
+By varying the weights and the threshold, we can get different models
 of decision-making.  For example, suppose we instead chose a threshold
 of $3$.  Then the perceptron would decide that you should go to the
 festival whenever the weather was good <em>or</em> when both the
 festival was near public transit <em>and</em> your boyfriend or
 girlfriend was willing to join you.  In other words, it'd be a
 different model of decision-making.  Dropping the threshold means
-you're more willing to go to the festival.</p><p>Obviously, the perceptron isn't a complete model of human
+you're more willing to go to the festival.
+
+重みと閾値とを変化させることで、様々に異なった意思決定モデルを得ることができます。
+たとえば、閾値を$5$から$3$に変えましょうか。
+すると、パーセプトロンが「祭りにいくべき」と判断する条件は
+「天気が良い」<b>または</b>「会場が駅から近く、<b>かつ</b>あなたの恋人が一緒に行きたがっている」となります。つまり、意思決定モデルが変化したのです。
+閾値を下げることは、あなたが祭りに行きたがっていることを意味します。
+
+</p><p>
+
+  Obviously, the perceptron isn't a complete model of human
 decision-making!  But what the example illustrates is how a perceptron
 can weigh up different kinds of evidence in order to make decisions.
 And it should seem plausible that a complex network of perceptrons
-could make quite subtle decisions:
+  could make quite subtle decisions:
+
+  もちろん、パーセプトロンは人間の意思決定モデルの完全なモデルというわけではありません！
+  しかし、
+  
 <center>
 <img src="images/tikz1.png"/>
 </center>
