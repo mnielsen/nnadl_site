@@ -6,7 +6,7 @@
 
 - オリジナルサイトはこちら： http://neuralnetworksanddeeplearning.com/
 - 日本語版はこちら： http://nnadl-ja.github.io/nnadl_site_ja
-
+- 翻訳方針については： https://github.com/nnadl-ja/nnadl_site_ja/blob/gh-pages/GUIDELINE.md
 
 Michaelからのメール
 -----------
