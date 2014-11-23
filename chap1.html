@@ -315,7 +315,7 @@ and are trying to decide whether or not to go to the festival.  You
 パーセプトロンを動かすルールは、たったこれだけです！
 </p><p>
 まずは基礎的となる数学モデルをご紹介しましたが、直感的にいえば、パーセプトロンとは、
-複数の事実に、重みをつけながら決定をくだす機械だと言えます。例を出しましょう。
+複数の情報に、重みをつけながら決定をくだす機械だと言えます。例を出しましょう。
 今から出すのは簡単な例ですが、あまり現実的な例ではありません。すぐに、もっと現実的な例が出てきます。
 </p><p>
   週末が近づいているとしましょう。週末には、あなたの住んでいる街で「チーズ祭り」が催されるそうです。あなたはチーズが好物で、チーズ祭りに行くかどうか決めようとしています。あなたの判断に影響を及ぼしそうなファクターは、三つあります。
@@ -374,6 +374,7 @@ $w_1$の値が大きいことは、あなたにとって天気がとても重要
 
 </p><p>
 
+  <!--
 By varying the weights and the threshold, we can get different models
 of decision-making.  For example, suppose we instead chose a threshold
 of $3$.  Then the perceptron would decide that you should go to the
@@ -382,7 +383,7 @@ festival was near public transit <em>and</em> your boyfriend or
 girlfriend was willing to join you.  In other words, it'd be a
 different model of decision-making.  Dropping the threshold means
 you're more willing to go to the festival.
-
+-->
 重みと閾値とを変化させることで、様々に異なった意思決定モデルを得ることができます。
 たとえば、閾値を$5$から$3$に変えましょうか。
 すると、パーセプトロンが「祭りにいくべき」と判断する条件は
@@ -390,19 +391,20 @@ you're more willing to go to the festival.
 閾値を下げることは、あなたが祭りに行きたがっていることを意味します。
 
 </p><p>
-
+<!--
   Obviously, the perceptron isn't a complete model of human
 decision-making!  But what the example illustrates is how a perceptron
 can weigh up different kinds of evidence in order to make decisions.
 And it should seem plausible that a complex network of perceptrons
   could make quite subtle decisions:
-
-  もちろん、パーセプトロンは人間の意思決定モデルの完全なモデルというわけではありません！
-  しかし、
+-->
+もちろん、パーセプトロンは人間の意思決定モデルの完全なモデルというわけではありません！
+とはいえ、パーセプトロンは異なる種類の情報を考慮し、重みをつけたうえで判断を下す能力があることを、先ほどの例は示しています。となれば、パーセプトロンを複雑に組み合わせたネットワークなら、かなり微妙な判断も扱えそうです：
   
 <center>
 <img src="images/tikz1.png"/>
 </center>
+<!--
 In this network, the first column of perceptrons - what we'll call
 the first <em>layer</em> of perceptrons - is making three very simple
 decisions, by weighing the input evidence.  What about the perceptrons
@@ -412,13 +414,28 @@ In this way a perceptron in the second layer can make a decision at a
 more complex and more abstract level than perceptrons in the first
 layer.  And even more complex decisions can be made by the perceptron
 in the third layer.  In this way, a many-layer network of perceptrons
-can engage in sophisticated decision making.</p><p>Incidentally, when I defined perceptrons I said that a perceptron has
+can engage in sophisticated decision making.
+-->
+上図のネットワークでは、まず一列目の三つのパーセプトロン - 第一層のパーセプトロンと呼ぶことにしましょう - が、入力情報に重みをつけて、とても単純な判断を行っています。それでは、第二層のパーセプトロンは何をしているのでしょう？これらのパーセプトロンは、第一層のパーセプトロンの下した判断に重みをつけることで、判断を下しています。これら第二層のパーセプトロンは、第一層のパーセプトロンよりも複雑で、抽象的な判断を下しているといえそうです。第三層のパーセプトロンは、さらに複雑な判断を行っています。このように、多層のニューラルネットワークは高度な意思決定を行うことができるのです。
+
+
+
+</p><p>
+  Incidentally, when I defined perceptrons I said that a perceptron has
 just a single output.  In the network above the perceptrons look like
 they have multiple outputs.  In fact, they're still single output.
 The multiple output arrows are merely a useful way of indicating that
 the output from a perceptron is being used as the input to several
 other perceptrons.  It's less unwieldy than drawing a single output
-line which then splits.</p><p>Let's simplify the way we describe perceptrons.  The condition $\sum_j
+  line which then splits.
+<!--
+先ほどパーセプトロンを定義した時には、パーセプトロンは出力をひとつしか持たないと言いました。ところが上図のネットワークの中のパーセプトロンは、複数の出力を持つように描かれていますね。でも、あくまでもパーセプトロンの出力はひとつなんです。出力の矢印が複数あるのは、ただ、あるパーセプトロンの出力が複数のパーセプトロンへの入力として使われることを示しているにすぎません。こうすれば、一つの出力矢印を描いてから分岐させるよりも、若干見やすくなりますからね。
+  -->
+
+</p><p>
+
+  <!--
+  Let's simplify the way we describe perceptrons.  The condition $\sum_j
 w_j x_j > \mbox{threshold}$ is cumbersome, and we can make two
 notational changes to simplify it.
  The first change is to write
@@ -429,7 +446,12 @@ the other side of the inequality, and to replace it by what's known as
 the perceptron's <em>bias</em>, $b \equiv
 -\mbox{threshold}$.  Using the bias instead of the threshold, the
 perceptron rule can be
-rewritten:
+  rewritten:
+-->
+  パーセプトロンの記法をもっと簡潔にしましょう。
+  パーセプトロンが$1$を出力する条件式、$\sum_j w_j x_j > \mbox{threshold}$ は何だか煩雑です。そこで、これをもっと簡単に書ける記法を導入することにします。
+  まず、$\sum_j w_j x_j$ という和は内積を使って、$w \cdot x \equiv \sum_j w_j x_j$と書くことにします。ここで、$w$と$x$はそれぞれ重みと入力を要素にもつベクトルです。
+  次に、閾値を不等式の左辺に移項し、パーセプトロンの<b>バイアス</b> $b \equiv-\mbox{threshold}$と呼ばれる量に置き換えます。閾値の代わりにバイアスを使うと、パーセプトロンのルールはこのように書き換えられます：
 <a class="displaced_anchor" name="eqtn2"></a>\begin{eqnarray}
   \mbox{output} = \left\{ 
     \begin{array}{ll} 
@@ -438,6 +460,7 @@ rewritten:
     \end{array}
   \right.
 \tag{2}\end{eqnarray}
+<!--
 You can think of the bias as a measure of how easy it is to get the
 perceptron to output a $1$.  Or to put it in more biological terms,
 the bias is a measure of how easy it is to get the perceptron to
@@ -447,33 +470,98 @@ negative, then it's difficult for the perceptron to output a $1$.
 Obviously, introducing the bias is only a small change in how we
 describe perceptrons, but we'll see later that it leads to further
 notational simplifications.  Because of this, in the remainder of the
-book we won't use the threshold, we'll always use the bias.</p><p>I've described perceptrons as a method for weighing evidence to make
+book we won't use the threshold, we'll always use the bias.
+-->
+バイアスは、パーセプトロンが$1$を出力する傾向の高さを表す量だとみなすことができます。
+あるいは、生物学の例えを使えば、バイアスとは、パーセプトロンというニューロンが<b>発火</b>
+する傾向の高さを表すといえます。もし、あるパーセプトロンのバイアスがとても大きければ、
+パーセプトロンが$1$を出力するのはとても簡単なことでしょう。逆に、パーセプトロンのバイアスが負の数なら、$1$を出力させるのは骨が折れそうです。
+見てのとおり、閾値の代わりにバイアスを使うのは、パーセプトロンの表記をほんの少し変更するにすぎません。しかし、バイアスを使ったほうがもっとシンプルになる場合がのちほど出てきます。
+というわけで、この本では今後、閾値ではなくバイアスを使うことにします。
+
+</p><p>
+
+<!--
+  I've described perceptrons as a method for weighing evidence to make
 decisions.  Another way perceptrons can be used is to compute the
 elementary logical functions we usually think of as underlying
 computation, functions such as <CODE>AND</CODE>, <CODE>OR</CODE>, and
 <CODE>NAND</CODE>.  For example, suppose we have a perceptron with two
 inputs, each with weight $-2$, and an overall bias of $3$.  Here's our
 perceptron:
+-->
+ここまでの解説では、パーセプトロンを入力情報に重みをつけて判断を行う手続きとして用いてきました。パーセプトロンには他の用途もあります。それは、論理関数を計算することです。
+あらゆる計算は、<CODE>AND</CODE>、<CODE>OR</CODE>、そして<CODE>NAND</CODE>といった基本的な論理関数から構成されている、とみなすことができます。パーセプトロンは、こういった論理関数を表現できるのです。例えば、二つの入力をとり、どちらも重みが$-2$で、全体のバイアスが$3$であるようなパーセプトロンを考えてみましょう。図にすると、こうなります：
+
 <center>
 <img src="images/tikz2.png"/>
 </center>
+<!--
+  I've described perceptrons as a method for weighing evidence to make
+decisions.  Another way perceptrons can be used is to compute the
+elementary logical functions we usually think of as underlying
+computation, functions such as <CODE>AND</CODE>, <CODE>OR</CODE>, and
+<CODE>NAND</CODE>.  For example, suppose we have a perceptron with two
+inputs, each with weight $-2$, and an overall bias of $3$.  Here's our
+perceptron:
+-->
+ここまでの解説では、パーセプトロンを入力情報に重みをつけて判断を行う手続きとして用いてきました。パーセプトロンには他の用途もあります。それは、論理関数を計算することです。
+あらゆる計算は、<CODE>AND</CODE>、<CODE>OR</CODE>、そして<CODE>NAND</CODE>といった基本的な論理関数から構成されている、とみなすことができます。パーセプトロンは、こういった論理関数を表現できるのです。例えば、二つの入力をとり、どちらも重みが$-2$で、全体のバイアスが$3$であるようなパーセプトロンを考えてみましょう。図にすると、こうなります：
+
+<center>
+<img src="images/tikz2.png"/>
+</center>
+<!--
+  I've described perceptrons as a method for weighing evidence to make
+decisions.  Another way perceptrons can be used is to compute the
+elementary logical functions we usually think of as underlying
+computation, functions such as <CODE>AND</CODE>, <CODE>OR</CODE>, and
+<CODE>NAND</CODE>.  For example, suppose we have a perceptron with two
+inputs, each with weight $-2$, and an overall bias of $3$.  Here's our
+perceptron:
+-->
+ここまでの解説では、パーセプトロンを入力情報に重みをつけて判断を行う手続きとして用いてきました。パーセプトロンには他の用途もあります。それは、論理関数を計算することです。
+あらゆる計算は、<CODE>AND</CODE>、<CODE>OR</CODE>、そして<CODE>NAND</CODE>といった基本的な論理関数から構成されている、とみなすことができます。パーセプトロンは、こういった論理関数を表現できるのです。例えば、二つの入力をとり、どちらも重みが$-2$で、全体のバイアスが$3$であるようなパーセプトロンを考えてみましょう。図にすると、こうなります：
+
+<center>
+<img src="images/tikz2.png"/>
+</center>
+<!--
 Then we see that input $00$ produces output $1$, since
 $(-2)*0+(-2)*0+3 = 3$ is positive.  Here, I've introduced the $*$
 symbol to make the multiplications explicit.  Similar calculations
 show that the inputs $01$ and $10$ produce output $1$.  But the input
 $11$ produces output $0$, since $(-2)*1+(-2)*1+3 = -1$ is negative.
 And so our perceptron implements a <CODE>NAND</CODE>
-gate!</p><p><a name="universality"></a></p><p>The <CODE>NAND</CODE> example shows that we can use perceptrons to compute
-simple logical functions.
- In fact, we can use
-networks of perceptrons to compute <em>any</em> logical function at all.
-The reason is that the <CODE>NAND</CODE> gate is universal for
-computation, that is, we can build any computation up out of
-<CODE>NAND</CODE> gates.  For example, we can use <CODE>NAND</CODE> gates to
-build a circuit which adds two bits, $x_1$ and $x_2$.  This requires
-computing the bitwise sum, $x_1 \oplus x_2$, as well as a carry bit
-which is set to $1$ when both $x_1$ and $x_2$ are $1$, i.e., the carry
-bit is just the bitwise product $x_1 x_2$:
+gate!
+-->
+
+このパーセプトロンは、$00$ を入力されると $1$ を出力することがわかります。
+なぜなら、$(-2)*0+(-2)*0+3 = 3$ は正の数だからです。
+（紛らわしくないように、掛け算を記号 $*$ で表しました。）
+同じように計算すると、このパーセプトロンは $01$ や $10$ を入力してもやっぱり$1$ を出力することがわかります。ところが、$11$ を入力した場合だけは $0$ が出力されます。
+なぜなら $(-2)*1+(-2)*1+3 = -1$ は正の数ではないからです。
+ということは、このパーセプトロンは<CODE>NAND</CODE>ゲートを実装していることになります！
+
+
+</p><p>
+  <a name="universality"></a>
+</p><p>
+<!--
+  The <CODE>NAND</CODE> example shows that we can use perceptrons to
+  compute simple logical functions.  In fact, we can use networks of
+  perceptrons to compute <em>any</em> logical function at all.  The
+  reason is that the <CODE>NAND</CODE> gate is universal for
+  computation, that is, we can build any computation up out of
+  <CODE>NAND</CODE> gates.  For example, we can use <CODE>NAND</CODE>
+  gates to build a circuit which adds two bits, $x_1$ and $x_2$.  This
+  requires computing the bitwise sum, $x_1 \oplus x_2$, as well as a
+  carry bit which is set to $1$ when both $x_1$ and $x_2$ are $1$, i.e.,
+  the carry bit is just the bitwise product $x_1 x_2$:
+-->
+  <CODE>NAND</CODE> ゲートの例から、パーセプトロンが単純な論理関数を計算できることが分かります。それどころか、パーセプトロンのネットワークさえあれば<b>任意の</b>論理関数を計算できることまで分かるのです。なぜなら <CODE>NAND</CODE> ゲートは論理計算において万能だからです。万能だ、とは、 <CODE>NAND</CODE> ゲートさえあればどんな計算でも構成できる、という意味です。たとえば、 <CODE>NAND</CODE> ゲートを使って1ビットの二進数どうしを加算する回路を作ることができます。
+  入力の二進数を $x_1$ と $x_2$ としましょう。これらの和を表現するには二進数で二桁が必要です。一桁目は入力の排他的論理和 $x_1$ <CODE>XOR</CODE> $x_2$ になります。二桁目は $x_1$ と $x_2$ がともに $1$の場合だけ $1$ になる繰り上がりビットです。繰り上がりビットは、ただの論理積 $x_1$ <CODE>AND</CODE> $x_2$ である、ともいえます。
+  
 <center>
  <img src="images/tikz3.png"/>
 </center>
