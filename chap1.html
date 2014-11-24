@@ -174,16 +174,21 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 人間の視覚がどんなに不思議なものか、考えたことはありますか？次の手書き数列を読んでみてください：
 <a name="complete_zero"></a></p><p><center><img src="images/digits.png" width="160px"></center> </p><p>
 
-<!--  Most people effortlessly recognize those digits as 504192.  That easeis deceptive.  In each hemisphere of our brain, humans have a primaryvisual cortex, also known as V1, containing 140 million neurons, withtens of billions of connections between them.  And yet human visioninvolves not just V1, but an entire series of visual cortices - V2,V3, V4, and V5 - doing progressively more complex image processing.We carry in our heads a supercomputer, tuned by evolution overhundreds of millions of years, and superbly adapted to understand thevisual world.  Recognizing handwritten digits isn't easy.  Rather, wehumans are stupendously, astoundingly good at making sense of what oureyes show us.  But nearly all that work is done unconsciously.  And sowe don't usually appreciate how tough a problem our visual systemssolve.-->
+  <!--  Most people effortlessly recognize those digits as 504192.  That easeis deceptive.  In each hemisphere of our brain, humans have a primaryvisual cortex, also known as V1, containing 140 million neurons, withtens of billions of connections between them.  And yet human visioninvolves not just V1, but an entire series of visual cortices - V2,V3, V4, and V5 - doing progressively more complex image processing.We carry in our heads a supercomputer, tuned by evolution overhundreds of millions of years, and superbly adapted to understand thevisual world.  Recognizing handwritten digits isn't easy.  Rather, wehumans are stupendously, astoundingly good at making sense of what oureyes show us.  But nearly all that work is done unconsciously.  And sowe don't usually appreciate how tough a problem our visual systemssolve.-->
+  
 大抵の人にとってはごく簡単に501492と読めると思います。でも、脳の中で起
-こっていることは簡単どころではありません。脳のふたつの半球にはそれぞれ第一視覚野？V1(TODO: 脳用語の日本語訳を調べる)
-私たちの頭の中には数億年にわたる進化によって洗練され、視覚世界を理解するのに驚くべき適応をとげたスーパーコンピューターが入っているのです。手書き数字認識が簡単なのではありません。どちらかというと、私たち人類が、目に見えるものを解釈するという作業をとても、とても得意としているのです。しかもその作業はほとんど無意識のうちに行われるのです。ですから、私たちは普段、自分の視覚系がいかに複雑な問題を解いてくれているかに、感謝を払うこともないのです。
+こっていることは簡単どころではありません。脳のふたつの半球にはそれぞれ、
+一次視覚野---V1とも呼ばれる、一億四千万のニューロンと何十億ものシナ
+プスからなる領域が存在しています。さらに、人間の視覚に関わっている領域
+はV1だけではなく、V1、V2、V3、V4、V5という一連の視覚野が、順次複雑な画
+像処理に携わっています。
+私たちの頭部には、数億年にわたる進化によって洗練され、視覚世界を理解するのに驚くべき適応をとげたスーパーコンピューターが内蔵されているのです。手書き数字認識が簡単なのではありません。どちらかというと、私たち人類が、目に見えるものを解釈するという作業をとても、とても得意としているのです。しかもその作業はほとんど無意識のうちに行われるのです。ですから、私たちは普段、自分の視覚系がいかに複雑な問題を解いてくれているかに、感謝を払うこともないのです。
 
 </p><p>
 
 <!--  The difficulty of visual pattern recognition becomes apparent if youattempt to write a computer program to recognize digits like thoseabove.  What seems easy when we do it ourselves suddenly becomesextremely difficult.  Simple intuitions about how we recognize shapes- "a 9 has a loop at the top, and a vertical stroke in the bottomright" - turn out to be not so simple to express algorithmically.When you try to make such rules precise, you quickly get lost in amorass of exceptions and caveats and special cases.  It seemshopeless.-->
 
-ひとたび、さっきの手書き数字を認識するプログラムを書こうとすれば、視覚パターン認識の困難さが明らかになります。自分でやればこんなに簡単に思えることが、突然ものすごく難しくなったように感じるでしょう。数字を認識するための直感的で単純なルール---「数字の9は、上がまるくて、右下から下に向かって線が生えている形」---をアルゴリズムで表現するのはけっして単純ではないことに気づくでしょう。このようなルールを正確にプログラムとして表現しようとすれば、すぐに膨大な例外、落とし穴、特殊ケースに気づくはずです。絶望的です。
+ひとたび、さっきの手書き数字を認識するプログラムを書こうとすれば、視覚パターン認識の困難さが明らかになります。自分でやればこんなに簡単に思えることが、突然ものすごく難しくなったように感じるでしょう。数字を認識するための直感的で単純なルール---「数字の9は、上に輪があって、右下から下に向かって線が生えている形」---をアルゴリズムで表現するのはけっして単純ではないことに気づくでしょう。このようなルールを正確にプログラムとして表現しようとすれば、すぐに膨大な例外、落とし穴、特殊ケースに気づくはずです。絶望的です。
 
 
 
@@ -560,17 +565,26 @@ gate!
   the carry bit is just the bitwise product $x_1 x_2$:
 -->
   <CODE>NAND</CODE> ゲートの例から、パーセプトロンが単純な論理関数を計算できることが分かります。それどころか、パーセプトロンのネットワークさえあれば<b>任意の</b>論理関数を計算できることまで分かるのです。なぜなら <CODE>NAND</CODE> ゲートは論理計算において万能だからです。万能だ、とは、 <CODE>NAND</CODE> ゲートさえあればどんな計算でも構成できる、という意味です。たとえば、 <CODE>NAND</CODE> ゲートを使って1ビットの二進数どうしを加算する回路を作ることができます。
-  入力の二進数を $x_1$ と $x_2$ としましょう。これらの和を表現するには二進数で二桁が必要です。一桁目は入力の排他的論理和 $x_1$ <CODE>XOR</CODE> $x_2$ になります。二桁目は $x_1$ と $x_2$ がともに $1$の場合だけ $1$ になる繰り上がりビットです。繰り上がりビットは、ただの論理積 $x_1$ <CODE>AND</CODE> $x_2$ である、ともいえます。
+  入力の二進数を $x_1$ と $x_2$ としましょう。これらの和を表現するには二進数で二桁が必要です。一桁目は入力の排他的論理和 $x_1 \oplus x_2$ になります。二桁目は $x_1$ と $x_2$ がともに $1$の場合だけ $1$ になる繰り上がりビットです。繰り上がりビットは、ただの論理積 $x_1$ <CODE>AND</CODE> $x_2$ である、ともいえます。
   
 <center>
  <img src="images/tikz3.png"/>
 </center>
+
 To get an equivalent network of perceptrons we replace all the
 <CODE>NAND</CODE> gates by perceptrons with two inputs, each with weight
 $-2$, and an overall bias of $3$.  Here's the resulting network.  Note
 that I've moved the perceptron corresponding to the bottom right
 <CODE>NAND</CODE> gate a little, just to make it easier to draw the arrows
 on the diagram:
+
+この論理回路と等価なパーセプトロンを得るには、回路内の
+<CODE>NAND</CODE>ゲートをすべて、重み
+$-2$の入力を二つ持ち、バイアスが$3$であるパーセプトロンに置き換えます。
+この置き換えを施すと、以下のようなネットワークができます。
+ただし、右下にあった<CODE>NAND</CODE>ゲートに対応するパーセプトロンだけは、矢印が見やすいように少し動かしてあります：
+
+
 <center>
  <img src="images/tikz4.png"/>
 </center>
