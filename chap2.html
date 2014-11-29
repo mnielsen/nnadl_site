@@ -250,47 +250,81 @@ reasoning.-->
 </p>
 <p><h3><a name="warm_up_a_fast_matrix-based_approach_to_computing_the_output
 _from_a_neural_network"></a><a href="#warm_up_a_fast_matrix-based_approach_to_computing_the_output
-_from_a_neural_network">Warm up: a fast matrix-based approach to computing the output
-  from a neural network</a></h3></p>
-<p>Before discussing backpropagation, let's warm up with a fast
+_from_a_neural_network">
+<!--Warm up: a fast matrix-based approach to computing the output from a neural network-->
+ウォーミングアップ：行列を用いたニューラルネットワークの出力の計算
+</a></h3></p>
+<p>
+<!--Before discussing backpropagation, let's warm up with a fast
 matrix-based algorithm to compute the output from a neural network.
 We actually already briefly saw this algorithm
 <a href="chap1.html#implementing_our_network_to_classify_digits">near
   the end of the last chapter</a>, but I described it quickly, so it's
 worth revisiting in detail.  In particular, this is a good way of
 getting comfortable with the notation used in backpropagation, in a
-familiar context.</p>
-<p>Let's begin with a notation which lets us refer to weights in the
+familiar context.-->
+逆伝搬を議論する前に、ニューラルネットワークの出力を高速に計算する行列を用いたアルゴリズムでウォーミングアップしましょう。
+私達は
+<a href="chap1.html#implementing_our_network_to_classify_digits">前章の最後のあたり</a>
+で既にこのアルゴリズムを簡単に見ています。
+しかしその時はざっと書いていたので、ここで立ち戻って詳しく説明しようと思います。
+これまで説明した良くわかっている内容で逆伝搬で使われる記号に慣れる事ができるはずです。
+</p>
+<p>
+<!--Let's begin with a notation which lets us refer to weights in the
 network in an unambiguous way.  We'll use $w^l_{jk}$ to denote the
 weight for the connection from the $k^{\rm th}$ neuron in the
 $(l-1)^{\rm th}$ layer to the $j^{\rm th}$ neuron in the $l^{\rm th}$
 layer.  So, for example, the diagram below shows the weight on a
 connection from the fourth neuron in the second layer to the second
-neuron in the third layer of a network:
+neuron in the third layer of a network:-->
+ニューラルネットワーク中の重みを曖昧性なく指定する表記方法からまず始めましょう。
+$w^l_{jk}$で$(l-1)$番目の層の$k$番目のニューロンから$l$番目の層の$j$番目のニューロンへの接続に対する重みを表します。
+例えば、下図は2番目の層の4番目のニューロンから3番目の層の2番目の層への接続の重みを表します。
 <center>
 <img src="images/tikz16.png"/>
 </center>
-This notation is cumbersome at first, and it does take some work to
+<!--This notation is cumbersome at first, and it does take some work to
 master.  But with a little effort you'll find the notation becomes
 easy and natural.  One quirk of the notation is the ordering of the
 $j$ and $k$ indices.  You might think that it makes more sense to use
 $j$ to refer to the input neuron, and $k$ to the output neuron, not
 vice versa, as is actually done.  I'll explain the reason for this
-quirk below.</p>
-<p>We use a similar notation for the network's biases and activations.
+quirk below.-->
+この表記方法は最初は面倒で、使いこなすのにある程度の練習が必要かもしれません。
+しかし、少し頑張ればこの表記方法は簡単で自然だと感じるようになるはずです。
+この表記方法で若干曲者なのが、$j$と$k$の順番です。
+$j$が入力ニューロン、$k$が出力ニューロンとするほうが理にかなっていると思うかもしれませんが、実際には逆にしています。
+その理由は後ほど説明します。
+</p>
+<p>
+<!--
+We use a similar notation for the network's biases and activations.
 Explicitly, we use $b^l_j$ for the bias of the $j^{\rm th}$ neuron in
 the $l^{\rm th}$ layer.  And we use $a^l_j$ for the activation of the
 $j^{\rm th}$ neuron in the $l^{\rm th}$ layer.  The following diagram
-shows examples of these notations in use:
+shows examples of these notations in use:-->
+ニューラルネットワークのバイアスと活性についても似た表記方法を導入します。
+具体的には、$b^l_j$で$l$番目の層の$j$番目のニューロンのバイアスを表します。
+また、$a^l_j$で$l$番目の層の$j$番目のニューロンの活性を表します。
+下図はこれらの表記方法の利用例です。
+<!-- l番目の層？l層目？ -->
 <center>
 <img src="images/tikz17.png"/>
 </center>
-With these notations, the activation $a^{l}_j$ of the $j^{\rm th}$
+<!--With these notations, the activation $a^{l}_j$ of the $j^{\rm th}$
 neuron in the $l^{\rm th}$ layer is related to the activations in the
-$(l-1)^{\rm th}$ layer by the equation (compare
-Equation <span id="margin_295319563926_reveal" class="equation_link">(4)</span><span id="margin_295319563926" class="marginequation" style="display: none;"><a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{1}{1+\exp(-\sum_j w_j x_j-b)} \nonumber\end{eqnarray}</a></span><script>$('#margin_295319563926_reveal').click(function() {$('#margin_295319563926').toggle('slow', function() {});});</script> and surrounding
-discussion in the last chapter)
+$(l-1)^{\rm th}$ layer by the equation (compare Equation
+<span id="margin_295319563926_reveal" class="equation_link">(4)</span>
+<span id="margin_295319563926" class="marginequation" style="display: none;">
+  <a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
+    \begin{eqnarray} 
+    \frac{1}{1+\exp(-\sum_j w_j x_j-b)} \nonumber
+    \end{eqnarray}
+  </a>
+</span>
+<script>$('#margin_295319563926_reveal').click(function() {$('#margin_295319563926').toggle('slow', function() {});});</script>
+ and surrounding discussion in the last chapter)
 <a class="displaced_anchor" name="eqtn23"></a>\begin{eqnarray} 
   a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right),
 \tag{23}\end{eqnarray}
@@ -303,10 +337,42 @@ Similarly, for each layer $l$ we define a <em>bias vector</em>, $b^l$.
 You can probably guess how this works - the components of the bias
 vector are just the values $b^l_j$, one component for each neuron in
 the $l^{\rm th}$ layer.  And finally, we define an activation vector $a^l$
-whose components are the activations $a^l_j$.</p>
-<p>The last ingredient we need to rewrite <span id="margin_910880967978_reveal" class="equation_link">(23)</span><span id="margin_910880967978" class="marginequation" style="display: none;"><a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber\end{eqnarray}</a></span><script>$('#margin_910880967978_reveal').click(function() {$('#margin_910880967978').toggle('slow', function() {});});</script> in a
-matrix form is the idea of vectorizing a function such as $\sigma$.
+whose components are the activations $a^l_j$.-->
+これらの表記を用いると、$l$番目の層の$j$番目のニューロンの活性$a^l_j$は、$(l-1)$番目の層の活性と以下の式で関係付けられます(式
+<span id="margin_295319563926_reveal" class="equation_link">(4)</span>
+<span id="margin_295319563926" class="marginequation" style="display: none;">
+  <a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
+    \begin{eqnarray} 
+    \frac{1}{1+\exp(-\sum_j w_j x_j-b)} \nonumber
+    \end{eqnarray}
+  </a>
+</span>
+<script>$('#margin_295319563926_reveal').click(function() {$('#margin_295319563926').toggle('slow', function() {});});</script>
+と前章の周辺の議論を比較してください）
+<a class="displaced_anchor" name="eqtn23"></a>\begin{eqnarray} 
+  a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right).
+\tag{23}\end{eqnarray}
+ここで、和は$(l-1)$番目の層の全てのニューロン$k$について足しています。
+この式を行列で書きなおすため、各層$l$に対し<em>重み行列</em>$w^l$を定義します。
+重み行列の各要素は$l$番目の層のニューロンに向かっている接続の重みです。
+すなわち、$j$行目$k$列目の要素は$w^l_{jk}$とします。
+同様に、各層$l$に対し、<em>バイアスベクトル</em>$b^l$を定義します。
+大体想像がつくと思いますが、バイアスベクトルの要素は$b^l_j$達です。
+これらの要素は$l$番目の層の各ニューロンに対し一つずつあります。
+最後に、活性ベクトル$a^l$の要素は活性$a^l_j$達です。
+</p>
+<p>
+<!--The last ingredient we need to rewrite
+<span id="margin_910880967978_reveal" class="equation_link">(23)</span>
+<span id="margin_910880967978" class="marginequation" style="display: none;">
+  <a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
+  \begin{eqnarray} 
+    a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber
+  \end{eqnarray}
+  </a>
+</span>
+<script>$('#margin_910880967978_reveal').click(function() {$('#margin_910880967978').toggle('slow', function() {});});</script>
+in a matrix form is the idea of vectorizing a function such as $\sigma$.
 We met vectorization briefly in the last chapter, but to recap, the
 idea is that we want to apply a function such as $\sigma$ to every
 element in a vector $v$.  We use the obvious notation $\sigma(v)$ to
@@ -319,26 +385,65 @@ vectorized form of $f$ has the effect
   = \left[ \begin{array}{c} f(2) \\ f(3) \end{array} \right]
   = \left[ \begin{array}{c} 4 \\ 9 \end{array} \right],
 \tag{24}\end{eqnarray}
-that is, the vectorized $f$ just squares every element of the vector.</p>
-<p>With these notations in mind, Equation <span id="margin_948905994145_reveal" class="equation_link">(23)</span><span id="margin_948905994145" class="marginequation" style="display: none;"><a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber\end{eqnarray}</a></span><script>$('#margin_948905994145_reveal').click(function() {$('#margin_948905994145').toggle('slow', function() {});});</script> can
-be rewritten in the beautiful and compact vectorized form
-<a class="displaced_anchor" name="eqtn25"></a>\begin{eqnarray} 
-  a^{l} = \sigma(w^l a^{l-1}+b^l).
-\tag{25}\end{eqnarray}
+that is, the vectorized $f$ just squares every element of the vector.-->
+<span id="margin_910880967978_reveal" class="equation_link">(23)</span>
+<span id="margin_910880967978" class="marginequation" style="display: none;">
+  <a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
+  \begin{eqnarray} 
+    a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber
+  \end{eqnarray}
+  </a>
+</span>
+<script>$('#margin_910880967978_reveal').click(function() {$('#margin_910880967978').toggle('slow', function() {});});</script>
+を行列形式に書き直すのに必要な最後のアイデアは、$\sigma$のような関数のベクトル化です。
+ベクトル化は既に前章で簡単に見てきました。
+要点をまとめると$\sigma$のような関数をベクトル$v$のすべての要素に適用したいというアイデアです。
+このような各要素に対する関数の適用には$\sigma(v)$という自然な表記を用います。
+つまり、$\sigma(v)$の各要素は$\sigma(v)_j = \sigma(v_j)$です。
+例えば$f(x) = x^2$とすると、次のようになります。
+<a class="displaced_anchor" name="eqtn24"></a>\begin{eqnarray}
+  f\left(\left[ \begin{array}{c} 2 \\ 3 \end{array} \right] \right)
+  = \left[ \begin{array}{c} f(2) \\ f(3) \end{array} \right]
+  = \left[ \begin{array}{c} 4 \\ 9 \end{array} \right].
+\tag{24}\end{eqnarray}
+すなわち、ベクトル化した$f$はベクトルの各要素を2乗します。
+</p>
+<p>
+<!--With these notations in mind, Equation
+<span id="margin_948905994145_reveal" class="equation_link">(23)</span>
+<span id="margin_948905994145" class="marginequation" style="display: none;">
+  <a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
+  \begin{eqnarray} 
+  a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber
+  \end{eqnarray}</a>
+</span>
+<script>$('#margin_948905994145_reveal').click(function() {$('#margin_948905994145').toggle('slow', function() {});});</script>
+can be rewritten in the beautiful and compact vectorized form
+<a class="displaced_anchor" name="eqtn25"></a>
+\begin{eqnarray} 
+  a^{l} = \sigma(w^l a^{l-1}+b^l). \tag{25}
+\end{eqnarray}
+
 This expression gives us a much more global way of thinking about how
 the activations in one layer relate to activations in the previous
 layer: we just apply the weight matrix to the activations, then add
-the bias vector, and finally apply the $\sigma$ function*<span class="marginnote">
-*By
-  the way, it's this expression that motivates the quirk in the
+the bias vector, and finally apply the $\sigma$ function*
+<span class="marginnote">
+*By the way, it's this expression that motivates the quirk in the
   $w^l_{jk}$ notation mentioned earlier.  If we used $j$ to index the
   input neuron, and $k$ to index the output neuron, then we'd need to
-  replace the weight matrix in Equation <span id="margin_305931363478_reveal" class="equation_link">(25)</span><span id="margin_305931363478" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_305931363478_reveal').click(function() {$('#margin_305931363478').toggle('slow', function() {});});</script>
+  replace the weight matrix in Equation
+  <span id="margin_305931363478_reveal" class="equation_link">(25)</span>
+  <span id="margin_305931363478" class="marginequation" style="display: none;">
+  <a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
+  \begin{eqnarray} 
+    a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber
+  \end{eqnarray}</a></span>
+  <script>$('#margin_305931363478_reveal').click(function() {$('#margin_305931363478').toggle('slow', function() {});});</script>
   by the transpose of the weight matrix.  That's a small change, but
   annoying, and we'd lose the easy simplicity of saying (and thinking)
-  "apply the weight matrix to the activations".</span>.  That global view
+  "apply the weight matrix to the activations".</span>.
+That global view  
 is often easier and more succinct (and involves fewer indices!) than
 the neuron-by-neuron view we've taken to now.  Think of it as a way of
 escaping index hell, while remaining precise about what's going on.
@@ -347,19 +452,70 @@ libraries provide fast ways of implementing matrix multiplication,
 vector addition, and vectorization.  Indeed, the
 <a href="chap1.html#implementing_our_network_to_classify_digits">code</a>
 in the last chapter made implicit use of this expression to compute
-the behaviour of the network.</p>
-<p>When using Equation <span id="margin_924913160001_reveal" class="equation_link">(25)</span><span id="margin_924913160001" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_924913160001_reveal').click(function() {$('#margin_924913160001').toggle('slow', function() {});});</script> to compute $a^l$,
-we compute the intermediate quantity $z^l \equiv w^l a^{l-1}+b^l$
+the behaviour of the network.-->
+この表記方法を用いると、式
+<span id="margin_948905994145_reveal" class="equation_link">(23)</span>
+<span id="margin_948905994145" class="marginequation" style="display: none;">
+  <a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
+  \begin{eqnarray} 
+  a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber
+  \end{eqnarray}</a>
+</span>
+<script>$('#margin_948905994145_reveal').click(function() {$('#margin_948905994145').toggle('slow', function() {});});</script>
+は次のような美しくコンパクトなベクトル形式で書けます。
+<a class="displaced_anchor" name="eqtn25"></a>
+\begin{eqnarray} 
+  a^{l} = \sigma(w^l a^{l-1}+b^l). \tag{25}
+\end{eqnarray}
+この表現を用いると、ある層の活性と前の層の活性との関係が俯瞰できます。
+行っているのは活性に対し重み行列を掛け、バイアスベクトルを足し、最後に$\sigma$関数を適用しているだけです。
+<span class="marginnote">*ところで、先ほど挙げた奇妙な$w^l_{jk}$という奇妙な表記を用いた動機はこの式に由来します。もし、$j$を入力ニューロンに用い、$k$を出力ニューロンに用いたとすると、式
+  <span id="margin_305931363478_reveal" class="equation_link">(25)</span>
+  <span id="margin_305931363478" class="marginequation" style="display: none;">
+  <a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
+  \begin{eqnarray} 
+    a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber
+  \end{eqnarray}</a></span>
+  <script>$('#margin_305931363478_reveal').click(function() {$('#margin_305931363478').toggle('slow', function() {});});</script>
+  の重み行列は転置行列に置き換えなければなりません。
+  些細な変更ですが、煩わしい上に「重み行列を掛ける」と簡単に言ったり考えたりできなくなってしまいます。
+</span>
+この見方はこれまでのニューロン単位での見方よりも簡潔です。
+添字も少なくて済みますので、議論の正確性を失う事なく添字地獄から抜け出すことができます。
+この表現方法は実用上も有用です。
+というのも、多くの行列ライブラリでは高速な行列掛算・ベクトル足し算・関数のベクトル化の実装が提供されているからです。
+実際、
+前章の<a href="chap1.html#implementing_our_network_to_classify_digits">コード</a>
+では、ネットワークの挙動を計算するのにこの表式を暗に利用していました。
+</p>
+<p>
+<!--When using Equation
+<span id="margin_924913160001_reveal" class="equation_link">(25)</span><span id="margin_924913160001" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_924913160001_reveal').click(function() {$('#margin_924913160001').toggle('slow', function() {});});</script>
+ to compute $a^l$, we compute the intermediate quantity $z^l \equiv w^l a^{l-1}+b^l$
 along the way.  This quantity turns out to be useful enough to be
 worth naming: we call $z^l$ the <em>weighted input</em> to the neurons
 in layer $l$.  We'll make considerable use of the weighted input $z^l$
 later in the chapter.  Equation <span id="margin_957787478923_reveal" class="equation_link">(25)</span><span id="margin_957787478923" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_957787478923_reveal').click(function() {$('#margin_957787478923').toggle('slow', function() {});});</script> is
+  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_957787478923_reveal').click(function() {$('#margin_957787478923').toggle('slow', function() {});});</script>
+is
 sometimes written in terms of the weighted input, as $a^l =
 \sigma(z^l)$.  It's also worth noting that $z^l$ has components $z^l_j
 = \sum_k w^l_{jk} a^{l-1}_k+b^l_j$, that is, $z^l_j$ is just the
-weighted input to the activation function for neuron $j$ in layer $l$.</p>
+weighted input to the activation function for neuron $j$ in layer $l$.-->
+$a^l$を計算するのに式
+<span id="margin_924913160001_reveal" class="equation_link">(25)</span><span id="margin_924913160001" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_924913160001_reveal').click(function() {$('#margin_924913160001').toggle('slow', function() {});});</script>
+を利用する時には、途中で$z^l \equiv w^l a^{l-1}+b^l$を計算しています。
+この値は後の議論で有用なので名前をつけておきます。$z^l$を$l$番目の層に対する<em>重みつき入力</em>と呼ぶことにします。
+本章の以降の議論では重みつき入力$z^l$を頻繁に利用します。
+式
+<span id="margin_957787478923_reveal" class="equation_link">(25)</span><span id="margin_957787478923" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_957787478923_reveal').click(function() {$('#margin_957787478923').toggle('slow', function() {});});</script>
+をしばしば重み付き入力を用いて$a^l = \sigma(z^l)$とも書きます。
+$z^l$の要素は$z^l_j = \sum_k w^l_{jk} a^{l-1}_k+b^l_j$と掛ける事に注意してください。
+つまり、$z^l_j$は$l$番目の層の$j$番目のニューロンに対する活性関数の重みつき入力です。
+</p>
 <p><h3><a name="the_two_assumptions_we_need_about_the_cost_function"></a><a href="#the_two_assumptions_we_need_about_the_cost_function">The two assumptions we need about the cost function</a></h3></p>
 <p>The goal of backpropagation is to compute the partial derivatives
 $\partial C / \partial w$ and $\partial C / \partial b$ of the cost
