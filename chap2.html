@@ -172,33 +172,51 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 </div>
 </p>
 <p>
-In the <a href="chap1.html">last chapter</a> we saw how neural networks can
+<!--In the <a href="chap1.html">last chapter</a> we saw how neural networks can
 learn their weights and biases using the gradient descent algorithm.
 There was, however, a gap in our explanation: we didn't discuss how to
 compute the gradient of the cost function.  That's quite a gap!  In
 this chapter I'll explain a fast algorithm for computing such
-gradients, an algorithm known as <em>backpropagation</em>.  </p>
-<p>The backpropagation algorithm was originally introduced in the 1970s,
+gradients, an algorithm known as <em>backpropagation</em>. -->
+<a href="chap1.html">前章</a>では、勾配法を用いてニューラルネットワークが重みとバイアスをどのように学習するかをみました。
+しかし、その説明にはギャップがありました。具体的には、コスト関数の勾配をどのように計算するかを議論していませんでした。とても大きなギャップです！
+本章では、<em>逆伝搬</em>と呼ばれる、コスト関数の勾配を高速に計算するアルゴリズムを説明します。
+</p>
+<p>
+<p>
+<!--The backpropagation algorithm was originally introduced in the 1970s,
 but its importance wasn't fully appreciated until a
-<a href="http://www.nature.com/nature/journal/v323/n6088/pdf/323533a0.pdf">famous
-  1986 paper</a> by
-<a href="http://en.wikipedia.org/wiki/David_Rumelhart">David
-  Rumelhart</a>,
-<a href="http://www.cs.toronto.edu/&#126;hinton/">Geoffrey
-  Hinton</a>, and
-<a href="http://en.wikipedia.org/wiki/Ronald_J._Williams">Ronald
-  Williams</a>.  That paper describes several
+<a href="http://www.nature.com/nature/journal/v323/n6088/pdf/323533a0.pdf">famous 1986 paper</a> by
+<a href="http://en.wikipedia.org/wiki/David_Rumelhart">David Rumelhart</a>,
+<a href="http://www.cs.toronto.edu/&#126;hinton/">Geoffrey Hinton</a>, and
+<a href="http://en.wikipedia.org/wiki/Ronald_J._Williams">Ronald Williams</a>.
+ That paper describes several
 neural networks where backpropagation works far faster than earlier
 approaches to learning, making it possible to use neural nets to solve
 problems which had previously been insoluble.  Today, the
 backpropagation algorithm is the workhorse of learning in neural
-networks.</p>
-<p>This chapter is more mathematically involved than the rest of the
+networks.-->
+逆伝搬アルゴリズムはもともと1970年代に導入されました。
+しかし逆伝搬が評価されたのは、
+<a href="http://en.wikipedia.org/wiki/David_Rumelhart">David Rumelhart</a>・
+<a href="http://www.cs.toronto.edu/&#126;hinton/">Geoffrey Hinton</a・
+<a href="http://en.wikipedia.org/wiki/Ronald_J._Williams">Ronald Williams</a>
+による1986年の著名な論文が登場してからでした。
+論文ではいくつかのニューラルネットワークに対し、既存の学習方法よりも逆伝搬がずっと早く学習でき、ニューラルネットワークではそれまで解くことができなかった問題を解ける事を示しました。
+今日では、逆伝搬はニューラルネットワークを学習させる便利なアルゴリズムです。
+</p>
+<p>
+<!--This chapter is more mathematically involved than the rest of the
 book.  If you're not crazy about mathematics you may be tempted to
 skip the chapter, and to treat backpropagation as a black box whose
 details you're willing to ignore.  Why take the time to study those
-details?</p>
-<p>The reason, of course, is understanding.  At the heart of
+details?-->
+本章は他の章に比べて数学的に難解です。
+よほど数学に対し熱心でなければ、本章を飛ばして、逆伝搬をブラックボックスとして扱って中身を無視したくなるかもしれません。
+では、なぜ時間をかけて逆伝搬の詳細を勉強するのでしょうか？
+</p>
+<p>
+<!--The reason, of course, is understanding.  At the heart of
 backpropagation is an expression for the partial derivative $\partial
 C / \partial w$ of the cost function $C$ with respect to any weight
 $w$ (or bias $b$) in the network.  The expression tells us how quickly
@@ -208,14 +226,28 @@ element having a natural, intuitive interpretation.  And so
 backpropagation isn't just a fast algorithm for learning.  It actually
 gives us detailed insights into how changing the weights and biases
 changes the overall behaviour of the network.  That's well worth
-studying in detail.</p>
-<p>With that said, if you want to skim the chapter, or jump straight to
+studying in detail.-->
+その理由はもちろん理解のためです。
+逆伝搬の本質はコスト関数$C$をネットワークの重み$w$（もしくはバイアス$b$）に関する偏微分$\partial C / \partial w$です。
+偏微分をみると重みとバイアスを変化させた時のコスト関数の変化の度合いがわかります。
+偏微分の式は若干複雑ですが、そこには美しい構造があり、式中の各要素には自然で直感的な解釈を与えることができます。
+逆伝搬は単なる学習のための高速なアルゴリズムというだけではありません。
+逆伝搬を見ることで、重みやバイアスを変化させるとニューラルネットワークの全体の挙動がどのように変化するかに関して深い洞察が得られます。
+逆誤差を勉強する価値はそこにあるのです。
+</p>
+<p>
+<!--With that said, if you want to skim the chapter, or jump straight to
 the next chapter, that's fine.  I've written the rest of the book to
 be accessible even if you treat backpropagation as a black box.  There
 are, of course, points later in the book where I refer back to results
 from this chapter.  But at those points you should still be able to
 understand the main conclusions, even if you don't follow all the
-reasoning.</p>
+reasoning.-->
+そうは言うものの、本章をざっと読んだり、読み飛ばして次の章に行っても大丈夫です。
+この本は逆伝搬をブラックボックスとして扱っても理解できるようになっています。
+もちろん次章以降で本章の結果を参照する部分はあります。
+しかし、その参照部分の議論をすべて追わなくても主たる結論は理解できるようになっています。
+</p>
 <p><h3><a name="warm_up_a_fast_matrix-based_approach_to_computing_the_output
 _from_a_neural_network"></a><a href="#warm_up_a_fast_matrix-based_approach_to_computing_the_output
 _from_a_neural_network">Warm up: a fast matrix-based approach to computing the output
