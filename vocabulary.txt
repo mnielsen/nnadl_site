@@ -7,7 +7,7 @@ network	 		ニューラルネットワーク(network単体でニューラルネ�
 training example        訓練例        
 weight	 		重み(パーセプトロンの)
 gradient		勾配
-gradient descent	勾配法
+gradient descent	勾配降下法
 cost function		コスト関数
 chapter			章
 input/output		（ニューラルネットワークの）入力/出力
