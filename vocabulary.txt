@@ -6,3 +6,7 @@ handwritten digits	手書き数字
 network	 		ニューラルネットワーク(network単体でニューラルネットワークを意味している場合。)
 training example        訓練例        
 weight	 		重み(パーセプトロンの)
+gradient		勾配
+gradient descent	勾配法
+cost function		コスト関数
+chapter			章
