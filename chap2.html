@@ -516,17 +516,21 @@ $a^l$を計算するのに式
 $z^l$の要素は$z^l_j = \sum_k w^l_{jk} a^{l-1}_k+b^l_j$と掛ける事に注意してください。
 つまり、$z^l_j$は$l$番目の層の$j$番目のニューロンに対する活性関数の重みつき入力です。
 </p>
-<p><h3><a name="the_two_assumptions_we_need_about_the_cost_function"></a><a href="#the_two_assumptions_we_need_about_the_cost_function">The two assumptions we need about the cost function</a></h3></p>
-<p>The goal of backpropagation is to compute the partial derivatives
+<p><h3><a name="the_two_assumptions_we_need_about_the_cost_function"></a>
+<a href="#the_two_assumptions_we_need_about_the_cost_function">
+<!--The two assumptions we need about the cost function-->
+コスト関数に必要な2つの仮定
+</a></h3></p>
+<p>
+<!--The goal of backpropagation is to compute the partial derivatives
 $\partial C / \partial w$ and $\partial C / \partial b$ of the cost
 function $C$ with respect to any weight $w$ or bias $b$ in the
 network.  For backpropagation to work we need to make two main
 assumptions about the form of the cost function.  Before stating those
 assumptions, though, it's useful to have an example cost function in
 mind.  We'll use the quadratic cost function from last chapter
-(c.f. Equation <span id="margin_342696826100_reveal" class="equation_link">(6)</span><span id="margin_342696826100" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv
-  \frac{1}{2n} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_342696826100_reveal').click(function() {$('#margin_342696826100').toggle('slow', function() {});});</script>).  In the notation of
-the last section, the quadratic cost has the form
+(c.f. Equation <span id="margin_342696826100_reveal" class="equation_link">(6)</span><span id="margin_342696826100" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv \frac{1}{2n} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_342696826100_reveal').click(function() {$('#margin_342696826100').toggle('slow', function() {});});</script>).
+In the notation of the last section, the quadratic cost has the form
 <a class="displaced_anchor" name="eqtn26"></a>\begin{eqnarray}
   C = \frac{1}{2n} \sum_x \|y(x)-a^L(x)\|^2,
 \tag{26}\end{eqnarray}
@@ -534,16 +538,34 @@ where: $n$ is the total number of training examples; the sum is over
 individual training examples, $x$; $y = y(x)$ is the corresponding
 desired output; $L$ denotes the number of layers in the network; and
 $a^L = a^L(x)$ is the vector of activations output from the network
-when $x$ is input.</p>
-<p>Okay, so what assumptions do we need to make about our cost function,
+when $x$ is input.-->
+逆伝搬の目標はニューラルネットワーク中の任意の重み$w$とバイアス$b$に関するコスト関数$C$の偏微分$\partial C / \partial w$と$\partial C / \partial b$です。
+逆伝搬が機能するには、コスト関数の形について2つの仮定を置く必要があります。
+それらの仮定を述べる前に、コスト関数の例を頭の片隅に置いておくのがよいでしょう。
+前章でも用いた2乗コスト関数（参考：式<span id="margin_342696826100_reveal" class="equation_link">(6)</span><span id="margin_342696826100" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv） \frac{1}{2n} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_342696826100_reveal').click(function() {$('#margin_342696826100').toggle('slow', function() {});});</script>）
+前章の記法では、2乗コスト関数は以下の様な形をしていました
+<a class="displaced_anchor" name="eqtn26"></a>\begin{eqnarray}
+  C = \frac{1}{2n} \sum_x \|y(x)-a^L(x)\|^2.
+\tag{26}\end{eqnarray}
+ここで、$n$は訓練例の総数、和は個々の訓練例$x$について足しあわせたもの、$y = y(x)$は対応する目標の出力、$L$はニューラルネットワークの層数、$a^L = a^L(x)$は$x$を入力した時のニューラルネットワークの出力のベクトルです。
+</p>
+<p>
+<!--Okay, so what assumptions do we need to make about our cost function,
 $C$, in order that backpropagation can be applied?  The first
 assumption we need is that the cost function can be written as an
 average $C = \frac{1}{n} \sum_x C_x$ over cost functions $C_x$ for
 individual training examples, $x$.  This is the case for the quadratic
 cost function, where the cost for a single training example is $C_x =
 \frac{1}{2} \|y-a^L \|^2$.  This assumption will also hold true for
-all the other cost functions we'll meet in this book.</p>
-<p>The reason we need this assumption is because what backpropagation
+all the other cost functions we'll meet in this book.-->
+では、逆伝搬を適用するために、コスト関数$C$に置く仮定はどのようなものでしょうか。
+1つ目の仮定はコスト関数は個々の訓練例$x$に対するコスト関数$C_x$の平均 $C = \frac{1}{n} \sum_x C_x$で書かれている事です。
+2乗コスト関数ではこの仮定が成立しています。
+1つの訓練例に対するコスト関数を$C_x = \frac{1}{2} \|y-a^L  \|^2$とすれば良いです。
+この仮定はこの本で登場する他のコスト関数でも成立しています。
+</p>
+<p>
+<!--The reason we need this assumption is because what backpropagation
 actually lets us do is compute the partial derivatives $\partial C_x
 / \partial w$ and $\partial C_x / \partial b$ for a single training
 example.  We then recover $\partial C / \partial w$ and $\partial C
@@ -551,8 +573,13 @@ example.  We then recover $\partial C / \partial w$ and $\partial C
 assumption in mind, we'll suppose the training example $x$ has been
 fixed, and drop the $x$ subscript, writing the cost $C_x$ as $C$.
 We'll eventually put the $x$ back in, but for now it's a notational
-nuisance that is better left implicit.</p>
-<p>The second assumption we make about the cost is that it can be written
+nuisance that is better left implicit.-->
+この仮定が必要となる理由は、逆伝搬によって計算できるのは個々の訓練例に対する偏微分$\partial C_x / \partial w$、$\partial C_x / \partial b$だからです。
+コスト関数の偏微分$\partial C / \partial w$、$\partial C / \partial b$は全訓練例について平均を取ることで得られます。
+この仮定を念頭に置いて、訓練例$x$を固定していると仮定し添字$x$を除いてコスト$C_x$を$C$と書くことにします。最終的に除いた$x$は元に戻しますが、記法が煩わしいので暗に$x$が書かれていると考えます。
+</p>
+<p>
+<!--The second assumption we make about the cost is that it can be written
 as a function of the outputs from the neural network:
 <center>
 <img src="images/tikz18.png"/>
@@ -572,12 +599,29 @@ something we can modify by changing the weights and biases in any way,
 i.e., it's not something which the neural network learns.  And so it
 makes sense to regard $C$ as a function of the output activations
 $a^L$ alone, with $y$ merely a parameter that helps define that
-function.</p>
+function.-->
+コスト関数に課す2つ目の仮定は、コスト関数はニューラルネットワークの出力の関数で書かれているという仮定です。
+<center>
+<img src="images/tikz18.png"/>
+</center>
+例えば、1つの訓練例$x$に対する誤差は以下のように書かれるため、2乗誤差関数はこの要求を満たしています。
+<a class="displaced_anchor" name="eqtn27"></a>\begin{eqnarray}
+  C = \frac{1}{2} \|y-a^L\|^2 = \frac{1}{2} \sum_j (y_j-a^L_j)^2,
+\tag{27}\end{eqnarray}
+もちろんこのコスト関数は目標とする出力$y$にも依存しています。
+コスト関数を$y$の関数とみなさない事を不思議に思うかもしれません。
+訓練例$x$を固定する事で、出力$y$も固定している事に注意してください。
+つまり、出力$y$は重みやバイアスをどのように変化させた所で変化させられる量ではないのです。
+そのため、$C$を出力の活性$a^L$単独の関数とみなし、$y$は関数を定義するための単なるパラメータとみなすのはおかしくない設定です。
+</p>
 <p></p>
 <p></p>
 <p></p>
-<p><h3><a name="the_hadamard_product_$s_\odot_t$"></a><a href="#the_hadamard_product_$s_\odot_t$">The Hadamard product, $s \odot t$</a></h3></p>
-<p>The backpropagation algorithm is based on common linear algebraic
+<p><h3><a name="the_hadamard_product_$s_\odot_t$"></a><a href="#the_hadamard_product_$s_\odot_t$"><!--The Hadamard product, $s \odot t$-->
+アダマール積 $s \odot t$
+</a></h3></p>
+<p>
+<!--The backpropagation algorithm is based on common linear algebraic
 operations - things like vector addition, multiplying a vector by a
 matrix, and so on.  But one of the operations is a little less
 commonly used.  In particular, suppose $s$ and $t$ are two vectors of
@@ -594,7 +638,23 @@ This kind of elementwise multiplication is sometimes called the
 <em>Hadamard product</em> or <em>Schur product</em>.  We'll refer to it as
 the Hadamard product.  Good matrix libraries usually provide fast
 implementations of the Hadamard product, and that comes in handy when
-implementing backpropagation.</p>
+implementing backpropagation.-->
+逆伝搬アルゴリズムは、ベクトルの足し算、ベクトルと行列の掛け算など、一般的な代数操作に基づいています。
+しかし、1つあまり一般的ではない操作があります。
+$s$と$t$とが同じ次元のベクトルとした時、$s \odot t$を2つのベクトルの<em>要素ごと</em>の積とします。
+従って、$s \odot t$の要素は$(s \odot t)_j = s_j t_j$です。
+例えば、
+<a class="displaced_anchor" name="eqtn28"></a>\begin{eqnarray}
+\left[\begin{array}{c} 1 \\ 2 \end{array}\right] 
+  \odot \left[\begin{array}{c} 3 \\ 4\end{array} \right]
+= \left[ \begin{array}{c} 1 * 3 \\ 2 * 4 \end{array} \right]
+= \left[ \begin{array}{c} 3 \\ 8 \end{array} \right]
+\tag{28}\end{eqnarray}
+です。
+この種の要素ごとの積はしばしば<em>アダマール積</em>、もしくは<em>シューア積</em>と呼ばれます。
+我々はアダマール積と呼ぶことにします。
+よく出来た行列ライブラリにはアダマール積の高速な実装が用意されており、逆伝搬を実装する際に手軽に利用できます。
+</p>
 <p><h3><a name="the_four_fundamental_equations_behind_backpropagation"></a><a href="#the_four_fundamental_equations_behind_backpropagation">The four fundamental equations behind backpropagation</a></h3></p>
 <p>Backpropagation is about understanding how changing the weights and
 biases in a network changes the cost function.  Ultimately, this means
