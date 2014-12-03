@@ -254,7 +254,7 @@ on neural networks, the main neuron model used is one called the
 understand why sigmoid neurons are defined the way they are, it's
 worth taking the time to first understand perceptrons. -->
 
-  ニューラルネットワークとは何か、という解説を始めるにあたり、まずは<b>パーセプトロン</b>と呼ばれる種類の人工ニューロンから話を始めたいと思います。
+  ニューラルネットワークとは何か、という解説を始めるにあたり、まずは<em>パーセプトロン</em>と呼ばれる種類の人工ニューロンから話を始めたいと思います。
   パーセプトロンは、1950年代から1960年代にかけて、
   <a href="http://en.wikipedia.org/wiki/Warren_McCulloch">Warren McCulloch</a>と
   <a href="http://en.wikipedia.org/wiki/Walter_Pitts">Walter Pitts</a>らの
@@ -262,7 +262,7 @@ worth taking the time to first understand perceptrons. -->
   <a href="http://en.wikipedia.org/wiki/Frank_Rosenblatt">Frank Rosenblatt</a>によって
   <a href="http://books.google.ca/books/about/Principles_of_neurodynamics.html?id=7FhRAAAAMAAJ">開発されました</a>。
   今日では、パーセプトロン以外の人工ニューロンモデルを扱うことが一般的です。
-  この本では、そして現代のニューラルネットワーク研究の多くでは、<b>シグモイドニューロン</b>と呼ばれるモデルが主に使われています。
+  この本では、そして現代のニューラルネットワーク研究の多くでは、<em>シグモイドニューロン</em>と呼ばれるモデルが主に使われています。
   この本でも、もうすぐシグモイドニューロンが登場します。
   しかし、なぜシグモイドニューロンが今の姿をしているのか知るためにも、
   まずはパーセプトロンを理解することに時間をさく価値があると言えるでしょう。
@@ -392,7 +392,7 @@ you're more willing to go to the festival.
 重みと閾値とを変化させることで、様々に異なった意思決定モデルを得ることができます。
 たとえば、閾値を$5$から$3$に変えましょうか。
 すると、パーセプトロンが「祭りにいくべき」と判断する条件は
-「天気が良い」<b>または</b>「会場が駅から近く、<b>かつ</b>あなたの恋人が一緒に行きたがっている」となります。つまり、意思決定モデルが変化したのです。
+「天気が良い」<em>または</em>「会場が駅から近く、<em>かつ</em>あなたの恋人が一緒に行きたがっている」となります。つまり、意思決定モデルが変化したのです。
 閾値を下げることは、あなたが祭りに行きたがっていることを意味します。
 
 </p><p>
@@ -456,7 +456,7 @@ perceptron rule can be
   パーセプトロンの記法をもっと簡潔にしましょう。
   パーセプトロンが$1$を出力する条件式、$\sum_j w_j x_j > \mbox{threshold}$ は何だか煩雑です。そこで、これをもっと簡単に書ける記法を導入することにします。
   まず、$\sum_j w_j x_j$ という和は内積を使って、$w \cdot x \equiv \sum_j w_j x_j$と書くことにします。ここで、$w$と$x$はそれぞれ重みと入力を要素にもつベクトルです。
-  次に、閾値を不等式の左辺に移項し、パーセプトロンの<b>バイアス</b> $b \equiv-\mbox{threshold}$と呼ばれる量に置き換えます。閾値の代わりにバイアスを使うと、パーセプトロンのルールはこのように書き換えられます：
+  次に、閾値を不等式の左辺に移項し、パーセプトロンの<em>バイアス</em> $b \equiv-\mbox{threshold}$と呼ばれる量に置き換えます。閾値の代わりにバイアスを使うと、パーセプトロンのルールはこのように書き換えられます：
 <a class="displaced_anchor" name="eqtn2"></a>\begin{eqnarray}
   \mbox{output} = \left\{ 
     \begin{array}{ll} 
@@ -478,7 +478,7 @@ notational simplifications.  Because of this, in the remainder of the
 book we won't use the threshold, we'll always use the bias.
 -->
 バイアスは、パーセプトロンが$1$を出力する傾向の高さを表す量だとみなすことができます。
-あるいは、生物学の例えを使えば、バイアスとは、パーセプトロンというニューロンが<b>発火</b>
+あるいは、生物学の例えを使えば、バイアスとは、パーセプトロンというニューロンが<em>発火</em>
 する傾向の高さを表すといえます。もし、あるパーセプトロンのバイアスがとても大きければ、
 パーセプトロンが$1$を出力するのはとても簡単なことでしょう。逆に、パーセプトロンのバイアスが負の数なら、$1$を出力させるのは骨が折れそうです。
 見てのとおり、閾値の代わりにバイアスを使うのは、パーセプトロンの表記をほんの少し変更するにすぎません。しかし、バイアスを使ったほうがもっとシンプルになる場合がのちほど出てきます。
@@ -564,7 +564,7 @@ gate!
   carry bit which is set to $1$ when both $x_1$ and $x_2$ are $1$, i.e.,
   the carry bit is just the bitwise product $x_1 x_2$:
 -->
-  <CODE>NAND</CODE> ゲートの例から、パーセプトロンが単純な論理関数を計算できることが分かります。それどころか、パーセプトロンのネットワークさえあれば<b>任意の</b>論理関数を計算できることまで分かるのです。なぜなら <CODE>NAND</CODE> ゲートは論理計算において万能だからです。万能だ、とは、 <CODE>NAND</CODE> ゲートさえあればどんな計算でも構成できる、という意味です。たとえば、 <CODE>NAND</CODE> ゲートを使って1ビットの二進数どうしを加算する回路を作ることができます。
+  <CODE>NAND</CODE> ゲートの例から、パーセプトロンが単純な論理関数を計算できることが分かります。それどころか、パーセプトロンのネットワークさえあれば<em>任意の</em>論理関数を計算できることまで分かるのです。なぜなら <CODE>NAND</CODE> ゲートは論理計算において万能だからです。万能だ、とは、 <CODE>NAND</CODE> ゲートさえあればどんな計算でも構成できる、という意味です。たとえば、 <CODE>NAND</CODE> ゲートを使って1ビットの二進数どうしを加算する回路を作ることができます。
   入力の二進数を $x_1$ と $x_2$ としましょう。これらの和を表現するには二進数で二桁が必要です。一桁目は入力の排他的論理和 $x_1 \oplus x_2$ になります。二桁目は $x_1$ と $x_2$ がともに $1$の場合だけ $1$ になる繰り上がりビットです。繰り上がりビットは、ただの論理積 $x_1$ <CODE>AND</CODE> $x_2$ である、ともいえます。
   
 <center>
