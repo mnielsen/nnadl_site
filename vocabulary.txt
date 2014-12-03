@@ -7,3 +7,15 @@ handwritten digits	手書き数字
 network	 		ニューラルネットワーク(network単体でニューラルネットワークを意味している場合。)
 training example        訓練例        
 weight	 		重み(パーセプトロンの)
+gradient		勾配
+gradient descent	勾配降下法
+cost function		コスト関数(costとだけ書かれている時も「コスト関数」と訳している)
+chapter			章
+input/output		（ニューラルネットワークの）入力/出力
+neuron			ニューロン
+layer			層
+activation		活性
+vector			ベクトル
+weighted input		重み付き入力
+quadratic cost function	2乗コスト関数
+c.f.	 参考：
