@@ -19,6 +19,14 @@
 /* #eee: header text                                                 */
 
 
+/* Japanese version customization */
+
+em{
+    font-family:sans-serif;
+    font-weight:bold; 
+    font-style: normal;
+}
+
 /* Reset */
 
 body {
