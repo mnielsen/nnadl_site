@@ -813,8 +813,11 @@ and natural.-->
 その道中で、我々は何度も4つの基本的な式に立ち戻ります。
 理解が深まるにつれ、これらの式が心地良く思え、おそらく美しく自然なものとさえ思えるようになるはずです。
 </p>
-<p><strong>An equation for the error in the output layer, $\delta^L$:</strong>
-The components of $\delta^L$ are given by
+<p><strong>
+<!--An equation for the error in the output layer, $\delta^L$:-->
+出力層での誤差$\delta^L$に関する式
+</strong>
+<!--The components of $\delta^L$ are given by
 <a class="displaced_anchor" name="eqtnBP1"></a>\begin{eqnarray} 
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j).
 \tag{BP1}\end{eqnarray}
@@ -824,9 +827,22 @@ changing as a function of the $j^{\rm th}$ output activation.  If, for
 example, $C$ doesn't depend much on a particular output neuron, $j$,
 then $\delta^L_j$ will be small, which is what we'd expect.  The
 second term on the right, $\sigma'(z^L_j)$, measures how fast the
-activation function $\sigma$ is changing at $z^L_j$.</p>
-<p>Notice that everything in <span id="margin_147792633206_reveal" class="equation_link">(BP1)</span><span id="margin_147792633206" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_147792633206_reveal').click(function() {$('#margin_147792633206').toggle('slow', function() {});});</script> is easily computed.  In
+activation function $\sigma$ is changing at $z^L_j$.-->
+$\delta^L$の各要素は
+<a class="displaced_anchor" name="eqtnBP1"></a>\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j).
+\tag{BP1}\end{eqnarray}
+です。
+右辺の第1項の$\partial C / \partial a^L_j$はコストが$j$番目の出力活性の関数として敏感に変化する度合いを測っています。
+例えば、$C$が特定の出力層のニューロン（例えば$j$番目とします）にそれほど依存していなければ、我々の期待通り$\delta^L_j$は小さくなります。
+右辺の第2項の$\sigma'(z^L_j)$は活性関数$\sigma$が$z^L_j$の変化に敏感に反応する度合いを表しています。
+このようにこれは非常な自然な表式だとがわかります。
+</p>
+<p>
+<!--Notice that everything in
+<span id="margin_147792633206_reveal" class="equation_link">(BP1)</span><span id="margin_147792633206" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_147792633206_reveal').click(function() {$('#margin_147792633206').toggle('slow', function() {});});</script>
+is easily computed.  In
 particular, we compute $z^L_j$ while computing the behaviour of the
 network, and it's only a small additional overhead to compute
 $\sigma'(z^L_j)$.  The exact form of $\partial C / \partial a^L_j$
@@ -835,9 +851,22 @@ provided the cost function is known there should be little trouble
 computing $\partial C / \partial a^L_j$.  For example, if we're using
 the quadratic cost function then $C = \frac{1}{2} \sum_j (y_j-a_j)^2$,
 and so $\partial C / \partial a^L_j = (a_j-y_j)$, which obviously is
-easily computable.</p>
-<p>Equation <span id="margin_352512149181_reveal" class="equation_link">(BP1)</span><span id="margin_352512149181" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_352512149181_reveal').click(function() {$('#margin_352512149181').toggle('slow', function() {});});</script> is a componentwise expression for $\delta^L$.
+easily computable.-->
+ここで注意すべきなのは
+<span id="margin_147792633206_reveal" class="equation_link">(BP1)</span><span id="margin_147792633206" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_147792633206_reveal').click(function() {$('#margin_147792633206').toggle('slow', function() {});});</script>
+中の全ての項が簡単に計算できる事です。
+ニューラルネットワークの挙動を計算する間に$z^L_j$を計算でき、さらに若干のオーバーヘッドを加えれば$\sigma'(z^L_j)$も計算できます。
+もちろん、$\partial C / \partial a^L_j$の具体的な表式はコスト関数の形に依存します。
+しかし、コスト関数が既知ならば$\partial C / \partial a^L_j$を計算するのは難しくありません。
+例えば、2乗誤差コスト関数を用いた場合、$C = \frac{1}{2} \sum_j (y_j-a_j)^2$なので、$\partial C / \partial a^L_j = (a_j-y_j)$です。
+これは簡単に計算できます。
+</p>
+<p>
+<!--Equation
+<span id="margin_352512149181_reveal" class="equation_link">(BP1)</span><span id="margin_352512149181" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_352512149181_reveal').click(function() {$('#margin_352512149181').toggle('slow', function() {});});</script>
+is a componentwise expression for $\delta^L$.
 It's a perfectly good expression, but not the matrix-based form we
 want for backpropagation. However, it's easy to rewrite the equation
 in a matrix-based form, as
@@ -845,24 +874,64 @@ in a matrix-based form, as
   \delta^L = \nabla_a C \odot \sigma'(z^L).
 \tag{BP1a}\end{eqnarray}
 Here, $\nabla_a C$ is defined to be a vector whose components are the
-partial derivatives $\partial C / \partial a^L_j$.  You can think of
+partial derivatives $\partial C / \partial a^L_j$.
+You can think of
 $\nabla_a C$ as expressing the rate of change of $C$ with respect to
-the output activations.  It's easy to see that Equations <span id="margin_744045597073_reveal" class="equation_link">(BP1a)</span><span id="margin_744045597073" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1a" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+the output activations. 
+It's easy to see that Equations
+<span id="margin_744045597073_reveal" class="equation_link">(BP1a)</span><span id="margin_744045597073" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1a" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \delta^L = \nabla_a C \odot \sigma'(z^L) \nonumber\end{eqnarray}</a></span><script>$('#margin_744045597073_reveal').click(function() {$('#margin_744045597073').toggle('slow', function() {});});</script>
-and <span id="margin_713595193686_reveal" class="equation_link">(BP1)</span><span id="margin_713595193686" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_713595193686_reveal').click(function() {$('#margin_713595193686').toggle('slow', function() {});});</script> are equivalent, and for that reason from now on we'll
-use <span id="margin_645562843841_reveal" class="equation_link">(BP1)</span><span id="margin_645562843841" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_645562843841_reveal').click(function() {$('#margin_645562843841').toggle('slow', function() {});});</script> interchangeably to refer to both equations.  As an
+and
+<span id="margin_713595193686_reveal" class="equation_link">(BP1)</span><span id="margin_713595193686" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_713595193686_reveal').click(function() {$('#margin_713595193686').toggle('slow', function() {});});</script>
+are equivalent, and for that reason from now on we'll use
+<span id="margin_645562843841_reveal" class="equation_link">(BP1)</span><span id="margin_645562843841" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_645562843841_reveal').click(function() {$('#margin_645562843841').toggle('slow', function() {});});</script>
+interchangeably to refer to both equations.
+As an
 example, in the case of the quadratic cost we have $\nabla_a C =
-(a^L-y)$, and so the fully matrix-based form of <span id="margin_864112170226_reveal" class="equation_link">(BP1)</span><span id="margin_864112170226" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_864112170226_reveal').click(function() {$('#margin_864112170226').toggle('slow', function() {});});</script> becomes
+(a^L-y)$, and so the fully matrix-based form of
+<span id="margin_864112170226_reveal" class="equation_link">(BP1)</span><span id="margin_864112170226" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_864112170226_reveal').click(function() {$('#margin_864112170226').toggle('slow', function() {});});</script>
+becomes
 <a class="displaced_anchor" name="eqtn30"></a>\begin{eqnarray} 
   \delta^L = (a^L-y) \odot \sigma'(z^L).
 \tag{30}\end{eqnarray}
 As you can see, everything in this expression has a nice vector form,
-and is easily computed using a library such as Numpy.</p>
-<p><strong>An equation for the error $\delta^l$ in terms of the error in
-  the next layer, $\delta^{l+1}$:</strong> In particular
+and is easily computed using a library such as Numpy.-->
+式<span id="margin_352512149181_reveal" class="equation_link">(BP1)</span><span id="margin_352512149181" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_352512149181_reveal').click(function() {$('#margin_352512149181').toggle('slow', function() {});});</script>
+は$\delta^L$の各要素に対する表式です。
+この表式自体は悪くはないのですが、逆伝搬で欲しいのは行列を用いた表式です。
+この式を行列として書き直すのは容易で、以下の様に書けます
+<a class="displaced_anchor" name="eqtnBP1a"></a>\begin{eqnarray} 
+  \delta^L = \nabla_a C \odot \sigma'(z^L).
+\tag{BP1a}\end{eqnarray}
+ここで、$\nabla_a C$は偏微分$\partial C / \partial a^L_j$を並べたベクトルです。
+$\nabla_a C$は出力活性に対する$C$の変化率とみなせます。
+<span id="margin_744045597073_reveal" class="equation_link">(BP1a)</span><span id="margin_744045597073" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1a" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L = \nabla_a C \odot \sigma'(z^L) \nonumber\end{eqnarray}</a></span><script>$('#margin_744045597073_reveal').click(function() {$('#margin_744045597073').toggle('slow', function() {});});</script>
+と
+<span id="margin_713595193686_reveal" class="equation_link">(BP1)</span><span id="margin_713595193686" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_713595193686_reveal').click(function() {$('#margin_713595193686').toggle('slow', function() {});});</script>
+は同値である事はすぐにわかります。ですので、以下では両者の式指す時に
+<span id="margin_645562843841_reveal" class="equation_link">(BP1)</span><span id="margin_645562843841" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_645562843841_reveal').click(function() {$('#margin_645562843841').toggle('slow', function() {});});</script>
+を使うことにします。
+例として、2乗誤差コスト関数の例では$\nabla_a C = (a^L-y)$です。
+従って
+<span id="margin_864112170226_reveal" class="equation_link">(BP1)</span><span id="margin_864112170226" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_864112170226_reveal').click(function() {$('#margin_864112170226').toggle('slow', function() {});});</script>
+は以下のようになります。
+<a class="displaced_anchor" name="eqtn30"></a>\begin{eqnarray} 
+  \delta^L = (a^L-y) \odot \sigma'(z^L).
+\tag{30}\end{eqnarray}
+見ての通り、この表式内の全ての項がベクトル形式の表式となっており、Numpyなどのライブラリで簡単に計算できます。
+</p>
+<p><strong><!--An equation for the error $\delta^l$ in terms of the error in the next layer, $\delta^{l+1}$:-->
+誤差$\delta^{l+1}$の前の層の誤差$\delta^l$に関する表式
+</strong>
+<!--In particular
 <a class="displaced_anchor" name="eqtnBP2"></a>\begin{eqnarray} 
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l),
 \tag{BP2}\end{eqnarray}
@@ -875,20 +944,62 @@ this as moving the error <em>backward</em> through the network, giving
 us some sort of measure of the error at the output of the $l^{\rm th}$
 layer.  We then take the Hadamard product $\odot \sigma'(z^l)$.  This
 moves the error backward through the activation function in layer $l$,
-giving us the error $\delta^l$ in the weighted input to layer $l$.</p>
-<p>By combining <span id="margin_333455157300_reveal" class="equation_link">(BP2)</span><span id="margin_333455157300" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_333455157300_reveal').click(function() {$('#margin_333455157300').toggle('slow', function() {});});</script> with <span id="margin_168271461280_reveal" class="equation_link">(BP1)</span><span id="margin_168271461280" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_168271461280_reveal').click(function() {$('#margin_168271461280').toggle('slow', function() {});});</script> we can compute the error
-$\delta^l$ for any layer in the network.  We start by
-using <span id="margin_394578264286_reveal" class="equation_link">(BP1)</span><span id="margin_394578264286" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_394578264286_reveal').click(function() {$('#margin_394578264286').toggle('slow', function() {});});</script> to compute $\delta^L$, then apply
-Equation <span id="margin_565392375859_reveal" class="equation_link">(BP2)</span><span id="margin_565392375859" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_565392375859_reveal').click(function() {$('#margin_565392375859').toggle('slow', function() {});});</script> to compute $\delta^{L-1}$, then
-Equation <span id="margin_646381930468_reveal" class="equation_link">(BP2)</span><span id="margin_646381930468" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_646381930468_reveal').click(function() {$('#margin_646381930468').toggle('slow', function() {});});</script> again to compute $\delta^{L-2}$, and so on, all
-the way back through the network.</p>
-<p><strong>An equation for the rate of change of the cost with respect to
-  any bias in the network:</strong> In particular:
+giving us the error $\delta^l$ in the weighted input to layer $l$.-->
+これは以下の様になります
+<a class="displaced_anchor" name="eqtnBP2"></a>\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l).
+\tag{BP2}\end{eqnarray}
+ここで、$(w^{l+1})^T$は$(l+1)$番目の層の重み行列($w^{l+1}$)の転置です。
+この式は一見複雑ですが、各要素はうまく解釈できます。
+$(l+1)$番目の層の誤差$\delta^{l+1}$番目が既知だとします。
+重み行列の転置$(w^{l+1})^T$を掛ける操作は、直感的には誤差をネットワークとは<em>逆方向</em>に伝搬させていると考える事ができます。
+従ってこれは$l$番目の層の出力の誤差を測る一種の指標とみなすことができます。
+転置行列を掛けた後、$\sigma'(z^l)$とのアダマール積を取っています。
+これにより$l$番目の層の活性関数を通してを通してエラーを更に逆方向に伝搬しています。
+その結果、$l$番目の層の重みつき入力についての誤差$\delta^l$が得られます。
+</p>
+<p>
+<!--By combining
+<span id="margin_333455157300_reveal" class="equation_link">(BP2)</span><span id="margin_333455157300" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_333455157300_reveal').click(function() {$('#margin_333455157300').toggle('slow', function() {});});</script>
+with
+<span id="margin_168271461280_reveal" class="equation_link">(BP1)</span><span id="margin_168271461280" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_168271461280_reveal').click(function() {$('#margin_168271461280').toggle('slow', function() {});});</script>
+we can compute the error $\delta^l$ for any layer in the network.
+We start by using
+<span id="margin_394578264286_reveal" class="equation_link">(BP1)</span><span id="margin_394578264286" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_394578264286_reveal').click(function() {$('#margin_394578264286').toggle('slow', function() {});});</script>
+to compute $\delta^L$, then apply Equation
+<span id="margin_565392375859_reveal" class="equation_link">(BP2)</span><span id="margin_565392375859" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_565392375859_reveal').click(function() {$('#margin_565392375859').toggle('slow', function() {});});</script>
+to compute $\delta^{L-1}$, then Equation
+<span id="margin_646381930468_reveal" class="equation_link">(BP2)</span><span id="margin_646381930468" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_646381930468_reveal').click(function() {$('#margin_646381930468').toggle('slow', function() {});});</script>
+again to compute $\delta^{L-2}$, and so on, all
+the way back through the network.-->
+<span id="margin_333455157300_reveal" class="equation_link">(BP2)</span><span id="margin_333455157300" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_333455157300_reveal').click(function() {$('#margin_333455157300').toggle('slow', function() {});});</script>
+を
+<span id="margin_168271461280_reveal" class="equation_link">(BP1)</span><span id="margin_168271461280" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_168271461280_reveal').click(function() {$('#margin_168271461280').toggle('slow', function() {});});</script>
+と組み合わせる事で、誤差$\delta^l$を計算できます。
+まず、$\delta^L$を以下の式で計算できます
+<span id="margin_394578264286_reveal" class="equation_link">(BP1)</span><span id="margin_394578264286" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j). \nonumber\end{eqnarray}</a></span><script>$('#margin_394578264286_reveal').click(function() {$('#margin_394578264286').toggle('slow', function() {});});</script>
+次に、式
+<span id="margin_565392375859_reveal" class="equation_link">(BP2)</span><span id="margin_565392375859" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_565392375859_reveal').click(function() {$('#margin_565392375859').toggle('slow', function() {});});</script>
+を適用して$\delta^{L-1}$を計算します。
+その後、再び
+<span id="margin_646381930468_reveal" class="equation_link">(BP2)</span><span id="margin_646381930468" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_646381930468_reveal').click(function() {$('#margin_646381930468').toggle('slow', function() {});});</script>
+を適用して、$\delta^{L-2}$を計算します。以下これを繰り返してニューラルネットワークを逆向きに辿ることができます。
+</p>
+<p><strong>
+<!--An equation for the rate of change of the cost with respect to any bias in the network:-->
+ニューラルネットワーク内のバイアスに関するコストの変化率の表式
+</strong>
+In particular:
 <a class="displaced_anchor" name="eqtnBP3"></a>\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
   \delta^l_j.
 \tag{BP3}\end{eqnarray}
@@ -903,7 +1014,8 @@ $\delta^l_j$.  We can rewrite <span id="margin_828081856583_reveal" class="equat
   \frac{\partial C}{\partial b} = \delta,
 \tag{31}\end{eqnarray}
 where it is understood that $\delta$ is being evaluated at the same
-neuron as the bias $b$.</p>
+neuron as the bias $b$.
+</p>
 <p><strong>An equation for the rate of change of the cost with respect to
   any weight in the network:</strong>  In particular:
 <a class="displaced_anchor" name="eqtnBP4"></a>\begin{eqnarray}
