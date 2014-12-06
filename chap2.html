@@ -655,8 +655,12 @@ $s$と$t$とが同じ次元のベクトルとした時、$s \odot t$を2つの�
 我々はアダマール積と呼ぶことにします。
 よく出来た行列ライブラリにはアダマール積の高速な実装が用意されており、逆伝搬を実装する際に手軽に利用できます。
 </p>
-<p><h3><a name="the_four_fundamental_equations_behind_backpropagation"></a><a href="#the_four_fundamental_equations_behind_backpropagation">The four fundamental equations behind backpropagation</a></h3></p>
-<p>Backpropagation is about understanding how changing the weights and
+<p><h3><a name="the_four_fundamental_equations_behind_backpropagation"></a><a href="#the_four_fundamental_equations_behind_backpropagation">
+<!--The four fundamental equations behind backpropagation-->
+逆伝搬の裏にある4つの基本的な式
+</a></h3></p>
+<p>
+<!--Backpropagation is about understanding how changing the weights and
 biases in a network changes the cost function.  Ultimately, this means
 computing the partial derivatives $\partial C / \partial w^l_{jk}$ and
 $\partial C / \partial b^l_j$.  But to compute those, we first
@@ -664,8 +668,15 @@ introduce an intermediate quantity, $\delta^l_j$, which we call the
 <em>error</em> in the $j^{\rm th}$ neuron in the $l^{\rm th}$ layer.
 Backpropagation will give us a procedure to compute the error
 $\delta^l_j$, and then will relate $\delta^l_j$ to $\partial C
-/ \partial w^l_{jk}$ and $\partial C / \partial b^l_j$.</p>
-<p>To understand how the error is defined, imagine there is a demon in
+/ \partial w^l_{jk}$ and $\partial C / \partial b^l_j$.-->
+逆伝搬は重みとバイアスを変えた時にどのようにコスト関数が変化するかを把握する方法です。
+これは根本的には$\partial C / \partial w^l_{jk}$と$\partial C / \partial b^l_j$とを計算する事を意味します。
+これらの偏微分を計算する為にまずは中間的な値$\delta^l_j$を導入します。
+この値は$l$番目の層の$j$番目のニューロンの<em>誤差</em>と呼びます。
+逆伝搬により$\delta^l_j$を計算方法と$\delta^l_j$を$\partial C/ \partial w^l_{jk}$や$\partial C / \partial b^l_j$と関連づける方法が得られます。
+</p>
+<p>
+<!--To understand how the error is defined, imagine there is a demon in
 our neural network:
 <center>
 <img src="images/tikz19.png"/>
@@ -676,8 +687,19 @@ adds a little change $\Delta z^l_j$ to the neuron's weighted input, so
 that instead of outputting $\sigma(z^l_j)$, the neuron instead outputs
 $\sigma(z^l_j+\Delta z^l_j)$.  This change propagates through later
 layers in the network, finally causing the overall cost to change by
-an amount $\frac{\partial C}{\partial z^l_j} \Delta z^l_j$.</p>
-<p>Now, this demon is a good demon, and is trying to help you improve the
+an amount $\frac{\partial C}{\partial z^l_j} \Delta z^l_j$.-->
+誤差の定義方法を理解する為にニューラルネットワークの中にいる悪魔を想像してみましょう。
+<center>
+<img src="images/tikz19.png"/>
+</center>
+悪魔は$l$番目の層の$j$番目のニューロンに座っているとします。
+ニューロンに入力が入ってきた時、悪魔がニューロン内での操作をいじって、
+重みつき入力に小さな変更$\Delta z^l_j$を加えます。
+従って、$\sigma(z^l_j)$を出力する代わりに、ニューロンは$\sigma(z^l_j+\Delta z^l_j)$を出力します。
+この変化はニューラルネット中の後段の層に伝搬し、最終的に全体のコスト関数の値は$\frac{\partial C}{\partial z^l_j} \Delta z^l_j$だけ変化します。
+</p>
+<p>
+<!--Now, this demon is a good demon, and is trying to help you improve the
 cost, i.e., they're trying to find a $\Delta z^l_j$ which makes the
 cost smaller.  Suppose $\frac{\partial C}{\partial z^l_j}$ has a large
 value (either positive or negative).  Then the demon can lower the
@@ -691,8 +713,16 @@ near optimal*<span class="marginnote">
   z^l_j$, of course. We'll assume that the demon is constrained to
   make such small changes.</span>.  And so there's a heuristic sense in
 which $\frac{\partial C}{\partial z^l_j}$ is a measure of the error in
-the neuron.</p>
-<p>Motivated by this story, we define the error $\delta^l_j$ of neuron
+the neuron.-->
+ここで、この悪魔は善良な悪魔で、コスト関数を改善する、つまりコストを小さくするような$\Delta z^l_j$を探そうとするとします。
+すると、$\frac{\partial C}{\partial z^l_j}$と逆の符号の$\Delta z^l_j$を選ぶことで、この悪魔はコストをかなり改善させられます。
+逆に、もし$\frac{\partial C}{\partial z^l_j}$が$0$に近いと悪魔は重みつき入力$z^l_j$を摂動させてもコストをそれほどは改善できません。
+悪魔がわかる限りにおいてはニューロンは既に最適に近い状態です*<span class="marginnote">
+*もちろんこれが正しいのは$\Delta z^l_j$が小さい場合に限ってです。悪魔は微小な変化しか起こせないと仮定しています</span>。
+$\frac{\partial C}{\partial z^l_j}$はニューラルネットワークの誤差を測定しているというヒューリスティックな意味づけがあります。
+</p>
+<p>
+<!--Motivated by this story, we define the error $\delta^l_j$ of neuron
 $j$ in layer $l$ by
 <a class="displaced_anchor" name="eqtn29"></a>\begin{eqnarray}
   \delta^l_j \equiv \frac{\partial C}{\partial z^l_j}.
@@ -701,8 +731,17 @@ As per our usual conventions, we use $\delta^l$ to denote the vector
 of errors associated with layer $l$.  Backpropagation will give us a
 way of computing $\delta^l$ for every layer, and then relating those
 errors to the quantities of real interest, $\partial C / \partial
-w^l_{jk}$ and $\partial C / \partial b^l_j$.</p>
-<p>You might wonder why the demon is changing the weighted input $z^l_j$.
+w^l_{jk}$ and $\partial C / \partial b^l_j$.-->
+この話をモチベーションとして、$l$番目の層の$j$番目のニューロンの誤差$\delta^l_j$を以下のように定義します
+<a class="displaced_anchor" name="eqtn29"></a>\begin{eqnarray}
+  \delta^l_j \equiv \frac{\partial C}{\partial z^l_j}.
+\tag{29}\end{eqnarray}.
+慣習に沿って、$\delta^l$で$l$番目の層の誤差からなるベクトルを表します。
+逆伝搬により、各層での$\delta^l$を計算し、これらを真に計算したい$\partial C / \partial
+w^l_{jk}$や$\partial C / \partial b^l_j$と関連付けることができます。
+</p>
+<p>
+<!--You might wonder why the demon is changing the weighted input $z^l_j$.
 Surely it'd be more natural to imagine the demon changing the output
 activation $a^l_j$, with the result that we'd be using $\frac{\partial
   C}{\partial a^l_j}$ as our measure of error.  In fact, if you do
@@ -716,8 +755,20 @@ algebraically complicated.  So we'll stick with $\delta^l_j =
   net correctly classifies 96.0 percent of the digits, then the error
   is 4.0 percent.  Obviously, this has quite a different meaning from
   our $\delta$ vectors.  In practice, you shouldn't have trouble
-  telling which meaning is intended in any given useage.</span>.</p>
-<p><strong>Plan of attack:</strong> Backpropagation is based around four
+  telling which meaning is intended in any given useage.</span>.-->
+悪魔はなぜ重みつき入力$z^l_j$を変えようとするのかを疑問に思うかもしれません。
+確かに、出力活性$a^l_j$を変化させ、$\frac{\partial C}{\partial a^l_j}$を誤差の指標として用いる方が自然かもしれません。
+実際そのようにしても、以下の議論は同じように進められます。
+しかし、逆誤差の表示が数学的に若干複雑になってしまいます。
+ですので、我々は誤差の指標として$\delta^l_j = \frac{\partial C}{\partial z^l_j}$を用いることにします*<span class="marginnote">
+*MNISTのような分類問題では、誤差（error）という言葉はしばしば誤分類の割合を意味します。
+例えばニューラルネットが96.0%の数字を正しく分類できたとしたら、"error"は4.0%です。
+もちろん、これは$\delta$ベクトルとは全く異なる意味です。
+実際の文脈ではどちらの意味かで迷うことはないでしょう。
+</span>。
+</p>
+<p>
+<!--<strong>Plan of attack:</strong> Backpropagation is based around four
 fundamental equations.  Together, those equations give us a way of
 computing both the error $\delta^l$ and the gradient of the cost
 function.  I state the four equations below.  Be warned, though: you
@@ -727,22 +778,41 @@ equations are so rich that understanding them well requires
 considerable time and patience as you gradually delve deeper into the
 equations.  The good news is that such patience is repaid many times
 over.  And so the discussion in this section is merely a beginning,
-helping you on the way to a thorough understanding of the equations.</p>
-<p>Here's a preview of the ways we'll delve more deeply into the
+helping you on the way to a thorough understanding of the equations.-->
+<strong>攻略計画</strong>
+逆伝搬は4つの基本的な式を基礎とします。
+これらを組み合わせると、誤差$\delta^l$とコスト関数の勾配を計算ができます。
+以下でその4つの式を挙げていきますが、これらの式の意味をすぐに消化できると期待しない方が良いでしょう。
+そのように期待するとがっかりするかもしれません。
+実際逆伝搬は内容が深く、時間と忍耐がかけて徐々にこれらの式を理解できてきます。
+幸いなことに、ここで辛抱しておくことは後々何度も報われます。
+この節の議論は始まりに過ぎませんが、逆伝搬の式を深く理解する過程の中で役に立つはずです。
+</p>
+<p>
+<!--Here's a preview of the ways we'll delve more deeply into the
 equations later in the chapter: I'll
-<a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)">give
-  a short proof of the equations</a>, which helps explain why they are
-true; we'll <a href="chap2.html#the_backpropagation_algorithm">restate
-  the equations</a> in algorithmic form as pseudocode, and
-<a href="chap2.html#the_code_for_backpropagation">see how</a> the
-pseudocode can be implemented as real, running Python code; and, in
-<a href="chap2.html#backpropagation_the_big_picture">the final
-  section of the chapter</a>, we'll develop an intuitive picture of what
-the backpropagation equations mean, and how someone might discover
-them from scratch.  Along the way we'll return repeatedly to the four
+<a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)">give a short proof of the equations</a>
+, which helps explain why they are true; we'll
+<a href="chap2.html#the_backpropagation_algorithm">restate the equations</a>
+in algorithmic form as pseudocode, and
+<a href="chap2.html#the_code_for_backpropagation">see how</a>
+the pseudocode can be implemented as real, running Python code; and, in
+<a href="chap2.html#backpropagation_the_big_picture">the final section of the chapter</a>
+, we'll develop an intuitive picture of what the backpropagation equations mean, and how someone might discover them from scratch.
+Along the way we'll return repeatedly to the four
 fundamental equations, and as you deepen your understanding those
 equations will come to seem comfortable and, perhaps, even beautiful
-and natural.</p>
+and natural.-->
+逆誤差の式をより深く理解する方法の概略は以下の通りです。
+まず、
+<a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)">これらの式の手短な証明</a>を示します。
+この証明を見ればなぜこれらの式が正しいのかを理解しやすくなります。
+その後、これらの式を<a href="chap2.html#the_backpropagation_algorithm">擬似コードで書き直し</a>、
+その擬似コードを<a href="chap2.html#the_code_for_backpropagation">どのように実装できるか</a>を実際のPythonのコードで示します。
+<a href="chap2.html#backpropagation_the_big_picture">本章の最後の節</a>では、逆誤差の式の意味を直感的な絵で示し、ゼロから始めてどのように逆誤差を発見するかを見ていきます。
+その道中で、我々は何度も4つの基本的な式に立ち戻ります。
+理解が深まるにつれ、これらの式が心地良く思え、おそらく美しく自然なものとさえ思えるようになるはずです。
+</p>
 <p><strong>An equation for the error in the output layer, $\delta^L$:</strong>
 The components of $\delta^L$ are given by
 <a class="displaced_anchor" name="eqtnBP1"></a>\begin{eqnarray} 
