@@ -18,3 +18,4 @@ vector			ベクトル
 weighted input		重み付き入力
 quadratic cost function	2乗コスト関数
 c.f.	 参考：
+error	 誤差
