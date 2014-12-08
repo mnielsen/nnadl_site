@@ -14,8 +14,10 @@ input/output		（ニューラルネットワークの）入力/出力
 neuron			ニューロン
 layer			層
 activation		活性
+activation function	活性化関数
 vector			ベクトル
 weighted input		重み付き入力
 quadratic cost function	2乗コスト関数
 c.f.	 参考：
 error	 誤差
+saturation/saturated	飽和/飽和している

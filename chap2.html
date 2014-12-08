@@ -999,7 +999,7 @@ the way back through the network.-->
 <!--An equation for the rate of change of the cost with respect to any bias in the network:-->
 ニューラルネットワーク内のバイアスに関するコストの変化率の表式
 </strong>
-In particular:
+<!--In particular:
 <a class="displaced_anchor" name="eqtnBP3"></a>\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
   \delta^l_j.
 \tag{BP3}\end{eqnarray}
@@ -1007,23 +1007,45 @@ That is, the error $\delta^l_j$ is <em>exactly equal</em> to the rate of
 change $\partial C / \partial b^l_j$.  This is great news, since
 <span id="margin_553087553337_reveal" class="equation_link">(BP1)</span><span id="margin_553087553337" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_553087553337_reveal').click(function() {$('#margin_553087553337').toggle('slow', function() {});});</script> and <span id="margin_416964584497_reveal" class="equation_link">(BP2)</span><span id="margin_416964584497" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_416964584497_reveal').click(function() {$('#margin_416964584497').toggle('slow', function() {});});</script> have already told us how to compute
-$\delta^l_j$.  We can rewrite <span id="margin_828081856583_reveal" class="equation_link">(BP3)</span><span id="margin_828081856583" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
-  \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_828081856583_reveal').click(function() {$('#margin_828081856583').toggle('slow', function() {});});</script> in shorthand as
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_416964584497_reveal').click(function() {$('#margin_416964584497').toggle('slow', function() {});});</script>
+ have already told us how to compute $\delta^l_j$.
+We can rewrite
+<span id="margin_828081856583_reveal" class="equation_link">(BP3)</span><span id="margin_828081856583" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
+  \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_828081856583_reveal').click(function() {$('#margin_828081856583').toggle('slow', function() {});});</script>
+in shorthand as
 <a class="displaced_anchor" name="eqtn31"></a>\begin{eqnarray}
   \frac{\partial C}{\partial b} = \delta,
 \tag{31}\end{eqnarray}
 where it is understood that $\delta$ is being evaluated at the same
-neuron as the bias $b$.
+neuron as the bias $b$.-->
+具体的には以下の通りです。
+<a class="displaced_anchor" name="eqtnBP3"></a>\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
+  \delta^l_j.
+\tag{BP3}\end{eqnarray}
+すなわち、誤差$\delta^l_j$はコスト関数の変化率$\partial C / \partial b^l_j$と<em>完全に同一</em>です。
+<span id="margin_553087553337_reveal" class="equation_link">(BP1)</span><span id="margin_553087553337" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_553087553337_reveal').click(function() {$('#margin_553087553337').toggle('slow', function() {});});</script>
+と
+<span id="margin_416964584497_reveal" class="equation_link">(BP2)</span><span id="margin_416964584497" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_416964584497_reveal').click(function() {$('#margin_416964584497').toggle('slow', function() {});});</script>
+にから、この値の計算方法は既に得られているのでこれは好都合です。
+<span id="margin_828081856583_reveal" class="equation_link">(BP3)</span><span id="margin_828081856583" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
+  \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_828081856583_reveal').click(function() {$('#margin_828081856583').toggle('slow', function() {});});</script>
+を簡潔に
+o<a class="displaced_anchor" name="eqtn31"></a>\begin{eqnarray}
+  \frac{\partial C}{\partial b} = \delta
+\tag{31}\end{eqnarray}
+と書くことができます。ここで、$\delta$の各成分はバイアス$b$の対応する成分とニューロンでの値と解釈します。
 </p>
-<p><strong>An equation for the rate of change of the cost with respect to
-  any weight in the network:</strong>  In particular:
+<p><strong>
+<!--An equation for the rate of change of the cost with respect to any weight in the network:-->
+ニューラルネットワーク内の任意の重みについてのコストの変化率の表式
+</strong>
+<!--In particular:
 <a class="displaced_anchor" name="eqtnBP4"></a>\begin{eqnarray}
-  
   \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j.
 \tag{BP4}\end{eqnarray}
-This tells us how to compute the partial derivatives $\partial C
-/ \partial w^l_{jk}$ in terms of the quantities $\delta^l$ and
+This tells us how to compute the partial derivatives $\partial C / \partial w^l_{jk}$ in terms of the quantities $\delta^l$ and
 $a^{l-1}$, which we already know how to compute.  The equation can be
 rewritten in a less index-heavy notation as
 <a class="displaced_anchor" name="eqtn32"></a>\begin{eqnarray}  \frac{\partial
@@ -1037,23 +1059,58 @@ depict this as:
 <center>
 <img src="images/tikz20.png"/>
 </center>
-A nice consequence of Equation <span id="margin_926874251435_reveal" class="equation_link">(32)</span><span id="margin_926874251435" class="marginequation" style="display: none;"><a href="chap2.html#eqtn32" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
-    C}{\partial w} = a_{\rm in} \delta_{\rm out} \nonumber\end{eqnarray}</a></span><script>$('#margin_926874251435_reveal').click(function() {$('#margin_926874251435').toggle('slow', function() {});});</script> is
-that when the activation $a_{\rm in}$ is small, $a_{\rm in} \approx
+A nice consequence of Equation
+<span id="margin_926874251435_reveal" class="equation_link">(32)</span><span id="margin_926874251435" class="marginequation" style="display: none;"><a href="chap2.html#eqtn32" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
+    C}{\partial w} = a_{\rm in} \delta_{\rm out} \nonumber\end{eqnarray}</a></span><script>$('#margin_926874251435_reveal').click(function() {$('#margin_926874251435').toggle('slow', function() {});});</script>
+is that when the activation $a_{\rm in}$ is small, $a_{\rm in} \approx
 0$, the gradient term $\partial C / \partial w$ will also tend to be
-small.  In this case, we'll say the weight <em>learns slowly</em>,
+small.
+In this case, we'll say the weight <em>learns slowly</em>,
 meaning that it's not changing much during gradient descent.  In other
-words, one consequence of <span id="margin_342844631908_reveal" class="equation_link">(BP4)</span><span id="margin_342844631908" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
-  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_342844631908_reveal').click(function() {$('#margin_342844631908').toggle('slow', function() {});});</script> is that weights output from
-low-activation neurons learn slowly.</p>
-<p>There are other insights along these lines which can be obtained
-from <span id="margin_757095973931_reveal" class="equation_link">(BP1)</span><span id="margin_757095973931" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_757095973931_reveal').click(function() {$('#margin_757095973931').toggle('slow', function() {});});</script>-<span id="margin_724164157530_reveal" class="equation_link">(BP4)</span><span id="margin_724164157530" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
-  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_724164157530_reveal').click(function() {$('#margin_724164157530').toggle('slow', function() {});});</script>.  Let's start by looking at the output
-layer.  Consider the term $\sigma'(z^L_j)$ in <span id="margin_239655849963_reveal" class="equation_link">(BP1)</span><span id="margin_239655849963" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_239655849963_reveal').click(function() {$('#margin_239655849963').toggle('slow', function() {});});</script>.  Recall
-from the <a href="chap1.html#sigmoid_graph">graph of the sigmoid
-  function in the last chapter</a> that the $\sigma$ function becomes
+words, one consequence of
+<span id="margin_342844631908_reveal" class="equation_link">(BP4)</span><span id="margin_342844631908" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_342844631908_reveal').click(function() {$('#margin_342844631908').toggle('slow', function() {});});</script>
+ is that weights output from
+low-activation neurons learn slowly.-->
+具体的には以下の通りです。
+<a class="displaced_anchor" name="eqtnBP4"></a>\begin{eqnarray}
+  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j.
+\tag{BP4}\end{eqnarray}
+この式を見ると、偏微分$\partial C / \partial w^l_{jk}$を既に計算方法が既知の$\delta^l$と$a^{l-1}$を用いて計算できることがわかります。
+この式はもう少し添字の少ない形で
+<a class="displaced_anchor" name="eqtn32"></a>\begin{eqnarray}  \frac{\partial
+    C}{\partial w} = a_{\rm in} \delta_{\rm out},
+\tag{32}\end{eqnarray}
+と書き直せます。ここで、$a_{\rm in}$は重み$w$を持つ枝に対する入力ニューロンの活性で、$\delta_{\rm out}$は同じ枝にに対する出力ニューロンの持つ誤差です。
+重み$w$とそれに接続する2つのニューロンだけに焦点を絞ると、この式は以下のように見ることができます。
+<center>
+<img src="images/tikz20.png"/>
+</center>
+式
+<span id="margin_926874251435_reveal" class="equation_link">(32)</span><span id="margin_926874251435" class="marginequation" style="display: none;"><a href="chap2.html#eqtn32" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
+    C}{\partial w} = a_{\rm in} \delta_{\rm out} \nonumber\end{eqnarray}</a></span><script>$('#margin_926874251435_reveal').click(function() {$('#margin_926874251435').toggle('slow', function() {});});</script>
+から$a_{\rm in}$が小さい($a_{\rm in} \approx 0$)の時には、勾配$\partial C / \partial w$も小さくなる傾向があるという結論が得られます。
+このようなケースを勾配降下法を行っている間、値が大きく変化しないという意味で、重みの<em>学習が遅い</em>と表現します。
+言い換えると、活性の低いニューロンから入力を受ける重みの学習は遅いという事が式
+<span id="margin_342844631908_reveal" class="equation_link">(BP4)</span><span id="margin_342844631908" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_342844631908_reveal').click(function() {$('#margin_342844631908').toggle('slow', function() {});});</script>
+からわかります。
+</p>
+<p>
+<!--There are other insights along these lines which can be obtained from
+<span id="margin_757095973931_reveal" class="equation_link">(BP1)</span><span id="margin_757095973931" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_757095973931_reveal').click(function() {$('#margin_757095973931').toggle('slow', function() {});});</script>
+-
+<span id="margin_724164157530_reveal" class="equation_link">(BP4)</span><span id="margin_724164157530" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_724164157530_reveal').click(function() {$('#margin_724164157530').toggle('slow', function() {});});</script>
+.
+Let's start by looking at the output layer.
+Consider the term $\sigma'(z^L_j)$ in
+<span id="margin_239655849963_reveal" class="equation_link">(BP1)</span><span id="margin_239655849963" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_239655849963_reveal').click(function() {$('#margin_239655849963').toggle('slow', function() {});});</script>.
+Recall from the
+<a href="chap1.html#sigmoid_graph">graph of the sigmoid function in the last chapter</a>
+that the $\sigma$ function becomes
 very flat when $\sigma(z^L_j)$ is approximately $0$ or $1$.  When this
 occurs we will have $\sigma'(z^L_j) \approx 0$.  And so the lesson is
 that a weight in the final layer will learn slowly if the output
@@ -1061,21 +1118,53 @@ neuron is either low activation ($\approx 0$) or high activation
 ($\approx 1$).  In this case it's common to say the output neuron has
 <em>saturated</em> and, as a result, the weight has stopped learning (or
 is learning slowly).  Similar remarks hold also for the biases of
-output neuron.</p>
-<p>We can obtain similar insights for earlier layers.  In particular,
-note the $\sigma'(z^l)$ term in <span id="margin_236897220270_reveal" class="equation_link">(BP2)</span><span id="margin_236897220270" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_236897220270_reveal').click(function() {$('#margin_236897220270').toggle('slow', function() {});});</script>.  This means that
-$\delta^l_j$ is likely to get small if the neuron is near saturation.
+output neuron.-->
+<span id="margin_757095973931_reveal" class="equation_link">(BP1)</span><span id="margin_757095973931" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_757095973931_reveal').click(function() {$('#margin_757095973931').toggle('slow', function() {});});</script>
+-
+<span id="margin_724164157530_reveal" class="equation_link">(BP4)</span><span id="margin_724164157530" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_724164157530_reveal').click(function() {$('#margin_724164157530').toggle('slow', function() {});});</script>
+からわかる事は他にもあります。
+出力層から見てみましょう。
+<span id="margin_239655849963_reveal" class="equation_link">(BP1)</span><span id="margin_239655849963" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_239655849963_reveal').click(function() {$('#margin_239655849963').toggle('slow', function() {});});</script>
+内の$\sigma'(z^L_j)$の項に注目します。
+前章の<a href="chap1.html#sigmoid_graph">シグモイド関数のグラフ</a>で、$z^L_j$が$0$か$1$に近づくと関数$\sigma$はとても平坦になった事を思い出してください。
+これは$\sigma'(z^L_j) \approx 0$の状態です。
+従って、出力ニューロンの活性が低かったり($\approx 0$)高かったり($\approx 1$)すると、最終層の学習は遅い事がわかります。
+このような状況を出力ニューロンは<em>飽和</em>しておりその結果、重みの学習が終了している（もしくは重みの学習が遅い）と表現するのが一般的です。
+同様の事は出力ニューロンのバイアスに対しても成立します。
+</p>
+<p>
+<!--We can obtain similar insights for earlier layers.  In particular,
+note the $\sigma'(z^l)$ term in
+<span id="margin_236897220270_reveal" class="equation_link">(BP2)</span><span id="margin_236897220270" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_236897220270_reveal').click(function() {$('#margin_236897220270').toggle('slow', function() {});});</script>
+.
+This means that $\delta^l_j$ is likely to get small if the neuron is near saturation.
 And this, in turn, means that any weights input to a saturated neuron
 will learn slowly*<span class="marginnote">
 *This reasoning won't hold if ${w^{l+1}}^T
   \delta^{l+1}$ has large enough entries to compensate for the
   smallness of $\sigma'(z^l_j)$.  But I'm speaking of the general
-  tendency.</span>.</p>
-<p>Summing up, we've learnt that a weight will learn slowly if either the
+  tendency.</span>.-->
+出力層より前の層でも似た考察ができます。
+特に
+<span id="margin_236897220270_reveal" class="equation_link">(BP2)</span><span id="margin_236897220270" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_236897220270_reveal').click(function() {$('#margin_236897220270').toggle('slow', function() {});});</script>
+内の$\sigma'(z^l)$の項に注目します。
+この式は、ニューロンが飽和状態だと$\delta^l_j$は小さくなる傾向があること意味し、
+従って、飽和したニューロンを入力に持つ重みの学習は遅い事を意味します*<span class="marginnote">
+*$(w^{l+1})^T \delta^{l+1}$が十分大きく、$\sigma'(z^l_j)$の小さくてもその埋め合わせができるならば、この推論は成り立ちません。ここでは、一般的な傾向について述べています。</span>。
+</p>
+<p>
+<!--Summing up, we've learnt that a weight will learn slowly if either the
 input neuron is low-activation, or if the output neuron has saturated,
-i.e., is either high- or low-activation.  </p>
-<p>None of these observations is too greatly surprising.  Still, they
+i.e., is either high- or low-activation.  -->
+まとめると、入力ニューロンが低活性状態であるか、出力ニューロンが飽和状態（低活性、もしくは高活性状態）の時には、重みの学習が遅いという事がわかりました。
+</p>
+<p>
+<!--None of these observations is too greatly surprising.  Still, they
 help improve our mental model of what's going on as a neural network
 learns.  Furthermore, we can turn this type of reasoning around.  The
 four fundamental equations turn out to hold for any activation
@@ -1089,35 +1178,64 @@ is always positive, and never gets close to zero.  That would prevent
 the slow-down of learning that occurs when ordinary sigmoid neurons
 saturate.  Later in the book we'll see examples where this kind of
 modification is made to the activation function.  Keeping the four
-equations <span id="margin_330673844442_reveal" class="equation_link">(BP1)</span><span id="margin_330673844442" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_330673844442_reveal').click(function() {$('#margin_330673844442').toggle('slow', function() {});});</script>-<span id="margin_626656835558_reveal" class="equation_link">(BP4)</span><span id="margin_626656835558" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
-  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_626656835558_reveal').click(function() {$('#margin_626656835558').toggle('slow', function() {});});</script> in mind can help explain why such
-modifications are tried, and what impact they can have.</p>
+equations
+<span id="margin_330673844442_reveal" class="equation_link">(BP1)</span><span id="margin_330673844442" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_330673844442_reveal').click(function() {$('#margin_330673844442').toggle('slow', function() {});});</script>
+-
+<span id="margin_626656835558_reveal" class="equation_link">(BP4)</span><span id="margin_626656835558" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_626656835558_reveal').click(function() {$('#margin_626656835558').toggle('slow', function() {});});</script>
+in mind can help explain why such modifications are tried, and what impact they can have.-->
+これらの知見はどれも極端に驚くべき事ではありません。
+しかし、これらの考察により、ニューラルネットワークの学習の過程で何が起こっているかがイメージしやすくなります。
+さらに、以上の考察を逆向きに利用する事ができます。
+これら4つの基本方程式は任意の活性化関数について成立します
+（この後すぐに行うように、証明に関数$\sigma$の特別な性質を用いていないからです）。
+従って、これらの式を利用して好きな学習特性を持つ活性化関数を<em>設計</em>する事が可能です。
+アイデアを示すために例を挙げると、例えば（シグモイドではない）活性化関数$\sigma$を$\sigma'$が常に正で、$0$に漸近しないように選んだとします。
+すると、通常のシグモイドニューロンが飽和した際に起こってしまう学習の減速を防げます。
+この本の後ろで、この種の修正を活性化関数に対して施します。
+<span id="margin_330673844442_reveal" class="equation_link">(BP1)</span><span id="margin_330673844442" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_330673844442_reveal').click(function() {$('#margin_330673844442').toggle('slow', function() {});});</script>
+から
+<span id="margin_626656835558_reveal" class="equation_link">(BP4)</span><span id="margin_626656835558" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+  \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_626656835558_reveal').click(function() {$('#margin_626656835558').toggle('slow', function() {});});</script>
+の4つの式を覚えておくと、なぜこのような修正を行うのか、修正でどのような影響が起こるのかを説明するのに役立ちます。
+</p>
 <p><a id="backpropsummary"></a></p>
 <p><center>
 <img src="images/tikz21.png"/>
 </center></p>
 <p><a id="alternative_backprop"></a></p>
 <p><h4><a name="problem_798513"></a><a href="#problem_798513">Problem</a></h4><ul>
-<li><strong>Alternate presentation of the equations of backpropagation:</strong>
-  I've stated the equations of backpropagation (notably <span id="margin_174707495294_reveal" class="equation_link">(BP1)</span><span id="margin_174707495294" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<li><strong>
+<!--Alternate presentation of the equations of backpropagation:-->
+逆誤差伝播の別の表示方法
+</strong>
+<!-- I've stated the equations of backpropagation (notably
+<span id="margin_174707495294_reveal" class="equation_link">(BP1)</span><span id="margin_174707495294" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_174707495294_reveal').click(function() {$('#margin_174707495294').toggle('slow', function() {});});</script>
-  and <span id="margin_512047477177_reveal" class="equation_link">(BP2)</span><span id="margin_512047477177" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_512047477177_reveal').click(function() {$('#margin_512047477177').toggle('slow', function() {});});</script>) using the Hadamard product.  This presentation may
+and
+<span id="margin_512047477177_reveal" class="equation_link">(BP2)</span><span id="margin_512047477177" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_512047477177_reveal').click(function() {$('#margin_512047477177').toggle('slow', function() {});});</script>
+) using the Hadamard product.  This presentation may
   be disconcerting if you're unused to the Hadamard product.  There's
   an alternative approach, based on conventional matrix
   multiplication, which some readers may find enlightening.  (1) Show
-  that <span id="margin_667190610058_reveal" class="equation_link">(BP1)</span><span id="margin_667190610058" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_667190610058_reveal').click(function() {$('#margin_667190610058').toggle('slow', function() {});});</script> may be rewritten as
+  that
+<span id="margin_667190610058_reveal" class="equation_link">(BP1)</span><span id="margin_667190610058" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_667190610058_reveal').click(function() {$('#margin_667190610058').toggle('slow', function() {});});</script>
+may be rewritten as
   <a class="displaced_anchor" name="eqtn33"></a>\begin{eqnarray}
     \delta^L = \Sigma'(z^L) \nabla_a C,
   \tag{33}\end{eqnarray}
+
   where $\Sigma'(z^L)$ is a square matrix whose diagonal entries are
   the values $\sigma'(z^L_j)$, and whose off-diagonal entries are
   zero.  Note that this matrix acts on $\nabla_a C$ by conventional
-  matrix multiplication.  (2) Show that <span id="margin_345345235028_reveal" class="equation_link">(BP2)</span><span id="margin_345345235028" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_345345235028_reveal').click(function() {$('#margin_345345235028').toggle('slow', function() {});});</script> may be rewritten
-  as
+  matrix multiplication.  (2) Show that
+<span id="margin_345345235028_reveal" class="equation_link">(BP2)</span><span id="margin_345345235028" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_345345235028_reveal').click(function() {$('#margin_345345235028').toggle('slow', function() {});});</script>
+may be rewritten as
   <a class="displaced_anchor" name="eqtn34"></a>\begin{eqnarray}
     \delta^l = \Sigma'(z^l) (w^{l+1})^T \delta^{l+1}.
   \tag{34}\end{eqnarray}
@@ -1126,15 +1244,66 @@ modifications are tried, and what impact they can have.</p>
     \delta^l = \Sigma'(z^l) (w^{l+1})^T \ldots \Sigma'(z^{L-1}) (w^L)^T 
     \Sigma'(z^L) \nabla_a C
   \tag{35}\end{eqnarray}
-  For readers comfortable with matrix multiplication this equation may
-  be easier to understand than <span id="margin_823951338021_reveal" class="equation_link">(BP1)</span><span id="margin_823951338021" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_823951338021_reveal').click(function() {$('#margin_823951338021').toggle('slow', function() {});});</script> and <span id="margin_312530255170_reveal" class="equation_link">(BP2)</span><span id="margin_312530255170" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_312530255170_reveal').click(function() {$('#margin_312530255170').toggle('slow', function() {});});</script>.  The
-  reason I've focused on <span id="margin_650030226543_reveal" class="equation_link">(BP1)</span><span id="margin_650030226543" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_650030226543_reveal').click(function() {$('#margin_650030226543').toggle('slow', function() {});});</script> and <span id="margin_299731299416_reveal" class="equation_link">(BP2)</span><span id="margin_299731299416" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_299731299416_reveal').click(function() {$('#margin_299731299416').toggle('slow', function() {});});</script> is because that
+  For readers comfortable with matrix multiplication this equation may be easier to understand than
+<span id="margin_823951338021_reveal" class="equation_link">(BP1)</span><span id="margin_823951338021" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_823951338021_reveal').click(function() {$('#margin_823951338021').toggle('slow', function() {});});</script>
+and
+<span id="margin_312530255170_reveal" class="equation_link">(BP2)</span><span id="margin_312530255170" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_312530255170_reveal').click(function() {$('#margin_312530255170').toggle('slow', function() {});});</script>. 
+The reason I've focused on
+<span id="margin_650030226543_reveal" class="equation_link">(BP1)</span><span id="margin_650030226543" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_650030226543_reveal').click(function() {$('#margin_650030226543').toggle('slow', function() {});});</script>
+and
+<span id="margin_299731299416_reveal" class="equation_link">(BP2)</span><span id="margin_299731299416" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_299731299416_reveal').click(function() {$('#margin_299731299416').toggle('slow', function() {});});</script>
+is because that
   approach turns out to be faster to implement numerically.
-</ul></p>
+</ul>
+-->
+これまで、逆誤差伝播の式（特に
+<span id="margin_174707495294_reveal" class="equation_link">(BP1)</span><span id="margin_174707495294" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_174707495294_reveal').click(function() {$('#margin_174707495294').toggle('slow', function() {});});</script>
+と
+<span id="margin_512047477177_reveal" class="equation_link">(BP2)</span><span id="margin_512047477177" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_512047477177_reveal').click(function() {$('#margin_512047477177').toggle('slow', function() {});});</script>
+）をアダマール積を用いて述べてきました。
+アダマール積に慣れていない読者はこの表示方法に戸惑ったかもしれません。
+これらの式を通常の行列の掛け算に基づいて表示する別の方法があります。
+読者によってはこのアプローチは教育的かもしれません。(1)
+<span id="margin_667190610058_reveal" class="equation_link">(BP1)</span><span id="margin_667190610058" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_667190610058_reveal').click(function() {$('#margin_667190610058').toggle('slow', function() {});});</script>
+を以下の様に書き換えられる事を示してください。
+  <a class="displaced_anchor" name="eqtn33"></a>\begin{eqnarray}
+    \delta^L = \Sigma'(z^L) \nabla_a C
+  \tag{33}\end{eqnarray}
+ここで、$\Sigma'(z^L)$は、$\sigma'(z^L_j)$を対角成分に持ち、非対角成分は0の正方行列です。
+この行列は$\nabla_a C$に通常の行列の掛け算で作用します。(2)
+<span id="margin_345345235028_reveal" class="equation_link">(BP2)</span><span id="margin_345345235028" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_345345235028_reveal').click(function() {$('#margin_345345235028').toggle('slow', function() {});});</script>
+を以下の様に書き換えられる事を示してください。
+  <a class="displaced_anchor" name="eqtn34"></a>\begin{eqnarray}
+    \delta^l = \Sigma'(z^l) (w^{l+1})^T \delta^{l+1}.
+  \tag{34}\end{eqnarray}
+ (3) (1)と(2)を組み合わせて、以下の式を示してください。
+  <a class="displaced_anchor" name="eqtn35"></a>\begin{eqnarray}
+    \delta^l = \Sigma'(z^l) (w^{l+1})^T \ldots \Sigma'(z^{L-1}) (w^L)^T 
+    \Sigma'(z^L) \nabla_a C
+  \tag{35}\end{eqnarray}
+行列の掛け算に慣れている読者にとっては
+<span id="margin_823951338021_reveal" class="equation_link">(BP1)</span><span id="margin_823951338021" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_823951338021_reveal').click(function() {$('#margin_823951338021').toggle('slow', function() {});});</script>
+と
+<span id="margin_312530255170_reveal" class="equation_link">(BP2)</span><span id="margin_312530255170" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_312530255170_reveal').click(function() {$('#margin_312530255170').toggle('slow', function() {});});</script>
+よりも、こちらの方が理解しやすいかもしれません。
+それでも
+<span id="margin_650030226543_reveal" class="equation_link">(BP1)</span><span id="margin_650030226543" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_650030226543_reveal').click(function() {$('#margin_650030226543').toggle('slow', function() {});});</script>
+と
+<span id="margin_299731299416_reveal" class="equation_link">(BP2)</span><span id="margin_299731299416" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_299731299416_reveal').click(function() {$('#margin_299731299416').toggle('slow', function() {});});</script>
+の表式を用いたのは、こちらの方が実装時の数値計算が速いからです。
+</p>
 <p><h3><a name="proof_of_the_four_fundamental_equations_(optional)"></a><a href="#proof_of_the_four_fundamental_equations_(optional)">Proof of the four fundamental equations (optional)</a></h3> </p>
 <p>We'll now prove the four fundamental
 equations <span id="margin_816792216456_reveal" class="equation_link">(BP1)</span><span id="margin_816792216456" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
