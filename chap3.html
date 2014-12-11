@@ -170,15 +170,65 @@ mn@michaelnielsen.org.</p>
 By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 </p>
 </div>
-</p><p>
+</p>
+
+<!--
+<p>When a golf player is first learning to play golf, they usually spend
+most of their time developing a basic swing.  Only gradually do they
+develop other shots, learning to chip, draw and fade the ball,
+building on and modifying their basic swing.  In a similar way, up to
+now we've focused on understanding the backpropagation algorithm.
+It's our "basic swing", the foundation for learning in most work on
+neural networks.  In this chapter I explain a suite of techniques
+which can be used to improve on our vanilla implementation of
+backpropagation, and so improve the way our networks learn.</p>-->
+
+<p>
 最初にゴルフを始めようとするとき、まずは基本スイングの練習にほとんどの時間を使うのが普通です。それ以外のスイングの練習をするのは、少しずつしかできません。チップやドローやフェードを身につけるのは、基本スイングの上に、修正しながら組み立てるものです。
 同様に、私達はいままで逆伝搬法に集中してきました。それが私達にとっての「基本スイング」であり、ニューラルネットワークにおけるほとんどの仕事を理解するための基本だったからです。この章では、純粋な逆伝搬の実装を改善しネットワークの学習のしかたを改善するいくつかのテクニックを説明します。</p>
+
+
+<!--<p>The techniques we'll develop in this chapter include: a better choice
+of cost function, known as
+<a href="chap3.html#the_cross-entropy_cost_function">the
+  cross-entropy</a> cost function; four so-called
+<a href="chap3.html#overfitting_and_regularization">"regularization"
+  methods</a> (L1 and L2 regularization, dropout, and artificial
+expansion of the training data), which make our networks better at
+generalizing beyond the training data; a
+<a href="chap3.html#weight_initialization">better method for
+  initializing the weights</a> in the network; and a
+<a href="#how_to_choose_a_neural_network's_hyper-parameters">set
+  of heuristics to help choose good hyper-parameters</a> for the network.
+I'll also overview <a href="chap3.html#other_techniques">several other
+  techniques</a> in less depth.  The discussions are largely independent
+of one another, and so you may jump ahead if you wish.  We'll also
+<a href="#handwriting_recognition_revisited_the_code">implement</a>
+many of the techniques in running code, and use them to improve the
+results obtained on the handwriting classification problem studied in
+<a href="chap1.html">Chapter 1</a>.</p> -->
+
 <p>この章で説明するテクニックは以下のとおりです。<a href="chap3.html#the_cross-entropy_cost_function">クロスエントロピー</a>と呼ばれるより良いコスト関数、
 ネットワークを学習データによらず一般化するのに役立つ<a href="chap3.html#overfitting_and_regularization">「正規化」法</a>と呼ばれる4つの手法（L1正規化およびL2正規化、ドロップアウト、そして人工的な学習データの伸張）、
 ネットワークの中の<a href="chap3.html#weight_initialization">重みを初期化するより良い方法</a>、
 そして、ネットワークに対して<a href="#how_to_choose_a_neural_network's_hyper-parameters">良いハイパーパラメータを選択するためのいくつかの発見的方法</a>です。また、<a href="chap3.html#other_techniques">それ以外のいくつかのテクニック</a>についても、あまり細部にこだわらず概観します。
 これらの議論は完全にお互いに独立なので、必要に応じて読み飛ばすこともできます。また、多くのテクニックを動くコードとして<a href="#handwriting_recognition_revisited_the_code">実装</a>もします。それらの実装を使うと、<a href="chap1.html">第1章</a>で説明した手書き文字の分類問題の結果が改善されます。</p>
+
+<!--
+<p>Of course, we're only covering a few of the many, many techniques
+which have been developed for use in neural nets.  The philosophy is
+that the best entree to the plethora of available techniques is
+in-depth study of a few of the most important.  Mastering those
+important techniques is not just useful in its own right, but will
+also deepen your understanding of what problems can arise when you use
+neural networks.  That will leave you well prepared to quickly pick up
+other techniques, as you need them.</p>-->
+
+
 <p>もちろん、ここではニューラルネットワークのために開発されたとても多くの手法のうちほんの少しを紹介するだけです。ここでの哲学は、利用できる手法が沢山ありすぎる場合の最も良い入門は、少しの手法を深く学習することだということです。それらの重要な手法はそのまま役に立つというだけではなく、ニューラルネットワークを使うときに起こる問題に対する理解を深めてくれます。その結果、必要に応じて他のテクニックを即座に使えるようになるでしょう。</p>
+
+
+
 <p></p><p></p><p></p><p><h3><a name="the_cross-entropy_cost_function"></a><a href="#the_cross-entropy_cost_function">The cross-entropy cost function</a></h3></p><p>Most of us find it unpleasant to be wrong.  Soon after beginning to
 learn the piano I gave my first performance before an audience.  I was
 nervous, and began playing the piece an octave too low.  I got
