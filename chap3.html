@@ -179,24 +179,36 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 そして、ネットワークに対して<a href="#how_to_choose_a_neural_network's_hyper-parameters">良いハイパーパラメータを選択するためのいくつかの発見的方法</a>です。また、<a href="chap3.html#other_techniques">それ以外のいくつかのテクニック</a>についても、あまり細部にこだわらず概観します。
 これらの議論は完全にお互いに独立なので、必要に応じて読み飛ばすこともできます。また、多くのテクニックを動くコードとして<a href="#handwriting_recognition_revisited_the_code">実装</a>もします。それらの実装を使うと、<a href="chap1.html">第1章</a>で説明した手書き文字の分類問題の結果が改善されます。</p>
 <p>もちろん、ここではニューラルネットワークのために開発されたとても多くの手法のうちほんの少しを紹介するだけです。ここでの哲学は、利用できる手法が沢山ありすぎる場合の最も良い入門は、少しの手法を深く学習することだということです。それらの重要な手法はそのまま役に立つというだけではなく、ニューラルネットワークを使うときに起こる問題に対する理解を深めてくれます。その結果、必要に応じて他のテクニックを即座に使えるようになるでしょう。</p>
-<p></p><p></p><p></p><p><h3><a name="the_cross-entropy_cost_function"></a><a href="#the_cross-entropy_cost_function">The cross-entropy cost function</a></h3></p><p>Most of us find it unpleasant to be wrong.  Soon after beginning to
+<!--<p></p><p></p><p></p><p><h3><a name="the_cross-entropy_cost_function"></a><a href="#the_cross-entropy_cost_function">The cross-entropy cost function</a></h3></p>-->
+<p></p><p></p><p></p><p><h3><a name="the_cross-entropy_cost_function"></a><a href="#the_cross-entropy_cost_function">クロスエントロピーコスト関数</a></h3></p>
+<!--<p>Most of us find it unpleasant to be wrong.  Soon after beginning to
 learn the piano I gave my first performance before an audience.  I was
 nervous, and began playing the piece an octave too low.  I got
 confused, and couldn't continue until someone pointed out my error.  I
 was very embarassed.  Yet while unpleasant, we also learn quickly when
 we're decisively wrong.  You can bet that the next time I played
 before an audience I played in the correct octave!  By contrast, we
-learn more slowly when our errors are less well-defined.</p><p>Ideally, we hope and expect that our neural networks will learn fast
+learn more slowly when our errors are less well-defined.</p>-->
+<p>
+ほとんどの人にとって、間違えることは嫌なことです。私はピアノを習い始めてすぐに聴衆の前で演奏することがありました。そのとき緊張していたので、1オクターブ低く演奏を始めてしまいました。私は混乱してしまい誰かが間違いを指摘するまで気づきませんでした。とても恥ずかしい思いをしました。私達は、はっきり間違えているときには、嫌な思いをしつつも速く学ぶことができます。次に私がピアノを聴衆の前で弾くときには正しいオクターブで弾いたということは、いうまでもないでしょう。一方で、間違いがはっきりしないときはゆっくりとしか学べません。
+</p>
+<!--<p>Ideally, we hope and expect that our neural networks will learn fast
 from their errors.  Is this what happens in practice?  To answer this
 question, let's look at a toy example.  The example involves a neuron
-with just one input:</p><p><center>
+with just one input:</p>-->
+<p>理想的にはニューラルネットワークは間違いから学んでほしいと、我々は願っていて期待もしています。そのようなことは実際に起こるでしょうか。この問いに答えるために簡単な例を見てみましょう。この例はちょうど一個の入力を持つニューロンです。
+</p>
+<p><center>
 <img src="images/tikz28.png"/>
-</center></p><p>We'll train this neuron to do something ridiculously easy: take the
+</center></p>
+<!--<p>We'll train this neuron to do something ridiculously easy: take the
 input $1$ to the output $0$.  Of course, this is such a trivial task
 that we could easily figure out an appropriate weight and bias by
 hand, without using a learning algorithm.  However, it turns out to be
 illuminating to use gradient descent to attempt to learn a weight and
-bias.  So let's take a look at how the neuron learns.</p><p>To make things definite, I'll pick the initial weight to be $0.6$ and
+bias.  So let's take a look at how the neuron learns.</p>-->
+<p>バカバカしいほど簡単なことをするためにこのニューロンを学習させます。入力1に対して出力0を返すようにします。もちろんこれは適当な重みとバイアスをすぐに手計算でき、学習アルゴリズムを使わないですむような自明な作業です。しかし、再急降下法を使って重みとバイアスを計算することは理解に役立ちます。ですから、ニューロンがどのように学ぶかを見てみましょう。</p>
+<!--<p>To make things definite, I'll pick the initial weight to be $0.6$ and
 the initial bias to be $0.9$.  These are generic choices used as a
 place to begin learning, I wasn't picking them to be special in any
 way.  The initial output from the neuron is $0.82$, so quite a bit of
@@ -212,36 +224,49 @@ just a few seconds.  The cost is the quadratic cost function, $C$,
 introduced back in Chapter 1.  I'll remind you of the exact form of
 the cost function shortly, so there's no need to go and dig up the
 definition.  Note that you can run the animation multiple times by
-clicking on "Run" again.</p><p>
+clicking on "Run" again.</p>-->
+<p>話をはっきりするために、初期の重みを$0.6$、バイアスを$0.9$としましょう。この設定は学習の前の設定として一般的なものです。とにかく特別な値を採用したわけではありません。ニューロンからの出力の初期値は$0.82$なので、ニューロンが望まれる出力の$0.0$を出すようになるようになるには、それなりの時間がかかりそうです。出力が$0.0$にとても近くなるまでにどのようにニューロンが学習していくかを見るには、右下にある「Run」ボタンを押してみてください。これは録画された動画ではないことに注意してください。ブラウザは実際に勾配を計算して、その勾配は重みとバイアスを更新するのに使われて、結果が表示されています。学習係数は$\eta = 0.15$であり、これの値は、なにが起こっているかを見るには十分に遅く、しかし数秒でそれなりの学習をさせるには十分に速い値です。コスト関数は、第1章で紹介した二次コスト関数です。コスト関数の厳密な式は後で復習するので、今とくに定義を深く追う必要はありません。このアニメーションは「Run」を押せば何度でも実行できます。
+</p>
+<p>
 <script type="text/javascript" src="js/paper.js"></script>
 <script type="text/paperscript" src="js/saturation1.js" canvas="saturation1">
 </script>
 <center>
 <canvas id="saturation1" width="520" height="300"></canvas>
-</center></p><p>As you can see, the neuron rapidly learns a weight and bias that
+</center></p>
+<!--<p>As you can see, the neuron rapidly learns a weight and bias that
 drives down the cost, and gives an output from the neuron of about
 $0.09$.  That's not quite the desired output, $0.0$, but it is pretty
 good.  Suppose, however, that we instead choose both the starting
 weight and the starting bias to be $2.0$.  In this case the initial
 output is $0.98$, which is very badly wrong.  Let's look at how the
-neuron learns to output $0$ in this case.  Click on "Run" again:</p><p>
+neuron learns to output $0$ in this case.  Click on "Run" again:</p>-->
+<p>これでわかるように、ニューロンは急速に重みとバイアスを学習していき、コストを下げていきます。結果としてニューロンからの出力は$0.09$になります。これは望まれる出力$0.0$とは違いますが、良い値です。しかしながら、最初の重みとバイアスとして$2.0$という値を選んだとしてみましょう。この場合にニューロンがどのように出力が$0$になるように学習していくかを見てみましょう。今度も「Run」を押してください。
+</p>
+<p>
 <script type="text/paperscript" src="js/saturation2.js" canvas="saturation2">
 </script>
 <a id="saturation2_anchor"></a>
 <center>
 <canvas id="saturation2" width="520" height="300"></canvas>
-</center></p><p>Although this example uses the same learning rate ($\eta = 0.15$), we
+</center></p>
+<!--<p>Although this example uses the same learning rate ($\eta = 0.15$), we
 can see that learning starts out much more slowly.  Indeed, for the
 first 150 or so learning epochs, the weights and biases don't change
 much at all.  Then the learning kicks in and, much as in our first
-example, the neuron's output rapidly moves closer to $0.0$.</p><p>This behaviour is strange when contrasted to human learning.  As I
+example, the neuron's output rapidly moves closer to $0.0$.</p>-->
+<p>この例は同じ学習係数($\eta = 0.15$)を使っているのにもかかわらず、学習がずっとゆっくり始まることがわかります。実施、最初の150エポックくらいでは重みやバイアスはほとんど変わりません。その後に学習が始まり、最初の例と同じように出力は急速に$0.0$に近づきます。
+</p>
+<!--<p>This behaviour is strange when contrasted to human learning.  As I
 said at the beginning of this section, we often learn fastest when
 we're badly wrong about something.  But we've just seen that our
 artificial neuron has a lot of difficulty learning when it's badly
 wrong - far more difficulty than when it's just a little wrong.
 What's more, it turns out that this behaviour occurs not just in this
 toy model, but in more general networks.  Why is learning so slow?
-And can we find a way of avoiding this slowdown?</p><p>To understand the origin of the problem, consider that our neuron
+And can we find a way of avoiding this slowdown?</p>-->
+<p>この振る舞いは人間の学習と比べると奇異に見えます。この節の最初に言ったように、我々はひどく間違った時に速く学習することが多いです。ですが、我々の人工的なニューロンは、ひどく間違っている時のほうが、少しだけ間違えていた時と比べて学習がとても困難であったように見えます。さらにいうと、このような振る舞いはこの単純なモデルだけに起こることではなく、もっと一般的なネットワークでも起こることがわかっています。なぜ学習がそんなに遅いのでしょう？そして、このように遅くなることを防ぐ手段はあるのでしょうか？</p>
+<!--<p>To understand the origin of the problem, consider that our neuron
 learns by changing the weight and bias at a rate determined by the
 partial derivatives of the cost function, $\partial C/\partial w$ and
 $\partial C / \partial b$.  So saying "learning is slow" is really
@@ -253,8 +278,13 @@ Equation <span id="margin_619820868292_reveal" class="equation_link">(6)</span><
   \frac{1}{2n} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_619820868292_reveal').click(function() {$('#margin_619820868292').toggle('slow', function() {});});</script>, is given by
 <a class="displaced_anchor" name="eqtn54"></a>\begin{eqnarray}
   C = \frac{(y-a)^2}{2},
+\tag{54}\end{eqnarray}-->
+<p>問題の原点を理解するために我々のニューロンが、重みとバイアスをコスト関数の偏微分$\partial C/\partial w$と$\partial C / \partial b$によって決まる値で更新されるとしましょう。「学習が遅い」ということは、その偏微分が小さいということと同じことです。問題は、なぜこれが小さいのかということを理解することです。そのことを理解するために偏微分を計算してみましょう。我々は二次導関数を使っていたことを思い出しましょう。これは、式<span id="margin_619820868292_reveal" class="equation_link">(6)</span><span id="margin_619820868292" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv
+  \frac{1}{2n} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_619820868292_reveal').click(function() {$('#margin_619820868292').toggle('slow', function() {});});</script>から、次の式で与えられます。
+<a class="displaced_anchor" name="eqtn54"></a>\begin{eqnarray}
+  C = \frac{(y-a)^2}{2},
 \tag{54}\end{eqnarray}
-where $a$ is the neuron's output when the training input $x = 1$ is
+<!--where $a$ is the neuron's output when the training input $x = 1$ is
 used, and $y = 0$ is the corresponding desired output.  To write this
 more explicitly in terms of the weight and bias, recall that $a =
 \sigma(z)$, where $z = wx+b$.  Using the chain rule to differentiate
@@ -267,8 +297,16 @@ with respect to the weight and bias we get
 where I have substituted $x = 1$ and $y = 0$.  To understand the
 behaviour of these expressions, let's look more closely at the
 $\sigma'(z)$ term on the right-hand side.  Recall the shape of the
-$\sigma$ function:</p><p>
-
+$\sigma$ function:</p>-->
+ここで、$a$は学習の入力$x = 1$に対するニューロンの出力であり、$y = 0$は対応する期待される出力です。このことを重みとバイアスの言葉でもっとはっきり記述するために、$z = wx+b$のとき$a = \sigma(z)$と表せることを思い出しましょう。合成関数微分の公式を使い、重みとバイアスで微分すると以下の式を得ます。
+<a class="displaced_anchor" name="eqtn55"></a><a class="displaced_anchor" name="eqtn56"></a>\begin{eqnarray} 
+  \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z) \tag{55}\\
+  
+  \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z),
+\tag{56}\end{eqnarray}
+ここで、$x = 1$と$y = 0$の代入を使いました。これらの表現の振る舞いを理解するためには、右辺に出てくる$\sigma'(z)$の項に注目しましょう。関数$\sigma$のグラフの形状をみてみましょう。
+</p>
+<p>
 <div id="sigmoid_graph"><a name="sigmoid_graph"></a></div>
 <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 <script>
@@ -327,7 +365,8 @@ graph.append("text")
         .style("font-size", "16px") 
         .text("sigmoid function");
 </script>
-</p><p>We can see from this graph that when the neuron's output is close to
+</p>
+<!--<p>We can see from this graph that when the neuron's output is close to
 $1$, the curve gets very flat, and so $\sigma'(z)$ gets very small.
 Equations <span id="margin_506983300551_reveal" class="equation_link">(55)</span><span id="margin_506983300551" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_506983300551_reveal').click(function() {$('#margin_506983300551').toggle('slow', function() {});});</script> and <span id="margin_277682059598_reveal" class="equation_link">(56)</span><span id="margin_277682059598" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
@@ -336,7 +375,11 @@ $\partial C / \partial w$ and $\partial C / \partial b$ get very
 small.  This is the origin of the learning slowdown.  What's more, as
 we shall see a little later, the learning slowdown occurs for
 essentially the same reason in more general neural networks, not just
-the toy example we've been playing with.</p><p><h4><a name="introducing_the_cross-entropy_cost_function"></a><a href="#introducing_the_cross-entropy_cost_function">Introducing the cross-entropy cost function</a></h4></p><p>How can we address the learning slowdown?  It turns out that we can
+the toy example we've been playing with.</p>-->
+ニューロンが$1$に近づくと曲線がとても平らになり、そのため$\sigma'(z)$がとても小さくなることがわかります。そして、<span id="margin_506983300551_reveal" class="equation_link">(55)</span><span id="margin_506983300551" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_506983300551_reveal').click(function() {$('#margin_506983300551').toggle('slow', function() {});});</script> and <span id="margin_277682059598_reveal" class="equation_link">(56)</span><span id="margin_277682059598" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+  \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z) \nonumber\end{eqnarray}</a></span><script>$('#margin_277682059598_reveal').click(function() {$('#margin_277682059598').toggle('slow', function() {});});</script>により$\partial C / \partial w$と$\partial C / \partial b$がとても小さくなります。これが学習が遅くなる原因です。さらにいうと、いままで扱ってきた単純な例に限らずとも、もっと一般的なニューラルネットワークでも学習が遅くなるのは根本的には同じ理由によるものです。
+<p><h4><a name="introducing_the_cross-entropy_cost_function"></a><a href="#introducing_the_cross-entropy_cost_function">Introducing the cross-entropy cost function</a></h4></p><p>How can we address the learning slowdown?  It turns out that we can
 solve the problem by replacing the quadratic cost with a different
 cost function, known as the cross-entropy.  To understand the
 cross-entropy, let's move a little away from our super-simple toy
