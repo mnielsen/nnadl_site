@@ -1384,10 +1384,20 @@ backpropagation.  The proof may seem complicated.  But it's really
 just the outcome of carefully applying the chain rule.  A little less
 succinctly, we can think of backpropagation as a way of computing the
 gradient of the cost function by systematically applying the chain
-rule from multi-variable calculus.  That's all there really is to
-backpropagation - the rest is details.</p>
-<p><h3><a name="the_backpropagation_algorithm"></a><a href="#the_backpropagation_algorithm">The backpropagation algorithm</a></h3></p>
-<p>The backpropagation equations provide us with a way of computing the
+rule from multi-variable calculus. 
+That's all there really is to backpropagation - the rest is details.-->
+以上で逆伝播の4つの基本的な式の証明が完了しました。
+証明は複雑にみえたかもしれません。
+しかし、これらは連鎖律を慎重に適用した結果にしか過ぎません。
+もう少し詳しく言えば、逆伝播は多変数関数の微分で使われる連鎖律をシステマチックに適用する事で、コスト関数の勾配を計算する方法と見る事ができます。
+それが逆伝播の正体で、残りの部分は細かな事です。
+</p>
+<p><h3><a name="the_backpropagation_algorithm"></a><a href="#the_backpropagation_algorithm">
+<!--The backpropagation algorithm-->
+逆伝播アルゴリズム
+</a></h3></p>
+<p>
+<!--The backpropagation equations provide us with a way of computing the
 gradient of the cost function.  Let's explicitly write this out in the
 form of an algorithm:
 <ol>
@@ -1403,8 +1413,27 @@ form of an algorithm:
 <p><li> <strong>Output:</strong> The gradient of the cost function is given by
   $\frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j$ and
   $\frac{\partial C}{\partial b^l_j} = \delta^l_j$.
-</ol></p>
-<p>Examining the algorithm you can see why it's called
+</ol>-->
+逆伝播の式により、コスト関数の勾配を計算が可能になります。
+その方法を具体的にアルゴリズムの形で書き下してみましょう。
+<ol>
+<li> <strong>入力 $x$：</strong>
+入力層に対応する活性$a^{1}$をセットする</p>
+<p><li> <strong>フィードフォワード：</strong>
+各$l = 2, 3, \ldots, L$に対し、$z^{l} = w^l a^{l-1}+b^l$ and $a^{l} = \sigma(z^{l})$を計算する</p>
+<p><li> <strong>誤差$\delta^L$を出力：</strong>
+誤差ベクトル$\delta^{L} = \nabla_a C \odot \sigma'(z^L)$を計算する</p>
+<p><li> <strong>誤差を逆伝播：</strong>
+各$l = L-1, L-2, \ldots, 2$に対し、$\delta^{l} = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^{l})$を計算する</p>
+<p><li> <strong>出力：</strong>
+コスト関数の勾配は
+$\frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j$と
+$\frac{\partial C}{\partial b^l_j} = \delta^l_j$
+で得られる
+</ol>
+</p>
+<p>
+<!--Examining the algorithm you can see why it's called
 <em>back</em>propagation.  We compute the error vectors $\delta^l$
 backward, starting from the final layer.  It may seem peculiar that
 we're going through the network backward.  But if you think about the
@@ -1412,19 +1441,41 @@ proof of backpropagation, the backward movement is a consequence of
 the fact that the cost is a function of outputs from the network.  To
 understand how the cost varies with earlier weights and biases we need
 to repeatedly apply the chain rule, working backward through the
-layers to obtain useable expressions.</p>
-<p><h4><a name="exercises_675621"></a><a href="#exercises_675621">Exercises</a></h4><ul>
-<li><strong>Backpropagation with a single modified neuron</strong> Suppose we modify
+layers to obtain useable expressions.-->
+アルゴリズムを見ると、これがなぜ<em>逆</em>伝播と呼ばれるかがわかるでしょう。
+最終層から始まり、逆向きに誤差ベクトル$\delta^l$を計算しています。
+ネットワークを逆向きに辿るのが奇妙に思われるかもしれません。
+しかし、逆伝播の証明を思い返すと、コストはニューラルネットワークの出力についての関数であるという事から、逆伝播の方向が決まっている事がわかります。
+前段の重みやバイアスによりコストがどのように変化するかを見るためには、連鎖律を繰り返し適用しなければならず、所望の計算式を得るにはレイヤーを逆方向に辿っていく必要があります。
+</p>
+<p><h4><a name="exercises_675621"></a><a href="#exercises_675621">
+<!--Exercises-->
+演習
+</a></h4><ul>
+<li><strong>
+<!--Backpropagation with a single modified neuron-->
+ニューロンの一つを差し替えた時の逆伝播
+</strong>
+<!--Suppose we modify
   a single neuron in a feedforward network so that the output from the
   neuron is given by $f(\sum_j w_j x_j + b)$, where $f$ is some
   function other than the sigmoid.  How should we modify the
-  backpropagation algorithm in this case?</p>
-<p><li><strong>Backpropagation with linear neurons</strong> Suppose we replace the
+  backpropagation algorithm in this case?-->
+フィードフォワードネットワークの特定の一つのニューロンを、$f(\sum_j w_j x_j + b)$を出力するように変更したとします。ここで、$f$はシグモイド以外の適当な関数です。
+この場合、逆伝播アルゴリズムはどのように変更すればよいでしょう。
+</p>
+<p><li><strong>
+<!--Backpropagation with linear neurons-->
+線形ニューロンでの逆伝播
+</strong>
+<!--Suppose we replace the
   usual non-linear $\sigma$ function with $\sigma(z) = z$ throughout
-  the network.  Rewrite the backpropagation algorithm for this case.
+  the network.  Rewrite the backpropagation algorithm for this case.-->
+ニューラルネットワーク内の非線形の$\sigma$関数を$\sigma(z) = z$に変更したとします。
+逆伝播アルゴリズムをこの変更にあうように書き直してください。
 </ul></p>
-<p>As I've described it above, the backpropagation algorithm computes the
-gradient of the cost function for a single training example, $C =
+<p>
+<!--As I've described it above, the backpropagation algorithm computes the gradient of the cost function for a single training example, $C =
 C_x$.  In practice, it's common to combine backpropagation with a
 learning algorithm such as stochastic gradient descent, in which we
 compute the gradient for many training examples.  In particular, given
@@ -1442,17 +1493,39 @@ a gradient descent learning step based on that mini-batch:
 <p><li> <strong>Backpropagate the error:</strong> For each $l = L-1, L-2,
   \ldots, 2$ compute $\delta^{x,l} = ((w^{l+1})^T \delta^{x,l+1})
   \odot \sigma'(z^{x,l})$.
+</ul>
 </ul></p>
 <p><li> <strong>Gradient descent:</strong> For each $l = L, L-1, \ldots, 2$
   update the weights according to the rule $w^l \rightarrow
   w^l-\frac{\eta}{m} \sum_x \delta^{x,l} (a^{x,l-1})^T$, and the
   biases according to the rule $b^l \rightarrow b^l-\frac{\eta}{m}
-  \sum_x \delta^{x,l}$.</p>
-<p></ol>
-Of course, to implement stochastic gradient descent in practice you
+  \sum_x \delta^{x,l}$.-->
+前述のように、逆伝播アルゴリズムは単一の訓練例に対するコスト関数$C = C_x$に対する勾配を計算します。
+実際の実装では、確率的勾配降下法など、、多数の訓練例に対する勾配を計算する学習アルゴリズムを逆伝播と組み合わせるのが一般的です。
+特に、次のアルゴリズムはミニバッチに基づく勾配降下法を用いる学習ステップです。ミニバッチとして$m$個の訓練例を与えています。
+<ol>
+<li> <strong>訓練例のセットを入力</strong></p>
+<p><li> <strong>各訓練例$x$に対して：</strong>
+対応する活性$a^{x, 1}$をセットし、以下のステップを行う：</p>
+<p><ul>
+<li> <strong>フィードフォワード：</strong>
+各$l = 2, 3, \ldots, L$に対し、$z^{x,l} = w^l a^{x,l-1}+b^l$と$a^{x,l} = \sigma(z^{x,l})$を計算する</p>
+<p><li> <strong>誤差$\delta^{x,L}$を出力：</strong>
+ベクトル$\delta^{x,L} = \nabla_a C_x \odot \sigma'(z^{x,L})$を計算する</p>
+<p><li> <strong>誤差を逆伝播する：</strong>
+各$l = L-1, L-2, \ldots, 2$に対し、$\delta^{x,l} = ((w^{l+1})^T \delta^{x,l+1}) \odot \sigma'(z^{x,l})$を計算する
+</ul>
+</p>
+<p><li> <strong>勾配降下：</strong>
+各$l = L, L-1, \ldots, 2$に対し、$w^l \rightarrow w^l-\frac{\eta}{m} \sum_x \delta^{x,l} (a^{x,l-1})^T$というルールで重みを、$b^l \rightarrow b^l-\frac{\eta}{m} \sum_x \delta^{x,l}$というルールでバイアスを更新する</p>
+<p></ol></p>
+<!--Of course, to implement stochastic gradient descent in practice you
 also need an outer loop generating mini-batches of training examples,
 and an outer loop stepping through multiple epochs of training.  I've
-omitted those for simplicity.  </p>
+omitted those for simplicity. -->
+もちろん、確率的勾配降下法を実装する際は、訓練例のミニバッチを作成する外部ループと訓練を複数回のエポックを繰り返す為の外部ループが必要です。
+簡単のためにそれらは記述しませんでした。
+</p>
 <p></p>
 <p>
 <h3><a name="the_code_for_backpropagation"></a><a href="#the_code_for_backpropagation">The code for backpropagation</a></h3></p>
