@@ -22,3 +22,10 @@ quadratic cost function	2乗コスト関数
 c.f.	 参考：
 error	 誤差
 saturation/saturated	飽和/飽和している
+chain rule		連鎖律
+feed forward		フィードフォワード
+feed forward network	フィードフォワードネットワーク
+Exercise		演習
+linear			線形（線型？）
+mini-batch		ミニバッチ
+epoch			エポック（訓練データ全体を1巡する事）
