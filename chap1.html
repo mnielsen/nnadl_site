@@ -426,6 +426,7 @@ can engage in sophisticated decision making.
 
 
 </p><p>
+  <!--
   Incidentally, when I defined perceptrons I said that a perceptron has
 just a single output.  In the network above the perceptrons look like
 they have multiple outputs.  In fact, they're still single output.
@@ -433,9 +434,9 @@ The multiple output arrows are merely a useful way of indicating that
 the output from a perceptron is being used as the input to several
 other perceptrons.  It's less unwieldy than drawing a single output
   line which then splits.
-<!--
-先ほどパーセプトロンを定義した時には、パーセプトロンは出力をひとつしか持たないと言いました。ところが上図のネットワークの中のパーセプトロンは、複数の出力を持つように描かれていますね。でも、あくまでもパーセプトロンの出力はひとつなんです。出力の矢印が複数あるのは、ただ、あるパーセプトロンの出力が複数のパーセプトロンへの入力として使われることを示しているにすぎません。こうすれば、一つの出力矢印を描いてから分岐させるよりも、若干見やすくなりますからね。
   -->
+先ほどパーセプトロンを定義した時には、パーセプトロンは出力をひとつしか持たないと言いました。ところが上図のネットワークの中のパーセプトロンは、複数の出力を持つように描かれていますね。でも、あくまでもパーセプトロンの出力はひとつなんです。出力の矢印が複数あるのは、ただ、あるパーセプトロンの出力が複数のパーセプトロンへの入力として使われることを示しているにすぎません。こうすれば、一つの出力矢印を描いてから分岐させるよりも、若干見やすくなりますからね。
+
 
 </p><p>
 
@@ -618,24 +619,30 @@ equal to 3, and a single weight of -4, as marked: -->
 </center>
 
 
-
+<!--
 Up to now I've been drawing inputs like $x_1$ and $x_2$ as variables
 floating to the left of the network of perceptrons.  In fact, it's
 conventional to draw an extra layer of perceptrons - the <em>input
   layer</em> - to encode the inputs:
-
+-->
 ここまで、$x_1$ や $x_2$ といった入力はパーセプトロンネットワークの左に浮いている変数として描いてきました。実は、入力を表現するには、<em>入力層</em>と呼ばれる追加の層を設けるやり方が標準的です。
 
 
 <center>
  <img src="images/tikz6.png"/>
 </center>
+<!--
 This notation for input perceptrons, in which we have an output, but
-no inputs,
+no inputs,-->
+
+入力パーセプトロンは、入力がなく、出力がひとつしかないので、このように
 <center>
 <img src="images/tikz7.png"/>
 </center>
-is a shorthand.  It doesn't actually mean a perceptron with no inputs.
+<!--is a shorthand.-->
+表記することにします。
+
+It doesn't actually mean a perceptron with no inputs.
 To see this, suppose we did have a perceptron with no inputs.  Then
 the weighted sum $\sum_j w_j x_j$ would always be zero, and so the
 perceptron would output $1$ if $b > 0$, and $0$ if $b \leq 0$.  That
