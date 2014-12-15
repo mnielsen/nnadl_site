@@ -1,31 +1,32 @@
-backpropagation		逆伝播
-bias			バイアス(パーセプトロンの)
-computer vision		コンピュータ視覚？
-deep learning		深層学習
-evidence		情報(パーセプトロンの入力として使われる場合。「証拠」では変なので…代案求む)
-handwritten digits	手書き数字
-network	 		ニューラルネットワーク(network単体でニューラルネットワークを意味している場合。)
-training example        訓練例        
-weight	 		重み(パーセプトロンの)
-gradient		勾配
-gradient descent	勾配降下法
-cost function		コスト関数(costとだけ書かれている時も「コスト関数」と訳している)
-chapter			章
-input/output		（ニューラルネットワークの）入力/出力
-neuron			ニューロン
-layer			層
+# 英単語のアルファベット順に並べてください。
 activation		活性
 activation function	活性化関数
-vector			ベクトル
-weighted input		重み付き入力
-quadratic cost function	2乗コスト関数
+backpropagation		逆伝播
+bias			バイアス(パーセプトロンの)
 c.f.	 参考：
-error	 誤差
-saturation/saturated	飽和/飽和している
 chain rule		連鎖律
+chapter			章
+computer vision		コンピュータ視覚？
+cost function		コスト関数(costとだけ書かれている時も「コスト関数」と訳している)
+deep learning		深層学習
+epoch			エポック（訓練データ全体を1巡する事）
+error	 誤差
+evidence		情報(パーセプトロンの入力として使われる場合。「証拠」では変なので…代案求む)
+exercise		演習
 feed forward		フィードフォワード
 feed forward network	フィードフォワードネットワーク
-Exercise		演習
+gradient		勾配
+gradient descent	勾配降下法
+handwritten digits	手書き数字
+input/output		（ニューラルネットワークの）入力/出力
+layer			層
 linear			線形（線型？）
 mini-batch		ミニバッチ
-epoch			エポック（訓練データ全体を1巡する事）
+network	 		ニューラルネットワーク(network単体でニューラルネットワークを意味している場合。)
+neuron			ニューロン
+quadratic cost function	2乗コスト関数
+saturation/saturated	飽和/飽和している
+training example        訓練例        
+vector			ベクトル
+weight	 		重み(パーセプトロンの)
+weighted input		重み付き入力
