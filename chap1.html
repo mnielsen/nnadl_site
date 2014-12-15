@@ -571,12 +571,13 @@ gate!
  <img src="images/tikz3.png"/>
 </center>
 
+<!--
 To get an equivalent network of perceptrons we replace all the
 <CODE>NAND</CODE> gates by perceptrons with two inputs, each with weight
 $-2$, and an overall bias of $3$.  Here's the resulting network.  Note
 that I've moved the perceptron corresponding to the bottom right
 <CODE>NAND</CODE> gate a little, just to make it easier to draw the arrows
-on the diagram:
+on the diagram:-->
 
 この論理回路と等価なパーセプトロンを得るには、回路内の
 <CODE>NAND</CODE>ゲートをすべて、重み
@@ -588,6 +589,8 @@ $-2$の入力を二つ持ち、バイアスが$3$であるパーセプトロン�
 <center>
  <img src="images/tikz4.png"/>
 </center>
+
+<!--
 One notable aspect of this network of perceptrons is that the output
 from the leftmost perceptron is used twice as input to the bottommost
 perceptron.  When I defined the perceptron model I didn't say whether
@@ -598,14 +601,32 @@ connection with a weight of -4 instead of two connections with -2
 weights.  (If you don't find this obvious, you should stop and prove
 to yourself that this is equivalent.)  With that change, the network
 looks as follows, with all unmarked weights equal to -2, all biases
-equal to 3, and a single weight of -4, as marked:
+equal to 3, and a single weight of -4, as marked: -->
+
+このニューラルネットワークの中でひとつ注目すべき点は、一番左のパーセプトロンからの出力が一番下のパーセプトロンの入力として二度使われている点です。
+パーセプトロンの定義を与えたとき、このような、同じ箇所に同一の出力が二回入力される場合が許されるのか否かについては言及しませんでした。
+実のところ、このような重複入力を許すかどうかは問題になりません。
+仮に、重複入力を許さないことにしたとしても、二つの入力をくっつけて、
+重みが-2である入力をふたつ用いるかわりに、
+重みが-4の入力をひとつ使えばいいのです。
+（もし、あなたがこれを自明に思えないなら、ここで立ち止まって、等価性を自分で証明してみるべきです。）
+この変更によって、ニューラルネットワークは以下のようになります。ここで、重みが書いてない矢印の重みはすべて-2で、すべてのバイアスは3で、ひとつだけ重みが書いてある矢印の重みは-4です。
+
+
 <center>
  <img src="images/tikz5.png"/>
 </center>
+
+
+
 Up to now I've been drawing inputs like $x_1$ and $x_2$ as variables
 floating to the left of the network of perceptrons.  In fact, it's
 conventional to draw an extra layer of perceptrons - the <em>input
   layer</em> - to encode the inputs:
+
+ここまで、$x_1$ や $x_2$ といった入力はパーセプトロンネットワークの左に浮いている変数として描いてきました。実は、入力を表現するには、<em>入力層</em>と呼ばれる追加の層を設けるやり方が標準的です。
+
+
 <center>
  <img src="images/tikz6.png"/>
 </center>
