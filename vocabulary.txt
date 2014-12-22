@@ -29,3 +29,6 @@ Exercise		演習
 linear			線形（線型？）
 mini-batch		ミニバッチ
 epoch			エポック（訓練データ全体を1巡する事）
+derivative		微分（or 導関数？）
+pertubation		摂動
+
