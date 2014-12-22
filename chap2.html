@@ -1638,18 +1638,27 @@ omitted those for simplicity. -->
 </p>
 <p></p>
 <p>
-<h3><a name="the_code_for_backpropagation"></a><a href="#the_code_for_backpropagation">The code for backpropagation</a></h3></p>
-<p>Having understood backpropagation in the abstract, we can now
+<h3><a name="the_code_for_backpropagation"></a><a href="#the_code_for_backpropagation">
+<!--The code for backpropagation-->
+逆伝播の実装
+</a></h3></p>
+<p>
+<!--Having understood backpropagation in the abstract, we can now
 understand the code used in the last chapter to implement
 backpropagation.  Recall from
-<a href="chap1.html#implementing_our_network_to_classify_digits">that
-  chapter</a> that the code was contained in the <tt>update_mini_batch</tt>
+<a href="chap1.html#implementing_our_network_to_classify_digits">that chapter</a>
+that the code was contained in the <tt>update_mini_batch</tt>
 and <tt>backprop</tt> methods of the <tt>Network</tt> class.  The code for
 these methods is a direct translation of the algorithm described
 above.  In particular, the <tt>update_mini_batch</tt> method updates the
 <tt>Network</tt>'s weights and biases by computing the gradient for the
-current <tt>mini_batch</tt> of training examples:
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Network</span><span class="p">():</span>
+current <tt>mini_batch</tt> of training examples:-->
+
+逆伝播の理論を理解したので、前章で逆伝播を実装するのに利用したコードを理解できます。
+<a href="chap1.html#implementing_our_network_to_classify_digits">この章</a>を思い出すと、逆伝播のコードは<tt>Network</tt>クラスの<tt>update_minibatch</tt>メソッドと<tt>backprop</tt>メソッドに含まれていました。
+これらのコードは前述のアルゴリズムのそのままコードに翻訳したものです。
+特に、<tt>update_mini_batch</tt>メソッドは現在の訓練例の<tt>mini_batch</tt>に対する勾配を計算する事で、<tt>Network</tt>クラスの重みとバイアスを更新しています。
+<!--<div class="highlight"><pre><span class="k">class</span> <span class="nc">Network</span><span class="p">():</span>
 <span class="o">...</span>
     <span class="k">def</span> <span class="nf">update_mini_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mini_batch</span><span class="p">,</span> <span class="n">eta</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Update the network&#39;s weights and biases by applying</span>
@@ -1667,12 +1676,30 @@ current <tt>mini_batch</tt> of training examples:
         <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nb</span> 
                        <span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">nb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">,</span> <span class="n">nabla_b</span><span class="p">)]</span>
 </pre></div>
-
-Most of the work is done by the line
+-->
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Network</span><span class="p">():</span>
+<span class="o">...</span>
+    <span class="k">def</span> <span class="nf">update_mini_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mini_batch</span><span class="p">,</span> <span class="n">eta</span><span class="p">):</span>
+<span class="sd">        &quot;&quot;&quot;ミニバッチ一つ分に逆伝播を用いて勾配降下法を適用し、</span>
+<span class="sd">        ニューラルネットワークの重みとバイアスを更新する。</span>
+<span class="sd">        &quot;mini_batch&quot;はタプル&quot;(x, y)&quot;のリストで&quot;、</span>
+<span class="sd">        eta&quot;は学習率。&quot;&quot;&quot;</span>
+        <span class="n">nabla_b</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">]</span>
+        <span class="n">nabla_w</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">mini_batch</span><span class="p">:</span>
+            <span class="n">delta_nabla_b</span><span class="p">,</span> <span class="n">delta_nabla_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backprop</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="n">nabla_b</span> <span class="o">=</span> <span class="p">[</span><span class="n">nb</span><span class="o">+</span><span class="n">dnb</span> <span class="k">for</span> <span class="n">nb</span><span class="p">,</span> <span class="n">dnb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nabla_b</span><span class="p">,</span> <span class="n">delta_nabla_b</span><span class="p">)]</span>
+            <span class="n">nabla_w</span> <span class="o">=</span> <span class="p">[</span><span class="n">nw</span><span class="o">+</span><span class="n">dnw</span> <span class="k">for</span> <span class="n">nw</span><span class="p">,</span> <span class="n">dnw</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nabla_w</span><span class="p">,</span> <span class="n">delta_nabla_w</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nw</span> 
+                        <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">nw</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="n">nabla_w</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nb</span> 
+                       <span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">nb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">,</span> <span class="n">nabla_b</span><span class="p">)]</span>
+</pre></div>
+<!--Most of the work is done by the line
 <tt>delta_nabla_b, delta_nabla_w = self.backprop(x, y)</tt> which uses
 the <tt>backprop</tt> method to figure out the partial derivatives
-$\partial C_x / \partial b^l_j$ and $\partial C_x / \partial
-w^l_{jk}$.  The <tt>backprop</tt> method follows the algorithm in the
+$\partial C_x / \partial b^l_j$ and $\partial C_x / \partial w^l_{jk}$.
+  The <tt>backprop</tt> method follows the algorithm in the
 last section closely.  There is one small change - we use a slightly
 different approach to indexing the layers.  This change is made to
 take advantage of a feature of Python, namely the use of negative list
@@ -1684,9 +1711,17 @@ derivative $\sigma'$ and its vectorized form, and the derivative of
 the cost function.  With these inclusions you should be able to
 understand the code in a self-contained way.  If something's tripping
 you up, you may find it helpful to consult
-<a href="chap1.html#implementing_our_network_to_classify_digits">the
-  original description (and complete listing) of the code</a>.
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Network</span><span class="p">():</span>
+<a href="chap1.html#implementing_our_network_to_classify_digits">the original description (and complete listing) of the code</a>.
+-->
+ほとんどの作業は<tt>delta_nabla_b, delta_nabla_w = self.backprop(x, y)</tt>の行で行われています。ここでは、<tt>backprop</tt>メソッドを利用して偏微分$\partial C_x / \partial b^l_j$と$\partial C_x / \partial w^l_{jk}$を計算しています。
+<tt>backprop</tt>メソッドは前節のアルゴリズムに従って実装されています。
+前節の説明から層の添字の振り方について若干の変更を行っています。
+この変更はPythonの特徴、具体的にはリストを後ろから数える添字を活用するために行われています（例えば、<tt>l[-3]</tt>はリスト<tt>l</tt>の後ろから3番目の要素です）。
+$\sigma$関数とそれをベクトル化したもの、$\sigma$関数の導関数とそれをベクトル化したもの、及びコスト関数の微分を計算するためのヘルパー関数と併せて、<tt>backprop</tt>メソッドは後述しています。
+これらのヘルパー関数を併せて見れば、自己完結した形でコードを理解できるはずです。
+もしどこかでつまづいたら
+<a href="chap1.html#implementing_our_network_to_classify_digits">もとのコードの説明（と全コード）</a>にあたるのが良いでしょう。
+<!--<div class="highlight"><pre><span class="k">class</span> <span class="nc">Network</span><span class="p">():</span>
 <span class="o">...</span>
    <span class="k">def</span> <span class="nf">backprop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a tuple &quot;(nabla_b, nabla_w)&quot; representing the</span>
@@ -1738,6 +1773,58 @@ you up, you may find it helpful to consult
 
 <span class="k">def</span> <span class="nf">sigmoid_prime</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Derivative of the sigmoid function.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+
+<span class="n">sigmoid_prime_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">sigmoid_prime</span><span class="p">)</span>
+</pre></div>-->
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Network</span><span class="p">():</span>
+<span class="o">...</span>
+   <span class="k">def</span> <span class="nf">backprop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="sd">        &quot;&quot;&quot;コスト関数の勾配を表すタプル&quot;(nabla_b, nabla_w)&quot;を返却する。</span>
+<span class="sd">        &quot;self.biases&quot; and &quot;self.weights&quot;と同様に、</span>
+<span class="sd">        &quot;nabla_b&quot;と&quot;nabla_w&quot;はnumpyのアレイのリストで</span>
+<span class="sd">        各要素は各層に対応する。&quot;&quot;&quot;</span>
+        <span class="n">nabla_b</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">]</span>
+        <span class="n">nabla_w</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">]</span>
+        <span class="c"># フィードフォワード</span>
+        <span class="n">activation</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">activations</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="c"># list to store all the activations, layer by layer</span>
+        <span class="n">zs</span> <span class="o">=</span> <span class="p">[]</span> <span class="c"># 層ごとにzベクトルを格納するリスト</span>
+        <span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">):</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">activation</span><span class="p">)</span><span class="o">+</span><span class="n">b</span>
+            <span class="n">zs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+            <span class="n">activation</span> <span class="o">=</span> <span class="n">sigmoid_vec</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+            <span class="n">activations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">activation</span><span class="p">)</span>
+        <span class="c"># バックワードパス</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cost_derivative</span><span class="p">(</span><span class="n">activations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> \
+            <span class="n">sigmoid_prime_vec</span><span class="p">(</span><span class="n">zs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">nabla_b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">delta</span>
+        <span class="n">nabla_w</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">activations</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
+        <span class="c"># 下記のループ内の変数lは第2章での記法と若干異なる使われ方をしている。</span>
+        <span class="c"># ここで、l = 1は最終層を、l = 2は最後から2番目の層を意味する（以下同様）。</span>
+        <span class="c"># 本書内での方法から番号付けのルールを変えているのは、</span>
+        <span class="c"># Pythonがリストで負の添字を利用できる事を利用するためである。</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_layers</span><span class="p">):</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">zs</span><span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">]</span>
+            <span class="n">spv</span> <span class="o">=</span> <span class="n">sigmoid_prime_vec</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+            <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">delta</span><span class="p">)</span> <span class="o">*</span> <span class="n">spv</span>
+            <span class="n">nabla_b</span><span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">delta</span>
+            <span class="n">nabla_w</span><span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">activations</span><span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">nabla_b</span><span class="p">,</span> <span class="n">nabla_w</span><span class="p">)</span>
+<span class="o">...</span>
+    <span class="k">def</span> <span class="nf">cost_derivative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_activations</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;出力活性に対する偏微分\partial C_x / \partial a </span>
+<span class="sd">        のベクトルを返却する。&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">output_activations</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> 
+
+<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;シグモイド関数。&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+
+<span class="n">sigmoid_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sigmoid_prime</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;シグモイド関数の導関数。&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
 
 <span class="n">sigmoid_prime_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">sigmoid_prime</span><span class="p">)</span>
