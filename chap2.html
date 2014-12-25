@@ -52,7 +52,10 @@
   </head>
   <body><div class="header"><h1 class="chapter_number">
   <a href="">CHAPTER 2</a></h1>
-  <h1 class="chapter_title"><a href="">How the backpropagation algorithm works</a></h1></div><div class="section"><div id="toc"> 
+  <h1 class="chapter_title"><a href="">
+<!--How the backpropagation algorithm works-->
+逆伝播の仕組み
+</a></h1></div><div class="section"><div id="toc"> 
 <p class="toc_title"><a href="index.html">Neural Networks and Deep Learning</a> (draft contents)</p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">Using neural nets to recognize handwritten digits</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
 <script>
 $('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() { 
@@ -63,7 +66,10 @@ $('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(functio
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow.png');
    };
    $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});  
-});</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">How the backpropagation algorithm works</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output
+});</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">
+<!--How the backpropagation algorithm works-->
+逆伝播の仕組み
+</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output
 _from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output
   from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
 <script>
@@ -178,9 +184,9 @@ There was, however, a gap in our explanation: we didn't discuss how to
 compute the gradient of the cost function.  That's quite a gap!  In
 this chapter I'll explain a fast algorithm for computing such
 gradients, an algorithm known as <em>backpropagation</em>. -->
-<a href="chap1.html">前章</a>では、勾配降下法を用いてニューラルネットワークが重みとバイアスをどのように学習するかをみました。
-しかし、その説明にはギャップがありました。具体的には、コスト関数の勾配をどのように計算するかを議論していませんでした。とても大きなギャップです！
-本章では、<em>逆伝搬</em>と呼ばれる、コスト関数の勾配を高速に計算するアルゴリズムを説明します。
+<a href="chap1.html">前章</a>では、勾配降下法を用いてニューラルネットワークが重みとバイアスをどのように学習するかを説明しました。
+しかし、その説明にはギャップがありました。具体的には、コスト関数の勾配をどのように計算するかを議論していません。これはとても大きなギャップです！
+本章では、<em>逆伝播</em>と呼ばれる、コスト関数の勾配を高速に計算するアルゴリズムを説明します。
 </p>
 <p>
 <p>
@@ -199,11 +205,15 @@ networks.-->
 逆伝搬アルゴリズムはもともと1970年代に導入されました。
 しかし逆伝搬が評価されたのは、
 <a href="http://en.wikipedia.org/wiki/David_Rumelhart">David Rumelhart</a>・
-<a href="http://www.cs.toronto.edu/&#126;hinton/">Geoffrey Hinton</a・
+<a href="http://www.cs.toronto.edu/&#126;hinton/">Geoffrey Hinton</a>・
 <a href="http://en.wikipedia.org/wiki/Ronald_J._Williams">Ronald Williams</a>
 による1986年の著名な論文が登場してからでした。
-論文ではいくつかのニューラルネットワークに対し、既存の学習方法よりも逆伝搬がずっと早く学習でき、ニューラルネットワークではそれまで解くことができなかった問題を解ける事を示しました。
-今日では、逆伝搬はニューラルネットワークを学習させる便利なアルゴリズムです。
+その論文では、逆伝播を用いると既存の学習方法よりもずっと早く学習できる事をいくつかのニューラルネットワークに対して示し、それまでニューラルネットワークでは解けなかった問題が解ける事を示しました。
+今日では、逆伝播はニューラルネットワークを学習させる便利なアルゴリズムです。
+<!--
+2014/12/24 Kenta OONO
+"workhorse" の訳語がもっとうまいものがあったら偏向したい
+-->
 </p>
 <p>
 <!--This chapter is more mathematically involved than the rest of the
@@ -212,7 +222,7 @@ skip the chapter, and to treat backpropagation as a black box whose
 details you're willing to ignore.  Why take the time to study those
 details?-->
 本章は他の章に比べて数学的に難解です。
-よほど数学に対し熱心でなければ、本章を飛ばして、逆伝搬をブラックボックスとして扱って中身を無視したくなるかもしれません。
+よほど数学に対し熱心でなければ、本章を飛ばして、逆伝播を中身を無視できるブラックボックスとして扱いたくなるかもしれません。
 では、なぜ時間をかけて逆伝搬の詳細を勉強するのでしょうか？
 </p>
 <p>
@@ -228,12 +238,16 @@ gives us detailed insights into how changing the weights and biases
 changes the overall behaviour of the network.  That's well worth
 studying in detail.-->
 その理由はもちろん理解のためです。
-逆伝搬の本質はコスト関数$C$をネットワークの重み$w$（もしくはバイアス$b$）に関する偏微分$\partial C / \partial w$です。
-偏微分をみると重みとバイアスを変化させた時のコスト関数の変化の度合いがわかります。
-偏微分の式は若干複雑ですが、そこには美しい構造があり、式中の各要素には自然で直感的な解釈を与えることができます。
-逆伝搬は単なる学習のための高速なアルゴリズムというだけではありません。
-逆伝搬を見ることで、重みやバイアスを変化させるとニューラルネットワークの全体の挙動がどのように変化するかに関して深い洞察が得られます。
-逆誤差を勉強する価値はそこにあるのです。
+逆伝播の本質はコスト関数$C$のネットワークの重み$w$（もしくはバイアス$b$）に関する偏微分$\partial C / \partial w$ （$\partial C / \partial b$）です。
+<!-- 
+2014/12/24 Kenta OONO 
+バイアスの場合の数式$\partial C / \partial b$を追加しました
+-->
+偏微分をみると、重みとバイアスを変化させた時のコスト関数の変化の度合いがわかります。
+偏微分の式は若干複雑ですが、そこには美しい構造があり、式の各要素には自然で直感的な解釈を与える事ができます。
+そうです、逆伝播は単なる高速な学習アルゴリズムではありません。
+逆伝播をみることで、重みやバイアスを変化させた時のニューラルネットワーク全体の挙動の変化に関して深い洞察が得られます。
+逆伝播を勉強する価値はそこにあるのです。
 </p>
 <p>
 <!--With that said, if you want to skim the chapter, or jump straight to
@@ -243,16 +257,16 @@ are, of course, points later in the book where I refer back to results
 from this chapter.  But at those points you should still be able to
 understand the main conclusions, even if you don't follow all the
 reasoning.-->
-そうは言うものの、本章をざっと読んだり、読み飛ばして次の章に行っても大丈夫です。
-この本は逆伝搬をブラックボックスとして扱っても理解できるようになっています。
+そうは言うものの、本章をざっと読んだり、読み飛ばして次の章に進んでも大丈夫です。
+この本は逆伝播をブラックボックスとして扱っても他の章を理解できるように書いています。
 もちろん次章以降で本章の結果を参照する部分はあります。
-しかし、その参照部分の議論をすべて追わなくても主たる結論は理解できるようになっています。
+しかし、その参照部分の議論をすべて追わなくても、主な結論は理解できるはずです。
 </p>
 <p><h3><a name="warm_up_a_fast_matrix-based_approach_to_computing_the_output
 _from_a_neural_network"></a><a href="#warm_up_a_fast_matrix-based_approach_to_computing_the_output
 _from_a_neural_network">
 <!--Warm up: a fast matrix-based approach to computing the output from a neural network-->
-ウォーミングアップ：行列を用いたニューラルネットワークの出力の計算
+ウォーミングアップ：ニューラルネットワークの出力の行列を用いた高速な計算
 </a></h3></p>
 <p>
 <!--Before discussing backpropagation, let's warm up with a fast
@@ -263,12 +277,16 @@ We actually already briefly saw this algorithm
 worth revisiting in detail.  In particular, this is a good way of
 getting comfortable with the notation used in backpropagation, in a
 familiar context.-->
-逆伝搬を議論する前に、ニューラルネットワークの出力を高速に計算する行列を用いたアルゴリズムでウォーミングアップしましょう。
+逆伝播を議論する前に、ニューラルネットワークの出力を高速に計算する行列を用いたアルゴリズムでウォーミングアップしましょう。
 私達は
 <a href="chap1.html#implementing_our_network_to_classify_digits">前章の最後のあたり</a>
 で既にこのアルゴリズムを簡単に見ています。
 しかしその時はざっと書いていたので、ここで立ち戻って詳しく説明しようと思います。
-これまで説明した良くわかっている内容で逆伝搬で使われる記号に慣れる事ができるはずです。
+特にこれまで説明して慣れた文脈で逆伝播で使用する記号に慣れるのに、このウォーミングアップは良い方法です。
+<!--
+2014/12/24 Kenta OONO
+"in a familiar context"が何を指しているのかがよくわかりませんでした
+-->
 </p>
 <p>
 <!--Let's begin with a notation which lets us refer to weights in the
@@ -280,7 +298,12 @@ connection from the fourth neuron in the second layer to the second
 neuron in the third layer of a network:-->
 ニューラルネットワーク中の重みを曖昧性なく指定する表記方法からまず始めましょう。
 $w^l_{jk}$で$(l-1)$番目の層の$k$番目のニューロンから$l$番目の層の$j$番目のニューロンへの接続に対する重みを表します。
-例えば、下図は2番目の層の4番目のニューロンから3番目の層の2番目の層への接続の重みを表します。
+例えば、下図は2番目の層の4番目のニューロンから3番目の層の2番目のニューロンへの接続の重みを表します。
+<!--
+2014/12/24 Kenta OONO
+- "connection"を愚直に「接続」と訳しているけれど、固いので解釈して「枝」としてもいいかも
+- l-th layer は「l番目の層」と「l層目」のどちらが適切か？
+-->
 <center>
 <img src="images/tikz16.png"/>
 </center>
@@ -294,8 +317,9 @@ quirk below.-->
 この表記方法は最初は面倒で、使いこなすのにある程度の練習が必要かもしれません。
 しかし、少し頑張ればこの表記方法は簡単で自然だと感じるようになるはずです。
 この表記方法で若干曲者なのが、$j$と$k$の順番です。
-$j$が入力ニューロン、$k$が出力ニューロンとするほうが理にかなっていると思うかもしれませんが、実際には逆にしています。
-その理由は後ほど説明します。
+$j$を入力ニューロン、$k$を出力ニューロンとする方が理にかなっていると思うかもしれませんが、
+実際には逆にしています。
+奇妙なこの記述方法の理由は後程説明します。
 </p>
 <p>
 <!--
@@ -308,7 +332,6 @@ shows examples of these notations in use:-->
 具体的には、$b^l_j$で$l$番目の層の$j$番目のニューロンのバイアスを表します。
 また、$a^l_j$で$l$番目の層の$j$番目のニューロンの活性を表します。
 下図はこれらの表記方法の利用例です。
-<!-- l番目の層？l層目？ -->
 <center>
 <img src="images/tikz17.png"/>
 </center>
@@ -328,17 +351,8 @@ $(l-1)^{\rm th}$ layer by the equation (compare Equation
 <a class="displaced_anchor" name="eqtn23"></a>\begin{eqnarray} 
   a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right),
 \tag{23}\end{eqnarray}
-where the sum is over all neurons $k$ in the $(l-1)^{\rm th}$ layer.  To
-rewrite this expression in a matrix form we define a <em>weight
-  matrix</em> $w^l$ for each layer, $l$.  The entries of the weight matrix
-$w^l$ are just the weights connecting to the $l^{\rm th}$ layer of neurons,
-that is, the entry in the $j^{\rm th}$ row and $k^{\rm th}$ column is $w^l_{jk}$.
-Similarly, for each layer $l$ we define a <em>bias vector</em>, $b^l$.
-You can probably guess how this works - the components of the bias
-vector are just the values $b^l_j$, one component for each neuron in
-the $l^{\rm th}$ layer.  And finally, we define an activation vector $a^l$
-whose components are the activations $a^l_j$.-->
-これらの表記を用いると、$l$番目の層の$j$番目のニューロンの活性$a^l_j$は、$(l-1)$番目の層の活性と以下の式で関係付けられます(式
+where the sum is over all neurons $k$ in the $(l-1)^{\rm th}$ layer. -->
+これらの表記を用いると、$l$番目の層の$j$番目のニューロンの活性$a^l_j$は、$(l-1)$番目の層の活性と以下の式で関係付けられます（式
 <span id="margin_295319563926_reveal" class="equation_link">(4)</span>
 <span id="margin_295319563926" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
@@ -353,13 +367,26 @@ whose components are the activations $a^l_j$.-->
   a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right).
 \tag{23}\end{eqnarray}
 ここで、和は$(l-1)$番目の層の全てのニューロン$k$について足しています。
-この式を行列で書きなおすため、各層$l$に対し<em>重み行列</em>$w^l$を定義します。
-重み行列の各要素は$l$番目の層のニューロンに向かっている接続の重みです。
-すなわち、$j$行目$k$列目の要素は$w^l_{jk}$とします。
+<!-- To rewrite this expression in a matrix form we define a <em>weight
+  matrix</em> $w^l$ for each layer, $l$.  The entries of the weight matrix
+$w^l$ are just the weights connecting to the $l^{\rm th}$ layer of neurons,
+that is, the entry in the $j^{\rm th}$ row and $k^{\rm th}$ column is $w^l_{jk}$.
+Similarly, for each layer $l$ we define a <em>bias vector</em>, $b^l$.
+You can probably guess how this works - the components of the bias
+vector are just the values $b^l_j$, one component for each neuron in
+the $l^{\rm th}$ layer.  And finally, we define an activation vector $a^l$
+whose components are the activations $a^l_j$.-->
+この式を行列で書き直すため、各層$l$に対し<em>重み行列</em>$w^l$を定義します。
+重み行列$w^l$の各要素は$l$番目の層のニューロンを終点とする接続の重みです。
+<!--
+2014/12/24 Kenta OONO
+「終点」は"connecting to the l-th layer"のtoの訳にあたります
+-->
+すなわち、$j$行目$k$列目の要素を$w^l_{jk}$とします。
 同様に、各層$l$に対し、<em>バイアスベクトル</em>$b^l$を定義します。
-大体想像がつくと思いますが、バイアスベクトルの要素は$b^l_j$達です。
-これらの要素は$l$番目の層の各ニューロンに対し一つずつあります。
-最後に、活性ベクトル$a^l$の要素は活性$a^l_j$達です。
+おそらく想像できると思いますが、バイアスベクトルの要素は$b^l_j$達で、
+$l$番目の層の各ニューロンに対し1つの行列要素が伴います。
+最後に、活性ベクトル$a^l$を活性$a^l_j$達で定義します。
 </p>
 <p>
 <!--The last ingredient we need to rewrite
@@ -373,6 +400,18 @@ whose components are the activations $a^l_j$.-->
 </span>
 <script>$('#margin_910880967978_reveal').click(function() {$('#margin_910880967978').toggle('slow', function() {});});</script>
 in a matrix form is the idea of vectorizing a function such as $\sigma$.
+-->
+<span id="margin_910880967978_reveal" class="equation_link">(23)</span>
+<span id="margin_910880967978" class="marginequation" style="display: none;">
+  <a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
+  \begin{eqnarray} 
+    a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber
+  \end{eqnarray}
+  </a>
+</span>
+<script>$('#margin_910880967978_reveal').click(function() {$('#margin_910880967978').toggle('slow', function() {});});</script>
+を行列形式に書き直すのに必要な最後の要素は、$\sigma$などの関数のベクトル化です。
+<!--
 We met vectorization briefly in the last chapter, but to recap, the
 idea is that we want to apply a function such as $\sigma$ to every
 element in a vector $v$.  We use the obvious notation $\sigma(v)$ to
@@ -386,19 +425,9 @@ vectorized form of $f$ has the effect
   = \left[ \begin{array}{c} 4 \\ 9 \end{array} \right],
 \tag{24}\end{eqnarray}
 that is, the vectorized $f$ just squares every element of the vector.-->
-<span id="margin_910880967978_reveal" class="equation_link">(23)</span>
-<span id="margin_910880967978" class="marginequation" style="display: none;">
-  <a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
-  \begin{eqnarray} 
-    a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber
-  \end{eqnarray}
-  </a>
-</span>
-<script>$('#margin_910880967978_reveal').click(function() {$('#margin_910880967978').toggle('slow', function() {});});</script>
-を行列形式に書き直すのに必要な最後のアイデアは、$\sigma$のような関数のベクトル化です。
-ベクトル化は既に前章で簡単に見てきました。
-要点をまとめると$\sigma$のような関数をベクトル$v$のすべての要素に適用したいというアイデアです。
-このような各要素に対する関数の適用には$\sigma(v)$という自然な表記を用います。
+ベクトル化は既に前章で簡単に見ました。
+要点をまとめると、$\sigma$のような関数をベクトル$v$の各要素に適用したいというのがアイデアです。
+このような各要素への関数適用には$\sigma(v)$という自然な表記を用います。
 つまり、$\sigma(v)$の各要素は$\sigma(v)_j = \sigma(v_j)$です。
 例えば$f(x) = x^2$とすると、次のようになります。
 <a class="displaced_anchor" name="eqtn24"></a>\begin{eqnarray}
@@ -423,36 +452,7 @@ can be rewritten in the beautiful and compact vectorized form
 \begin{eqnarray} 
   a^{l} = \sigma(w^l a^{l-1}+b^l). \tag{25}
 \end{eqnarray}
-
-This expression gives us a much more global way of thinking about how
-the activations in one layer relate to activations in the previous
-layer: we just apply the weight matrix to the activations, then add
-the bias vector, and finally apply the $\sigma$ function*
-<span class="marginnote">
-*By the way, it's this expression that motivates the quirk in the
-  $w^l_{jk}$ notation mentioned earlier.  If we used $j$ to index the
-  input neuron, and $k$ to index the output neuron, then we'd need to
-  replace the weight matrix in Equation
-  <span id="margin_305931363478_reveal" class="equation_link">(25)</span>
-  <span id="margin_305931363478" class="marginequation" style="display: none;">
-  <a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
-  \begin{eqnarray} 
-    a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber
-  \end{eqnarray}</a></span>
-  <script>$('#margin_305931363478_reveal').click(function() {$('#margin_305931363478').toggle('slow', function() {});});</script>
-  by the transpose of the weight matrix.  That's a small change, but
-  annoying, and we'd lose the easy simplicity of saying (and thinking)
-  "apply the weight matrix to the activations".</span>.
-That global view  
-is often easier and more succinct (and involves fewer indices!) than
-the neuron-by-neuron view we've taken to now.  Think of it as a way of
-escaping index hell, while remaining precise about what's going on.
-The expression is also useful in practice, because most matrix
-libraries provide fast ways of implementing matrix multiplication,
-vector addition, and vectorization.  Indeed, the
-<a href="chap1.html#implementing_our_network_to_classify_digits">code</a>
-in the last chapter made implicit use of this expression to compute
-the behaviour of the network.-->
+-->
 この表記方法を用いると、式
 <span id="margin_948905994145_reveal" class="equation_link">(23)</span>
 <span id="margin_948905994145" class="marginequation" style="display: none;">
@@ -467,9 +467,20 @@ the behaviour of the network.-->
 \begin{eqnarray} 
   a^{l} = \sigma(w^l a^{l-1}+b^l). \tag{25}
 \end{eqnarray}
-この表現を用いると、ある層の活性と前の層の活性との関係が俯瞰できます。
-行っているのは活性に対し重み行列を掛け、バイアスベクトルを足し、最後に$\sigma$関数を適用しているだけです。
-<span class="marginnote">*ところで、先ほど挙げた奇妙な$w^l_{jk}$という奇妙な表記を用いた動機はこの式に由来します。もし、$j$を入力ニューロンに用い、$k$を出力ニューロンに用いたとすると、式
+<!--
+This expression gives us a much more global way of thinking about how
+the activations in one layer relate to activations in the previous
+layer: we just apply the weight matrix to the activations, then add
+the bias vector, and finally apply the $\sigma$ function*
+-->
+この表現を用いると、ある層の活性とその前の層の活性との関係を俯瞰できます。
+我々が行っているのは活性に対し重み行列を掛け、バイアスベクトルを足し、最後に$\sigma$関数を適用するだけです。
+<!--
+<span class="marginnote">
+*By the way, it's this expression that motivates the quirk in the
+  $w^l_{jk}$ notation mentioned earlier.  If we used $j$ to index the
+  input neuron, and $k$ to index the output neuron, then we'd need to
+  replace the weight matrix in Equation
   <span id="margin_305931363478_reveal" class="equation_link">(25)</span>
   <span id="margin_305931363478" class="marginequation" style="display: none;">
   <a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
@@ -477,44 +488,69 @@ the behaviour of the network.-->
     a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber
   \end{eqnarray}</a></span>
   <script>$('#margin_305931363478_reveal').click(function() {$('#margin_305931363478').toggle('slow', function() {});});</script>
-  の重み行列は転置行列に置き換えなければなりません。
-  些細な変更ですが、煩わしい上に「重み行列を掛ける」と簡単に言ったり考えたりできなくなってしまいます。
+  by the transpose of the weight matrix.  That's a small change, but
+  annoying, and we'd lose the easy simplicity of saying (and thinking)
+  "apply the weight matrix to the activations".</span>.-->
+<span class="marginnote">*ところで、先ほどの$w^l_{jk}$という奇妙な表記を用いる動機はこの式に由来します。
+もし、$j$を入力ニューロンに用い、$k$を出力ニューロンに用いたとすると、式
+  <span id="margin_305931363478_reveal" class="equation_link">(25)</span>
+  <span id="margin_305931363478" class="marginequation" style="display: none;">
+  <a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
+  \begin{eqnarray} 
+    a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber
+  \end{eqnarray}</a></span>
+  <script>$('#margin_305931363478_reveal').click(function() {$('#margin_305931363478').toggle('slow', function() {});});</script>
+  は重み行列をそれの転置行列に置き換えなければなりません。
+  些細な変更ですが、煩わしい上に「重み行列を掛ける」と簡単に言ったり（もしくは考えたり）できなくなってしまいます。
 </span>
-この見方はこれまでのニューロン単位での見方よりも簡潔です。
-添字も少なくて済みますので、議論の正確性を失う事なく添字地獄から抜け出すことができます。
-この表現方法は実用上も有用です。
+<!--
+That global view  
+is often easier and more succinct (and involves fewer indices!) than
+the neuron-by-neuron view we've taken to now.  Think of it as a way of
+escaping index hell, while remaining precise about what's going on.
+The expression is also useful in practice, because most matrix
+libraries provide fast ways of implementing matrix multiplication,
+vector addition, and vectorization.  Indeed, the
+<a href="chap1.html#implementing_our_network_to_classify_digits">code</a>
+in the last chapter made implicit use of this expression to compute
+the behaviour of the network.-->
+この見方はこれまでのニューロン単位での見方よりも簡潔で、添字も少なくて済みます。
+議論の正確性を失う事なく添字地獄から抜け出せる方法と考えると良いでしょう。
+さらに、この表現方法は実用上も有用です。
 というのも、多くの行列ライブラリでは高速な行列掛算・ベクトル足し算・関数のベクトル化の実装が提供されているからです。
-実際、
-前章の<a href="chap1.html#implementing_our_network_to_classify_digits">コード</a>
-では、ネットワークの挙動を計算するのにこの表式を暗に利用していました。
+実際、前章の<a href="chap1.html#implementing_our_network_to_classify_digits">コード</a>
+では、ネットワークの挙動の計算にこの表式を暗に利用していました。
 </p>
 <p>
 <!--When using Equation
 <span id="margin_924913160001_reveal" class="equation_link">(25)</span><span id="margin_924913160001" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_924913160001_reveal').click(function() {$('#margin_924913160001').toggle('slow', function() {});});</script>
  to compute $a^l$, we compute the intermediate quantity $z^l \equiv w^l a^{l-1}+b^l$
-along the way.  This quantity turns out to be useful enough to be
-worth naming: we call $z^l$ the <em>weighted input</em> to the neurons
-in layer $l$.  We'll make considerable use of the weighted input $z^l$
-later in the chapter.  Equation <span id="margin_957787478923_reveal" class="equation_link">(25)</span><span id="margin_957787478923" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_957787478923_reveal').click(function() {$('#margin_957787478923').toggle('slow', function() {});});</script>
-is
-sometimes written in terms of the weighted input, as $a^l =
-\sigma(z^l)$.  It's also worth noting that $z^l$ has components $z^l_j
-= \sum_k w^l_{jk} a^{l-1}_k+b^l_j$, that is, $z^l_j$ is just the
-weighted input to the activation function for neuron $j$ in layer $l$.-->
-$a^l$を計算するのに式
+along the way.-->
+$a^l$の計算のために式
 <span id="margin_924913160001_reveal" class="equation_link">(25)</span><span id="margin_924913160001" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_924913160001_reveal').click(function() {$('#margin_924913160001').toggle('slow', function() {});});</script>
 を利用する時には、途中で$z^l \equiv w^l a^{l-1}+b^l$を計算しています。
-この値は後の議論で有用なので名前をつけておきます。$z^l$を$l$番目の層に対する<em>重みつき入力</em>と呼ぶことにします。
+<!--This quantity turns out to be useful enough to be
+worth naming: we call $z^l$ the <em>weighted input</em> to the neurons
+in layer $l$.  We'll make considerable use of the weighted input $z^l$
+later in the chapter. -->
+この値は後の議論で有用なので名前をつけておく価値があります。
+$z^l$を$l$番目の層に対する<em>重みつき入力</em>と呼ぶことにします。
 本章の以降の議論では重みつき入力$z^l$を頻繁に利用します。
+<!--Equation
+<span id="margin_957787478923_reveal" class="equation_link">(25)</span><span id="margin_957787478923" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_957787478923_reveal').click(function() {$('#margin_957787478923').toggle('slow', function() {});});</script>
+is sometimes written in terms of the weighted input, as $a^l = \sigma(z^l)$. -->
 式
 <span id="margin_957787478923_reveal" class="equation_link">(25)</span><span id="margin_957787478923" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_957787478923_reveal').click(function() {$('#margin_957787478923').toggle('slow', function() {});});</script>
 をしばしば重み付き入力を用いて$a^l = \sigma(z^l)$とも書きます。
-$z^l$の要素は$z^l_j = \sum_k w^l_{jk} a^{l-1}_k+b^l_j$と掛ける事に注意してください。
-つまり、$z^l_j$は$l$番目の層の$j$番目のニューロンに対する活性関数の重みつき入力です。
+<!-- It's also worth noting that $z^l$ has components $z^l_j
+= \sum_k w^l_{jk} a^{l-1}_k+b^l_j$, that is, $z^l_j$ is just the
+weighted input to the activation function for neuron $j$ in layer $l$.-->
+$z^l$の要素は$z^l_j = \sum_k w^l_{jk} a^{l-1}_k+b^l_j$と書ける事にも注意してください。
+つまり、$z^l_j$は$l$番目の層の$j$番目のニューロンが持つ活性関数へ与える重みつき入力です。
 </p>
 <p><h3><a name="the_two_assumptions_we_need_about_the_cost_function"></a>
 <a href="#the_two_assumptions_we_need_about_the_cost_function">
@@ -528,9 +564,14 @@ function $C$ with respect to any weight $w$ or bias $b$ in the
 network.  For backpropagation to work we need to make two main
 assumptions about the form of the cost function.  Before stating those
 assumptions, though, it's useful to have an example cost function in
-mind.  We'll use the quadratic cost function from last chapter
-(c.f. Equation <span id="margin_342696826100_reveal" class="equation_link">(6)</span><span id="margin_342696826100" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv \frac{1}{2n} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_342696826100_reveal').click(function() {$('#margin_342696826100').toggle('slow', function() {});});</script>).
-In the notation of the last section, the quadratic cost has the form
+mind. -->
+逆伝播の目標はニューラルネットワーク中の任意の重み$w$またはバイアス$b$に関するコスト関数$C$の偏微分、すなわち$\partial C / \partial w$と$\partial C / \partial b$の計算です。
+逆伝播が機能するには、コスト関数の形について2つの仮定を置く必要があります。
+それらの仮定を述べる前に、コスト関数の例を念頭に置くのが良いでしょう。
+<!--We'll use the quadratic cost function from last chapter
+(c.f. Equation <span id="margin_342696826100_reveal" class="equation_link">(6)</span><span id="margin_342696826100" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv \frac{1}{2n} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_342696826100_reveal').click(function() {$('#margin_342696826100').toggle('slow', function() {});});</script>).-->
+前章でも出てきた2乗コスト関数（参考：式<span id="margin_342696826100_reveal" class="equation_link">(6)</span><span id="margin_342696826100" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv） \frac{1}{2n} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_342696826100_reveal').click(function() {$('#margin_342696826100').toggle('slow', function() {});});</script>）をここでも考えます。
+<!--In the notation of the last section, the quadratic cost has the form
 <a class="displaced_anchor" name="eqtn26"></a>\begin{eqnarray}
   C = \frac{1}{2n} \sum_x \|y(x)-a^L(x)\|^2,
 \tag{26}\end{eqnarray}
@@ -539,10 +580,6 @@ individual training examples, $x$; $y = y(x)$ is the corresponding
 desired output; $L$ denotes the number of layers in the network; and
 $a^L = a^L(x)$ is the vector of activations output from the network
 when $x$ is input.-->
-逆伝搬の目標はニューラルネットワーク中の任意の重み$w$とバイアス$b$に関するコスト関数$C$の偏微分$\partial C / \partial w$と$\partial C / \partial b$です。
-逆伝搬が機能するには、コスト関数の形について2つの仮定を置く必要があります。
-それらの仮定を述べる前に、コスト関数の例を頭の片隅に置いておくのがよいでしょう。
-前章でも用いた2乗コスト関数（参考：式<span id="margin_342696826100_reveal" class="equation_link">(6)</span><span id="margin_342696826100" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv） \frac{1}{2n} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_342696826100_reveal').click(function() {$('#margin_342696826100').toggle('slow', function() {});});</script>）
 前章の記法では、2乗コスト関数は以下の様な形をしていました
 <a class="displaced_anchor" name="eqtn26"></a>\begin{eqnarray}
   C = \frac{1}{2n} \sum_x \|y(x)-a^L(x)\|^2.
@@ -559,9 +596,9 @@ cost function, where the cost for a single training example is $C_x =
 \frac{1}{2} \|y-a^L \|^2$.  This assumption will also hold true for
 all the other cost functions we'll meet in this book.-->
 では、逆伝搬を適用するために、コスト関数$C$に置く仮定はどのようなものでしょうか。
-1つ目の仮定はコスト関数は個々の訓練例$x$に対するコスト関数$C_x$の平均 $C = \frac{1}{n} \sum_x C_x$で書かれている事です。
+1つ目の仮定はコスト関数は個々の訓練例$x$に対するコスト関数$C_x$の平均 $C = \frac{1}{n} \sum_x C_x$で書かれているという事です。
 2乗コスト関数ではこの仮定が成立しています。
-1つの訓練例に対するコスト関数を$C_x = \frac{1}{2} \|y-a^L  \|^2$とすれば良いです。
+それには1つの訓練例に対するコスト関数を$C_x = \frac{1}{2} \|y-a^L \|^2$とすれば良いです。
 この仮定はこの本で登場する他のコスト関数でも成立しています。
 </p>
 <p>
@@ -575,22 +612,31 @@ fixed, and drop the $x$ subscript, writing the cost $C_x$ as $C$.
 We'll eventually put the $x$ back in, but for now it's a notational
 nuisance that is better left implicit.-->
 この仮定が必要となる理由は、逆伝搬によって計算できるのは個々の訓練例に対する偏微分$\partial C_x / \partial w$、$\partial C_x / \partial b$だからです。
-コスト関数の偏微分$\partial C / \partial w$、$\partial C / \partial b$は全訓練例について平均を取ることで得られます。
-この仮定を念頭に置いて、訓練例$x$を固定していると仮定し添字$x$を除いてコスト$C_x$を$C$と書くことにします。最終的に除いた$x$は元に戻しますが、記法が煩わしいので暗に$x$が書かれていると考えます。
+コスト関数の偏微分$\partial C / \partial w$、$\partial C / \partial b$は全訓練例についての平均を取ることで得られます。
+この仮定を念頭に置き、私達は訓練例$x$を1つ固定していると仮定し、コスト$C_x$を添字$x$を除いて$C$と書くことにします。最終的に除いた$x$は元に戻しますが、当面は記法が煩わしいので暗に$x$が書かれていると考えます。
 </p>
 <p>
 <!--The second assumption we make about the cost is that it can be written
 as a function of the outputs from the neural network:
 <center>
 <img src="images/tikz18.png"/>
+</center>-->
+コスト関数に課す2つ目の仮定は、コスト関数はニューラルネットワークの出力の関数で書かれているという仮定です。
+<center>
+<img src="images/tikz18.png"/>
 </center>
-For example, the quadratic cost function satisfies this requirement,
+<!--For example, the quadratic cost function satisfies this requirement,
 since the quadatic cost for a single training example $x$ may be
 written as
 <a class="displaced_anchor" name="eqtn27"></a>\begin{eqnarray}
   C = \frac{1}{2} \|y-a^L\|^2 = \frac{1}{2} \sum_j (y_j-a^L_j)^2,
 \tag{27}\end{eqnarray}
-and thus is a function of the output activations.  Of course, this
+and thus is a function of the output activations. -->
+例えば、2乗誤差関数はこの要求を満たしています、それは1つの訓練例$x$に対する誤差は以下のように書かれるためです
+<a class="displaced_anchor" name="eqtn27"></a>\begin{eqnarray}
+  C = \frac{1}{2} \|y-a^L\|^2 = \frac{1}{2} \sum_j (y_j-a^L_j)^2.
+\tag{27}\end{eqnarray}
+<!--Of course, this
 cost function also depends on the desired output $y$, and you may
 wonder why we're not regarding the cost also as a function of $y$.
 Remember, though, that the input training example $x$ is fixed, and so
@@ -600,19 +646,11 @@ i.e., it's not something which the neural network learns.  And so it
 makes sense to regard $C$ as a function of the output activations
 $a^L$ alone, with $y$ merely a parameter that helps define that
 function.-->
-コスト関数に課す2つ目の仮定は、コスト関数はニューラルネットワークの出力の関数で書かれているという仮定です。
-<center>
-<img src="images/tikz18.png"/>
-</center>
-例えば、1つの訓練例$x$に対する誤差は以下のように書かれるため、2乗誤差関数はこの要求を満たしています。
-<a class="displaced_anchor" name="eqtn27"></a>\begin{eqnarray}
-  C = \frac{1}{2} \|y-a^L\|^2 = \frac{1}{2} \sum_j (y_j-a^L_j)^2,
-\tag{27}\end{eqnarray}
 もちろんこのコスト関数は目標とする出力$y$にも依存しています。
 コスト関数を$y$の関数とみなさない事を不思議に思うかもしれません。
-訓練例$x$を固定する事で、出力$y$も固定している事に注意してください。
-つまり、出力$y$は重みやバイアスをどのように変化させた所で変化させられる量ではないのです。
-そのため、$C$を出力の活性$a^L$単独の関数とみなし、$y$は関数を定義するための単なるパラメータとみなすのはおかしくない設定です。
+しかし、訓練例$x$を固定する事で、出力$y$も固定している事に注意してください。
+つまり、出力$y$は重みやバイアスをどのように変化させた所で変化させられる量ではなく、ニューラルネットが学習するものではありません。
+ですので、$C$を出力の活性$a^L$単独の関数とみなし、$y$は関数を定義するための単なるパラメータとみなすのは意味のある問題設定です。
 </p>
 <p></p>
 <p></p>
@@ -627,7 +665,11 @@ matrix, and so on.  But one of the operations is a little less
 commonly used.  In particular, suppose $s$ and $t$ are two vectors of
 the same dimension.  Then we use $s \odot t$ to denote the
 <em>elementwise</em> product of the two vectors.  Thus the components of
-$s \odot t$ are just $(s \odot t)_j = s_j t_j$.  As an example,
+$s \odot t$ are just $(s \odot t)_j = s_j t_j$. -->
+逆伝播アルゴリズムは、ベクトルの足し算やベクトルと行列の掛け算など、一般的な代数操作に基づいています。
+しかし、その中で1つあまり一般的ではない操作があります。
+$s$と$t$が同じ次元のベクトルとした時、$s \odot t$を2つのベクトルの<em>要素ごと</em>の積とします。つまり、$s \odot t$の要素は$(s \odot t)_j = s_j t_j$です。
+<!-- As an example,
 <a class="displaced_anchor" name="eqtn28"></a>\begin{eqnarray}
 \left[\begin{array}{c} 1 \\ 2 \end{array}\right] 
   \odot \left[\begin{array}{c} 3 \\ 4\end{array} \right]
@@ -639,10 +681,6 @@ This kind of elementwise multiplication is sometimes called the
 the Hadamard product.  Good matrix libraries usually provide fast
 implementations of the Hadamard product, and that comes in handy when
 implementing backpropagation.-->
-逆伝搬アルゴリズムは、ベクトルの足し算、ベクトルと行列の掛け算など、一般的な代数操作に基づいています。
-しかし、1つあまり一般的ではない操作があります。
-$s$と$t$とが同じ次元のベクトルとした時、$s \odot t$を2つのベクトルの<em>要素ごと</em>の積とします。
-従って、$s \odot t$の要素は$(s \odot t)_j = s_j t_j$です。
 例えば、
 <a class="displaced_anchor" name="eqtn28"></a>\begin{eqnarray}
 \left[\begin{array}{c} 1 \\ 2 \end{array}\right] 
@@ -652,8 +690,8 @@ $s$と$t$とが同じ次元のベクトルとした時、$s \odot t$を2つの�
 \tag{28}\end{eqnarray}
 です。
 この種の要素ごとの積はしばしば<em>アダマール積</em>、もしくは<em>シューア積</em>と呼ばれます。
-我々はアダマール積と呼ぶことにします。
-よく出来た行列ライブラリにはアダマール積の高速な実装が用意されており、逆伝搬を実装する際に手軽に利用できます。
+私達はアダマール積と呼ぶことにします。
+よく出来た行列ライブラリにはアダマール積の高速な実装が用意されており、逆伝播を実装する際に手軽に利用できます。
 </p>
 <p><h3><a name="the_four_fundamental_equations_behind_backpropagation"></a><a href="#the_four_fundamental_equations_behind_backpropagation">
 <!--The four fundamental equations behind backpropagation-->
