@@ -202,8 +202,8 @@ approaches to learning, making it possible to use neural nets to solve
 problems which had previously been insoluble.  Today, the
 backpropagation algorithm is the workhorse of learning in neural
 networks.-->
-逆伝搬アルゴリズムはもともと1970年代に導入されました。
-しかし逆伝搬が評価されたのは、
+逆伝播アルゴリズムはもともと1970年代に導入されました。
+しかし逆伝播が評価されたのは、
 <a href="http://en.wikipedia.org/wiki/David_Rumelhart">David Rumelhart</a>・
 <a href="http://www.cs.toronto.edu/&#126;hinton/">Geoffrey Hinton</a>・
 <a href="http://en.wikipedia.org/wiki/Ronald_J._Williams">Ronald Williams</a>
@@ -223,7 +223,7 @@ details you're willing to ignore.  Why take the time to study those
 details?-->
 本章は他の章に比べて数学的に難解です。
 よほど数学に対し熱心でなければ、本章を飛ばして、逆伝播を中身を無視できるブラックボックスとして扱いたくなるかもしれません。
-では、なぜ時間をかけて逆伝搬の詳細を勉強するのでしょうか？
+では、なぜ時間をかけて逆伝播の詳細を勉強するのでしょうか？
 </p>
 <p>
 <!--The reason, of course, is understanding.  At the heart of
@@ -595,7 +595,7 @@ individual training examples, $x$.  This is the case for the quadratic
 cost function, where the cost for a single training example is $C_x =
 \frac{1}{2} \|y-a^L \|^2$.  This assumption will also hold true for
 all the other cost functions we'll meet in this book.-->
-では、逆伝搬を適用するために、コスト関数$C$に置く仮定はどのようなものでしょうか。
+では、逆伝播を適用するために、コスト関数$C$に置く仮定はどのようなものでしょうか。
 1つ目の仮定はコスト関数は個々の訓練例$x$に対するコスト関数$C_x$の平均 $C = \frac{1}{n} \sum_x C_x$で書かれているという事です。
 2乗コスト関数ではこの仮定が成立しています。
 それには1つの訓練例に対するコスト関数を$C_x = \frac{1}{2} \|y-a^L \|^2$とすれば良いです。
@@ -611,7 +611,7 @@ assumption in mind, we'll suppose the training example $x$ has been
 fixed, and drop the $x$ subscript, writing the cost $C_x$ as $C$.
 We'll eventually put the $x$ back in, but for now it's a notational
 nuisance that is better left implicit.-->
-この仮定が必要となる理由は、逆伝搬によって計算できるのは個々の訓練例に対する偏微分$\partial C_x / \partial w$、$\partial C_x / \partial b$だからです。
+この仮定が必要となる理由は、逆伝播によって計算できるのは個々の訓練例に対する偏微分$\partial C_x / \partial w$、$\partial C_x / \partial b$だからです。
 コスト関数の偏微分$\partial C / \partial w$、$\partial C / \partial b$は全訓練例についての平均を取ることで得られます。
 この仮定を念頭に置き、私達は訓練例$x$を1つ固定していると仮定し、コスト$C_x$を添字$x$を除いて$C$と書くことにします。最終的に除いた$x$は元に戻しますが、当面は記法が煩わしいので暗に$x$が書かれていると考えます。
 </p>
@@ -695,7 +695,7 @@ implementing backpropagation.-->
 </p>
 <p><h3><a name="the_four_fundamental_equations_behind_backpropagation"></a><a href="#the_four_fundamental_equations_behind_backpropagation">
 <!--The four fundamental equations behind backpropagation-->
-逆伝搬の裏にある4つの基本的な式
+逆伝播の裏にある4つの基本的な式
 </a></h3></p>
 <p>
 <!--Backpropagation is about understanding how changing the weights and
@@ -707,11 +707,11 @@ introduce an intermediate quantity, $\delta^l_j$, which we call the
 Backpropagation will give us a procedure to compute the error
 $\delta^l_j$, and then will relate $\delta^l_j$ to $\partial C
 / \partial w^l_{jk}$ and $\partial C / \partial b^l_j$.-->
-逆伝搬は重みとバイアスを変えた時にどのようにコスト関数が変化するかを把握する方法です。
+逆伝播は重みとバイアスを変えた時にどのようにコスト関数が変化するかを把握する方法です。
 これは根本的には$\partial C / \partial w^l_{jk}$と$\partial C / \partial b^l_j$とを計算する事を意味します。
 これらの偏微分を計算する為にまずは中間的な値$\delta^l_j$を導入します。
 この値は$l$番目の層の$j$番目のニューロンの<em>誤差</em>と呼びます。
-逆伝搬により$\delta^l_j$を計算方法と$\delta^l_j$を$\partial C/ \partial w^l_{jk}$や$\partial C / \partial b^l_j$と関連づける方法が得られます。
+逆伝播により$\delta^l_j$を計算方法と$\delta^l_j$を$\partial C/ \partial w^l_{jk}$や$\partial C / \partial b^l_j$と関連づける方法が得られます。
 </p>
 <p>
 <!--To understand how the error is defined, imagine there is a demon in
@@ -734,7 +734,7 @@ an amount $\frac{\partial C}{\partial z^l_j} \Delta z^l_j$.-->
 ニューロンに入力が入ってきた時、悪魔がニューロン内での操作をいじって、
 重みつき入力に小さな変更$\Delta z^l_j$を加えます。
 従って、$\sigma(z^l_j)$を出力する代わりに、ニューロンは$\sigma(z^l_j+\Delta z^l_j)$を出力します。
-この変化はニューラルネット中の後段の層に伝搬し、最終的に全体のコスト関数の値は$\frac{\partial C}{\partial z^l_j} \Delta z^l_j$だけ変化します。
+この変化はニューラルネット中の後段の層に伝播し、最終的に全体のコスト関数の値は$\frac{\partial C}{\partial z^l_j} \Delta z^l_j$だけ変化します。
 </p>
 <p>
 <!--Now, this demon is a good demon, and is trying to help you improve the
@@ -775,7 +775,7 @@ w^l_{jk}$ and $\partial C / \partial b^l_j$.-->
   \delta^l_j \equiv \frac{\partial C}{\partial z^l_j}.
 \tag{29}\end{eqnarray}.
 慣習に沿って、$\delta^l$で$l$番目の層の誤差からなるベクトルを表します。
-逆伝搬により、各層での$\delta^l$を計算し、これらを真に計算したい$\partial C / \partial
+逆伝播により、各層での$\delta^l$を計算し、これらを真に計算したい$\partial C / \partial
 w^l_{jk}$や$\partial C / \partial b^l_j$と関連付けることができます。
 </p>
 <p>
@@ -818,13 +818,13 @@ equations.  The good news is that such patience is repaid many times
 over.  And so the discussion in this section is merely a beginning,
 helping you on the way to a thorough understanding of the equations.-->
 <strong>攻略計画</strong>
-逆伝搬は4つの基本的な式を基礎とします。
+逆伝播は4つの基本的な式を基礎とします。
 これらを組み合わせると、誤差$\delta^l$とコスト関数の勾配を計算ができます。
 以下でその4つの式を挙げていきますが、これらの式の意味をすぐに消化できると期待しない方が良いでしょう。
 そのように期待するとがっかりするかもしれません。
-実際逆伝搬は内容が深く、時間と忍耐がかけて徐々にこれらの式を理解できてきます。
+実際逆伝播は内容が深く、時間と忍耐がかけて徐々にこれらの式を理解できてきます。
 幸いなことに、ここで辛抱しておくことは後々何度も報われます。
-この節の議論は始まりに過ぎませんが、逆伝搬の式を深く理解する過程の中で役に立つはずです。
+この節の議論は始まりに過ぎませんが、逆伝播の式を深く理解する過程の中で役に立つはずです。
 </p>
 <p>
 <!--Here's a preview of the ways we'll delve more deeply into the
@@ -940,7 +940,7 @@ and is easily computed using a library such as Numpy.-->
 式<span id="margin_352512149181_reveal" class="equation_link">(BP1)</span><span id="margin_352512149181" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_352512149181_reveal').click(function() {$('#margin_352512149181').toggle('slow', function() {});});</script>
 は$\delta^L$の各要素に対する表式です。
-この表式自体は悪くはないのですが、逆伝搬で欲しいのは行列を用いた表式です。
+この表式自体は悪くはないのですが、逆伝播で欲しいのは行列を用いた表式です。
 この式を行列として書き直すのは容易で、以下の様に書けます
 <a class="displaced_anchor" name="eqtnBP1a"></a>\begin{eqnarray} 
   \delta^L = \nabla_a C \odot \sigma'(z^L).
@@ -990,10 +990,10 @@ giving us the error $\delta^l$ in the weighted input to layer $l$.-->
 ここで、$(w^{l+1})^T$は$(l+1)$番目の層の重み行列($w^{l+1}$)の転置です。
 この式は一見複雑ですが、各要素はうまく解釈できます。
 $(l+1)$番目の層の誤差$\delta^{l+1}$番目が既知だとします。
-重み行列の転置$(w^{l+1})^T$を掛ける操作は、直感的には誤差をネットワークとは<em>逆方向</em>に伝搬させていると考える事ができます。
+重み行列の転置$(w^{l+1})^T$を掛ける操作は、直感的には誤差をネットワークとは<em>逆方向</em>に伝播させていると考える事ができます。
 従ってこれは$l$番目の層の出力の誤差を測る一種の指標とみなすことができます。
 転置行列を掛けた後、$\sigma'(z^l)$とのアダマール積を取っています。
-これにより$l$番目の層の活性関数を通してを通してエラーを更に逆方向に伝搬しています。
+これにより$l$番目の層の活性関数を通してを通してエラーを更に逆方向に伝播しています。
 その結果、$l$番目の層の重みつき入力についての誤差$\delta^l$が得られます。
 </p>
 <p>
