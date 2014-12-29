@@ -9,6 +9,7 @@ chapter			章
 computer vision		コンピュータ視覚？
 cost function		コスト関数(costとだけ書かれている時も「コスト関数」と訳している)
 deep learning		深層学習
+derivative		微分（or 導関数？）
 epoch			エポック（訓練データ全体を1巡する事）
 error	 		誤差
 evidence		情報(パーセプトロンの入力として使われる場合。「証拠」では変なので…代案求む)
@@ -24,6 +25,7 @@ linear			線形（線型？）
 mini-batch		ミニバッチ
 network	 		ニューラルネットワーク(network単体でニューラルネットワークを意味している場合。)
 neuron			ニューロン
+pertubation		摂動
 quadratic cost function	2乗コスト関数
 saturation/saturated	飽和/飽和している
 training example        訓練例
