@@ -26,7 +26,8 @@ network	 		ニューラルネットワーク(network単体でニューラルネ�
 neuron			ニューロン
 quadratic cost function	2乗コスト関数
 saturation/saturated	飽和/飽和している
-training example        訓練例        
+training example        訓練例
+universal               万能な(for computation)
 vector			ベクトル
 weight	 		重み(パーセプトロンの)
 weighted input		重み付き入力
