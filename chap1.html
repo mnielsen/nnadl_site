@@ -635,13 +635,12 @@ conventional to draw an extra layer of perceptrons - the <em>input
 This notation for input perceptrons, in which we have an output, but
 no inputs,-->
 
-入力パーセプトロンは、入力がなく、出力がひとつしかないので、このように
+このような、入力がなく、出力がひとつしかない記法は、
 <center>
 <img src="images/tikz7.png"/>
 </center>
 <!--is a shorthand.-->
-表記することにします。
-
+<!--
 It doesn't actually mean a perceptron with no inputs.
 To see this, suppose we did have a perceptron with no inputs.  Then
 the weighted sum $\sum_j w_j x_j$ would always be zero, and so the
@@ -650,15 +649,44 @@ is, the perceptron would simply output a fixed value, not the desired
 valued ($x_1$, in the example above). It's better to think of the
 input perceptrons as not really being perceptrons at all, but rather
 special units which are simply defined to output the desired values,
-$x_1, x_2,\ldots$.</p><p>The adder example demonstrates how a network of perceptrons can be
+$x_1, x_2,\ldots$.
+--->
+入力パーセプトロンを表す省略記法です。本気で入力をもたないパーセプトロンを意味しているわけではありません。このことを見るには、入力をもたないパーセプトロンが本当にあったとしましょう。すると、重み付き和$\sum_j w_j x_j$
+は常に0ですから、そのようなパーセプトロンは
+$b > 0$であれば常時1を、
+$b \leq 0$であれば常時0を出力することになります。
+つまり、そのようなパーセプトロンは単に定数を出力するだけで、望みの値
+(上図の例では$x_1$)を出力するものではないことがわかります。
+入力パーセプトロンは、実際まったくパーセプトロンではなく、望みの値$x_1, x_2,\ldots$を出力するよう定義された特殊ユニットであると考えたほうがよいのです。
+
+
+
+</p><p>
+
+  The adder example demonstrates how a network of perceptrons can be
 used to simulate a circuit containing many <CODE>NAND</CODE> gates.  And
 because <CODE>NAND</CODE> gates are universal for computation, it follows
-that perceptrons are also universal for computation.</p><p>The computational universality of perceptrons is simultaneously
+  that perceptrons are also universal for computation.
+
+  加算機の例は、パーセプトロンのネットワークが<CODE>NAND</CODE>ゲートを多数含む回路をシミュレートすることに使える、ということの実例でした。
+  そして、<CODE>NAND</CODE>ゲートは万能である（どんな関数でも計算できる）、ということから、パーセプトロンもまた万能である、ということが導けます。
+  
+  
+</p><p>
+
+  The computational universality of perceptrons is simultaneously
 reassuring and disappointing.  It's reassuring because it tells us
 that networks of perceptrons can be as powerful as any other computing
 device.  But it's also disappointing, because it makes it seem as
 though perceptrons are merely a new type of <CODE>NAND</CODE> gate.
-That's hardly big news!</p><p>However, the situation is better than this view suggests.  It turns
+  That's hardly big news!
+
+計算論的万能性？  
+これでは、大したニュースとはいえません！
+  
+</p><p>
+
+  However, the situation is better than this view suggests.  It turns
 out that we can devise <em>learning
   algorithms</em> which can
 automatically tune the weights and biases of a network of artificial
@@ -668,7 +696,17 @@ us to use artificial neurons in a way which is radically different to
 conventional logic gates.  Instead of explicitly laying out a circuit
 of <CODE>NAND</CODE> and other gates, our neural networks can simply learn
 to solve problems, sometimes problems where it would be extremely
-difficult to directly design a conventional circuit.</p><p><h3><a name="sigmoid_neurons"></a><a href="#sigmoid_neurons">Sigmoid neurons</a></h3></p><p>Learning algorithms sound terrific.  But how can we devise such
+  difficult to directly design a conventional circuit.
+
+</p><p>
+
+  <!--<h3><a name="sigmoid_neurons"></a><a href="#sigmoid_neurons">Sigmoid neurons</a></h3>-->
+  <h3><a name="sigmoid_neurons"></a><a href="#sigmoid_neurons">シグモイドニューロン</a></h3>
+  
+</p><p>
+
+
+  Learning algorithms sound terrific.  But how can we devise such
 algorithms for a neural network?  Suppose we have a network of
 perceptrons that we'd like to use to learn to solve some problem.  For
 example, the inputs to the network might be the raw pixel data from a
