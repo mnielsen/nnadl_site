@@ -15,7 +15,7 @@
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: {inlineMath: [['$','$']]},
-        "HTML-CSS": 
+        "HTML-CSS":
           {scale: 92},
         TeX: { equationNumbers: { autoNumber: "AMS" }}});
     </script>
@@ -52,77 +52,77 @@
   </head>
   <body><div class="header"><h1 class="chapter_number">
   <a href="">CHAPTER 1</a></h1>
-  <h1 class="chapter_title"><a href="">Using neural nets to recognize handwritten digits</a></h1></div><div class="section"><div id="toc"> 
+  <h1 class="chapter_title"><a href="">Using neural nets to recognize handwritten digits</a></h1></div><div class="section"><div id="toc">
 <p class="toc_title"><a href="index.html">Neural Networks and Deep Learning</a> (draft contents)</p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">Using neural nets to recognize handwritten digits</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
 <script>
-$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() { 
+$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() {
    var src = $('#toc_img_using_neural_nets_to_recognize_handwritten_digits').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow.png');
    };
-   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});  
+   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">How the backpropagation algorithm works</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output_from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output  from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
 <script>
-$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() { 
+$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() {
    var src = $('#toc_img_how_the_backpropagation_algorithm_works').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow.png');
    };
-   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});  
+   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_improving_the_way_neural_networks_learn_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_improving_the_way_neural_networks_learn" src="images/arrow.png" width="15px"></a><a href="chap3.html">Improving the way neural networks learn</a><div id="toc_improving_the_way_neural_networks_learn" style="display: none;"><p class="toc_section"><ul><a href="chap3.html#the_cross-entropy_cost_function"><li>The cross-entropy cost function</li></a><a href="chap3.html#overfitting_and_regularization"><li>Overfitting and regularization</li></a><a href="chap3.html#weight_initialization"><li>Weight initialization</li></a><a href="chap3.html#handwriting_recognition_revisited_the_code"><li>Handwriting recognition revisited: the code</li></a><a href="chap3.html#how_to_choose_a_neural_network's_hyper-parameters"><li>How to choose a neural network's hyper-parameters?</li></a><a href="chap3.html#other_techniques"><li>Other techniques</li></a></ul></p></div>
 <script>
-$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() { 
+$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() {
    var src = $('#toc_img_improving_the_way_neural_networks_learn').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow.png');
    };
-   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});  
+   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_a_visual_proof_that_neural_nets_can_compute_any_function" src="images/arrow.png" width="15px"></a><a href="chap4.html">A visual proof that neural nets can compute any function</a><div id="toc_a_visual_proof_that_neural_nets_can_compute_any_function" style="display: none;"><p class="toc_section"><ul><a href="chap4.html#two_caveats"><li>Two caveats</li></a><a href="chap4.html#universality_with_one_input_and_one_output"><li>Universality with one input and one output</li></a><a href="chap4.html#many_input_variables"><li>Many input variables</li></a><a href="chap4.html#extension_beyond_sigmoid_neurons"><li>Extension beyond sigmoid neurons</li></a><a href="chap4.html#fixing_up_the_step_functions"><li>Fixing up the step functions</li></a><a href="chap4.html#conclusion"><li>Conclusion</li></a></ul></p></div>
 <script>
-$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() { 
+$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() {
    var src = $('#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow.png');
    };
-   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});  
+   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_why_deep_neural_networks_are_hard_to_train_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_why_deep_neural_networks_are_hard_to_train" src="images/arrow.png" width="15px"></a>Why deep neural networks are hard to train<div id="toc_why_deep_neural_networks_are_hard_to_train" style="display: none;"><p class="toc_section"><ul><li>The vanishing gradient problem</li><li>What's causing the vanishing gradient problem?  Unstable gradients in deep neural nets</li><li>How should we approach deep learning?</li></ul></p></div>
 <script>
-$('#toc_why_deep_neural_networks_are_hard_to_train_reveal').click(function() { 
+$('#toc_why_deep_neural_networks_are_hard_to_train_reveal').click(function() {
    var src = $('#toc_img_why_deep_neural_networks_are_hard_to_train').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_why_deep_neural_networks_are_hard_to_train").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_why_deep_neural_networks_are_hard_to_train").attr('src', 'images/arrow.png');
    };
-   $('#toc_why_deep_neural_networks_are_hard_to_train').toggle('fast', function() {});  
+   $('#toc_why_deep_neural_networks_are_hard_to_train').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_deep_learning_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_deep_learning" src="images/arrow.png" width="15px"></a>Deep learning<div id="toc_deep_learning" style="display: none;"><p class="toc_section"><ul><li>Convolutional neural networks</li><li>Pretraining</li><li>Feature discovery</li><li>The state of the art in image recognition</li></ul></p></div>
 <script>
-$('#toc_deep_learning_reveal').click(function() { 
+$('#toc_deep_learning_reveal').click(function() {
    var src = $('#toc_img_deep_learning').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_deep_learning").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_deep_learning").attr('src', 'images/arrow.png');
    };
-   $('#toc_deep_learning').toggle('fast', function() {});  
+   $('#toc_deep_learning').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_the_future_of_neural_nets_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_the_future_of_neural_nets" src="images/arrow.png" width="15px"></a>The future of neural nets<div id="toc_the_future_of_neural_nets" style="display: none;"><p class="toc_section"><ul><li>Will neural networks ever lead to artificial intelligence?</li><li>Could neural networks be used to simulate a human brain?</li></ul></p></div>
 <script>
-$('#toc_the_future_of_neural_nets_reveal').click(function() { 
+$('#toc_the_future_of_neural_nets_reveal').click(function() {
    var src = $('#toc_img_the_future_of_neural_nets').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_the_future_of_neural_nets").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_the_future_of_neural_nets").attr('src', 'images/arrow.png');
    };
-   $('#toc_the_future_of_neural_nets').toggle('fast', function() {});  
+   $('#toc_the_future_of_neural_nets').toggle('fast', function() {});
 });</script><p class="toc_not_mainchapter">Further reading</p><p class="toc_not_mainchapter">Acknowledgements</p>
 <hr>
 <span class="sidebar_title">Sponsors</span>
@@ -136,7 +136,7 @@ style="padding: 0px 0px 10px 8px; border-style: none;"></a>
 
 <a href='http://www.visionsmarts.com'><img
 src='assets/visionsmarts.png' width='160px' style="padding: 0px 0px
-0px 0px; border-style: none;"></a> <br/> 
+0px 0px; border-style: none;"></a> <br/>
 
 <p class="sidebar">Thanks to all the <a
 href="supporters.html">supporters</a> who made the book possible.
@@ -170,12 +170,12 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 </div>
 </p><p>
   <!--The human visual system is one of the wonders of the world.  Consider the following sequence of handwritten digits:-->
-  
+
 人間の視覚がどんなに不思議なものか、考えたことはありますか？次の手書き数列を読んでみてください：
 <a name="complete_zero"></a></p><p><center><img src="images/digits.png" width="160px"></center> </p><p>
 
   <!--  Most people effortlessly recognize those digits as 504192.  That easeis deceptive.  In each hemisphere of our brain, humans have a primaryvisual cortex, also known as V1, containing 140 million neurons, withtens of billions of connections between them.  And yet human visioninvolves not just V1, but an entire series of visual cortices - V2,V3, V4, and V5 - doing progressively more complex image processing.We carry in our heads a supercomputer, tuned by evolution overhundreds of millions of years, and superbly adapted to understand thevisual world.  Recognizing handwritten digits isn't easy.  Rather, wehumans are stupendously, astoundingly good at making sense of what oureyes show us.  But nearly all that work is done unconsciously.  And sowe don't usually appreciate how tough a problem our visual systemssolve.-->
-  
+
 大抵の人にとってはごく簡単に504192と読めると思います。でも、脳の中で起
 こっていることは簡単どころではありません。脳のふたつの半球にはそれぞれ、
 一次視覚野---V1とも呼ばれる、一億四千万のニューロンと何十億ものシナ
@@ -205,7 +205,7 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 
 その上で、訓練例から学習することのできるシステムを開発する、というものです。言い換えれば、ニューラルネットワークは、訓練例をもとに、数字認識のルールを自動的に推論します。さらに、訓練例を増やすほど、ニューラルネットワークは手書き文字に関する知識をより多く獲得し、精度が向上します。上図ではわずか100個の訓練例を示しましたが、何千、何万、何億個という訓練例を与えることで、よりよい手書き数字認識機を作ることができるかもしれません。
 
-  
+
 </p><p>
 
 
@@ -222,7 +222,7 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
   手書き文字認識は、ニューラルネットワーク一般について解説するうえでうってつけの題材なので、まずは手書き文字認識に話を絞ることにします。というのも、手書き文字認識というのは、決して一筋縄ではゆかない歯ごたえのある課題です。それでいて例えば極めて複雑な解法を必要とするとか、莫大な計算資源を必要とするとかの、非常に困難な課題というわけでもなく、ちょうどいい難易度の課題なのです。さらに、手書き文字認識は、深層学習といった発展的な技術の題材としても適しています。というわけで、この本では繰り返し、手書き文字認識という課題に立ち戻ることにします。この本の後のほうでは、これらのアイデアのコンピュータ視覚、音声、自然言語処理、その他の分野への応用をあつかいます。
 
 
-  
+
 </p><p>
 
 <!--  Of course, if the point of the chapter was only to write a computerprogram to recognize handwritten digits, then the chapter would bemuch shorter!  But along the way we'll develop many key ideas aboutneural networks, including two important types of artificial neuron(the perceptron and the sigmoid neuron), and the standard learningalgorithm for neural networks, known as stochastic gradient descent.Throughout, I focus on explaining <em>why</em> things are done the waythey are, and on building your neural networks intuition.  Thatrequires a lengthier discussion than if I just presented the basicmechanics of what's going on, but it's worth it for the deeperunderstanding you'll attain.  Amongst the payoffs, by the end of thechapter we'll be in position to understand what deep learning is, andwhy it matters.-->
@@ -405,7 +405,7 @@ And it should seem plausible that a complex network of perceptrons
 -->
 もちろん、パーセプトロンは人間の意思決定モデルの完全なモデルというわけではありません！
 とはいえ、パーセプトロンは異なる種類の情報を考慮し、重みをつけたうえで判断を下す能力があることを、先ほどの例は示しています。となれば、パーセプトロンを複雑に組み合わせたネットワークなら、かなり微妙な判断も扱えそうです：
-  
+
 <center>
 <img src="images/tikz1.png"/>
 </center>
@@ -459,8 +459,8 @@ perceptron rule can be
   まず、$\sum_j w_j x_j$ という和は内積を使って、$w \cdot x \equiv \sum_j w_j x_j$と書くことにします。ここで、$w$と$x$はそれぞれ重みと入力を要素にもつベクトルです。
   次に、閾値を不等式の左辺に移項し、パーセプトロンの<em>バイアス</em> $b \equiv-\mbox{threshold}$と呼ばれる量に置き換えます。閾値の代わりにバイアスを使うと、パーセプトロンのルールはこのように書き換えられます：
 <a class="displaced_anchor" name="eqtn2"></a>\begin{eqnarray}
-  \mbox{output} = \left\{ 
-    \begin{array}{ll} 
+  \mbox{output} = \left\{
+    \begin{array}{ll}
       0 & \mbox{if } w\cdot x + b \leq 0 \\
       1 & \mbox{if } w\cdot x + b > 0
     \end{array}
@@ -567,7 +567,7 @@ gate!
 -->
   <CODE>NAND</CODE> ゲートの例から、パーセプトロンが単純な論理関数を計算できることが分かります。それどころか、パーセプトロンのネットワークさえあれば<em>任意の</em>論理関数を計算できることまで分かるのです。なぜなら <CODE>NAND</CODE> ゲートは論理計算において万能だからです。万能だ、とは、 <CODE>NAND</CODE> ゲートさえあればどんな計算でも構成できる、という意味です。たとえば、 <CODE>NAND</CODE> ゲートを使って1ビットの二進数どうしを加算する回路を作ることができます。
   入力の二進数を $x_1$ と $x_2$ としましょう。これらの和を表現するには二進数で二桁が必要です。一桁目は入力の排他的論理和 $x_1 \oplus x_2$ になります。二桁目は $x_1$ と $x_2$ がともに $1$の場合だけ $1$ になる繰り上がりビットです。繰り上がりビットは、ただの論理積 $x_1$ <CODE>AND</CODE> $x_2$ である、ともいえます。
-  
+
 <center>
  <img src="images/tikz3.png"/>
 </center>
@@ -663,29 +663,29 @@ $b \leq 0$であれば常時0を出力することになります。
 
 </p><p>
 
+  <!--
   The adder example demonstrates how a network of perceptrons can be
 used to simulate a circuit containing many <CODE>NAND</CODE> gates.  And
 because <CODE>NAND</CODE> gates are universal for computation, it follows
   that perceptrons are also universal for computation.
-
+-->
   加算機の例は、パーセプトロンのネットワークが<CODE>NAND</CODE>ゲートを多数含む回路をシミュレートすることに使える、ということの実例でした。
-  そして、<CODE>NAND</CODE>ゲートは万能である（どんな関数でも計算できる）、ということから、パーセプトロンもまた万能である、ということが導けます。
-  
-  
-</p><p>
+  そして、<CODE>NAND</CODE>ゲートの万能性（それさえあればどんな関数でも計算できるという性質）から、パーセプトロンもまた万能である、ということが導けます。
 
+</p><p>
+<!--
   The computational universality of perceptrons is simultaneously
 reassuring and disappointing.  It's reassuring because it tells us
 that networks of perceptrons can be as powerful as any other computing
 device.  But it's also disappointing, because it makes it seem as
 though perceptrons are merely a new type of <CODE>NAND</CODE> gate.
   That's hardly big news!
+-->
+  パーセプトロンが計算論的万能性を持つということは、心強いと同時に残念な事実です。
+  心強い、というのは、パーセプトロンが他のどの計算装置にも負けない強力さを持つことを、この事実は教えてくれるからです。残念だ、というのは、パーセプトロンは<CODE>NAND</CODE>ゲートの亜種、四角い車輪の再発明に過ぎない、と感じられるからです。これでは、とても大したニュースとはいえません！
 
-計算論的万能性？  
-これでは、大したニュースとはいえません！
-  
 </p><p>
-
+<!--
   However, the situation is better than this view suggests.  It turns
 out that we can devise <em>learning
   algorithms</em> which can
@@ -697,15 +697,20 @@ conventional logic gates.  Instead of explicitly laying out a circuit
 of <CODE>NAND</CODE> and other gates, our neural networks can simply learn
 to solve problems, sometimes problems where it would be extremely
   difficult to directly design a conventional circuit.
+  -->
+
+ところが、現実はそれほど残念ではないのです。なぜなら、ニューラルネットワークの重みとバイアスを自動的に最適化するような、我々は<em>学習アルゴリズム</em>を開発することができるからです。
+この最適化は、プログラマの直接介入なしに、外部刺激に反応して勝手に起こるものです。
+これらの学習アルゴリズムのおかげで、人工ニューロンは、従来の論理ゲートとは全く異なった使い方ができます。<CODE>NAND</CODE>ゲートや他の種類の論理ゲートはすべて手動で配線してやる必要があったのに対し、ニューラルネットワークは問題の解き方を自発的に学習してくれます。ときには、従来型の回路を設計するのが非常に難しいような問題に対してさえも。
 
 </p><p>
 
   <!--<h3><a name="sigmoid_neurons"></a><a href="#sigmoid_neurons">Sigmoid neurons</a></h3>-->
   <h3><a name="sigmoid_neurons"></a><a href="#sigmoid_neurons">シグモイドニューロン</a></h3>
-  
+
 </p><p>
 
-
+<!--
   Learning algorithms sound terrific.  But how can we devise such
 algorithms for a neural network?  Suppose we have a network of
 perceptrons that we'd like to use to learn to solve some problem.  For
@@ -718,9 +723,18 @@ like is for this small change in weight to cause only a small
 corresponding change in the output from the network.  As we'll see in
 a moment, this property will make learning possible.  Schematically,
 here's what we want (obviously this network is too simple to do
-handwriting recognition!):</p><p><center>
+  handwriting recognition!):
+-->
+  学習アルゴリズムとは大変すばらしい。でも、ニューラルネットワークに対してそのようなアルゴリズムをどう設計すればいいのでしょう？
+  かりに、私たちがある種の問題をパーセプトロンのネットワークを使って解こうとしている、としましょう。例えば、入力は手書き文字のスキャン画像の生ピクセルデータである、とか。そして、ニューラルネットワークには、数字を正しく分類できるよう、重みとバイアスを学習してほしいわけです。学習がどのように働くのか知るために、ネットワークの中のいくつかの重みやバイアスを少しだけ変更するとしましょう。私たちとしては、このような小さな変更に対応する、ニューラルネットワークからの出力の変化もまた小さなものであってほしいわけです。まもなく出てきますが、この性質こそが学習を可能にするのです。図示すれば、こんな感じです（もちろん、図のニューラルネットワークは手書き文字認識をするには小規模すぎます！）
+
+
+
+</p><p><center>
 <img src="images/tikz8.png"/>
-</center></p><p>If it were true that a small change in a weight (or bias) causes only
+</center></p><p>
+<!--
+  If it were true that a small change in a weight (or bias) causes only
 a small change in output, then we could use this fact to modify the
 weights and biases to get our network to behave more in the manner we
 want.  For example, suppose the network was mistakenly classifying an
@@ -728,7 +742,13 @@ image as an "8" when it should be a "9".  We could figure out how
 to make a small change in the weights and biases so the network gets a
 little closer to classifying the image as a "9".  And then we'd
 repeat this, changing the weights and biases over and over to produce
-better and better output.  The network would be learning.</p><p>The problem is that this isn't what happens when our network contains
+  better and better output.  The network would be learning.
+-->
+もし、重みやバイアスを微小に変化させた場合の出力の変化もまた微小である、という性質が本当に成り立っていれば、その性質をつかって、ニューラルネットワークがより自分の思ったとおりの挙動を示すように重みとバイアスを修正できます。たとえば、ニューラルネットワークがある「9」であるべき手書き文字を、間違って「8」に分類したとします。私たちは重みやバイアスに小さな変化を与えて、どうすればこのニューラルネットワークがこの画像を正しく「9」と分類する方向に近づくか探ることができます。この過程を繰り返し、重みとバイアスを変化させ続ければ、生成される結果は次第に改善されてゆくでしょう。ニューラルネットワークはこうして学習するのです。
+
+</p><p>
+
+  The problem is that this isn't what happens when our network contains
 perceptrons.  In fact, a small change in the weights or bias of any
 single perceptron in the network can sometimes cause the output of
 that perceptron to completely flip, say from $0$ to $1$.  That flip
@@ -740,12 +760,20 @@ way.  That makes it difficult to see how to gradually modify the
 weights and biases so that the network gets closer to the desired
 behaviour.  Perhaps there's some clever way of getting around this
 problem.  But it's not immediately obvious how we can get a network of
-perceptrons to learn.</p><p>We can overcome this problem by introducing a new type of artificial
+  perceptrons to learn.
+
+</p><p>
+
+  We can overcome this problem by introducing a new type of artificial
 neuron called a <em>sigmoid</em> neuron.
 Sigmoid neurons are similar to perceptrons, but modified so that small
 changes in their weights and bias cause only a small change in their
 output.  That's the crucial fact which will allow a network of sigmoid
-neurons to learn.</p><p>Okay, let me describe the sigmoid neuron.  We'll depict sigmoid
+  neurons to learn.
+
+</p><p>
+
+  Okay, let me describe the sigmoid neuron.  We'll depict sigmoid
 neurons in the same way we depicted perceptrons:
 <center>
 <img src="images/tikz9.png"/>
@@ -767,12 +795,12 @@ Instead, it's $\sigma(w \cdot x+b)$, where $\sigma$ is called the
   people working with neural nets.  However, we'll stick with the
   sigmoid terminology.</span>, and is defined
 by:
-<a class="displaced_anchor" name="eqtn3"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn3"></a>\begin{eqnarray}
   \sigma(z) \equiv \frac{1}{1+e^{-z}}.
 \tag{3}\end{eqnarray}
 To put it all a little more explicitly, the output of a sigmoid neuron
 with inputs $x_1,x_2,\ldots$, weights $w_1,w_2,\ldots$, and bias $b$ is
-<a class="displaced_anchor" name="eqtn4"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn4"></a>\begin{eqnarray}
   \frac{1}{1+\exp(-\sum_j w_j x_j-b)}.
 \tag{4}\end{eqnarray}</p><p>At first sight, sigmoid neurons appear very different to perceptrons.
 The algebraic form of the sigmoid function may seem opaque and
@@ -806,8 +834,8 @@ var xmax = 5;
 var sample = 400;
 var x1 = d3.scale.linear().domain([0, sample]).range([xmin, xmax]);
 var data = d3.range(sample).map(function(d){ return {
-        x: x1(d), 
-        y: s(x1(d))}; 
+        x: x1(d),
+        y: s(x1(d))};
     });
 var x = d3.scale.linear().domain([xmin, xmax]).range([0, width]);
 var y = d3.scale.linear()
@@ -846,10 +874,10 @@ graph.append("text")
      .attr("y", height+35)
      .text("z");
 graph.append("text")
-        .attr("x", (width / 2))             
+        .attr("x", (width / 2))
         .attr("y", -10)
-        .attr("text-anchor", "middle")  
-        .style("font-size", "16px") 
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
         .text("sigmoid function");
 </script>
 </p><p>This shape is a smoothed out version of a step function:</p><p>
@@ -864,8 +892,8 @@ var xmax = 5;
 var sample = 400;
 var x1 = d3.scale.linear().domain([0, sample]).range([xmin, xmax]);
 var data = d3.range(sample).map(function(d){ return {
-        x: x1(d), 
-        y: s(x1(d))}; 
+        x: x1(d),
+        y: s(x1(d))};
     });
 var x = d3.scale.linear().domain([xmin, xmax]).range([0, width]);
 var y = d3.scale.linear()
@@ -904,10 +932,10 @@ graph.append("text")
      .attr("y", height+35)
      .text("z");
 graph.append("text")
-        .attr("x", (width / 2))             
+        .attr("x", (width / 2))
         .attr("y", -10)
-        .attr("text-anchor", "middle")  
-        .style("font-size", "16px") 
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
         .text("step function");
 </script>
 </p><p>If $\sigma$ had in fact been a step function, then the sigmoid neuron
@@ -925,7 +953,7 @@ changes $\Delta w_j$ in the weights and $\Delta b$ in the bias will
 produce a small change $\Delta \mbox{output}$ in the output from the
 neuron.  In fact, calculus tells us that $\Delta \mbox{output}$ is
 well approximated by
-<a class="displaced_anchor" name="eqtn5"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn5"></a>\begin{eqnarray}
   \Delta \mbox{output} \approx \sum_j \frac{\partial \, \mbox{output}}{\partial w_j}
   \Delta w_j + \frac{\partial \, \mbox{output}}{\partial b} \Delta b,
 \tag{5}\end{eqnarray}
@@ -944,13 +972,13 @@ much of the same qualitative behaviour as perceptrons, they make it
 much easier to figure out how changing the weights and biases will
 change the output.</p><p>If it's the shape of $\sigma$ which really matters, and not its exact
 form, then why use the particular form used for $\sigma$ in
-Equation <span id="margin_128354118695_reveal" class="equation_link">(3)</span><span id="margin_128354118695" class="marginequation" style="display: none;"><a href="chap1.html#eqtn3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+Equation <span id="margin_128354118695_reveal" class="equation_link">(3)</span><span id="margin_128354118695" class="marginequation" style="display: none;"><a href="chap1.html#eqtn3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \sigma(z) \equiv \frac{1}{1+e^{-z}} \nonumber\end{eqnarray}</a></span><script>$('#margin_128354118695_reveal').click(function() {$('#margin_128354118695').toggle('slow', function() {});});</script>?  In fact, later in the book we will
 occasionally consider neurons where the output is $f(w \cdot x + b)$
 for some other <em>activation function</em> $f(\cdot)$.  The main thing
 that changes when we use a different activation function is that the
 particular values for the partial derivatives in
-Equation <span id="margin_231995366761_reveal" class="equation_link">(5)</span><span id="margin_231995366761" class="marginequation" style="display: none;"><a href="chap1.html#eqtn5" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+Equation <span id="margin_231995366761_reveal" class="equation_link">(5)</span><span id="margin_231995366761" class="marginequation" style="display: none;"><a href="chap1.html#eqtn5" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta \mbox{output} \approx \sum_j \frac{\partial \, \mbox{output}}{\partial w_j}
   \Delta w_j + \frac{\partial \, \mbox{output}}{\partial b} \Delta b \nonumber\end{eqnarray}</a></span><script>$('#margin_231995366761_reveal').click(function() {$('#margin_231995366761').toggle('slow', function() {});});</script> change.  It turns out that when we
 compute those partial derivatives later, using $\sigma$ will simplify
@@ -1330,7 +1358,7 @@ ball always rolled to the bottom of the valley?</p><p>To make this question more
 when we move the ball a small amount $\Delta v_1$ in the $v_1$
 direction, and a small amount $\Delta v_2$ in the $v_2$ direction.
 Calculus tells us that $C$ changes as follows:
-<a class="displaced_anchor" name="eqtn7"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn7"></a>\begin{eqnarray}
   \Delta C \approx \frac{\partial C}{\partial v_1} \Delta v_1 +
   \frac{\partial C}{\partial v_2} \Delta v_2.
 \tag{7}\end{eqnarray}
@@ -1344,8 +1372,8 @@ also define the <em>gradient</em> of $C$
 to be the vector of partial derivatives, $\left(\frac{\partial
     C}{\partial v_1}, \frac{\partial C}{\partial v_2}\right)^T$.  We
 denote the gradient vector by $\nabla C$, i.e.:
-<a class="displaced_anchor" name="eqtn8"></a>\begin{eqnarray} 
-  \nabla C \equiv \left( \frac{\partial C}{\partial v_1}, 
+<a class="displaced_anchor" name="eqtn8"></a>\begin{eqnarray}
+  \nabla C \equiv \left( \frac{\partial C}{\partial v_1},
   \frac{\partial C}{\partial v_2} \right)^T.
 \tag{8}\end{eqnarray}
 In a moment we'll rewrite the change $\Delta C$ in terms of $\Delta v$
@@ -1361,11 +1389,11 @@ notational flag-waving, telling you "hey, $\nabla C$ is a gradient
 vector".  There are more advanced points of view where $\nabla$ can
 be viewed as an independent mathematical entity in its own right (for
 example, as a differential operator), but we won't need such points of
-view.</p><p>With these definitions, the expression <span id="margin_775012797590_reveal" class="equation_link">(7)</span><span id="margin_775012797590" class="marginequation" style="display: none;"><a href="chap1.html#eqtn7" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+view.</p><p>With these definitions, the expression <span id="margin_775012797590_reveal" class="equation_link">(7)</span><span id="margin_775012797590" class="marginequation" style="display: none;"><a href="chap1.html#eqtn7" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta C \approx \frac{\partial C}{\partial v_1} \Delta v_1 +
   \frac{\partial C}{\partial v_2} \Delta v_2 \nonumber\end{eqnarray}</a></span><script>$('#margin_775012797590_reveal').click(function() {$('#margin_775012797590').toggle('slow', function() {});});</script> for
 $\Delta C$ can be rewritten as
-<a class="displaced_anchor" name="eqtn9"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn9"></a>\begin{eqnarray}
   \Delta C \approx \nabla C \cdot \Delta v.
 \tag{9}\end{eqnarray}
 This equation helps explain why $\nabla C$ is called the gradient
@@ -1374,25 +1402,25 @@ we'd expect something called a gradient to do.  But what's really
 exciting about the equation is that it lets us see how to choose
 $\Delta v$ so as to make $\Delta C$ negative.  In particular, suppose
 we choose
-<a class="displaced_anchor" name="eqtn10"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn10"></a>\begin{eqnarray}
   \Delta v = -\eta \nabla C,
 \tag{10}\end{eqnarray}
 where $\eta$ is a small, positive parameter (known as the
 <em>learning rate</em>).
-Then Equation <span id="margin_268985733901_reveal" class="equation_link">(9)</span><span id="margin_268985733901" class="marginequation" style="display: none;"><a href="chap1.html#eqtn9" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+Then Equation <span id="margin_268985733901_reveal" class="equation_link">(9)</span><span id="margin_268985733901" class="marginequation" style="display: none;"><a href="chap1.html#eqtn9" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta C \approx \nabla C \cdot \Delta v \nonumber\end{eqnarray}</a></span><script>$('#margin_268985733901_reveal').click(function() {$('#margin_268985733901').toggle('slow', function() {});});</script> tell us us that $\Delta C \approx
 -\eta \nabla C \cdot \nabla C = -\eta \|\nabla C\|^2$.  Because $\|
 \nabla C \|^2 \geq 0$, this guarantees that $\Delta C \leq 0$, i.e.,
 $C$ will always decrease, never increase, if we change $v$ according
-to the prescription in <span id="margin_47692521241_reveal" class="equation_link">(10)</span><span id="margin_47692521241" class="marginequation" style="display: none;"><a href="chap1.html#eqtn10" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+to the prescription in <span id="margin_47692521241_reveal" class="equation_link">(10)</span><span id="margin_47692521241" class="marginequation" style="display: none;"><a href="chap1.html#eqtn10" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta v = -\eta \nabla C \nonumber\end{eqnarray}</a></span><script>$('#margin_47692521241_reveal').click(function() {$('#margin_47692521241').toggle('slow', function() {});});</script>.  (Within, of
 course, the limits of the approximation in
-Equation <span id="margin_188819216022_reveal" class="equation_link">(9)</span><span id="margin_188819216022" class="marginequation" style="display: none;"><a href="chap1.html#eqtn9" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+Equation <span id="margin_188819216022_reveal" class="equation_link">(9)</span><span id="margin_188819216022" class="marginequation" style="display: none;"><a href="chap1.html#eqtn9" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta C \approx \nabla C \cdot \Delta v \nonumber\end{eqnarray}</a></span><script>$('#margin_188819216022_reveal').click(function() {$('#margin_188819216022').toggle('slow', function() {});});</script>).  This is exactly the property we wanted!
-And so we'll take Equation <span id="margin_189316591389_reveal" class="equation_link">(10)</span><span id="margin_189316591389" class="marginequation" style="display: none;"><a href="chap1.html#eqtn10" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+And so we'll take Equation <span id="margin_189316591389_reveal" class="equation_link">(10)</span><span id="margin_189316591389" class="marginequation" style="display: none;"><a href="chap1.html#eqtn10" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta v = -\eta \nabla C \nonumber\end{eqnarray}</a></span><script>$('#margin_189316591389_reveal').click(function() {$('#margin_189316591389').toggle('slow', function() {});});</script> to define the
 "law of motion" for the ball in our gradient descent algorithm.
-That is, we'll use Equation <span id="margin_744144000697_reveal" class="equation_link">(10)</span><span id="margin_744144000697" class="marginequation" style="display: none;"><a href="chap1.html#eqtn10" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+That is, we'll use Equation <span id="margin_744144000697_reveal" class="equation_link">(10)</span><span id="margin_744144000697" class="marginequation" style="display: none;"><a href="chap1.html#eqtn10" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta v = -\eta \nabla C \nonumber\end{eqnarray}</a></span><script>$('#margin_744144000697_reveal').click(function() {$('#margin_744144000697').toggle('slow', function() {});});</script> to compute a
 value for $\Delta v$, then move the ball's position $v$ by that
 amount:
@@ -1412,14 +1440,14 @@ is guaranteed to roll down into the valley.  By contrast, our rule for
 choosing $\Delta v$ just says "go down, right now".  That's still a
 pretty good rule for finding the minimum!</p><p>To make gradient descent work correctly, we need to choose the
 learning rate $\eta$ to be small
-enough that Equation <span id="margin_565114699479_reveal" class="equation_link">(9)</span><span id="margin_565114699479" class="marginequation" style="display: none;"><a href="chap1.html#eqtn9" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+enough that Equation <span id="margin_565114699479_reveal" class="equation_link">(9)</span><span id="margin_565114699479" class="marginequation" style="display: none;"><a href="chap1.html#eqtn9" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta C \approx \nabla C \cdot \Delta v \nonumber\end{eqnarray}</a></span><script>$('#margin_565114699479_reveal').click(function() {$('#margin_565114699479').toggle('slow', function() {});});</script> is a good approximation.  If
 we don't, we might end up with $\Delta C > 0$, which obviously would
 not be good!  At the same time, we don't want $\eta$ to be too small,
 since that will make the changes $\Delta v$ tiny, and thus the
 gradient descent algorithm will work very slowly.  In practical
 implementations, $\eta$ is often varied so that
-Equation <span id="margin_496706523868_reveal" class="equation_link">(9)</span><span id="margin_496706523868" class="marginequation" style="display: none;"><a href="chap1.html#eqtn9" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+Equation <span id="margin_496706523868_reveal" class="equation_link">(9)</span><span id="margin_496706523868" class="marginequation" style="display: none;"><a href="chap1.html#eqtn9" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta C \approx \nabla C \cdot \Delta v \nonumber\end{eqnarray}</a></span><script>$('#margin_496706523868_reveal').click(function() {$('#margin_496706523868').toggle('slow', function() {});});</script> remains a good approximation, but the
 algorithm isn't too slow.  We'll see later how this
 works. </p><p>I've explained gradient descent when $C$ is a function of just two
@@ -1428,12 +1456,12 @@ is a function of many more variables.  Suppose in particular that $C$
 is a function of $m$ variables, $v_1,\ldots,v_m$.  Then the change
 $\Delta C$ in $C$ produced by a small change $\Delta v = (\Delta v_1,
 \ldots, \Delta v_m)^T$ is
-<a class="displaced_anchor" name="eqtn12"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn12"></a>\begin{eqnarray}
   \Delta C \approx \nabla C \cdot \Delta v,
 \tag{12}\end{eqnarray}
-where the gradient $\nabla C$ is the vector 
+where the gradient $\nabla C$ is the vector
 <a class="displaced_anchor" name="eqtn13"></a>\begin{eqnarray}
-  \nabla C \equiv \left(\frac{\partial C}{\partial v_1}, \ldots, 
+  \nabla C \equiv \left(\frac{\partial C}{\partial v_1}, \ldots,
   \frac{\partial C}{\partial v_m}\right)^T.
 \tag{13}\end{eqnarray}
 Just as for the two variable case, we can
@@ -1442,7 +1470,7 @@ choose
   \Delta v = -\eta \nabla C,
 \tag{14}\end{eqnarray}
 and we're guaranteed that our (approximate)
-expression <span id="margin_563463857829_reveal" class="equation_link">(12)</span><span id="margin_563463857829" class="marginequation" style="display: none;"><a href="chap1.html#eqtn12" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+expression <span id="margin_563463857829_reveal" class="equation_link">(12)</span><span id="margin_563463857829" class="marginequation" style="display: none;"><a href="chap1.html#eqtn12" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta C \approx \nabla C \cdot \Delta v \nonumber\end{eqnarray}</a></span><script>$('#margin_563463857829_reveal').click(function() {$('#margin_563463857829').toggle('slow', function() {});});</script> for $\Delta C$ will be negative.
 This gives us a way of following the gradient to a minimum, even when
 $C$ is a function of many variables, by repeatedly applying the update
@@ -1553,10 +1581,10 @@ gradients just for the randomly chosen mini-batch. </p><p>To connect this explic
 $w_k$ and $b_l$ denote the weights and biases in our neural network.
 Then stochastic gradient descent works by picking out a randomly
 chosen mini-batch of training inputs, and training with those,
-<a class="displaced_anchor" name="eqtn20"></a><a class="displaced_anchor" name="eqtn21"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn20"></a><a class="displaced_anchor" name="eqtn21"></a>\begin{eqnarray}
   w_k & \rightarrow & w_k' = w_k-\frac{\eta}{m}
   \sum_j \frac{\partial C_{X_j}}{\partial w_k} \tag{20}\\
-  
+
   b_l & \rightarrow & b_l' = b_l-\frac{\eta}{m}
   \sum_j \frac{\partial C_{X_j}}{\partial b_l},
 \tag{21}\end{eqnarray}
@@ -1574,10 +1602,10 @@ $\frac{1}{n}$, summing over the costs of individual training examples
 instead of averaging.  This is particularly useful when the toal
 number of training examples isn't known in advance.  This can occur if
 more training data is being generated in real time, for instance.
-And, in a similar way, the mini-batch update rules <span id="margin_118229027727_reveal" class="equation_link">(20)</span><span id="margin_118229027727" class="marginequation" style="display: none;"><a href="chap1.html#eqtn20" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+And, in a similar way, the mini-batch update rules <span id="margin_118229027727_reveal" class="equation_link">(20)</span><span id="margin_118229027727" class="marginequation" style="display: none;"><a href="chap1.html#eqtn20" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   w_k & \rightarrow & w_k' = w_k-\frac{\eta}{m}
   \sum_j \frac{\partial C_{X_j}}{\partial w_k}  \nonumber\end{eqnarray}</a></span><script>$('#margin_118229027727_reveal').click(function() {$('#margin_118229027727').toggle('slow', function() {});});</script>
-and <span id="margin_746944869735_reveal" class="equation_link">(21)</span><span id="margin_746944869735" class="marginequation" style="display: none;"><a href="chap1.html#eqtn21" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+and <span id="margin_746944869735_reveal" class="equation_link">(21)</span><span id="margin_746944869735" class="marginequation" style="display: none;"><a href="chap1.html#eqtn21" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   b_l & \rightarrow & b_l' = b_l-\frac{\eta}{m}
   \sum_j \frac{\partial C_{X_j}}{\partial b_l} \nonumber\end{eqnarray}</a></span><script>$('#margin_746944869735_reveal').click(function() {$('#margin_746944869735').toggle('slow', function() {});});</script> sometimes omit the $\frac{1}{m}$ term out the
 front of the sums.  Conceptually this makes little difference, since
@@ -1681,7 +1709,7 @@ use to initialize a <tt>Network</tt> object:</p><p>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_layers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span> <span class="o">=</span> <span class="n">sizes</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
                         <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sizes</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:])]</span>
 </pre></div>
 </p><p>In this code, the list <tt>sizes</tt> contains the number of neurons in
@@ -1714,7 +1742,7 @@ of the $j$ and $k$ indices may seem strange - surely it'd make more
 sense to swap the $j$ and $k$ indices around?  The big advantage of
 using this ordering is that it means that the vector of activations of
 the third layer of neurons is:
-<a class="displaced_anchor" name="eqtn22"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn22"></a>\begin{eqnarray}
   a' = \sigma(w a + b).
 \tag{22}\end{eqnarray}
 There's quite a bit going on in this equation, so let's unpack it
@@ -1724,15 +1752,15 @@ and add the vector $b$ of biases.  We then apply the function $\sigma$
 elementwise to every entry in the vector $w a +b$.  (This is called
 <em>vectorizing</em> the function
 $\sigma$.) It's easy to verify that
-Equation <span id="margin_530827989636_reveal" class="equation_link">(22)</span><span id="margin_530827989636" class="marginequation" style="display: none;"><a href="chap1.html#eqtn22" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+Equation <span id="margin_530827989636_reveal" class="equation_link">(22)</span><span id="margin_530827989636" class="marginequation" style="display: none;"><a href="chap1.html#eqtn22" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   a' = \sigma(w a + b) \nonumber\end{eqnarray}</a></span><script>$('#margin_530827989636_reveal').click(function() {$('#margin_530827989636').toggle('slow', function() {});});</script> gives the same result as our
-earlier rule, Equation <span id="margin_163635338916_reveal" class="equation_link">(4)</span><span id="margin_163635338916" class="marginequation" style="display: none;"><a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+earlier rule, Equation <span id="margin_163635338916_reveal" class="equation_link">(4)</span><span id="margin_163635338916" class="marginequation" style="display: none;"><a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{1}{1+\exp(-\sum_j w_j x_j-b)} \nonumber\end{eqnarray}</a></span><script>$('#margin_163635338916_reveal').click(function() {$('#margin_163635338916').toggle('slow', function() {});});</script>, for
 computing the output of a sigmoid neuron.</p><p><h4><a name="exercise_695318"></a><a href="#exercise_695318">Exercise</a></h4><ul>
-<li> Write out Equation <span id="margin_177086642938_reveal" class="equation_link">(22)</span><span id="margin_177086642938" class="marginequation" style="display: none;"><a href="chap1.html#eqtn22" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<li> Write out Equation <span id="margin_177086642938_reveal" class="equation_link">(22)</span><span id="margin_177086642938" class="marginequation" style="display: none;"><a href="chap1.html#eqtn22" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   a' = \sigma(w a + b) \nonumber\end{eqnarray}</a></span><script>$('#margin_177086642938_reveal').click(function() {$('#margin_177086642938').toggle('slow', function() {});});</script> in component
   form, and verify that it gives the same result as the
-  rule <span id="margin_215368916270_reveal" class="equation_link">(4)</span><span id="margin_215368916270" class="marginequation" style="display: none;"><a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  rule <span id="margin_215368916270_reveal" class="equation_link">(4)</span><span id="margin_215368916270" class="marginequation" style="display: none;"><a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{1}{1+\exp(-\sum_j w_j x_j-b)} \nonumber\end{eqnarray}</a></span><script>$('#margin_215368916270_reveal').click(function() {$('#margin_215368916270').toggle('slow', function() {});});</script> for computing the output
   of a sigmoid neuron.
 </ul></p><p>With all this in mind, it's easy to write code computing the output
@@ -1748,7 +1776,7 @@ function:
 We then add a <tt>feedforward</tt> method to the <tt>Network</tt> class,
 which, given an input <tt>a</tt> for the network, returns the
 corresponding output.  All the method does is applies
-Equation <span id="margin_323063151061_reveal" class="equation_link">(22)</span><span id="margin_323063151061" class="marginequation" style="display: none;"><a href="chap1.html#eqtn22" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+Equation <span id="margin_323063151061_reveal" class="equation_link">(22)</span><span id="margin_323063151061" class="marginequation" style="display: none;"><a href="chap1.html#eqtn22" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   a' = \sigma(w a + b) \nonumber\end{eqnarray}</a></span><script>$('#margin_323063151061_reveal').click(function() {$('#margin_323063151061').toggle('slow', function() {});});</script> for each layer:
 <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">feedforward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the output of the network if &quot;a&quot; is input.&quot;&quot;&quot;</span>
@@ -1813,9 +1841,9 @@ the code for the <tt>update_mini_batch</tt> method:
             <span class="n">delta_nabla_b</span><span class="p">,</span> <span class="n">delta_nabla_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backprop</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
             <span class="n">nabla_b</span> <span class="o">=</span> <span class="p">[</span><span class="n">nb</span><span class="o">+</span><span class="n">dnb</span> <span class="k">for</span> <span class="n">nb</span><span class="p">,</span> <span class="n">dnb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nabla_b</span><span class="p">,</span> <span class="n">delta_nabla_b</span><span class="p">)]</span>
             <span class="n">nabla_w</span> <span class="o">=</span> <span class="p">[</span><span class="n">nw</span><span class="o">+</span><span class="n">dnw</span> <span class="k">for</span> <span class="n">nw</span><span class="p">,</span> <span class="n">dnw</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nabla_w</span><span class="p">,</span> <span class="n">delta_nabla_w</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nw</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nw</span>
                         <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">nw</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="n">nabla_w</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nb</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nb</span>
                        <span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">nb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">,</span> <span class="n">nabla_b</span><span class="p">)]</span>
 </pre></div>
 
@@ -1842,7 +1870,7 @@ the derivative of the $\sigma$ function, its vectorized form
 won't describe here.  You can get the gist of these (and perhaps the
 details) just by looking at the code and documentation strings.  We'll
 look at them in detail in the next
-chapter. 
+chapter.
 Note that while the program appears lengthy, much of the code is
 documentation strings intended to make the code easy to understand.
 In fact, the program contains just 74 lines of non-whitespace,
@@ -1881,7 +1909,7 @@ non-comment code.  All the code may be found on GitHub
         <span class="bp">self</span><span class="o">.</span><span class="n">num_layers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span> <span class="o">=</span> <span class="n">sizes</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
                         <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sizes</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:])]</span>
 
     <span class="k">def</span> <span class="nf">feedforward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
@@ -1926,9 +1954,9 @@ non-comment code.  All the code may be found on GitHub
             <span class="n">delta_nabla_b</span><span class="p">,</span> <span class="n">delta_nabla_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backprop</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
             <span class="n">nabla_b</span> <span class="o">=</span> <span class="p">[</span><span class="n">nb</span><span class="o">+</span><span class="n">dnb</span> <span class="k">for</span> <span class="n">nb</span><span class="p">,</span> <span class="n">dnb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nabla_b</span><span class="p">,</span> <span class="n">delta_nabla_b</span><span class="p">)]</span>
             <span class="n">nabla_w</span> <span class="o">=</span> <span class="p">[</span><span class="n">nw</span><span class="o">+</span><span class="n">dnw</span> <span class="k">for</span> <span class="n">nw</span><span class="p">,</span> <span class="n">dnw</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nabla_w</span><span class="p">,</span> <span class="n">delta_nabla_w</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nw</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nw</span>
                         <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">nw</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="n">nabla_w</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nb</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nb</span>
                        <span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">nb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">,</span> <span class="n">nabla_b</span><span class="p">)]</span>
 
     <span class="k">def</span> <span class="nf">backprop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -1971,14 +1999,14 @@ non-comment code.  All the code may be found on GitHub
 <span class="sd">        network outputs the correct result. Note that the neural</span>
 <span class="sd">        network&#39;s output is assumed to be the index of whichever</span>
 <span class="sd">        neuron in the final layer has the highest activation.&quot;&quot;&quot;</span>
-        <span class="n">test_results</span> <span class="o">=</span> <span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feedforward</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">y</span><span class="p">)</span> 
+        <span class="n">test_results</span> <span class="o">=</span> <span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feedforward</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">y</span><span class="p">)</span>
                         <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="n">test_data</span><span class="p">]</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="n">test_results</span><span class="p">)</span>
-        
+
     <span class="k">def</span> <span class="nf">cost_derivative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_activations</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the vector of partial derivatives \partial C_x /</span>
 <span class="sd">        \partial a for the output activations.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">output_activations</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> 
+        <span class="k">return</span> <span class="p">(</span><span class="n">output_activations</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
 
 <span class="c">#### Miscellaneous functions</span>
 <span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
