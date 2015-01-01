@@ -1333,7 +1333,6 @@ is because that approach turns out to be faster to implement numerically.
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_299731299416_reveal').click(function() {$('#margin_299731299416').toggle('slow', function() {});});</script>
 の表式を用いたのは、こちらの方が実装時の数値計算が速いからです。
 </p>
-<!-----------------------ここまで校正終了--------------------------------------->
 <p><h3><a name="proof_of_the_four_fundamental_equations_(optional)"></a>
 <a href="#proof_of_the_four_fundamental_equations_(optional)">
 <!--Proof of the four fundamental equations (optional)-->
@@ -1343,12 +1342,11 @@ is because that approach turns out to be faster to implement numerically.
 <p>
 <!--We'll now prove the four fundamental equations
 <span id="margin_816792216456_reveal" class="equation_link">(BP1)</span><span id="margin_816792216456" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_816792216456_reveal').click(function() {$('#margin_816792216456').toggle('slow', function() {});});</script>-<span id="margin_517979696409_reveal" class="equation_link">(BP4)</span><span id="margin_517979696409" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}    \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_517979696409_reveal').click(function() {$('#margin_517979696409').toggle('slow', function() {});});</script>.
- All four are consequences of the chain rule from multivariable calculus.  If you're comfortable with
-the chain rule, then I strongly encourage you to attempt the
-derivation yourself before reading on.-->
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_816792216456_reveal').click(function() {$('#margin_816792216456').toggle('slow', function() {});});</script>-<span id="margin_517979696409_reveal" class="equation_link">(BP4)</span><span id="margin_517979696409" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}    \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_517979696409_reveal').click(function() {$('#margin_517979696409').toggle('slow', function() {});});</script>.-->
 それでは、<span id="margin_816792216456_reveal" class="equation_link">(BP1)</span><span id="margin_816792216456" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_816792216456_reveal').click(function() {$('#margin_816792216456').toggle('slow', function() {});});</script>-<span id="margin_517979696409_reveal" class="equation_link">(BP4)</span><span id="margin_517979696409" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}    \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_517979696409_reveal').click(function() {$('#margin_517979696409').toggle('slow', function() {});});</script>を証明していきます。
+<!-- All four are consequences of the chain rule from multivariable calculus.
+If you're comfortable with the chain rule, then I strongly encourage you to attempt the derivation yourself before reading on.-->
 これらはすべて多変数関数の微分の連鎖律の結論です。
 もし連鎖律に慣れていたら、読み進める前に自力での導出に挑戦してみるのを強くおすすめします。
 </p>
@@ -1356,8 +1354,12 @@ derivation yourself before reading on.-->
 <!--Let's begin with Equation
 <span id="margin_189404299769_reveal" class="equation_link">(BP1)</span><span id="margin_189404299769" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_189404299769_reveal').click(function() {$('#margin_189404299769').toggle('slow', function() {});});</script>
-, which gives an expression for the output error, $\delta^L$.
-To prove this equation, recall that by definition
+, which gives an expression for the output error, $\delta^L$.-->
+まず、出力での誤差$\delta^L$の表式
+<span id="margin_189404299769_reveal" class="equation_link">(BP1)</span><span id="margin_189404299769" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_189404299769_reveal').click(function() {$('#margin_189404299769').toggle('slow', function() {});});</script>
+から証明しましょう。
+<!--To prove this equation, recall that by definition
 <a class="displaced_anchor" name="eqtn36"></a>\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial z^L_j}.
 \tag{36}\end{eqnarray}
@@ -1367,46 +1369,42 @@ activations,
 <a class="displaced_anchor" name="eqtn37"></a>\begin{eqnarray}
   \delta^L_j = \sum_k \frac{\partial C}{\partial a^L_k} \frac{\partial a^L_k}{\partial z^L_j},
 \tag{37}\end{eqnarray}
-where the sum is over all neurons $k$ in the output layer.  Of course,
-the output activation $a^L_k$ of the $k^{\rm th}$ neuron depends only
-on the input weight $z^L_j$ for the $j^{\rm th}$ neuron when $k = j$.
+where the sum is over all neurons $k$ in the output layer.-->
+この式を示すのに、まず次の式を思い出します
+<a class="displaced_anchor" name="eqtn36"></a>\begin{eqnarray}
+  \delta^L_j = \frac{\partial C}{\partial z^L_j}.
+\tag{36}\end{eqnarray}
+連鎖律を適用すると、この微分を出力活性に関する偏微分で書き直す事ができます
+<a class="displaced_anchor" name="eqtn37"></a>\begin{eqnarray}
+  \delta^L_j = \sum_k \frac{\partial C}{\partial a^L_k} \frac{\partial a^L_k}{\partial z^L_j}.
+\tag{37}\end{eqnarray}
+ここで、和は出力層のすべてのニューロン$k$について足し合わせます。
+<!--Of course, the output activation $a^L_k$ of the $k^{\rm th}$ neuron depends only on the input weight $z^L_j$ for the $j^{\rm th}$ neuron when $k = j$.
 And so $\partial a^L_k / \partial z^L_j$ vanishes when $k \neq j$.  As
 a result we can simplify the previous equation to
 <a class="displaced_anchor" name="eqtn38"></a>\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \frac{\partial a^L_j}{\partial z^L_j}.
+\tag{38}\end{eqnarray}-->
+もちろん、$k=j$の時には、$k$番目のニューロンの出力活性$a^L_k$は、$j$番目のニューロンの入力の重みにのみ依存します。
+従って、$k\neq j$の時には$\partial a^L_k / \partial z^L_j$の値は$0$です。
+結果として前述の式を以下のように簡略化できます
+<a class="displaced_anchor" name="eqtn38"></a>\begin{eqnarray}
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \frac{\partial a^L_j}{\partial z^L_j}.
 \tag{38}\end{eqnarray}
-Recalling that $a^L_j = \sigma(z^L_j)$ the second term on the right
+<!--Recalling that $a^L_j = \sigma(z^L_j)$ the second term on the right
 can be written as $\sigma'(z^L_j)$, and the equation becomes
 <a class="displaced_anchor" name="eqtn39"></a>\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j),
 \tag{39}\end{eqnarray}
 which is just
 <span id="margin_104919018101_reveal" class="equation_link">(BP1)</span><span id="margin_104919018101" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_104919018101_reveal').click(function() {$('#margin_104919018101').toggle('slow', function() {});});</script>, in component form.-->
-まず、出力での誤差$\delta^L$の表式
-<span id="margin_189404299769_reveal" class="equation_link">(BP1)</span><span id="margin_189404299769" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_189404299769_reveal').click(function() {$('#margin_189404299769').toggle('slow', function() {});});</script>
-から証明しましょう。
-この式を示すに、まず次の式を思い出します
-<a class="displaced_anchor" name="eqtn36"></a>\begin{eqnarray}
-  \delta^L_j = \frac{\partial C}{\partial z^L_j}.
-\tag{36}\end{eqnarray}
-連鎖律を適用すると、この微分を出力の活性についての偏微分で書き直すことができます。
-<a class="displaced_anchor" name="eqtn37"></a>\begin{eqnarray}
-  \delta^L_j = \sum_k \frac{\partial C}{\partial a^L_k} \frac{\partial a^L_k}{\partial z^L_j},
-\tag{37}\end{eqnarray}.
-ここで、和は出力層のすべてのニューロン$k$について足し合わせます。
-もちろん、$k=j$の時には、$k$番目のニューロンの出力活性$a^L_k$は、$j$番目のニューロンの入力の重みにのみ依存します。
-従って、$k\neq j$の時には$\partial a^L_k / \partial z^L_j$の値は$0$です。
-結果として前述の式は、以下のように簡略化されます
-<a class="displaced_anchor" name="eqtn38"></a>\begin{eqnarray}
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \frac{\partial a^L_j}{\partial z^L_j}.
-\tag{38}\end{eqnarray}
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_104919018101_reveal').click(function() {$('#margin_104919018101').toggle('slow', function() {});});</script>
+, in component form.-->
 $a^L_j = \sigma(z^L_j)$であった事を思い出すと、第2項は$\sigma'(z^L_j)$と書けて、
 <a class="displaced_anchor" name="eqtn39"></a>\begin{eqnarray}
-  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j),
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j)
 \tag{39}\end{eqnarray}
-となります。これを添字なしの形で書くと
+となります。これを添字なしの形式で書くと
 <span id="margin_104919018101_reveal" class="equation_link">(BP1)</span><span id="margin_104919018101" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_104919018101_reveal').click(function() {$('#margin_104919018101').toggle('slow', function() {});});</script>
 が得られます。
@@ -1415,9 +1413,12 @@ $a^L_j = \sigma(z^L_j)$であった事を思い出すと、第2項は$\sigma'(z^
 <!--Next, we'll prove
 <span id="margin_987004185602_reveal" class="equation_link">(BP2)</span><span id="margin_987004185602" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_987004185602_reveal').click(function() {$('#margin_987004185602').toggle('slow', function() {});});</script>
-, which gives an equation for the error
-$\delta^l$ in terms of the error in the next layer, $\delta^{l+1}$.
-To do this, we want to rewrite $\delta^l_j = \partial C / \partial z^l_j$ in terms of $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$.
+, which gives an equation for the error $\delta^l$ in terms of the error in the next layer, $\delta^{l+1}$.-->
+次に、誤差$\delta^l$をその1つ後ろの層の誤差$\delta^{l+1}$を用いて表す
+<span id="margin_987004185602_reveal" class="equation_link">(BP2)</span><span id="margin_987004185602" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_987004185602_reveal').click(function() {$('#margin_987004185602').toggle('slow', function() {});});</script>
+を証明します。
+<!--To do this, we want to rewrite $\delta^l_j = \partial C / \partial z^l_j$ in terms of $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$.
 We can do this using the chain rule,
 <a class="displaced_anchor" name="eqtn40"></a><a class="displaced_anchor" name="eqtn41"></a><a class="displaced_anchor" name="eqtn42"></a>\begin{eqnarray}
   \delta^l_j & = & \frac{\partial C}{\partial z^l_j} \tag{40}\\
@@ -1425,44 +1426,37 @@ We can do this using the chain rule,
   & = & \sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k,
 \tag{42}\end{eqnarray}
 where in the last line we have interchanged the two terms on the
-right-hand side, and substituted the definition of $\delta^{l+1}_k$.
-To evaluate the first term on the last line, note that
-<a class="displaced_anchor" name="eqtn43"></a>\begin{eqnarray}
-  z^{l+1}_k = \sum_j w^{l+1}_{kj} a^l_j +b^{l+1}_k = \sum_j w^{l+1}_{kj} \sigma(z^l_j) +b^{l+1}_k.
-\tag{43}\end{eqnarray}
-Differentiating, we obtain
-<a class="displaced_anchor" name="eqtn44"></a>\begin{eqnarray}
-  \frac{\partial z^{l+1}_k}{\partial z^l_j} = w^{l+1}_{kj} \sigma'(z^l_j).
-\tag{44}\end{eqnarray}
-Substituting back into
-<span id="margin_234573266012_reveal" class="equation_link">(42)</span><span id="margin_234573266012" class="marginequation" style="display: none;"><a href="chap2.html#eqtn42" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  & = & \sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k \nonumber\end{eqnarray}</a></span><script>$('#margin_234573266012_reveal').click(function() {$('#margin_234573266012').toggle('slow', function() {});});</script>
- we obtain
-<a class="displaced_anchor" name="eqtn45"></a>\begin{eqnarray}
-  \delta^l_j = \sum_k w^{l+1}_{kj}  \delta^{l+1}_k \sigma'(z^l_j).
-\tag{45}\end{eqnarray}
-This is just
-<span id="margin_475522318211_reveal" class="equation_link">(BP2)</span><span id="margin_475522318211" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_475522318211_reveal').click(function() {$('#margin_475522318211').toggle('slow', function() {});});</script> written in component form.-->
-次に、誤差$\delta^l$をその1つ後ろの層の誤差$\delta^{l+1}$を用いて書く
-<span id="margin_987004185602_reveal" class="equation_link">(BP2)</span><span id="margin_987004185602" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_987004185602_reveal').click(function() {$('#margin_987004185602').toggle('slow', function() {});});</script>
-を証明します。
+right-hand side, and substituted the definition of $\delta^{l+1}_k$.-->
 そのために、連鎖律を用いて$\delta^l_j = \partial C / \partial z^l_j$を$\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$を用いて書き直します
 <a class="displaced_anchor" name="eqtn40"></a><a class="displaced_anchor" name="eqtn41"></a><a class="displaced_anchor" name="eqtn42"></a>\begin{eqnarray}
   \delta^l_j & = & \frac{\partial C}{\partial z^l_j} \tag{40}\\
   & = & \sum_k \frac{\partial C}{\partial z^{l+1}_k} \frac{\partial z^{l+1}_k}{\partial z^l_j} \tag{41}\\ 
   & = & \sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k.
 \tag{42}\end{eqnarray}
-ここで、最後の行は2つの項を交換し、$\delta^{l+1}_k$の定義で置き換えました。
-最後の行の第1項を評価するため、次の式に注意してください
+ここで、最後の行は2つの項を交換し、第2項を$\delta^{l+1}_k$の定義で置き換えました。
+<!--To evaluate the first term on the last line, note that
 <a class="displaced_anchor" name="eqtn43"></a>\begin{eqnarray}
-  z^{l+1}_k = \sum_j w^{l+1}_{kj} a^l_j +b^{l+1}_k = \sum_j w^{l+1}_{kj} \sigma(z^l_j) +b^{l+1}_k
+  z^{l+1}_k = \sum_j w^{l+1}_{kj} a^l_j +b^{l+1}_k = \sum_j w^{l+1}_{kj} \sigma(z^l_j) +b^{l+1}_k.
+\tag{43}\end{eqnarray}
+Differentiating, we obtain
+<a class="displaced_anchor" name="eqtn44"></a>\begin{eqnarray}
+  \frac{\partial z^{l+1}_k}{\partial z^l_j} = w^{l+1}_{kj} \sigma'(z^l_j).
+\tag{44}\end{eqnarray}-->
+最後の行の第1項を評価するために、次の式に注意します
+<a class="displaced_anchor" name="eqtn43"></a>\begin{eqnarray}
+  z^{l+1}_k = \sum_j w^{l+1}_{kj} a^l_j +b^{l+1}_k = \sum_j w^{l+1}_{kj} \sigma(z^l_j) +b^{l+1}_k.
 \tag{43}\end{eqnarray}
 この式を微分すると、次が得られます
 <a class="displaced_anchor" name="eqtn44"></a>\begin{eqnarray}
   \frac{\partial z^{l+1}_k}{\partial z^l_j} = w^{l+1}_{kj} \sigma'(z^l_j).
 \tag{44}\end{eqnarray}
+<!--Substituting back into
+<span id="margin_234573266012_reveal" class="equation_link">(42)</span><span id="margin_234573266012" class="marginequation" style="display: none;"><a href="chap2.html#eqtn42" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  & = & \sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k \nonumber\end{eqnarray}</a></span><script>$('#margin_234573266012_reveal').click(function() {$('#margin_234573266012').toggle('slow', function() {});});</script>
+ we obtain
+<a class="displaced_anchor" name="eqtn45"></a>\begin{eqnarray}
+  \delta^l_j = \sum_k w^{l+1}_{kj}  \delta^{l+1}_k \sigma'(z^l_j).
+\tag{45}\end{eqnarray}-->
 この式で
 <span id="margin_234573266012_reveal" class="equation_link">(42)</span><span id="margin_234573266012" class="marginequation" style="display: none;"><a href="chap2.html#eqtn42" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   & = & \sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k \nonumber\end{eqnarray}</a></span><script>$('#margin_234573266012_reveal').click(function() {$('#margin_234573266012').toggle('slow', function() {});});</script>
@@ -1470,7 +1464,10 @@ This is just
 <a class="displaced_anchor" name="eqtn45"></a>\begin{eqnarray}
   \delta^l_j = \sum_k w^{l+1}_{kj}  \delta^{l+1}_k \sigma'(z^l_j).
 \tag{45}\end{eqnarray}
-この式を添え字なしの形で書いたものが
+<!--This is just
+<span id="margin_475522318211_reveal" class="equation_link">(BP2)</span><span id="margin_475522318211" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_475522318211_reveal').click(function() {$('#margin_475522318211').toggle('slow', function() {});});</script> written in component form.-->
+この式を添え字を用いずに書いたものが
 <span id="margin_475522318211_reveal" class="equation_link">(BP2)</span><span id="margin_475522318211" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_475522318211_reveal').click(function() {$('#margin_475522318211').toggle('slow', function() {});});</script>
 そのものです。
@@ -1483,10 +1480,8 @@ and
 <span id="margin_283549566641_reveal" class="equation_link">(BP4)</span><span id="margin_283549566641" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
   \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_283549566641_reveal').click(function() {$('#margin_283549566641').toggle('slow', function() {});});</script>
 .
-These also follow from the chain rule, in a manner
-similar to the proofs of the two equations above.  I leave them to you
-as an exercise. -->
-証明したい最後の2つの式は
+These also follow from the chain rule, in a manner similar to the proofs of the two equations above.  I leave them to you as an exercise. -->
+証明したいあと2つの式は
 <span id="margin_3687779347_reveal" class="equation_link">(BP3)</span><span id="margin_3687779347" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
   \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_3687779347_reveal').click(function() {$('#margin_3687779347').toggle('slow', function() {});});</script>
 と
@@ -1524,10 +1519,10 @@ gradient of the cost function by systematically applying the chain
 rule from multi-variable calculus. 
 That's all there really is to backpropagation - the rest is details.-->
 以上で逆伝播の4つの基本的な式の証明が完了しました。
-証明は複雑にみえたかもしれません。
+証明は一見複雑かもしれません。
 しかし、これらは連鎖律を慎重に適用した結果にしか過ぎません。
-もう少し詳しく言えば、逆伝播は多変数関数の微分で使われる連鎖律をシステマチックに適用する事で、コスト関数の勾配を計算する方法と見る事ができます。
-それが逆伝播の正体で、残りの部分は細かな事です。
+もう少し詳しく言えば、逆伝播は多変数関数の微分で利用される連鎖律をシステマチックに適用する事で、コスト関数の勾配を計算する方法と見る事ができます。
+それが逆伝播の正体であり、残りは些細な部分です。
 </p>
 <p><h3><a name="the_backpropagation_algorithm"></a><a href="#the_backpropagation_algorithm">
 <!--The backpropagation algorithm-->
@@ -1551,7 +1546,7 @@ form of an algorithm:
   $\frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j$ and
   $\frac{\partial C}{\partial b^l_j} = \delta^l_j$.
 </ol>-->
-逆伝播の式により、コスト関数の勾配を計算が可能になります。
+逆伝播の式により、コスト関数の勾配の計算が可能になりました。
 その方法を具体的にアルゴリズムの形で書き下してみましょう。
 <ol>
 <li> <strong>入力 $x$：</strong>
@@ -1583,7 +1578,7 @@ layers to obtain useable expressions.-->
 最終層から始まり、逆向きに誤差ベクトル$\delta^l$を計算しています。
 ネットワークを逆向きに辿るのが奇妙に思われるかもしれません。
 しかし、逆伝播の証明を思い返すと、コストはニューラルネットワークの出力についての関数であるという事から、逆伝播の方向が決まっている事がわかります。
-前段の重みやバイアスによりコストがどのように変化するかを見るためには、連鎖律を繰り返し適用しなければならず、所望の計算式を得るにはレイヤーを逆方向に辿っていく必要があります。
+前段の重みやバイアスによりコストがどのように変化するかを見るためには、連鎖律を繰り返し適用しなければならず、欲しい計算式を得るにはネットワークを逆方向に辿る必要があります。
 </p>
 <p><h4><a name="exercises_675621"></a><a href="#exercises_675621">
 <!--Exercises-->
@@ -1591,19 +1586,19 @@ layers to obtain useable expressions.-->
 </a></h4><ul>
 <li><strong>
 <!--Backpropagation with a single modified neuron-->
-ニューロンの一つを差し替えた時の逆伝播
+ニューロンの1つを差し替えた時の逆伝播：
 </strong>
 <!--Suppose we modify
   a single neuron in a feedforward network so that the output from the
   neuron is given by $f(\sum_j w_j x_j + b)$, where $f$ is some
   function other than the sigmoid.  How should we modify the
   backpropagation algorithm in this case?-->
-フィードフォワードネットワークの特定の一つのニューロンを、$f(\sum_j w_j x_j + b)$を出力するように変更したとします。ここで、$f$はシグモイド以外の適当な関数です。
-この場合、逆伝播アルゴリズムはどのように変更すればよいでしょう。
+フィードフォワードニューラルネットワークの特定の1つのニューロンを、$f(\sum_j w_j x_j + b)$を出力するものに変更したとします。ここで、$f$はシグモイド以外の適当な関数です。
+この場合、逆伝播アルゴリズムはどのように変更すればよいでしょうか。
 </p>
 <p><li><strong>
 <!--Backpropagation with linear neurons-->
-線形ニューロンでの逆伝播
+線形ニューロンでの逆伝播：
 </strong>
 <!--Suppose we replace the
   usual non-linear $\sigma$ function with $\sigma(z) = z$ throughout
@@ -1617,8 +1612,11 @@ C_x$.  In practice, it's common to combine backpropagation with a
 learning algorithm such as stochastic gradient descent, in which we
 compute the gradient for many training examples.  In particular, given
 a mini-batch of $m$ training examples, the following algorithm applies
-a gradient descent learning step based on that mini-batch:
-<ol>
+a gradient descent learning step based on that mini-batch:-->
+前述のように、逆伝播アルゴリズムは単一の訓練例に対するコスト関数$C = C_x$の勾配を計算します。
+しかし実際の実装では、逆伝播を、確率的勾配降下法などの多数の訓練例に対する勾配を計算する学習アルゴリズムと組み合わせるのが一般的です。
+以下のアルゴリズムでは、$m$個の訓練例からなるミニバッチに対して勾配降下法を適用して学習を行っています。
+<!--<ol>
 <li> <strong>Input a set of training examples</strong></p>
 <p><li> <strong>For each training example $x$:</strong> Set the corresponding
   input activation $a^{x,1}$, and perform the following steps:</p>
@@ -1637,30 +1635,27 @@ a gradient descent learning step based on that mini-batch:
   w^l-\frac{\eta}{m} \sum_x \delta^{x,l} (a^{x,l-1})^T$, and the
   biases according to the rule $b^l \rightarrow b^l-\frac{\eta}{m}
   \sum_x \delta^{x,l}$.-->
-前述のように、逆伝播アルゴリズムは単一の訓練例に対するコスト関数$C = C_x$に対する勾配を計算します。
-実際の実装では、確率的勾配降下法など、、多数の訓練例に対する勾配を計算する学習アルゴリズムを逆伝播と組み合わせるのが一般的です。
-特に、次のアルゴリズムはミニバッチに基づく勾配降下法を用いる学習ステップです。ミニバッチとして$m$個の訓練例を与えています。
 <ol>
 <li> <strong>訓練例のセットを入力</strong></p>
 <p><li> <strong>各訓練例$x$に対して：</strong>
 対応する活性$a^{x, 1}$をセットし、以下のステップを行う：</p>
 <p><ul>
 <li> <strong>フィードフォワード：</strong>
-各$l = 2, 3, \ldots, L$に対し、$z^{x,l} = w^l a^{x,l-1}+b^l$と$a^{x,l} = \sigma(z^{x,l})$を計算する</p>
+$l = 2, 3, \ldots, L$に対し、$z^{x,l} = w^l a^{x,l-1}+b^l$と$a^{x,l} = \sigma(z^{x,l})$を計算する</p>
 <p><li> <strong>誤差$\delta^{x,L}$を出力：</strong>
 ベクトル$\delta^{x,L} = \nabla_a C_x \odot \sigma'(z^{x,L})$を計算する</p>
 <p><li> <strong>誤差を逆伝播する：</strong>
-各$l = L-1, L-2, \ldots, 2$に対し、$\delta^{x,l} = ((w^{l+1})^T \delta^{x,l+1}) \odot \sigma'(z^{x,l})$を計算する
+$l = L-1, L-2, \ldots, 2$に対し、$\delta^{x,l} = ((w^{l+1})^T \delta^{x,l+1}) \odot \sigma'(z^{x,l})$を計算する
 </ul>
 </p>
 <p><li> <strong>勾配降下：</strong>
-各$l = L, L-1, \ldots, 2$に対し、$w^l \rightarrow w^l-\frac{\eta}{m} \sum_x \delta^{x,l} (a^{x,l-1})^T$というルールで重みを、$b^l \rightarrow b^l-\frac{\eta}{m} \sum_x \delta^{x,l}$というルールでバイアスを更新する</p>
+$l = L, L-1, \ldots, 2$に対し、重みを$w^l \rightarrow w^l-\frac{\eta}{m} \sum_x \delta^{x,l} (a^{x,l-1})^T$で更新し、バイアスを$b^l \rightarrow b^l-\frac{\eta}{m} \sum_x \delta^{x,l}$で更新する</p>
 <p></ol></p>
 <!--Of course, to implement stochastic gradient descent in practice you
 also need an outer loop generating mini-batches of training examples,
 and an outer loop stepping through multiple epochs of training.  I've
 omitted those for simplicity. -->
-もちろん、確率的勾配降下法を実装する際は、訓練例のミニバッチを作成する外部ループと訓練を複数回のエポックを繰り返す為の外部ループが必要です。
+もちろん、確率的勾配降下法を実装する際は、訓練例のミニバッチを作成する外部ループと複数回のエポックで訓練を繰り返す為の外部ループが必要です。
 簡単のためにそれらは記述しませんでした。
 </p>
 <p></p>
@@ -1680,11 +1675,10 @@ these methods is a direct translation of the algorithm described
 above.  In particular, the <tt>update_mini_batch</tt> method updates the
 <tt>Network</tt>'s weights and biases by computing the gradient for the
 current <tt>mini_batch</tt> of training examples:-->
-
-逆伝播の理論を理解したので、前章で逆伝播を実装するのに利用したコードを理解できます。
-<a href="chap1.html#implementing_our_network_to_classify_digits">この章</a>を思い出すと、逆伝播のコードは<tt>Network</tt>クラスの<tt>update_minibatch</tt>メソッドと<tt>backprop</tt>メソッドに含まれていました。
-これらのコードは前述のアルゴリズムのそのままコードに翻訳したものです。
-特に、<tt>update_mini_batch</tt>メソッドは現在の訓練例の<tt>mini_batch</tt>に対する勾配を計算する事で、<tt>Network</tt>クラスの重みとバイアスを更新しています。
+逆伝播の理論を理解した事で、逆伝播の実装に利用した前章のコードを理解できる段階に達しました。
+<a href="chap1.html#implementing_our_network_to_classify_digits">この章</a>を思い出すと、逆伝播の実装は<tt>Network</tt>クラスの<tt>update_minibatch</tt>メソッドと<tt>backprop</tt>メソッドに含まれていました。
+これらのメソッドは前述のアルゴリズムをそのままコードに翻訳したものです。
+<tt>update_mini_batch</tt>メソッドは現在の訓練例の<tt>mini_batch</tt>について勾配を計算し、<tt>Network</tt>クラスの重みとバイアスを更新しています。
 <!--<div class="highlight"><pre><span class="k">class</span> <span class="nc">Network</span><span class="p">():</span>
 <span class="o">...</span>
     <span class="k">def</span> <span class="nf">update_mini_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mini_batch</span><span class="p">,</span> <span class="n">eta</span><span class="p">):</span>
@@ -1707,7 +1701,7 @@ current <tt>mini_batch</tt> of training examples:-->
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Network</span><span class="p">():</span>
 <span class="o">...</span>
     <span class="k">def</span> <span class="nf">update_mini_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mini_batch</span><span class="p">,</span> <span class="n">eta</span><span class="p">):</span>
-<span class="sd">        &quot;&quot;&quot;ミニバッチ一つ分に逆伝播を用いて勾配降下法を適用し、</span>
+<span class="sd">        &quot;&quot;&quot;ミニバッチ1つ分に逆伝播を用いた勾配降下法を適用し、</span>
 <span class="sd">        ニューラルネットワークの重みとバイアスを更新する。</span>
 <span class="sd">        &quot;mini_batch&quot;はタプル&quot;(x, y)&quot;のリストで&quot;、</span>
 <span class="sd">        eta&quot;は学習率。&quot;&quot;&quot;</span>
@@ -1725,29 +1719,23 @@ current <tt>mini_batch</tt> of training examples:-->
 <!--Most of the work is done by the line
 <tt>delta_nabla_b, delta_nabla_w = self.backprop(x, y)</tt> which uses
 the <tt>backprop</tt> method to figure out the partial derivatives
-$\partial C_x / \partial b^l_j$ and $\partial C_x / \partial w^l_{jk}$.
-  The <tt>backprop</tt> method follows the algorithm in the
+$\partial C_x / \partial b^l_j$ and $\partial C_x / \partial w^l_{jk}$.-->
+ほとんどの作業は<tt>delta_nabla_b, delta_nabla_w = self.backprop(x, y)</tt>の行で行われています。この行では、<tt>backprop</tt>メソッドを利用して偏微分$\partial C_x / \partial b^l_j$と$\partial C_x / \partial w^l_{jk}$を計算しています。
+<!--  The <tt>backprop</tt> method follows the algorithm in the
 last section closely.  There is one small change - we use a slightly
 different approach to indexing the layers.  This change is made to
 take advantage of a feature of Python, namely the use of negative list
 indices to count backward from the end of a list, so, e.g.,
-<tt>l[-3]</tt> is the third last entry in a list <tt>l</tt>.  The code for
-<tt>backprop</tt> is below, together with a few helper functions, which
-are used to compute the $\sigma$ function and its vectorized form, the
-derivative $\sigma'$ and its vectorized form, and the derivative of
-the cost function.  With these inclusions you should be able to
+<tt>l[-3]</tt> is the third last entry in a list <tt>l</tt>.-->
+<tt>backprop</tt>メソッドは前節のアルゴリズムに従って実装されています。層への添字の振り方を、前節の説明から若干の変更しています。
+この変更はPythonの特徴、具体的には負数の添字を用いてリストを後ろから数える方法を活用するために行っています（例えば、<tt>l[-3]</tt>はリスト<tt>l</tt>の後ろから3番目の要素です）。
+<!--The code for <tt>backprop</tt> is below, together with a few helper functions, which are used to compute the $\sigma$ function and its vectorized form, the derivative $\sigma'$ and its vectorized form, and the derivative of the cost function.  With these inclusions you should be able to
 understand the code in a self-contained way.  If something's tripping
 you up, you may find it helpful to consult
-<a href="chap1.html#implementing_our_network_to_classify_digits">the original description (and complete listing) of the code</a>.
--->
-ほとんどの作業は<tt>delta_nabla_b, delta_nabla_w = self.backprop(x, y)</tt>の行で行われています。ここでは、<tt>backprop</tt>メソッドを利用して偏微分$\partial C_x / \partial b^l_j$と$\partial C_x / \partial w^l_{jk}$を計算しています。
-<tt>backprop</tt>メソッドは前節のアルゴリズムに従って実装されています。
-前節の説明から層の添字の振り方について若干の変更を行っています。
-この変更はPythonの特徴、具体的にはリストを後ろから数える添字を活用するために行われています（例えば、<tt>l[-3]</tt>はリスト<tt>l</tt>の後ろから3番目の要素です）。
-$\sigma$関数とそれをベクトル化したもの、$\sigma$関数の導関数とそれをベクトル化したもの、及びコスト関数の微分を計算するためのヘルパー関数と併せて、<tt>backprop</tt>メソッドは後述しています。
-これらのヘルパー関数を併せて見れば、自己完結した形でコードを理解できるはずです。
+<a href="chap1.html#implementing_our_network_to_classify_digits">the original description (and complete listing) of the code</a>.-->
+次に<tt>backprop</tt>メソッドのコードを示します。$\sigma$関数とそのベクトル化、$\sigma$関数の導関数とそのベクトル化、及びコスト関数の微分を計算するためのヘルパー関数も併せて載せています。これらのヘルパー関数を併せて見れば、自己完結した形でコードを理解できるはずです。
 もしどこかでつまづいたら
-<a href="chap1.html#implementing_our_network_to_classify_digits">もとのコードの説明（と全コード）</a>にあたるのが良いでしょう。
+<a href="chap1.html#implementing_our_network_to_classify_digits">元のコードの説明（と全コード）</a>を参照するのが良いでしょう。
 <!--<div class="highlight"><pre><span class="k">class</span> <span class="nc">Network</span><span class="p">():</span>
 <span class="o">...</span>
    <span class="k">def</span> <span class="nf">backprop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -1815,7 +1803,7 @@ $\sigma$関数とそれをベクトル化したもの、$\sigma$関数の導関�
         <span class="n">nabla_w</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">]</span>
         <span class="c"># フィードフォワード</span>
         <span class="n">activation</span> <span class="o">=</span> <span class="n">x</span>
-        <span class="n">activations</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="c"># list to store all the activations, layer by layer</span>
+        <span class="n">activations</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="c"># 層ごとに活性を格納するリスト</span>
         <span class="n">zs</span> <span class="o">=</span> <span class="p">[]</span> <span class="c"># 層ごとにzベクトルを格納するリスト</span>
         <span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">):</span>
             <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">activation</span><span class="p">)</span><span class="o">+</span><span class="n">b</span>
@@ -1827,10 +1815,10 @@ $\sigma$関数とそれをベクトル化したもの、$\sigma$関数の導関�
             <span class="n">sigmoid_prime_vec</span><span class="p">(</span><span class="n">zs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">nabla_b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">delta</span>
         <span class="n">nabla_w</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">activations</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
-        <span class="c"># 下記のループ内の変数lは第2章での記法と若干異なる使われ方をしている。</span>
-        <span class="c"># ここで、l = 1は最終層を、l = 2は最後から2番目の層を意味する（以下同様）。</span>
-        <span class="c"># 本書内での方法から番号付けのルールを変えているのは、</span>
-        <span class="c"># Pythonがリストで負の添字を利用できる事を利用するためである。</span>
+        <span class="c"># 下記のループ変数lは第2章での記法と使用方法が若干異なる。</span>
+        <span class="c"># l = 1は最終層を、l = 2は最後から2番目の層を意味する（以下同様）。</span>
+        <span class="c"># 本書内での方法から番号付けのルールを変更したのは、</span>
+        <span class="c"># Pythonのリストでの負の添字を有効活用するためである。</span>
         <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_layers</span><span class="p">):</span>
             <span class="n">z</span> <span class="o">=</span> <span class="n">zs</span><span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">]</span>
             <span class="n">spv</span> <span class="o">=</span> <span class="n">sigmoid_prime_vec</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
@@ -1845,13 +1833,13 @@ $\sigma$関数とそれをベクトル化したもの、$\sigma$関数の導関�
         <span class="k">return</span> <span class="p">(</span><span class="n">output_activations</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> 
 
 <span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;シグモイド関数。&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;シグモイド関数&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
 
 <span class="n">sigmoid_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">sigmoid_prime</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;シグモイド関数の導関数。&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;シグモイド関数の導関数&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
 
 <span class="n">sigmoid_prime_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">sigmoid_prime</span><span class="p">)</span>
@@ -1864,18 +1852,23 @@ $\sigma$関数とそれをベクトル化したもの、$\sigma$関数の導関�
 </a></h4><ul>
 <li><strong>
 <!--Fully matrix-based approach to backpropagation over a mini-batch-->
-ミニバッチによる逆伝播の行列を用いた導出
+ミニバッチによる逆伝播の行列を用いた導出：
 </strong>
 <!--Our implementation of stochastic gradient descent loops
   over training examples in a mini-batch.  It's possible to modify the
   backpropagation algorithm so that it computes the gradients for all
-  training examples in a mini-batch simultaneously.  The idea is that
+  training examples in a mini-batch simultaneously.  -->
+我々の確率的勾配降下法の実装ではミニバッチ内の訓練例についてループしています。しかし、逆伝播のアルゴリズムを書き換えると、ミニバッチ内の全訓練例の勾配を同時に計算するように変更できます。
+<!--The idea is that
   instead of beginning with a single input vector, $x$, we can begin
   with a matrix $X = [x_1 x_2 \ldots x_m]$ whose columns are the
   vectors in the mini-batch.  We forward-propagate by multiplying by
   the weight matrices, adding a suitable matrix for the bias terms,
   and applying the sigmoid function everywhere. We backpropagate along
-  similar lines.  Explicitly write out pseudocode for this approach to
+  similar lines.-->
+単一の入力ベクトル$x$から始めるのではなく、各列がミニバッチ内のベクトルからなる行列$X = [x_1 x_2 \ldots x_m]$を用いるのが基本的なアイデアです。
+この行列に重み行列を掛け、バイアス項に対応する適当な行列を足し、各要素にシグモイド関数を適用する事で順伝播をします。逆伝播も似た方法で行います
+<!--  Explicitly write out pseudocode for this approach to
   the backpropagation algorithm.  Modify <tt>network.py</tt> so that it
   uses this fully matrix-based approach.  The advantage of this
   approach is that it takes full advantage of modern libraries for
@@ -1885,22 +1878,19 @@ $\sigma$関数とそれをベクトル化したもの、$\sigma$関数の導関�
   problems like those we considered in the last chapter.)  In
   practice, all serious libraries for backpropagation use this fully
   matrix-based approach or some variant.-->
-我々の確率的勾配降下法の実装ではミニバッチ内の訓練例についてループしています。逆伝播のアルゴリズムを書き換えて、ミニバッチ内の全訓練例の勾配を同時に、計算するように変更できます。
-単一の入力ベクトル$x$から始めるのではなく、各列がミニバッチ内のベクトルからなる行列$X = [x_1 x_2 \ldots x_m]$を用いるのが基本的なアイデアです。
-重み行列を掛け、バイアス項に対応する適当な行列を足し、各要素にシグモイド関数を適用する事で順伝播をします。
 このアプローチによる逆伝播アルゴリズムの擬似コードを具体的に書き下してください。
-<tt>network.py</tt>を行列を用いたアプローチに変更してください。
-このアプローチの利点は最近の線形代数ライブラリの利点をフルに活用できる点です。
-その結果、ミニバッチ内をループする場合に比べて圧倒的に高速になります
-（例えば私のノートパソコンでは前章で考えたようなMNISTの分類問題で約2倍の高速化の効果が得られました）。
-実際の実装では、きちんと作られた逆伝播のライブラリではこの行列のアプローチかその変種を用いています。
+また、<tt>network.py</tt>を行列を用いたアプローチに変更してください。
+このアプローチの利点は、最近の線形代数ライブラリをフルに有効活用でき、その結果ミニバッチ内をループする場合に比べて圧倒的に高速になる点です
+（例えば私のノートパソコンでは、前章で考えたMNISTの分類問題で約2倍の高速化の効果が得られました）。
+実際きちんと作られた逆伝播のライブラリでは、この行列のアプローチかその変種を用いています。
 </ul></p>
 <p><h3><a name="in_what_sense_is_backpropagation_a_fast_algorithm"></a>
 <a href="#in_what_sense_is_backpropagation_a_fast_algorithm">
 <!--In what sense is backpropagation a fast algorithm?-->
-どういう意味で逆伝播は速いアルゴリズムか？
+逆伝播が速いアルゴリズムであるとはどういう意味か？
 </a></h3></p>
 <p>
+<!--------------------------ここから------------------------------------->
 <!--In what sense is backpropagation a fast algorithm?  To answer this
 question, let's consider another approach to computing the gradient.
 Imagine it's the early days of neural networks research.  Maybe it's
