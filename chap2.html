@@ -1801,7 +1801,7 @@ you up, you may find it helpful to consult
 <span class="sd">        各要素は各層に対応する。&quot;&quot;&quot;</span>
         <span class="n">nabla_b</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">]</span>
         <span class="n">nabla_w</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">]</span>
-        <span class="c"># フィードフォワード</span>
+        <span class="c"># 順伝播</span>
         <span class="n">activation</span> <span class="o">=</span> <span class="n">x</span>
         <span class="n">activations</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="c"># 層ごとに活性を格納するリスト</span>
         <span class="n">zs</span> <span class="o">=</span> <span class="p">[]</span> <span class="c"># 層ごとにzベクトルを格納するリスト</span>
@@ -1810,7 +1810,7 @@ you up, you may find it helpful to consult
             <span class="n">zs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
             <span class="n">activation</span> <span class="o">=</span> <span class="n">sigmoid_vec</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
             <span class="n">activations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">activation</span><span class="p">)</span>
-        <span class="c"># バックワードパス</span>
+        <span class="c"># 逆伝播</span>
         <span class="n">delta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cost_derivative</span><span class="p">(</span><span class="n">activations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> \
             <span class="n">sigmoid_prime_vec</span><span class="p">(</span><span class="n">zs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">nabla_b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">delta</span>
@@ -1890,7 +1890,6 @@ you up, you may find it helpful to consult
 逆伝播が速いアルゴリズムであるとはどういう意味か？
 </a></h3></p>
 <p>
-<!--------------------------ここから------------------------------------->
 <!--In what sense is backpropagation a fast algorithm?  To answer this
 question, let's consider another approach to computing the gradient.
 Imagine it's the early days of neural networks research.  Maybe it's
@@ -1900,44 +1899,39 @@ need a way of computing the gradient of the cost function.  You think
 back to your knowledge of calculus, and decide to see if you can use
 the chain rule to compute the gradient.  But after playing around a
 bit, the algebra looks complicated, and you get discouraged.  So you
-try to find another approach.  You decide to regard the cost as a
-function of the weights $C = C(w)$ alone (we'll get back to the biases
-in a moment).  You number the weights $w_1, w_2, \ldots$, and want to
-compute $\partial C / \partial w_j$ for some particular weight $w_j$.
+try to find another approach. -->
+どういう意味で逆伝播は速いアルゴリズムか。これに答える為に、勾配を計算する別のアプローチを考えてみましょう。
+初期の時代のニューラルネットワーク研究を想像してみてください。
+おそらく1950年代か60年代だと思いますが、あなたは学習への勾配降下法の適用を考えている世界で最初の研究者です！
+あなたの考えがうまくいくかを確かめるには、コスト関数の勾配を計算する方法が必要です。
+微積分学の知識を思い出して、勾配の計算に連鎖律が使うかを検討しています。
+しかし、少しごにょごにょと計算してみると、式は複雑そうなのでがっかりしてしまいます。
+<!-- You decide to regard the cost as a function of the weights $C = C(w)$ alone (we'll get back to the biases in a moment).  You number the weights $w_1, w_2, \ldots$, and want to compute $\partial C / \partial w_j$ for some particular weight $w_j$.
 An obvious way of doing that is to use the approximation
 <a class="displaced_anchor" name="eqtn46"></a>\begin{eqnarray}  \frac{\partial
     C}{\partial w_{j}} \approx \frac{C(w+\epsilon
     e_j)-C(w)}{\epsilon},
 \tag{46}\end{eqnarray}
 where $\epsilon > 0$ is a small positive number, and $e_j$ is the unit
-vector in the $j^{\rm th}$ direction.  In other words, we can estimate
+vector in the $j^{\rm th}$ direction.  -->
+そこで、別のアプローチを探します。コスト関数を重みのみの関数とみなし、$C = C(w)$と考えることにしました（バイアスについてはすぐ後で考えます）。
+重みを$w_1, w_2, \ldots$と番号付けし、特定の重み$w_j$について$\partial C / \partial w_j$を計算します。
+すぐに思いつくのは近似
+<a class="displaced_anchor" name="eqtn46"></a>\begin{eqnarray}  \frac{\partial C}{\partial w_{j}} \approx \frac{C(w+\epsilon e_j)-C(w)}{\epsilon}
+\tag{46}\end{eqnarray}
+を利用する方法です。
+ここで、$\epsilon > 0$は微小な正の数で、$e_j$は$j$方向の単位ベクトルです。
+<!--In other words, we can estimate
 $\partial C / \partial w_j$ by computing the cost $C$ for two slightly
-different values of $w_j$, and then applying
-Equation <span id="margin_881761291800_reveal" class="equation_link">(46)</span><span id="margin_881761291800" class="marginequation" style="display: none;"><a href="chap2.html#eqtn46" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
+different values of $w_j$, and then applying Equation
+<span id="margin_881761291800_reveal" class="equation_link">(46)</span><span id="margin_881761291800" class="marginequation" style="display: none;"><a href="chap2.html#eqtn46" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
     C}{\partial w_{j}} \approx \frac{C(w+\epsilon
     e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_881761291800_reveal').click(function() {$('#margin_881761291800').toggle('slow', function() {});});</script>.
 The same idea will let us
 compute the partial derivatives $\partial C / \partial b$ with respect
 to the biases.-->
-どういう意味で逆伝播は速いアルゴリズムか。これに答える為に、勾配を計算する別のアプローチを考えてみましょう。
-初期の頃のニューラルネットワーク研究を想像してみてください。
-おそらく1950年代か60年代だと思いますが、あなたは学習に勾配降下法を利用する世界で最初の研究者です！
-しかし、あなたの考えがうまくいくかを確かめるには、コスト関数の国賠を計算する方法が必要です。
-微積分学の知識を思い出して、勾配の計算に連鎖律が使うかを決めます。
-しかし、少しごにょごにょと計算してみると計算は複雑そうなのでがっかりしてしまいます。
-そこで、別のアプローチを探します。コスト関数を重みのみの関数とみなします（バイアスについてはすぐ後で考えます）。
-重みを$w_1, w_2, \ldots$と番号付けて、特定の重み$w_j$について$\partial C / \partial w_j$を計算します。
-すぐに思いつく方法は近似
-<a class="displaced_anchor" name="eqtn46"></a>\begin{eqnarray}  \frac{\partial
-    C}{\partial w_{j}} \approx \frac{C(w+\epsilon
-    e_j)-C(w)}{\epsilon},
-\tag{46}\end{eqnarray}
-を利用することです。
-ここで、$\epsilon > 0$は微小な正の数で、$e_j$は$j$方向の単位ベクトルです。
-言い換えれば、$\partial C / \partial w_j$を計算する為にコスト$C$の値を2つの若干異なる$w_j$について計算し、式
-<span id="margin_881761291800_reveal" class="equation_link">(46)</span><span id="margin_881761291800" class="marginequation" style="display: none;"><a href="chap2.html#eqtn46" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
-    C}{\partial w_{j}} \approx \frac{C(w+\epsilon
-    e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_881761291800_reveal').click(function() {$('#margin_881761291800').toggle('slow', function() {});});</script>
+言い換えれば、$\partial C / \partial w_j$を計算する為に2つの若干異なる$w_j$でコスト$C$の値を計算し、式
+<span id="margin_881761291800_reveal" class="equation_link">(46)</span><span id="margin_881761291800" class="marginequation" style="display: none;"><a href="chap2.html#eqtn46" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial w_{j}} \approx \frac{C(w+\epsilon e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_881761291800_reveal').click(function() {$('#margin_881761291800').toggle('slow', function() {});});</script>
 を適用します。
 同じアイデアでバイアスについての偏微分$\partial C / \partial b$にも計算できます。
 </p>
@@ -1947,7 +1941,7 @@ extremely easy to implement, using just a few lines of code.
 Certainly, it looks much more promising than the idea of using the
 chain rule to compute the gradient!-->
 このアプローチはよさ気に見えます。
-シンプルなアイデアで、実装も数行のコードで実現できとても簡単です。
+発想がシンプルな上、実装も数行のコードで実現できとても簡単です。
 連鎖律を用いて勾配を計算するアイデアよりもよっぽど有望なように思えます！
 </p>
 <p>
@@ -1960,50 +1954,54 @@ the gradient we need to compute the cost function a million different
 times, requiring a million forward passes through the network (per
 training example).  We need to compute $C(w)$ as well, so that's a
 total of a million and one passes through the network.-->
-o残念ながら、このアプローチは有望そうですが、このコードを実装してみるととてつもなく遅いことがわかります。
-なぜかを理解するために、ニューラルネットワーク内に100万個の重みがあると想像してみてください。
+このアプローチは有望そうですが、残念ながらこのコードを実装してみるととてつもなく遅い事がわかります。
+なぜかを理解する為に、ニューラルネットワーク内に100万個の重みがあると想像してみてください。
 すると、各重み$w_j$に対して$\partial C / \partial w_j$を計算するには、$C(w+\epsilon e_j)$の計算が必要です。
-これは、勾配計算時に異なる値でのコスト関数計算が100万回必要で、各訓練例ごとに100万回の順伝播が必要な事を意味します。
+これには、勾配計算時に異なる値でのコスト関数計算が100万回必要で、各訓練例ごとに100万回の順伝播が必要な事を意味します。
+$C(w)$の計算も必要なので、結局ニューラルネットワーク内伝播回数は100万1回です。
 </p>
-<p><!--
+<p>
+<!--
 What's clever about backpropagation is that it enables us to
 simultaneously compute <em>all</em> the partial derivatives $\partial C
 / \partial w_j$ using just one forward pass through the network,
 followed by one backward pass through the network.  Roughly speaking,
 the computational cost of the backward pass is about the same as the
-forward pass*<span class="marginnote">
+forward pass-->
+逆伝播の賢い所は、たった1回の順伝播とそれに続く1回の逆伝播で<em>すべての</em>偏微分$\partial C / \partial w_j$を同時に計算できる点です。
+逆伝播の計算コストは大雑把には順伝播と同程度です
+<!--
+2015/1/3 Kenta OONO
+backpropagationとbackward passの訳し分けに悩む。backpropagationは逆伝播ではなく、逆誤差伝播もしくは逆誤差伝播アルゴリズムと言ったほうが適切かもしれない
+-->
+<!--
+*<span class="marginnote">
 *This should be plausible, but it requires some
   analysis to make a careful statement.  It's plausible because the
   dominant computational cost in the forward pass is multiplying by
   the weight matrices, while in the backward pass it's multiplying by
   the transposes of the weight matrices.  These operations obviously
-  have similar computational cost.</span>.  And so the total cost of
-backpropagation is roughly the same as making just two forward passes
-through the network.  Compare that to the million and one forward
-passes we needed for the approach based
-on
+  have similar computational cost.</span>. -->
+*<span class="marginnote">この見積りは妥当ですが、きちんと示すには若干の分析が必要です。フォワードパスの計算コストで支配的なのは重み行列の掛け算であるのに対し、バックワードパスで支配的なのは重み行列の転置の掛け算です。これらの操作は明らかに同程度の計算コストです。</span>。
+<!--And so the total cost of backpropagation is roughly the same as making just two forward passes through the network.  Compare that to the million and one forward passes we needed for the approach based on
 <span id="margin_570144158257_reveal" class="equation_link">(46)</span><span id="margin_570144158257" class="marginequation" style="display: none;"><a href="chap2.html#eqtn46" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
     C}{\partial w_{j}} \approx \frac{C(w+\epsilon
     e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_570144158257_reveal').click(function() {$('#margin_570144158257').toggle('slow', function() {});});</script>
-!
-And so even though backpropagation
-appears superficially more complex than the approach based
-on
+!-->
+従って、逆伝播の合計のコストはニューラルネットワーク全体への順伝播約2回分です。
+<span id="margin_570144158257_reveal" class="equation_link">(46)</span><span id="margin_570144158257" class="marginequation" style="display: none;"><a href="chap2.html#eqtn46" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
+    C}{\partial w_{j}} \approx \frac{C(w+\epsilon
+    e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_570144158257_reveal').click(function() {$('#margin_570144158257').toggle('slow', function() {});});</script>に基づくアプローチで必要だった100万1回の順伝播と比較してみてください！
+<!--And so even though backpropagation appears superficially more complex than the approach based on
 <span id="margin_453558672576_reveal" class="equation_link">(46)</span><span id="margin_453558672576" class="marginequation" style="display: none;"><a href="chap2.html#eqtn46" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
     C}{\partial w_{j}} \approx \frac{C(w+\epsilon
     e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_453558672576_reveal').click(function() {$('#margin_453558672576').toggle('slow', function() {});});</script>
 , it's actually much, much faster.-->
-逆伝播の賢い所は、たった1回のフォワードパスとそれに続く1回のバックワードパスで<em>すべての</em>偏微分$\partial C / \partial w_j$を同時に計算できる点です。
-バックワードパスの計算コストは大雑把にはフォワードパスと同程度です*<span class="marginnote">この見積りは妥当ですがきちんと言うには若干の分析が必要です。フォワードパスの計算コストで支配的なのは重み行列の掛け算であるのに対し、バックワードパスで支配的なのは重み行列の転置の掛け算です。これらの操作は明らかに同程度の計算コストです。</span>。
-従って、逆伝播の合計のコストは大体ニューラルネットワーク全体へのフォワードパス2回分です。
-<span id="margin_570144158257_reveal" class="equation_link">(46)</span><span id="margin_570144158257" class="marginequation" style="display: none;"><a href="chap2.html#eqtn46" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
-    C}{\partial w_{j}} \approx \frac{C(w+\epsilon
-    e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_570144158257_reveal').click(function() {$('#margin_570144158257').toggle('slow', function() {});});</script>に基づくアプローチで必要だった100万1回のフォワードパスと比較してみてください！
 逆伝播は一見
 <span id="margin_453558672576_reveal" class="equation_link">(46)</span><span id="margin_453558672576" class="marginequation" style="display: none;"><a href="chap2.html#eqtn46" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial
     C}{\partial w_{j}} \approx \frac{C(w+\epsilon
     e_j)-C(w)}{\epsilon} \nonumber\end{eqnarray}</a></span><script>$('#margin_453558672576_reveal').click(function() {$('#margin_453558672576').toggle('slow', function() {});});</script>
-の方法よりも複雑ですが、実際にはずっと、ずっと高速なのです。
+に基づく方法よりも複雑ですが、実際にはずっと、ずっと高速なのです。
 </p>
 <p>
 <!--This speedup was first fully appreciated in 1986, and it greatly
@@ -2015,9 +2013,9 @@ backpropagation to train deep neural networks, i.e., networks with
 many hidden layers.  Later in the book we'll see how modern computers
 and some clever new ideas now make it possible to use backpropagation
 to train such deep neural networks.-->
-この高速化は1986年に始めて真価がわかり、ニューラルネットワークが解ける問題の幅を大きく広げ、その結果多くの人が次々にニューラルネットを使うようになりました。
+この高速化は1986年に始めて真価がわかり、ニューラルネットワークが解ける問題の幅を大きく広げ、その結果多くの人が次々にニューラルネットワークに押しかけました。
 もちろん、逆伝播は万能薬ではありません。
-特にディープニューラルネットワーク、すなわち多くの隠れ層を持つネットワークを学習に逆伝播を利用する際の限界には1980年代後半にはぶつかっていました。現代のコンピュータや新しい賢いアイデアにより、逆伝播を用いてディープニューラルネットワークを訓練する事が可能になったことをこの本では後述します。
+特にディープニューラルネットワーク、すなわち多くの隠れ層を持つネットワークの学習への逆伝播の適用においては、1980年代後半には既に壁にぶつかっていました。現代のコンピュータや新しい賢いアイデアにより、逆伝播を用いてディープニューラルネットワークを訓練する事が可能になった事をこの本では後述します。
 </p>
 <p><h3><a name="backpropagation_the_big_picture"></a><a href="#backpropagation_the_big_picture">
 <!--Backpropagation: the big picture-->
