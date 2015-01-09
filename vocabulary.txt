@@ -1,7 +1,7 @@
 # 英単語のアルファベット順に並べてください。
 activation		活性
 activation function	活性化関数
-backpropagation		逆伝播
+backpropagation		逆伝播（「誤差逆伝播」が一般的な訳語だと思います）
 bias			バイアス(パーセプトロンの)
 c.f.	 		参考：
 chain rule		連鎖律
