@@ -1940,7 +1940,7 @@ to the biases.-->
 extremely easy to implement, using just a few lines of code.
 Certainly, it looks much more promising than the idea of using the
 chain rule to compute the gradient!-->
-このアプローチはよさ気に見えます。
+このアプローチはよさそうに見えます。
 発想がシンプルな上、実装も数行のコードで実現できとても簡単です。
 連鎖律を用いて勾配を計算するアイデアよりもよっぽど有望なように思えます！
 </p>
@@ -2020,6 +2020,10 @@ to train such deep neural networks.-->
 <p><h3><a name="backpropagation_the_big_picture"></a><a href="#backpropagation_the_big_picture">
 <!--Backpropagation: the big picture-->
 逆伝播：全体像
+<!--
+2015/1/5 Kenta OONO
+the big pictureがどういうニュアンスなのかがきちんとわかっていない。
+-->
 </a></h3></p>
 <p>
 <!--As I've explained it, backpropagation presents two mysteries.  First,
@@ -2035,13 +2039,13 @@ algorithm in the first place.  Is there a plausible line of reasoning
 that could have led you to discover the backpropagation algorithm?  In
 this section I'll address both these mysteries.-->
 以前に説明したように、逆伝播には2つの謎があります。
-1つは、アルゴリズムが結局何を行っているのかという事です。
+1つはアルゴリズムが本当にやっている事は何かです。
 出力から誤差が逆伝播していく様子を見てきました。
-しかし、もう一歩踏み込んで、行列とベクトルの掛け算を行っている時に何が起こっているかについての直感的な理解を得られないでしょうか？
-2つ目の謎は、そもそも逆伝播をどうやって発見するかという点です。
-アルゴリズムの手順に従ったり、アルゴリズムがうまくいくことを証明を追うことはできます。しかし、問題を理解してアルゴリズムを発見のはまた別の話です。
-逆伝播アルゴリズムの発見につながる妥当な理論付けは何かないでしょうか？
-この節では、これらの謎に重点を置きます
+もう一歩踏み込んで、ベクトルに行列を掛ける時に何が起こっているかについてのもっと直感的な理解を得られないでしょうか。
+2つ目の謎は、そもそもどうやって逆伝播を発見するかという点です。
+アルゴリズムの手順に従ったり、アルゴリズムの正しさを示すを証明を追う事はできます。しかし、その事と、問題を理解しアルゴリズムをまっさらな状態から発見するのはまた別の話です。
+逆伝播アルゴリズムの発見につながる妥当な論理づけは何かないでしょうか。
+本節ではこれらの謎に重点を置きます。
 </p>
 <p>
 <!--To improve our intuition about what the algorithm is doing, let's
@@ -2059,25 +2063,8 @@ That, in turn, will cause a change in <em>all</em> the activations in
 the next layer:
 <center>
 <img src="images/tikz24.png"/>
-</center>
-Those changes will in turn cause changes in the next layer, and then
-the next, and so on all the way through to causing a change in the
-final layer, and then in the cost function:
-<center>
-<img src="images/tikz25.png"/>
-</center>
-The change $\Delta C$ in the cost is related to the change $\Delta
-w^l_{jk}$ in the weight by the equation
-<a class="displaced_anchor" name="eqtn47"></a>\begin{eqnarray} 
-  \Delta C \approx \frac{\partial C}{\partial w^l_{jk}} \Delta w^l_{jk}.
-\tag{47}\end{eqnarray}
-This suggests that a possible approach to computing $\frac{\partial
-  C}{\partial w^l_{jk}}$ is to carefully track how a small change in
-$w^l_{jk}$ propagates to cause a small change in $C$.  If we can do
-that, being careful to express everything along the way in terms of
-easily computable quantities, then we should be able to compute
-$\partial C / \partial w^l_{jk}$.-->
-アルゴリズムのやっている事に対する直感を良くするために、ニューラルネットワーク内の適当な重み$w^l_{jk}$に微小な変化$\Delta w^l_{jk}$を施してみます：
+</center>-->
+アルゴリズムの挙動に対する直感を養う為に、ニューラルネットワーク内の適当な重み$w^l_{jk}$に微小な変化$\Delta w^l_{jk}$を施してみましょう：
 <center>
 <img src="images/tikz22.png"/>
 </center>
@@ -2085,29 +2072,52 @@ $\partial C / \partial w^l_{jk}$.-->
 <center>
 <img src="images/tikz23.png"/>
 </center>
-続いて、次の層の<em>すべての</em>活性に変化を引き起こします：
+この変化は引き続いて、次の層の<em>すべての</em>出力活性に変化を引き起こします：
 <center>
 <img src="images/tikz24.png"/>
 </center>
-これらの変化はさらに次の層の変化を引き起こします。それを繰り返し、最終層、そしてコスト関数を変化させます：
+<!--Those changes will in turn cause changes in the next layer, and then
+the next, and so on all the way through to causing a change in the
+final layer, and then in the cost function:
+<center>
+<img src="images/tikz25.png"/>
+</center>-->
+これらの変化はさらに次の層の変化を引き起こします。これを繰り返して最終層、そしてコスト関数を変化させます：
 <center>
 <img src="images/tikz25.png"/>
 </center>
+<!--The change $\Delta C$ in the cost is related to the change $\Delta
+w^l_{jk}$ in the weight by the equation
+<a class="displaced_anchor" name="eqtn47"></a>\begin{eqnarray} 
+  \Delta C \approx \frac{\partial C}{\partial w^l_{jk}} \Delta w^l_{jk}.
+\tag{47}\end{eqnarray}-->
 コスト関数の変化$\Delta C$は重みの変化$\Delta w^l_{jk}$と次式で関連付けられます
 <a class="displaced_anchor" name="eqtn47"></a>\begin{eqnarray} 
   \Delta C \approx \frac{\partial C}{\partial w^l_{jk}} \Delta w^l_{jk}.
 \tag{47}\end{eqnarray}
-$\frac{\partial C}{\partial w^l_{jk}}$を計算するのに考えられるアプローチとして、$w^l_{jk}$の微小な変化が伝播する事で$C$の微小な変化を引き起こす様子を丁寧に追跡するという方法がある事が、この式から示唆されます。
-もしそれができたら、道中にあるすべての量を簡単に計算できる量で表現することで、$\partial C / \partial w^l_{jk}$を計算できるはずです。
+<!--This suggests that a possible approach to computing $\frac{\partial
+  C}{\partial w^l_{jk}}$ is to carefully track how a small change in
+$w^l_{jk}$ propagates to cause a small change in $C$.  If we can do
+that, being careful to express everything along the way in terms of
+easily computable quantities, then we should be able to compute
+$\partial C / \partial w^l_{jk}$.-->
+この式から、$\frac{\partial C}{\partial w^l_{jk}}$を計算するのに考えられるアプローチとして次の方法が示唆されます。すなわち、$w^l_{jk}$の微小な変化がニューラルネットワークを伝播し、その結果$C$の微小な変化を引き起こす様子を丁寧に追跡するという方法です。
+もしそれができたら、伝播経路の途中にあるすべてのものを、簡単に計算できる変数で表現する事で、$\partial C / \partial w^l_{jk}$を計算できるはずです。
 </p>
 <p>
 <!--Let's try to carry this out.  The change $\Delta w^l_{jk}$ causes a
-small change $\Delta a^{l}_j$ in the activation of the $j^{\rm th}$ neuron in
-the $l^{\rm th}$ layer.  This change is given by
+small change $\Delta a^{l}_j$ in the activation of the $j^{\rm th}$ neuron in the $l^{\rm th}$ layer. 
+This change is given by
 <a class="displaced_anchor" name="eqtn48"></a>\begin{eqnarray} 
   \Delta a^l_j \approx \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk}.
-\tag{48}\end{eqnarray}
-The change in activation $\Delta a^l_{j}$ will cause changes in
+\tag{48}\end{eqnarray}-->
+このアイデアを実行に移してみましょう。
+重みが$\Delta w^l_{jk}$だけ変化する事で$l$番目の層の$j$番目のニューロンの活性に微小な変化$\Delta a^{l}_j$が発生します。
+この変化は
+<a class="displaced_anchor" name="eqtn48"></a>\begin{eqnarray} 
+  \Delta a^l_j \approx \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk}
+で与えられます。
+<!--The change in activation $\Delta a^l_{j}$ will cause changes in
 <em>all</em> the activations in the next layer, i.e., the $(l+1)^{\rm
   th}$ layer.  We'll concentrate on the way just a single one of those
 activations is affected, say $a^{l+1}_q$,
@@ -2117,21 +2127,43 @@ activations is affected, say $a^{l+1}_q$,
 In fact, it'll cause the following change:
 <a class="displaced_anchor" name="eqtn49"></a>\begin{eqnarray}
   \Delta a^{l+1}_q \approx \frac{\partial a^{l+1}_q}{\partial a^l_j} \Delta a^l_j.
+\tag{49}\end{eqnarray}-->
+<!--
+2015/1/5 Kenta OONO
+章全体で、「出力活性」と「活性」で表現がぶれている
+-->
+活性の変化$\Delta a^l_{j}$は次の層、すなわち$l+1$番目の層の<em>すべての</em>活性に変化を引き起こします。
+私達はこれらの活性の中の1つ、例えば$a^{l+1}_q$がどのような影響を受けるかのみに注目します。
+<center>
+<img src="images/tikz26.png"/>
+</center>
+$\Delta a^l_{j}$は次のような変化を引き起こします
+<a class="displaced_anchor" name="eqtn49"></a>\begin{eqnarray}
+  \Delta a^{l+1}_q \approx \frac{\partial a^{l+1}_q}{\partial a^l_j} \Delta a^l_j.
 \tag{49}\end{eqnarray}
-Substituting in the expression from Equation
+<!--Substituting in the expression from Equation
 <span id="margin_545387421716_reveal" class="equation_link">(48)</span><span id="margin_545387421716" class="marginequation" style="display: none;"><a href="chap2.html#eqtn48" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \Delta a^l_j \approx \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk} \nonumber\end{eqnarray}</a></span><script>$('#margin_545387421716_reveal').click(function() {$('#margin_545387421716').toggle('slow', function() {});});</script>
 , we get:
 <a class="displaced_anchor" name="eqtn50"></a>\begin{eqnarray}
   \Delta a^{l+1}_q \approx \frac{\partial a^{l+1}_q}{\partial a^l_j} \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk}.
+\tag{50}\end{eqnarray}-->
+式
+<span id="margin_545387421716_reveal" class="equation_link">(48)</span><span id="margin_545387421716" class="marginequation" style="display: none;"><a href="chap2.html#eqtn48" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \Delta a^l_j \approx \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk} \nonumber\end{eqnarray}</a></span><script>$('#margin_545387421716_reveal').click(function() {$('#margin_545387421716').toggle('slow', function() {});});</script>
+内の表式をこれで置き換えると、
+<a class="displaced_anchor" name="eqtn50"></a>\begin{eqnarray}
+  \Delta a^{l+1}_q \approx \frac{\partial a^{l+1}_q}{\partial a^l_j} \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk}
 \tag{50}\end{eqnarray}
-Of course, the change $\Delta a^{l+1}_q$ will, in turn, cause changes
+が得られます。
+<!--Of course, the change $\Delta a^{l+1}_q$ will, in turn, cause changes
 in the activations in the next layer.  In fact, we can imagine a path
 all the way through the network from $w^l_{jk}$ to $C$, with each
 change in activation causing a change in the next activation, and,
-finally, a change in the cost at the output.  If the path goes through
-activations $a^l_j, a^{l+1}_q, \ldots, a^{L-1}_n, a^L_m$ then the
-resulting expression is
+finally, a change in the cost at the output.-->
+もちろん今度は$\Delta a^{l+1}_q$が、次の層の活性に変化を引き起こします。
+実際には、$w^l_{jk}$から$C$までのパスのうちの1つを考えると、このパスでは活性のそれぞれの変化が次の活性の変化を引き起こし、最終的に出力でのコストの変化を引き起こしています。
+<!--If the path goes through activations $a^l_j, a^{l+1}_q, \ldots, a^{L-1}_n, a^L_m$ then the resulting expression is
 <a class="displaced_anchor" name="eqtn51"></a>\begin{eqnarray}
   \Delta C \approx \frac{\partial C}{\partial a^L_m} 
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
@@ -2141,13 +2173,20 @@ resulting expression is
 \tag{51}\end{eqnarray}
 that is, we've picked up a $\partial a / \partial a$ type term for
 each additional neuron we've passed through, as well as the $\partial
-C/\partial a^L_m$ term at the end.  This represents the change in $C$
-due to changes in the activations along this particular path through
-the network.  Of course, there's many paths by which a change in
-$w^l_{jk}$ can propagate to affect the cost, and we've been
-considering just a single path. To compute the total change in $C$ it
-is plausible that we should sum over all the possible paths between
-the weight and the final cost, i.e.,
+C/\partial a^L_m$ term at the end.-->
+もしこのパスが$a^l_j, a^{l+1}_q, \ldots, a^{L-1}_n, a^L_m$を通るとしたら、得られる表式は
+<a class="displaced_anchor" name="eqtn51"></a>\begin{eqnarray}
+  \Delta C \approx \frac{\partial C}{\partial a^L_m} 
+  \frac{\partial a^L_m}{\partial a^{L-1}_n}
+  \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
+  \frac{\partial a^{l+1}_q}{\partial a^l_j}
+  \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk}
+\tag{51}\end{eqnarray}
+となります。すなわち、ニューロンを通過するごとに$\partial a / \partial a$の形の項が追加され、最後に$\partial C/\partial a^L_m$の項が付け加わります。
+<!--This represents the change in $C$ due to changes in the activations along this particular path through the network.  Of course, there's many paths by which a change in $w^l_{jk}$ can propagate to affect the cost, and we've been considering just a single path.-->
+この値は$C$の変化のうち、特定のパス内にある活性の変化に由来するものです。
+$w^l_{jk}$の変化を伝播しコストに影響を与えるパスは他にもたくさんあり、この式はその中の1つしか考慮していません。
+<!--To compute the total change in $C$ it is plausible that we should sum over all the possible paths between the weight and the final cost, i.e.,
 <a class="displaced_anchor" name="eqtn52"></a>\begin{eqnarray} 
   \Delta C \approx \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
@@ -2155,8 +2194,17 @@ the weight and the final cost, i.e.,
   \frac{\partial a^{l+1}_q}{\partial a^l_j} 
   \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk},
 \tag{52}\end{eqnarray}
-where we've summed over all possible choices for the intermediate
-neurons along the path.  Comparing with
+where we've summed over all possible choices for the intermediate neurons along the path. -->
+$C$の変化の合計を計算するには、最初の重みと最後のコストの間で取りうる全てのパスについて和を取れば良いです。すなわち、
+<a class="displaced_anchor" name="eqtn52"></a>\begin{eqnarray} 
+  \Delta C \approx \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
+  \frac{\partial a^L_m}{\partial a^{L-1}_n}
+  \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
+  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
+  \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk},
+\tag{52}\end{eqnarray}
+ここで、和はパスを通る中間ニューロンの選び方として考えられる全体について足し合わせます。
+<!--Comparing with
 <span id="margin_941820302952_reveal" class="equation_link">(47)</span><span id="margin_941820302952" class="marginequation" style="display: none;"><a href="chap2.html#eqtn47" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \Delta C \approx \frac{\partial C}{\partial w^l_{jk}} \Delta w^l_{jk} \nonumber\end{eqnarray}</a></span><script>$('#margin_941820302952_reveal').click(function() {$('#margin_941820302952').toggle('slow', function() {});});</script>
 we see that
@@ -2166,74 +2214,7 @@ we see that
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
   \frac{\partial a^{l+1}_q}{\partial a^l_j} 
   \frac{\partial a^l_j}{\partial w^l_{jk}}.
-\tag{53}\end{eqnarray}
-Now, Equation
-<span id="margin_315845878357_reveal" class="equation_link">(53)</span><span id="margin_315845878357" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
-  \frac{\partial a^L_m}{\partial a^{L-1}_n}
-  \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
-  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
-  \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_315845878357_reveal').click(function() {$('#margin_315845878357').toggle('slow', function() {});});</script>
-looks complicated.  However,
-it has a nice intuitive interpretation. 
-We're computing the rate of change of $C$ with respect to a weight in the network. 
-What the equation tells us is that every edge between two neurons in the
-network is associated with a rate factor which is just the partial
-derivative of one neuron's activation with respect to the other
-neuron's activation.
-The edge from the first weight to the first neuron has a rate factor $\partial a^{l}_j / \partial w^l_{jk}$. 
-The rate factor for a path is just the product of the rate factors along
-the path.
- And the total rate of change $\partial C / \partial w^l_{jk}$ is just the sum of the rate factors of all paths from the
-initial weight to the final cost.  This procedure is illustrated here,
-for a single path:
-<center>
-<img src="images/tikz27.png"/>
-</center>-->
-これを実行してみましょう。
-重みの変化$\Delta w^l_{jk}$により$l$番目の層の$j$番目のニューロンの活性の微小な変化$\Delta a^{l}_j$を引き起こします。
-この変化は
-<a class="displaced_anchor" name="eqtn48"></a>\begin{eqnarray} 
-  \Delta a^l_j \approx \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk}
-で与えられます。
-活性の変化$\Delta a^l_{j}$は次の層、すなわち$l+1$番目の層の<em>すべての</em>活性に変化を引き起こします。
-私達はこれらの活性の中の1つ、例えば$a^{l+1}_q$にのみ注目します。
-<center>
-<img src="images/tikz26.png"/>
-</center>
-$\Delta a^l_{j}$は次のような変化を引き起こします
-<a class="displaced_anchor" name="eqtn49"></a>\begin{eqnarray}
-  \Delta a^{l+1}_q \approx \frac{\partial a^{l+1}_q}{\partial a^l_j} \Delta a^l_j.
-\tag{49}\end{eqnarray}
-式
-<span id="margin_545387421716_reveal" class="equation_link">(48)</span><span id="margin_545387421716" class="marginequation" style="display: none;"><a href="chap2.html#eqtn48" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \Delta a^l_j \approx \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk} \nonumber\end{eqnarray}</a></span><script>$('#margin_545387421716_reveal').click(function() {$('#margin_545387421716').toggle('slow', function() {});});</script>
-内の表式をこれで置き換えると、
-<a class="displaced_anchor" name="eqtn50"></a>\begin{eqnarray}
-  \Delta a^{l+1}_q \approx \frac{\partial a^{l+1}_q}{\partial a^l_j} \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk}
-\tag{50}\end{eqnarray}
-が得られます。
-もちろん$\Delta a^{l+1}_q$は今度は次の層の活性に変化を引き起こします。
-$w^l_{jk}$から$C$までのニューラルネットワーク内のパスの1つを考えます。このパスでは、活性のそれぞれの変化が次の活性の変化を引き起こし、最終的に出力でのコストの変化を引き起こしています。
-もしこのパスが$a^l_j, a^{l+1}_q, \ldots, a^{L-1}_n, a^L_m$だとしたら、得られる表式は
-<a class="displaced_anchor" name="eqtn51"></a>\begin{eqnarray}
-  \Delta C \approx \frac{\partial C}{\partial a^L_m} 
-  \frac{\partial a^L_m}{\partial a^{L-1}_n}
-  \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
-  \frac{\partial a^{l+1}_q}{\partial a^l_j}
-  \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk}
-\tag{51}\end{eqnarray}
-となります。すなわち、ニューロンを通過するごとに$\partial a / \partial a$の形の項が付け加えられ、最後に$\partial C/\partial a^L_m$の項が足されます。
-もちろん、$w^l_{jk}$の変化が伝播しコストに影響を及ぼすパスは他にもたくさんあり、私達はその中の一つしか考慮していません。
-$C$の変化の合計を計算するには、最初の重みと最後のコストの間の取りうる全てのパスについて足し合わせればよいです。すなわち、
-<a class="displaced_anchor" name="eqtn52"></a>\begin{eqnarray} 
-  \Delta C \approx \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
-  \frac{\partial a^L_m}{\partial a^{L-1}_n}
-  \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
-  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
-  \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk},
-\tag{52}\end{eqnarray}
-ここで、和は考えられるすべてのパスの選び方について、そのパス内の中間ニューロンについて足し合わせます。
+\tag{53}\end{eqnarray}-->
 <span id="margin_941820302952_reveal" class="equation_link">(47)</span><span id="margin_941820302952" class="marginequation" style="display: none;"><a href="chap2.html#eqtn47" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \Delta C \approx \frac{\partial C}{\partial w^l_{jk}} \Delta w^l_{jk} \nonumber\end{eqnarray}</a></span><script>$('#margin_941820302952_reveal').click(function() {$('#margin_941820302952').toggle('slow', function() {});});</script>
 と比較すると、
@@ -2245,20 +2226,46 @@ $C$の変化の合計を計算するには、最初の重みと最後のコス�
   \frac{\partial a^l_j}{\partial w^l_{jk}}
 \tag{53}\end{eqnarray}
 とわかります。
+<!--Now, Equation
+<span id="margin_315845878357_reveal" class="equation_link">(53)</span><span id="margin_315845878357" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
+  \frac{\partial a^L_m}{\partial a^{L-1}_n}
+  \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
+  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
+  \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_315845878357_reveal').click(function() {$('#margin_315845878357').toggle('slow', function() {});});</script>
+looks complicated. -->
 式<span id="margin_315845878357_reveal" class="equation_link">(53)</span><span id="margin_315845878357" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
   \frac{\partial a^{l+1}_q}{\partial a^l_j} 
   \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_315845878357_reveal').click(function() {$('#margin_315845878357').toggle('slow', function() {});});</script>
-を見ると一見複雑そうに見えます。
-しかし、これには良い直感的な解釈があります。
-私達は$C$のニューラルネットワーク内の重みについての変化率を計算しています。
-ニューラルネットワーク内の2つのニューロンの間にある全ての枝に、変化率の因子が伴っている事がこの式から分かります。この因子は一方のニューロンの活性に関する、もう枝のもう一端のニューロンの活性の偏微分です。
-最初の重みから最初のニューロンにつながる枝に対する変化率の因子は$\partial a^{l}_j / \partial w^l_{jk}$です。
-パスに対する変化率の因子は単純にパス内に含まれる変化率の因子を全て掛けたものです。
+は一見すると複雑そうに見えます。
+<!--However, it has a nice intuitive interpretation. 
+We're computing the rate of change of $C$ with respect to a weight in the network. 
+What the equation tells us is that every edge between two neurons in the
+network is associated with a rate factor which is just the partial
+derivative of one neuron's activation with respect to the other
+neuron's activation.
+The edge from the first weight to the first neuron has a rate factor $\partial a^{l}_j / \partial w^l_{jk}$. -->
+しかし、これには直感的な良い解釈があります。
+私達は今、ニューラルネットワーク内の重みに関する$C$の変化率を計算しています。
+ニューラルネットワーク内の2つのニューロンを繋ぐ全ての枝に対して、変化率の因子が付随している事がこの式から分かります。その因子は一方のニューロンの活性に関する、もう一端のニューロンの活性の偏微分です。
+ただし、先頭の重みから第1層目のニューロンに接続している枝には始点にニューロンが接続していないですが、この枝に対する変化率の因子は$\partial a^{l}_j / \partial w^l_{jk}$です。
+<!--
+2015/1/5 Kenta OONO
+最後の文章に訳注を補足
+-->
+<!--
+The rate factor for a path is just the product of the rate factors along
+the path.
+And the total rate of change $\partial C / \partial w^l_{jk}$ is just the sum of the rate factors of all paths from the initial weight to the final cost.  This procedure is illustrated here, for a single path:
+<center>
+<img src="images/tikz27.png"/>
+</center>-->
+パスに対する変化率の因子は、単純にパス内に含まれる変化率の因子を全て掛けたものとします。
 そして、 $\partial C / \partial w^l_{jk}$に対する変化率の合計は最初の重みから最後のコストへ向かう全てのパスについての変化率の因子を足しあわせたものです。
-以下ではこの手順を1つのパスについて図示しています。
+下図では1つのパスについてこの手順を図示しています。
 <img src="images/tikz27.png"/>
 </center>
 </p>
@@ -2266,7 +2273,10 @@ $C$の変化の合計を計算するには、最初の重みと最後のコス�
 <!--What I've been providing up to now is a heuristic argument, a way of
 thinking about what's going on when you perturb a weight in a network.
 Let me sketch out a line of thinking you could use to further develop
-this argument.  First, you could derive explicit expressions for all
+this argument.-->
+これまでの議論は、ニューラルネットワーク内の重みを摂動させた時に何が起こっているかを発見的に考察する方法でした。
+この方向で議論をさらに進める方法を簡単に紹介します。
+<!--First, you could derive explicit expressions for all
 the individual partial derivatives in Equation
 <span id="margin_881976946368_reveal" class="equation_link">(53)</span><span id="margin_881976946368" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
@@ -2274,21 +2284,7 @@ the individual partial derivatives in Equation
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
   \frac{\partial a^{l+1}_q}{\partial a^l_j} 
   \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_881976946368_reveal').click(function() {$('#margin_881976946368').toggle('slow', function() {});});</script>
-.  That's easy to do with a bit of
-calculus.  Having done that, you could then try to figure out how to
-write all the sums over indices as matrix multiplications.  This turns
-out to be tedious, and requires some persistence, but not
-extraordinary insight.  After doing all this, and then simplifying as
-much as possible, what you discover is that you end up with exactly
-the backpropagation algorithm!  And so you can think of the
-backpropagation algorithm as providing a way of computing the sum over
-the rate factor for all these paths.  Or, to put it slightly
-differently, the backpropagation algorithm is a clever way of keeping
-track of small perturbations to the weights (and biases) as they
-propagate through the network, reach the output, and then affect the
-cost.-->
-今の議論は、ニューラルネットワーク内の重みを摂動させた時に何が起こっているかを考える発見的な方法でした。
-この議論を発展させる考え方を簡単に紹介します。
+.-->
 まず、式
 <span id="margin_881976946368_reveal" class="equation_link">(53)</span><span id="margin_881976946368" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
@@ -2296,13 +2292,19 @@ cost.-->
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
   \frac{\partial a^{l+1}_q}{\partial a^l_j} 
   \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_881976946368_reveal').click(function() {$('#margin_881976946368').toggle('slow', function() {});});</script>
-内の個々の偏微分の具体的な表式を導出できます。
+内の偏微分はすべて具体的な表式を与えます。
+<!-- That's easy to do with a bit of calculus.  Having done that, you could then try to figure out how to write all the sums over indices as matrix multiplications.  This turns out to be tedious, and requires some persistence, but not extraordinary insight.  After doing all this, and then simplifying as much as possible, what you discover is that you end up with exactly the backpropagation algorithm!  And so you can think of the
+backpropagation algorithm as providing a way of computing the sum over
+the rate factor for all these paths.  Or, to put it slightly
+differently, the backpropagation algorithm is a clever way of keeping
+track of small perturbations to the weights (and biases) as they
+propagate through the network, reach the output, and then affect the
+cost.-->
 これは若干の計算をするだけで難しくはありません。
-それを行えば、添字について総和を行列操作として書き直す事ができます。
-退屈でいくらか忍耐が必要かも知れませんが、突飛な発想は必要ありません。
-これを行った後できるだけ式を簡単にしていくと、なんと最終的に得られる式は逆伝播アルゴリズムなのです！
-つまり、逆伝播アルゴリズムは全パスの変化率の因子を総和を計算する方法とみなすことができます。
-もしくは、少し別の表現をすると、逆伝播アルゴリズムは重み（とバイアス）に与えた小さな摂動がニューラルネットワークを伝播し、出力に到達し、そしてコストに影響を及ぼす様子を追跡する賢い方法だと言えます。
+これを行うと、添字について和を取る操作を行列操作に書き直す事ができるようになります。退屈で忍耐が必要な作業かも知れませんが、賢い洞察は必要ありません。
+その後できるだけ式を簡単にしていくと、なんと最終的に得られる式は逆伝播アルゴリズムそのものです！
+つまり、逆伝播アルゴリズムは全パスの変化率の因子を総和を計算する方法とみなすことができるのです。
+少し別の表現をすると、逆伝播アルゴリズムは重み（とバイアス）に与えた小さな摂動がニューラルネットワークを伝播しながら出力に到達し、コストに影響を及ぼす様子を追跡する為の賢い方法だと言えます。
 </p>
 <p>
 <!--Now, I'm not going work through all this here.  It's messy and
@@ -2310,9 +2312,9 @@ requires considerable care to work through all the details.  If you're
 up for a challenge, you may enjoy attempting it.  And even if not, I
 hope this line of thinking gives you some insight into what
 backpropagation is accomplishing.-->
-その詳細をすべてに立ち入るとややこしく、相当の注意が必要ですので、ここでは行いません。
+ここでは上の議論には立ち入りません。議論の詳細を全て追うのは非常にややこしく、相当の注意が必要です。
 もし挑戦する意欲があれば、試してみるとよいでしょう。
-もしそうでなくても、以上の考え方による逆誤差がやろうとしている事について対する洞察が得られる事を期待します。
+もしそうでなくても、以上の議論で逆誤差伝播が達成しようしている事について何かの洞察が得られる事を期待します。
 </p>
 <p>
 <!--What about the other mystery - how backpropagation could have been
@@ -2325,8 +2327,13 @@ write out all the details of the long proof is that, after the fact,
 there are several obvious simplifications staring you in the face.
 You make those simplifications, get a shorter proof, and write that
 out.  And then several more obvious simplifications jump out at
-you. So you repeat again.  The result after a few iterations is the
-proof we saw earlier *<span class="marginnote">
+you.So you repeat again. -->
+もう1つの謎、すなわち、まっさらの状態から逆誤差伝播を発見する方法についてはどうでしょうか。
+確かに今私が概説したアプローチに従えば、逆誤差伝播の証明は発見できます。
+しかし、残念ながらその証明はこの章の前の方で挙げた証明よりも若干長くて複雑です。
+では、どのようにすればこのもっと短い（けれど不思議な）証明を発見できるでしょうか。
+長い証明の詳細をすべて書きだしてみると、幾つかの明らかな簡略化が目につくはずです。それらの簡略化を行うと証明を短くできます、それをまた書き出してみます。すると再び明らかな簡略化が飛び出しますので、同じようにその簡略化を行います。
+<!-- The result after a few iterations is the proof we saw earlier *<span class="marginnote">
 *There is one clever step required.  In
   Equation
 <span id="margin_558321628107_reveal" class="equation_link">(53)</span><span id="margin_558321628107" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
@@ -2341,19 +2348,9 @@ the intermediate variables are
   you don't have this idea, and instead continue using the activations
   $a^{l+1}_q$, the proof you obtain turns out to be slightly more
   complex than the proof given earlier in the chapter.</span>
-- short, but
-somewhat obscure, because all the signposts to its construction have
-been removed!  I am, of course, asking you to trust me on this, but
-there really is no great mystery to the origin of the earlier proof.
-It's just a lot of hard work simplifying the proof I've sketched in
-this section.-->
-もう一つの謎、まっさらの状態から逆誤差を発見する方法についてはどうでしょうか。
-確かに今私が概説した方法に従えば、逆伝播の証明は発見できます。
-しかし、残念ながらその証明はこの章で前述したものより若干長くて複雑です。
-では、どのように前述したもっと短い（けれど不思議な）証明を発見できるでしょうか。
-長い証明の詳細をすべて書きだしてみると、幾つかの明らかな簡略化が目につくはずです。それらの簡略化を行うと短くなった証明が得られますが、それをまた書き出してみます。すると再び明らかな簡略化が飛び出しますので、同じように繰り返します。
-これを数回繰り返すと、章の前の方で見た、短いけれども、証明を構成する際の道標となるようなものが除かれたために若干不明瞭な証明が得られます*<span class="marginnote">
-*1箇所賢い操作を行う箇所があります。
+- short, but somewhat obscure, because all the signposts to its construction have been removed!-->
+これを数回繰り返すと、本章の前の方で挙げた、短いけれども、若干わかりにくい証明が得られます*<span class="marginnote">
+*1箇所賢い操作が必要な箇所があります。
 式
 <span id="margin_558321628107_reveal" class="equation_link">(53)</span><span id="margin_558321628107" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
@@ -2361,8 +2358,13 @@ this section.-->
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
   \frac{\partial a^{l+1}_q}{\partial a^l_j} 
   \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_558321628107_reveal').click(function() {$('#margin_558321628107').toggle('slow', function() {});});</script>
-において、中間変数は$a_q^{l+1}$のような活性です。賢いアイデアというのは、中間変数を$z^{l+1}_q$のような重みつき入力に取り替えるというものです。このアイデアを採用せず、活性$a^{l+1}_q$を使い続けると、最終的に得られる証明は章の前で見たものより若干複雑になります。</span>。
-私を信用してほしいのですが、章の前の方で挙げた証明は、私がこの章で紹介した証明を頑張って簡略化したものにすぎず、その起源には全くもって謎はないのです。
+において、中間変数は$a_q^{l+1}$のような活性です。賢いアイデアというのは、中間変数を$z^{l+1}_q$のような重みつき入力に取り替えるというものです。このアイデアを採用せず、活性$a^{l+1}_q$を使い続けると、最終的に得られる証明は若干複雑になります。</span>。
+証明がわかりにくいのは、それを構成する際に道標となるようなものが除かれてしまった為です。
+<!--I am, of course, asking you to trust me on this, but
+there really is no great mystery to the origin of the earlier proof.
+It's just a lot of hard work simplifying the proof I've sketched in
+this section.-->
+私を信用してもらう必要があるのですが、本章で挙げた短い証明の起源には全くもって謎はないのです。本章で挙げた（短い）証明は、この章で紹介した（長い）証明を頑張って簡略化して得られたものです。
 </p>
 <p><br/><br/><br/></p>
 <p>
