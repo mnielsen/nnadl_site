@@ -376,10 +376,12 @@ small.  This is the origin of the learning slowdown.  What's more, as
 we shall see a little later, the learning slowdown occurs for
 essentially the same reason in more general neural networks, not just
 the toy example we've been playing with.</p>-->
-ニューロンが$1$に近づくと曲線がとても平らになり、そのため$\sigma'(z)$がとても小さくなることがわかります。そして、<span id="margin_506983300551_reveal" class="equation_link">(55)</span><span id="margin_506983300551" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_506983300551_reveal').click(function() {$('#margin_506983300551').toggle('slow', function() {});});</script> and <span id="margin_277682059598_reveal" class="equation_link">(56)</span><span id="margin_277682059598" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+ニューロンが$1$に近づくと曲線がとても平らになり、そのため$\sigma'(z)$がとても小さくなることがわかります。そして、式<span id="margin_506983300551_reveal" class="equation_link">(55)</span><span id="margin_506983300551" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_506983300551_reveal').click(function() {$('#margin_506983300551').toggle('slow', function() {});});</script>と<span id="margin_277682059598_reveal" class="equation_link">(56)</span><span id="margin_277682059598" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
   \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z) \nonumber\end{eqnarray}</a></span><script>$('#margin_277682059598_reveal').click(function() {$('#margin_277682059598').toggle('slow', function() {});});</script>により$\partial C / \partial w$と$\partial C / \partial b$がとても小さくなります。これが学習が遅くなる原因です。さらにいうと、いままで扱ってきた単純な例に限らずとも、もっと一般的なニューラルネットワークでも学習が遅くなるのは根本的には同じ理由によるものです。
-<p><h4><a name="introducing_the_cross-entropy_cost_function"></a><a href="#introducing_the_cross-entropy_cost_function">Introducing the cross-entropy cost function</a></h4></p><p>How can we address the learning slowdown?  It turns out that we can
+<!--<p><h4><a name="introducing_the_cross-entropy_cost_function"></a><a href="#introducing_the_cross-entropy_cost_function">Introducing the cross-entropy cost function</a></h4></p>-->
+<p><h4><a name="introducing_the_cross-entropy_cost_function"></a><a href="#introducing_the_cross-entropy_cost_function">クロスエントロピーコスト関数の導入</a></h4></p>
+<!--<p>How can we address the learning slowdown?  It turns out that we can
 solve the problem by replacing the quadratic cost with a different
 cost function, known as the cross-entropy.  To understand the
 cross-entropy, let's move a little away from our super-simple toy
@@ -397,18 +399,39 @@ cross-entropy cost function for this neuron by
 \tag{57}\end{eqnarray}
 where $n$ is the total number of items of training data, the sum is
 over all training inputs, $x$, and $y$ is the corresponding desired
-output.</p><p>It's not obvious that the expression <span id="margin_691582954050_reveal" class="equation_link">(57)</span><span id="margin_691582954050" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+output.</p>-->
+<p>学習が遅くなる問題はどう扱えばよいでしょう。二次コスト関数のかわりに、クロスエントロピーと呼ばれる他のコスト関数を使うことで解くことができることがわかります。クロスエントロピーを理解するには、我々の非常に簡単な例からちょっとだけ離れる必要があります。その代わり、ニューロンをいつくかの入力変数$x_1, x_2, \ldots$で学習させることとし、それらのそれぞれに対応する重みを$w_1, w_2, \ldots$をとし、バイアスを$b$とします。
+<center>
+<img src="images/tikz29.png"/>
+</center>
+ニューロンの出力はもちろん$a = \sigma(z)$となり、ここで$z =
+\sum_j w_j x_j+b$は重み付きの入力の和です。このニューロンのクロスエントロピーを次の式で定義します。
+<a class="displaced_anchor" name="eqtn57"></a>\begin{eqnarray} 
+  C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right],
+\tag{57}\end{eqnarray}
+ここで$n$は学習データのデータ数で、和の計算はすべての学習の入力$x$についてで、$y$は対応する望まれる出力です。
+</p>
+<!--<p>It's not obvious that the expression <span id="margin_691582954050_reveal" class="equation_link">(57)</span><span id="margin_691582954050" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_691582954050_reveal').click(function() {$('#margin_691582954050').toggle('slow', function() {});});</script>
 fixes the learning slowdown problem.  In fact, frankly, it's not even
 obvious that it makes sense to call this a cost function!  Before
 addressing the learning slowdown, let's see in what sense the
-cross-entropy can be interpreted as a cost function.</p><p>Two properties in particular make it reasonable to interpret the
+cross-entropy can be interpreted as a cost function.</p>-->
+<p>この式<span id="margin_691582954050_reveal" class="equation_link">(57)</span><span id="margin_691582954050" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_691582954050_reveal').click(function() {$('#margin_691582954050').toggle('slow', function() {});});</script>が、学習が遅くなる問題を解決するということは明らかではありません。それどころか、これをコスト関数と呼んでいいかすら明らかではないでしょう。学習が遅くなる問題に注目する前に、どういう意味でクロスエントロピーがコスト関数として解釈できるかを見てみましょう。
+</p>
+<!--<p>Two properties in particular make it reasonable to interpret the
 cross-entropy as a cost function.  First, it's non-negative, that is,
 $C > 0$.  To see this, notice that all the individual terms in the sum
 in <span id="margin_607315497502_reveal" class="equation_link">(57)</span><span id="margin_607315497502" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_607315497502_reveal').click(function() {$('#margin_607315497502').toggle('slow', function() {});});</script> are positive, since: (a) both
 logarithms are of numbers in the range $0$ to $1$, and thus are
-negative; and (b) there is a minus sign out the front.</p><p>Second, if the neuron's actual output is close to the desired output,
+negative; and (b) there is a minus sign out the front.</p>-->
+<p>
+二つの性質によりクロスエントロピーはコスト関数であると解釈できます。一つにはそれは非負、つうまり$C>0$であることです。このことを知るには、式<span id="margin_607315497502_reveal" class="equation_link">(57)</span><span id="margin_607315497502" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_607315497502_reveal').click(function() {$('#margin_607315497502').toggle('slow', function() {});});</script>のすべての項が正であることを確認すればいいです。これは、(a)両方のlogの引数が0から1の範囲なのでその値は負になり、(b)前にマイナス符号が付いているからです。
+</p>
+<!--<p>Second, if the neuron's actual output is close to the desired output,
 i.e., $y = y(x)$ for all training inputs $x$, then the cross-entropy
 will be close to zero*<span class="marginnote">
 *To prove this I will need to assume
@@ -424,7 +447,12 @@ expression <span id="margin_161232079323_reveal" class="equation_link">(57)</spa
 $y(x) = 0$, while the second term is just $-\ln (1-a) \approx 0$.  A
 similar analysis holds when $y(x) = 1$ and $a \approx 1$.  And so the
 contribution to the cost will be low provided the actual output is
-close to the desired output.</p><p>Summing up, the cross-entropy is positive, and tends toward zero as
+close to the desired output.</p>-->
+<p>二つ目には、すべての学習の入力$x$についてニューロンの出力が望まれる出力、つまり$y=y(x)$に近いのなら、クロスエントロピーはゼロに近づく<span class="marginnote">
+*このことそ証明するには、望まれる出力$y(x)$が$0$か$1$であることを仮定しなければなりません。これは、例えば分類問題や真偽値関数を計算しているときについては通常成り立ちます。この仮定をおかない時になにが起こるかを理解するには、この節の最後の演習を参照してください。</span>ということです。このことを見るために、例えば同じ入力$x$に対し$y(x)=0$かつ$a \approx 0$と仮定しましょう。これはニューロンがその入力に対して良い仕事をした場合です。$y(x) = 0$なので、式<span id="margin_161232079323_reveal" class="equation_link">(57)</span><span id="margin_161232079323" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_161232079323_reveal').click(function() {$('#margin_161232079323').toggle('slow', function() {});});</script>の最初の項が消え、2項目は$-\ln (1-a) \approx 0$となります。$y(x) = 1$かつ$a \approx 1$の場合も同様な解析ができます。このことにより、実際の出力が望まれる出力に近いとき、コストへの寄与は小さいことがわかります。
+</p>
+<!--<p>Summing up, the cross-entropy is positive, and tends toward zero as
 the neuron gets better at computing the desired output, $y$, for all
 training inputs, $x$.  These are both properties we'd intuitively
 expect for a cost function.  Indeed, both properties are also
@@ -436,6 +464,16 @@ the cross-entropy cost with respect to the weights.  We substitute $a
 = \sigma(z)$ into <span id="margin_261134997286_reveal" class="equation_link">(57)</span><span id="margin_261134997286" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_261134997286_reveal').click(function() {$('#margin_261134997286').toggle('slow', function() {});});</script>, and apply the chain
 rule twice, obtaining:
+<a class="displaced_anchor" name="eqtn58"></a><a class="displaced_anchor" name="eqtn59"></a>\begin{eqnarray}
+  \frac{\partial C}{\partial w_j} & = & -\frac{1}{n} \sum_x \left(
+    \frac{y }{\sigma(z)} -\frac{(1-y)}{1-\sigma(z)} \right)
+  \frac{\partial \sigma}{\partial w_j} \tag{58}\\
+ & = & -\frac{1}{n} \sum_x \left( 
+    \frac{y}{\sigma(z)} 
+    -\frac{(1-y)}{1-\sigma(z)} \right)\sigma'(z) x_j.
+\tag{59}\end{eqnarray}-->
+<p>まとめると、クロスエントロピーは正で、すべての学習の入力$x$と望まれる出力$y$に関して、ニューロンがより良くなるとクロスエントロピーは$0$に近づきます。この両方の性質は、私達がコスト関数に対して直感的に期待する性質です。実際、これらの性質は二次コスト関数でも満たされています。これはクロスエントロピーにとって良いニュースです。しかし、クロスエントロピーは二次コスト関数と違って、学習が遅くなる問題がないという良い性質があります。このことを見るために、クロスエントロピーの重みについての偏微分を計算してみましょう。式<span id="margin_261134997286_reveal" class="equation_link">(57)</span><span id="margin_261134997286" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_261134997286_reveal').click(function() {$('#margin_261134997286').toggle('slow', function() {});});</script>に$a = \sigma(z)$を代入して、合成関数の公式を2度適用すると以下の式を得ます：
 <a class="displaced_anchor" name="eqtn58"></a><a class="displaced_anchor" name="eqtn59"></a>\begin{eqnarray}
   \frac{\partial C}{\partial w_j} & = & -\frac{1}{n} \sum_x \left(
     \frac{y }{\sigma(z)} -\frac{(1-y)}{1-\sigma(z)} \right)
@@ -471,7 +509,8 @@ When we use the cross-entropy, the $\sigma'(z)$ term gets cancelled
 out, and we no longer need worry about it being small.  This
 cancellation is the special miracle ensured by the cross-entropy cost
 function.  Actually, it's not really a miracle.  As we'll see later,
-the cross-entropy was specially chosen to have just this property.</p><p>In a similar way, we can compute the partial derivative for the bias.
+the cross-entropy was specially chosen to have just this property.</p>
+<p>In a similar way, we can compute the partial derivative for the bias.
 I won't go through all the details again, but you can easily verify
 that
 <a class="displaced_anchor" name="eqtn62"></a>\begin{eqnarray} 
