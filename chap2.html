@@ -780,11 +780,11 @@ activation $a^l_j$, with the result that we'd be using $\frac{\partial
   C}{\partial a^l_j}$ as our measure of error.  In fact, if you do
 this things work out quite similarly to the discussion below.  But it
 turns out to make the presentation of backpropagation a little more
-algebraically complicated. 
+algebraically complicated. -->
 悪魔はなぜ重みつき入力$z^l_j$を変えようとするのかを疑問に思うかもしれません。
 確かに、出力活性$a^l_j$を変化させ、その結果の$\frac{\partial C}{\partial a^l_j}$を誤差の指標として用いる方が自然かもしれません。
 実際そのようにしても、以下の議論は同じように進められます。
-しかし、やってみるとわかるのですが、逆誤差の表示が数学的に若干複雑になってしまいます。
+しかし、やってみるとわかるのですが、誤差逆伝播の表示が数学的に若干複雑になってしまいます。
 <!--So we'll stick with $\delta^l_j =
 \frac{\partial C}{\partial z^l_j}$ as our measure of error*<span class="marginnote">
 *In
@@ -835,13 +835,13 @@ Along the way we'll return repeatedly to the four
 fundamental equations, and as you deepen your understanding those
 equations will come to seem comfortable and, perhaps, even beautiful
 and natural.-->
-逆誤差の式をより深く理解する方法の概略は以下の通りです。
+誤差逆伝播の式をより深く理解する方法の概略は以下の通りです。
 まず、
 <a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)">これらの式の手短な証明</a>を示します。
 この証明を見ればなぜこれらの式が正しいのかを理解しやすくなります。
 その後、これらの式を<a href="chap2.html#the_backpropagation_algorithm">擬似コードで書き直し</a>、
 その擬似コードを<a href="chap2.html#the_code_for_backpropagation">どのように実装できるか</a>を実際のPythonのコードで示します。
-<a href="chap2.html#backpropagation_the_big_picture">本章の最後の節</a>では、逆誤差の式の意味を直感的な図で示し、ゼロからスタートしてどのように逆誤差を発見するかを見ていきます。
+<a href="chap2.html#backpropagation_the_big_picture">本章の最後の節</a>では、誤差逆伝播の式の意味を直感的な図で示し、ゼロからスタートしてどのように誤差逆伝播を発見するかを見ていきます。
 その道中で、我々は何度も4つの基本的な式に立ち戻ります。
 理解が深まるにつれ、これらの式が快適で、美しく自然なものとさえ思えるようになるはずです。
 </p>
@@ -1236,7 +1236,7 @@ in mind can help explain why such modifications are tried, and what impact they 
 </a></h4><ul>
 <li><strong>
 <!--Alternate presentation of the equations of backpropagation:-->
-逆誤差伝播の別の表示方法：
+誤差逆伝播の別の表示方法：
 </strong>
 <!-- I've stated the equations of backpropagation (notably
 <span id="margin_174707495294_reveal" class="equation_link">(BP1)</span><span id="margin_174707495294" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
@@ -1245,7 +1245,7 @@ and
 <span id="margin_512047477177_reveal" class="equation_link">(BP2)</span><span id="margin_512047477177" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_512047477177_reveal').click(function() {$('#margin_512047477177').toggle('slow', function() {});});</script>
 ) using the Hadamard product.-->
-これまで、逆誤差伝播の式（特に
+これまで、誤差逆伝播の式（特に
 <span id="margin_174707495294_reveal" class="equation_link">(BP1)</span><span id="margin_174707495294" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_174707495294_reveal').click(function() {$('#margin_174707495294').toggle('slow', function() {});});</script>
 と
@@ -1972,7 +1972,7 @@ forward pass-->
 逆伝播の計算コストは大雑把には順伝播と同程度です
 <!--
 2015/1/3 Kenta OONO
-backpropagationとbackward passの訳し分けに悩む。backpropagationは逆伝播ではなく、逆誤差伝播もしくは逆誤差伝播アルゴリズムと言ったほうが適切かもしれない
+backpropagationとbackward passの訳し分けに悩む。backpropagationは逆伝播ではなく、誤差逆伝播もしくは誤差逆伝播アルゴリズムと言ったほうが適切かもしれない
 -->
 <!--
 *<span class="marginnote">
@@ -2314,7 +2314,7 @@ hope this line of thinking gives you some insight into what
 backpropagation is accomplishing.-->
 ここでは上の議論には立ち入りません。議論の詳細を全て追うのは非常にややこしく、相当の注意が必要です。
 もし挑戦する意欲があれば、試してみるとよいでしょう。
-もしそうでなくても、以上の議論で逆誤差伝播が達成しようしている事について何かの洞察が得られる事を期待します。
+もしそうでなくても、以上の議論で誤差逆伝播が達成しようしている事について何かの洞察が得られる事を期待します。
 </p>
 <p>
 <!--What about the other mystery - how backpropagation could have been
@@ -2328,8 +2328,8 @@ there are several obvious simplifications staring you in the face.
 You make those simplifications, get a shorter proof, and write that
 out.  And then several more obvious simplifications jump out at
 you.So you repeat again. -->
-もう1つの謎、すなわち、まっさらの状態から逆誤差伝播を発見する方法についてはどうでしょうか。
-確かに今私が概説したアプローチに従えば、逆誤差伝播の証明は発見できます。
+もう1つの謎、すなわち、まっさらの状態から誤差逆伝播を発見する方法についてはどうでしょうか。
+確かに今私が概説したアプローチに従えば、誤差逆伝播の証明は発見できます。
 しかし、残念ながらその証明はこの章の前の方で挙げた証明よりも若干長くて複雑です。
 では、どのようにすればこのもっと短い（けれど不思議な）証明を発見できるでしょうか。
 長い証明の詳細をすべて書きだしてみると、幾つかの明らかな簡略化が目につくはずです。それらの簡略化を行うと証明を短くできます、それをまた書き出してみます。すると再び明らかな簡略化が飛び出しますので、同じようにその簡略化を行います。
