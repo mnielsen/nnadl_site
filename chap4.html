@@ -52,7 +52,7 @@
   </head>
   <body><div class="header"><h1 class="chapter_number">
   <a href="">CHAPTER 4</a></h1>
-  <h1 class="chapter_title"><a href="">A visual proof that neural nets can compute any function</a></h1></div><div class="section"><div id="toc"> 
+  <h1 class="chapter_title"><a href="">ニューラルネットワークが任意の関数を表現できる事の視覚的証明</a></h1></div><div class="section"><div id="toc"> 
 <p class="toc_title"><a href="index.html">Neural Networks and Deep Learning</a> (draft contents)</p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">Using neural nets to recognize handwritten digits</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
 <script>
 $('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() { 
@@ -171,62 +171,102 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 </p>
 </div>
 </p>
-<p>One of the most striking facts about neural networks is that they can
+<p>
+<!--One of the most striking facts about neural networks is that they can
 compute any function at all.  That is, suppose someone hands you some
-complicated, wiggly function, $f(x)$:</p>
+complicated, wiggly function, $f(x)$:-->
+ニューラルネットワークに関して最も著しい事実の1つはニューラルネットワークは任意の関数を表現できるということです。例えばあなたが誰かから複雑で波打った関数$f(x)$を与えられたとします：
+</p>
 <p><center><canvas id="function" width="300" height="300"></canvas></center></p>
-<p><a id="basic_network_precursor"></a> No matter what the
+<p>
+<!--<a id="basic_network_precursor"></a> No matter what the
 function, there is guaranteed to be a neural network so that for every
 possible input, $x$, the value $f(x)$ (or some close approximation) is
-output from the network, e.g.:</p>
+output from the network, e.g.:-->
+<a id="basic_network_precursor"></a> それがどんな関数であっても、考えられるすべての入力$x$に対して、$f(x)$（もしくはその近似）が出力値であるようなニューラルネットワークが存在します。例えば下図のようなものです。
+</p>
 <p><center><canvas id="basic_network" width="350" height="220"></canvas></center></p>
-<p>This result holds even if the function has many inputs, $f = f(x_1,
+<p>
+<!--This result holds even if the function has many inputs, $f = f(x_1,
 \ldots, x_m)$, and many outputs.  For instance, here's a network
-computing a function with $m = 3$ inputs and $n = 2$ outputs:</p>
+computing a function with $m = 3$ inputs and $n = 2$ outputs:-->
+この結果は入力が複数の関数$f = f(x_1, \ldots, x_m)$や出力が複数の関数でも成立します。
+例えば、下図は$m=3$個の入力と$n=2$個の出力を持つ関数を表現するニューラルネットワークです：
+</p>
 <p><center><canvas id="vector_valued_network" width="450" height="370"></canvas></center></p>
-<p>This result tells us that neural networks have a kind of
+<p>
+<!--This result tells us that neural networks have a kind of
 <em>universality</em>.  No matter what function we want to compute, we
-know that there is a neural network which can do the job.</p>
-<p>What's more, this universality theorem holds even if we restrict our
+know that there is a neural network which can do the job.-->
+この結果はニューラルネットワークが一種の<em>普遍性</em>を持っている事を示しています。
+計算したい関数が何であろうとも、それをこなすニューラルネットワークが存在する事を我々は知っているのです。
+</p>
+<p>
+<!--What's more, this universality theorem holds even if we restrict our
 networks to have just a single layer intermediate between the input
 and the output neurons - a so-called single hidden layer.  So even
-very simple network architectures can be extremely powerful.</p>
-<p>The universality theorem is well known by people who use neural
+very simple network architectures can be extremely powerful.-->
+しかも、この普遍性定理は、ニューラルネットワークとして、入力層と出力層の間の中間層、いわゆる隠れ層と呼ばれるものをたった1層しか持たないものに制限しても成立しています。
+つまり、極めて単純なニューラルネットワークのアーキテクチャでも表現力は極めて高いのです。
+</p>
+<p>
+<!--The universality theorem is well known by people who use neural
 networks.  But why it's true is not so widely understood.  Most of the
 explanations available are quite technical.  For instance, one of the
-original papers proving the
-result*<span class="marginnote">
-*<a href="http://www.dartmouth.edu/&#126;gvc/Cybenko_MCSS.pdf">Approximation
-    by superpositions of a sigmoidal function</a>, by George Cybenko
-  (1989).  The result was very much in the air at the time, and
-  several groups proved closely related results.  Cybenko's paper
-  contains a useful discussion of much of that work.  Another
-  important early paper is
-  <a href="http://www.sciencedirect.com/science/article/pii/0893608089900208">Multilayer
-    feedforward networks are universal approximators</a>, by Kurt Hornik,
-  Maxwell Stinchcombe, and Halbert White (1989).  This paper uses the
-  Stone-Weierstrass theorem to arrive at similar results.</span>  did so
-using the Hahn-Banach theorem, the Riesz Representation theorem, and
-some Fourier analysis.  If you're a mathematician the argument is not
+original papers proving the result*-->
+普遍性定理はニューラルネットワークを扱う人々の間ではよく知られています。
+しかし、なぜそれが正しいのかはそれほど広くは理解されていません。
+よく見られる説明の多くは極めてテクニカルです。
+例えば、この結果を証明している原著論文*
+<!--<span class="marginnote">
+*<a href="http://www.dartmouth.edu/&#126;gvc/Cybenko_MCSS.pdf">Approximation by superpositions of a sigmoidal function</a>, by George Cybenko (1989).
+  The result was very much in the air at the time, and
+  several groups proved closely related results. 
+  Cybenko's paper contains a useful discussion of much of that work.
+  Another important early paper is
+  <a href="http://www.sciencedirect.com/science/article/pii/0893608089900208">Multilayer feedforward networks are universal approximators</a>, by Kurt Hornik, Maxwell Stinchcombe, and Halbert White (1989).
+  This paper uses the Stone-Weierstrass theorem to arrive at similar results.</span>-->
+<span class="marginnote">
+*<a href="http://www.dartmouth.edu/&#126;gvc/Cybenko_MCSS.pdf">Approximation by superpositions of a sigmoidal function</a>, George Cybenko (1989).
+  この結果は当時とても広まり、いくつかのグループが関連した結果を証明しました。
+  Cybenkoの論文ではこの仕事に関して多くの有益な議論がなされています。
+  初期の論文でその他の重要なものとして
+  <a href="http://www.sciencedirect.com/science/article/pii/0893608089900208">Multilayer feedforward networks are universal approximators</a>, Kurt Hornik, Maxwell Stinchcombe, Halbert White (1989)があります。
+  この論文はストーン・ワイエルシュトラスの定理を用いて類似の結果を得ています。</span>
+<!--did so using the Hahn-Banach theorem, the Riesz Representation theorem, and
+some Fourier analysis.-->
+では、ハーン・バナッハの定理とリースの表現定理といくらかのフーリエ解析を利用しています。
+<!--If you're a mathematician the argument is not
 difficult to follow, but it's not so easy for most people.  That's a
 pity, since the underlying reasons for universality are simple and
-beautiful.</p>
-<p>In this chapter I give a simple and mostly visual explanation of the
-universality theorem.  We'll go step by step through the underlying
-ideas.  You'll understand why it's true that neural networks can
-compute any function.  You'll understand some of the limitations of
+beautiful.-->
+</p>
+<p>
+<!--In this chapter I give a simple and mostly visual explanation of the universality theorem.
+We'll go step by step through the underlying ideas. You'll understand why it's true that neural networks can compute any function.  You'll understand some of the limitations of
 the result.  And you'll understand how the result relates to deep
-neural networks.</p>
-<p>To follow the material in the chapter, you do not need to have read
+neural networks.-->
+本章では、普遍性定理のシンプルで大部分が視覚的な説明を行います。
+裏にあるアイデア達を1つずつ見ていきます。
+なぜニューラルネットワークが任意の関数を表現できるのかの理由、結果についてのある種の制限がある事、そしてこの結果がどのようにディープニューラルネットと関連するのかが理解できるようになるはずです。
+</p>
+<p>
+<!--To follow the material in the chapter, you do not need to have read
 earlier chapters in this book.  Instead, the chapter is structured to
 be enjoyable as a self-contained essay.  Provided you have just a
 little basic familiarity with neural networks, you should be able to
 follow the explanation.  I will, however, provide occasional links to
-earlier material, to help fill in any gaps in your knowledge.</p>
+earlier material, to help fill in any gaps in your knowledge.-->
+本章の文章を読むのに、この本のこれ以前の章を読む必要はありません。
+本章は自己完結的なエッセイとして楽しむ事ができるよう構成されています。
+ニューラルネットワークについていくらか慣れていれば、説明を追えるはずです。
+ただ、知識のギャップを埋めるのに役立つように、以前の章へのリンクを必要に応じて示すつもりです。
+</p>
 <p></p>
 <p></p>
 <p></p>
-<p>Universality theorems are a commonplace in computer science, so much
+<p>
+<!--Universality theorems are a commonplace in computer science, so much
 so that we sometimes forget how astonishing they are.  But it's worth
 reminding ourselves: the ability to compute an arbitrary function is
 truly remarkable.  Almost any process you can imagine can be thought
@@ -234,17 +274,41 @@ of as function computation.  Consider the problem of naming a piece of
 music based on a short sample of the piece.  That can be thought of as
 computing a function.  Or consider the problem of translating a
 Chinese text into English.  Again, that can be thought of as computing
-a function*<span class="marginnote">
+a function-->
+普遍性に関する定理はコンピュータ科学では珍しくなく、しばしばその定理が驚くべき定理である事を忘れてしまいます。
+しかし、任意の関数を表現できるという性質は本当に著しい特徴である事は改めて思い起こす価値のある事です。
+あなたが思いつく行為の過程は大体どれも関数の構成と思うことができます。
+一部分の短いサンプルを元に音楽に名前をつける問題を想像してみてください。
+これは関数の構成と考える事ができます。
+もしくは、中国語の文章を英語に翻訳する問題を考えてみてください。
+やはり、これも関数を構成していると考える事ができます*<span class="marginnote">
+<!--
+2015/1/14 Kenta OONO
+computing a functionは、givenな関数が与えられてそれの出力値を計算しているというよりは、
+関数そのものがどんな形をしているかを決定するという雰囲気があるように思ったので、
+ここでは関数を構成していると訳している
+-->
+<!--*<span class="marginnote">
 *Actually, computing one of many functions, since
   there are often many acceptable translations of a given piece of
-  text.</span>.  Or consider the problem of taking an mp4 movie file and
+  text.</span>.-->
+実際、文章の与えられた一部分には通常多くの妥当な訳し方があるので、多くの関数のうちの1つを構成している事になります。</span>。
+<!--Or consider the problem of taking an mp4 movie file and
 generating a description of the plot of the movie, and a discussion of
 the quality of the acting.  Again, that can be thought of as a kind of
-function computation*<span class="marginnote">
+function computation-->
+あるいは、mp4形式の映画ファイルから、その映画の物語のプロットを作成する問題を考えてみてください。これも、一種の関数構成と考える事ができます*<span class="marginnote">
+<!--
+*<span class="marginnote">
 *Ditto the remark about translation and
-  there being many possible functions.</span>.  Universality means that, in
-principle, neural networks can do all these things and many more.</p>
-<p>Of course, just because we know a neural network exists that can (say)
+  there being many possible functions.</span>. -->
+先程の翻訳と同様ですが、妥当な関数として様々なものが考えられます。</span>。
+<!--Universality means that, in principle, neural networks can do all these things and many more.-->
+ニューラルネットワークはこれらの問題やこれら以外の様々な問題も原理的には可能である事を、
+普遍性は示しています。
+</p>
+<p>
+<!--Of course, just because we know a neural network exists that can (say)
 translate Chinese text into English, that doesn't mean we have good
 techniques for constructing or even recognizing such a network.  This
 limitation applies also to traditional universality theorems for
@@ -253,12 +317,22 @@ book, neural networks have powerful algorithms for learning functions.
 That combination of learning algorithms + universality is an
 attractive mix.  Up to now, the book has focused on the learning
 algorithms.  In this chapter, we focus on universality, and what it
-means.</p>
-<p><h3><a name="two_caveats"></a><a href="#two_caveats">Two caveats</a></h3></p>
-<p>Before explaining why the universality theorem is true, I want to
+means.-->
+もちろん、（例えば）中国語の文章を英語に翻訳するニューラルネットワークが存在する事が分かる事は、そのようなニューラルネットワークを構成したり、もしくはどのようなネットワークか認識できたりする事を意味するのではありません。
+ブーリアン回路などのモデルに対する古典的な普遍性定理にもこの制限は適用されます。
+しかし、この本の前の章で見てきたように、ニューラルネットワークには関数を学習する強力なアルゴリズムがあります。
+学習アルゴリズムと普遍性の組み合わせは魅力的です。
+ここまで、この本では学習アルゴリズムに焦点を置いてきました。本章では、普遍性とそれが意味する所に焦点を置きます。
+</p>
+<p><h3><a name="two_caveats"></a><a href="#two_caveats">2つの注意点</a></h3></p>
+<p>
+<!--Before explaining why the universality theorem is true, I want to
 mention two caveats to the informal statement "a neural network can
-compute any function".</p>
-<p>First, this doesn't mean that a network can be used to <em>exactly</em>
+compute any function".-->
+普遍性定理が何故正しいかを説明する前に、「ニューラルネットワークが任意の関数を表現できる」という砕けた表現についての2つの注意点を挙げたいと思います。
+</p>
+<p>
+<!--First, this doesn't mean that a network can be used to <em>exactly</em>
 compute any function. Rather, we can get an <em>approximation</em>
 that is as good as we want.  By increasing the number of hidden
 neurons we can improve the approximation.  For instance,
@@ -266,18 +340,31 @@ neurons we can improve the approximation.  For instance,
 computing some function $f(x)$ using three hidden neurons.  For most
 functions only a low-quality approximation will be possible using
 three hidden neurons.  By increasing the number of hidden neurons
-(say, to five) we can typically get a better approximation:</p>
+(say, to five) we can typically get a better approximation:</p>-->
+まず、この表現はニューラルネットワークは任意の関数を<em>完全に</em>表現できる事を意味するのではありません。
+そうではなく、関数に<em>いくらでも近い</em>関数を得られるという意味です。
+隠れ層のニューロンを増やすことで、近似の精度を上げることができます。
+例えば、<a href="#basic_network_precursor">前に</a>ある関数$f(x)$を3つの隠れニューロンを用いて計算するニューラルネットワークを説明しました。
+大抵の関数については3個の隠れニューロンでは、精度の低い近似しか得られません。
+隠れニューロンの数を（例えば5個に）増やす事で、より良い近似が得られます。
 <p><center><canvas id="bigger_network" width="350" height="380"></canvas></center></p>
-<p>And we can do still better by further increasing the number of hidden
-neurons.  </p>
-<p>To make this statement more precise, suppose we're given a function
+<p>
+<!--And we can do still better by further increasing the number of hidden neurons. -->
+そして、隠れニューロンをさらに増やす事で、さらに近似を良くできます。
+</p>
+<p>
+<!--To make this statement more precise, suppose we're given a function
 $f(x)$ which we'd like to compute to within some desired accuracy
 $\epsilon > 0$.  The guarantee is that by using enough hidden neurons
 we can always find a neural network whose output $g(x)$ satisfies
 $|g(x) - f(x)| < \epsilon$, for all inputs $x$.  In other words, the
 approximation will be good to within the desired accuracy for every
-possible input.</p>
-<p>The second caveat is that the class of functions which can be
+possible input.-->
+ステートメントをより正確にする為に、私達が計算したい関数$f(x)$と希望の精度$\epsilon > 0$が与えられたとします。
+十分な隠れニューロンを用いる事で、出力$g(x)$が$|g(x) - f(x) < \epsilon|$を任意の入力$x$に対して満たすニューラルネットワークを常に見つけられる事を普遍性定理は保証しています。
+</p>
+<p>
+<!--The second caveat is that the class of functions which can be
 approximated in the way described are the <em>continuous</em> functions.
 If a function is discontinuous, i.e., makes sudden, sharp jumps, then
 it won't in general be possible to approximate using a neural net.
@@ -286,41 +373,79 @@ functions of their input.  However, even if the function we'd really
 like to compute is discontinuous, it's often the case that a
 continuous approximation is good enough.  If that's so, then we can
 use a neural network.  In practice, this is not usually an important
-limitation.</p>
-<p>Summing up, a more precise statement of the universality theorem is
+limitation.-->
+2つ目の注意点は、この方法で近似できる関数のクラスは<em>連続</em>関数であるという点です。
+もし関数が不連続、すなわち突然急激なジャンプが生じる場合、ニューラルネットワークを用いた近似は一般的には不可能です。
+これは驚くべき事ではありません、というのも、私達のニューラルネットワークが計算できるのは入力に対して連続な関数だからです。
+しかし、表現したい関数を不連続でも、連続関数による近似で十分な場合もあります。
+その場合には、ニューラルネットを利用できます。
+通常はこの制限は重大なものではありません。
+</p>
+<p>
+<!--Summing up, a more precise statement of the universality theorem is
 that neural networks with a single hidden layer can be used to
 approximate any continuous function to any desired precision.  In this
 chapter we'll actually prove a slightly weaker version of this result,
 using two hidden layers instead of one.  In the problems I'll briefly
 outline how the explanation can, with a few tweaks, be adapted to give
-a proof which uses only a single hidden layer.
- 
-<h3><a name="universality_with_one_input_and_one_output"></a><a href="#universality_with_one_input_and_one_output">Universality with one input and one output</a></h3></p>
-<p>To understand why the universality theorem is true, let's start by
+a proof which uses only a single hidden layer.-->
+まとめると、普遍性定理のより正確なステートメントは、「隠れ層を1つ持つニューラルネットワークを用いて任意の連続関数を任意の精度で近似できる」となります。
+本章では、隠れ層が1層ではなく、2層のもう少し弱いバージョンの定理を証明します。
+演習問題において、少し証明をひねる事で本章での証明を隠れ層が1層しかない場合に適用する方法を簡単に説明します。 
+</p>
+<h3>
+<!--<a name="universality_with_one_input_and_one_output"></a><a href="#universality_with_one_input_and_one_output">Universality with one input and one output</a>-->
+<a name="universality_with_one_input_and_one_output"></a><a href="#universality_with_one_input_and_one_output">入出力が1つの場合の普遍性定理</a>
+</h3>
+<p>
+<!--To understand why the universality theorem is true, let's start by
 understanding how to construct a neural network which approximates a
-function with just one input and one output:</p>
+function with just one input and one output:-->
+普遍性定理の正しさを理解するために、まずは1つの入力と1つの出力を持つ関数を近似するニューラルネットワークを構成方法を理解する所から始めましょう：
+</p>
 <p><center><canvas id="function_2" width="300" height="300"></canvas></center></p>
-<p>It turns out that this is the core of the problem of universality.
+<p>
+<!--It turns out that this is the core of the problem of universality.
 Once we've understood this special case it's actually pretty easy to
-extend to functions with many inputs and many outputs.</p>
-<p>To build insight into how to construct a network to compute $f$, let's
+extend to functions with many inputs and many outputs.-->
+この場合が普遍性の問題の中核をなします。
+この特別な場合を理解すれば、入出力が多数の場合に拡張するのは容易です。
+</p>
+<p>
+<!--To build insight into how to construct a network to compute $f$, let's
 start with a network containing just a single hidden layer, with two
-hidden neurons, and an output layer containing a single output neuron:</p>
+hidden neurons, and an output layer containing a single output neuron:-->
+$f$を計算するニューラルネットワークの構成方法についての直感を養うために、
+1層の隠れ層が2つの隠れニューロンを持ち、出力層が単一のニューロンを持つ場合考えます。
+</p>
 <p><center><canvas id="two_hidden_neurons" width="350" height="220"></canvas></center></p>
-<p>To get a feel for how components in the network work, let's focus on
+<p>
+<!--To get a feel for how components in the network work, let's focus on
 the top hidden neuron.  In the diagram below, click on the weight,
 $w$, and drag the mouse a little ways to the right to increase $w$.
 You can immediately see how the function computed by the top hidden
-neuron changes:</p>
+neuron changes:-->
+ニューラルネットワーク内の構成要素の挙動について感覚をつかむ為に、上の隠れニューロンに注目してみましょう。
+下図で、重み$w$の値をクリックしマウスを右に少しドラッグすると$w$の値が増加します。
+それに応じて上の隠れニューロンで計算される関数の変化の様子がわかります。
+</p>
 <p><center><canvas id="basic_manipulation" width="600" height="285"></canvas></center></p>
-<p>As we learnt <a href="chap1.html#sigmoid_neurons">earlier in the book</a>,
+<p>
+<!--As we learnt <a href="chap1.html#sigmoid_neurons">earlier in the book</a>,
 what's being computed by the hidden neuron is $\sigma(wx + b)$, where
 $\sigma(z) \equiv 1/(1+e^{-z})$ is the sigmoid function.  Up to now,
 we've made frequent use of this algebraic form.  But for the proof of
 universality we will obtain more insight by ignoring the algebra
 entirely, and instead manipulating and observing the shape shown in
-the graph.  This won't just give us a better feel for what's going on,
-it will also give us a proof*<span class="marginnote">
+the graph.
+This won't just give us a better feel for what's going on,
+it will also give us a proof*<span class="marginnote">-->
+<a href="chap1.html#sigmoid_neurons">この本の前の方</a>で学習したように、
+隠れニューロンで計算しているのは、$\sigma(z) \equiv 1/(1+e^{-z})$をシグモイド関数とすれば、$\sigma(wx + b)$です。
+これまで、この代数的な表式を頻繁に使用してきました。
+しかし、普遍性定理の証明においては、この計算式を完全に忘れて、グラフ内の形を操作して観察する方がより洞察を得ることができます。
+これは単に何が起こっているかの感覚を掴めるだけではなく、そこからシグモイド関数以外の活性化関数に適用する普遍性定理の証明*<span class="marginnote">
+<!--
 *Strictly speaking, the visual
   approach I'm taking isn't what's traditionally thought of as a
   proof.  But I believe the visual approach gives more insight into
@@ -332,7 +457,14 @@ it will also give us a proof*<span class="marginnote">
   to fill in the missing steps.  But don't lose sight of the real
   purpose: to understand why the universality theorem is true.</span> of
 universality that applies to activation functions other than the
-sigmoid function.</p>
+sigmoid function.-->
+*厳密に言えば、私が取る視覚的なアプローチは証明と伝統的に考えられているものではありません。しかし、視覚的なアプローチはなぜこの結果が正しいのかについて、伝統的な証明よりもより多くの洞察が得られると信じています。
+そして、もちろん、この種の洞察は証明の裏にある真の意図です。
+私が提示する理由付けの中にはしばしば小さなギャップが存在します：具体的には視覚的な議論を行っている箇所で妥当だけれど厳密ではない部分です。
+もしこの事が悩ましかったら、欠けている行間を埋める事に挑戦してみてください。
+しかし、なぜ普遍性定理が正しいのかを理解するという真の意図を見失わないようにしてください。
+</span>も得られます。
+</p>
 <p>To get started on this proof, try clicking on the bias, $b$, in the
 diagram above, and dragging to the right to increase it.  You'll see
 that as the bias increases the graph moves to the left, but its shape
