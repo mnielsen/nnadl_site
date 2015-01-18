@@ -465,21 +465,38 @@ sigmoid function.-->
 しかし、なぜ普遍性定理が正しいのかを理解するという真の意図を見失わないようにしてください。
 </span>も得られます。
 </p>
-<p>To get started on this proof, try clicking on the bias, $b$, in the
+<p>
+<!--To get started on this proof, try clicking on the bias, $b$, in the
 diagram above, and dragging to the right to increase it.  You'll see
 that as the bias increases the graph moves to the left, but its shape
-doesn't change.</p>
-<p>Next, click and drag to the left in order to decrease the bias.
+doesn't change.-->
+証明を始める前に、上図のバイアス$b$をクリック・右ドラッグをして、値を増加させてみてください。
+バイアスが大きくなるに従い、グラフは左に移動しますが、形は変化しない事がわかります。
+</p>
+<p>
+<!--Next, click and drag to the left in order to decrease the bias.
 You'll see that as the bias decreases the graph moves to the right,
-but, again, its shape doesn't change.</p>
-<p>Next, decrease the weight to around $2$ or $3$.  You'll see that as
+but, again, its shape doesn't change.-->
+次にクリック・左ドラッグをしてバイアスを減らしてみてください。
+バイアスが減るにつれてグラフが右に移動しますが、やはり形は変化しない事がわかります。
+</p>
+<p>
+<!--Next, decrease the weight to around $2$ or $3$.  You'll see that as
 you decrease the weight, the curve broadens out.  You might need to
-change the bias as well, in order to keep the curve in-frame.</p>
-<p>Finally, increase the weight up past $w = 100$.  As you do, the curve
+change the bias as well, in order to keep the curve in-frame.-->
+次に、重みを$2$か$3$程度まで減らしてみてください。重みを減らすにつれて、曲線が広がっていくのがわかります。
+曲線をフレーム内に収めるために、バイアスも変える必要があるかもしれません。
+</p>
+<p>
+<!--Finally, increase the weight up past $w = 100$.  As you do, the curve
 gets steeper, until eventually it begins to look like a step function.
 Try to adjust the bias so the step occurs near $x = 0.3$.  The
 following short clip shows what your result should look like.  Click
-on the play button to play (or replay) the video:</p>
+on the play button to play (or replay) the video:-->
+最後に重みを$w = 100$過ぎまで増やしてみてください。増加させるにつれて曲線は勾配がきつくなり、最終的に階段関数のような形になります。
+段差が$x = 0.3$あたりに来るようにバイアスを調節してみてください。
+下のクリップは想定する挙動を示しています。再生ボタンを押すとビデオが再生（もしくはリプレイ）されます。
+</p>
 <p><!-- Based on http://worrydream.com/ScrubbingCalculator/, with minor changes -->
       <script type="text/javascript">
     	function playVideo (name) {
@@ -513,13 +530,19 @@ on the play button to play (or replay) the video:</p>
 		    src="movies/create_step_function.webm"></p>
 <p>	  </video>
 </div></p>
-<p>We can simplify our analysis quite a bit by increasing the weight so
+<p>
+<!--We can simplify our analysis quite a bit by increasing the weight so
 much that the output really is a step function, to a very good
 approximation.  Below I've plotted the output from the top hidden
 neuron when the weight is $w = 999$.  Note that this plot is static,
-and you can't change parameters such as the weight.</p>
+and you can't change parameters such as the weight.-->
+重みを増加させ、出力を階段関数に良く近似させる事で、解析を著しく単純にすることができます。
+下では、重みが$w = 999$の時の上の隠れニューロンの出力を図示しています。
+この図は静的で重みなどのパラメータを変化できない事に注意してください。
+</p>
 <p><img src="images/high_weight_function.jpg"></p>
-<p>It's actually quite a bit easier to work with step functions than
+<p>
+<!--It's actually quite a bit easier to work with step functions than
 general sigmoid functions.  The reason is that in the output layer we
 add up contributions from all the hidden neurons.  It's easy to
 analyse the sum of a bunch of step functions, but rather more
@@ -531,38 +554,75 @@ value, and then setting the position of the step by modifying the
 bias.  Of course, treating the output as a step function is an
 approximation, but it's a very good approximation, and for now we'll
 treat it as exact.  I'll come back later to discuss the impact of
-deviations from this approximation.</p>
-<p>At what value of $x$ does the step occur?  Put another way, how does
-the position of the step depend upon the weight and bias?</p>
-<p>To answer this question, try modifying the weight and bias in the
+deviations from this approximation.-->
+一般のシグモイド関数に比べて階段関数で考える方が簡単です。
+その理由は出力層では、全隠れニューロンからの寄与を足しあわせます。
+階段関数達の和を解析するのは簡単ですが、
+シグモイドの形をした曲線達を足しあわせた時に何が起こるのかを推論するのはそれに比べるとずっと困難です。
+ですので、隠れニューロンが階段関数を出力していると仮定する事でぐっと簡単になります。
+具体的には、重みを適当なとても大きな値に固定した後に、バイアスを変化させて段差の位置を調整する事で実現します。
+もちろん、出力を階段関数として扱うのは近似です。
+しかし、これは十分良い近似になっているので、しばらくは厳密に階段関数であるとして扱います。
+後で、ここに戻ってきてこの近似によるずれの影響を議論します。
+</p>
+<p>
+<!--At what value of $x$ does the step occur?  Put another way, how does
+the position of the step depend upon the weight and bias?-->
+どの$x$の値で段差は生じるでしょうか？
+言い換えると、段差の位置は重みや階段にどのように依存するでしょうか？
+</p>
+<p>
+<!--To answer this question, try modifying the weight and bias in the
 diagram above (you may need to scroll back a bit).  Can you figure out
 how the position of the step depends on $w$ and $b$?  With a little
 work you should be able to convince yourself that the position of the
 step is <em>proportional</em> to $b$, and <em>inversely proportional</em>
-to $w$.</p>
-<p>In fact, the step is at position $s = -b/w$, as you can see by
-modifying the weight and bias in the following diagram:</p>
+to $w$.-->
+この答えに答えるために、上図の重みやバイアスを変化させてみてください（少しスクロールする必要があるかもしれません）。
+段差の位置が$w$や$b$にどのように依存するかがわかりますでしょうか。
+少し試してみると、段差の位置は$b$に<em>比例<em>し、$w$に<em>反比例</em>している事がわかると思います。
+</p>
+<p>
+<!--In fact, the step is at position $s = -b/w$, as you can see by
+modifying the weight and bias in the following diagram:-->
+下図の重みとバイアスを変化させるとわかりますが、実は段差の位置は$s = -b/w$に生じます：
+</p>
 <p><canvas id="step" width="600" height="285"></canvas></p>
-<p>It will greatly simplify our lives to describe hidden neurons using
+<p>
+<!--It will greatly simplify our lives to describe hidden neurons using
 just a single parameter, $s$, which is the step position, $s = -b/w$.
 Try modifying $s$ in the following diagram, in order to get used to
-the new parameterization:</p>
+the new parameterization:-->
+隠れニューロンを記述するのに、段差の位置を示す単独のパラメータ$s = -b/w$を用いると解析を著しく簡単化できます。
+新しいパラメータ付けに慣れるために、下図の$s$を変化させてみてください。
+</p>
 <p><canvas id="step_parameterization" width="600" height="285"></canvas></p>
-<p>As noted above, we've implicitly set the weight $w$ on the input to be
+<p>
+<!--As noted above, we've implicitly set the weight $w$ on the input to be
 some large value - big enough that the step function is a very good
 approximation.  We can easily convert a neuron parameterized in this
-way back into the conventional model, by choosing the bias $b = -w s$.</p>
-<p>Up to now we've been focusing on the output from just the top hidden
+way back into the conventional model, by choosing the bias $b = -w s$.-->
+前述したように我々は暗黙に、適当な大きな階段関数が良い近似になっているくらい、入力の重み$w$を十分大きく取っています。
+バイアスを$b = -w s$と選ぶことで、この1つのパラメータでパラメータ付けられたニューロンを前のモデルに戻す事ができます。
+</p>
+<p>
+<!--Up to now we've been focusing on the output from just the top hidden
 neuron.  Let's take a look at the behavior of the entire network.  In
 particular, we'll suppose the hidden neurons are computing step
 functions parameterized by step points $s_1$ (top neuron) and $s_2$
 (bottom neuron).  And they'll have respective output weights $w_1$ and
-$w_2$.  Here's the network:</p>
+$w_2$.  Here's the network:-->
+これまで、私達は上の隠れニューロンの出力に注目してきました。
+ここでニューラルネットワーク全体の挙動を見てみましょう。
+隠れニューロンは段差の位置が$s_1$（上ニューロン）と$s_2$（下ニューロン）でパラメータ付けられた階段関数を計算しているとします。
+さらに、それぞれの出力の重みをそれぞれ$w_1$, $w_2$とします。
+ニューラルネットワークは以下の通りです：
+</p>
 <p><canvas id="two_hn_network" width="600" height="285"></canvas></p>
-<p>What's being plotted on the right is the <em>weighted output</em> $w_1
+<p>
+<!--What's being plotted on the right is the <em>weighted output</em> $w_1
 a_1 + w_2 a_2$ from the hidden layer.  Here, $a_1$ and $a_2$ are the
-outputs from the top and bottom hidden neurons,
-respectively*<span class="marginnote">
+outputs from the top and bottom hidden neurons, respectively*<span class="marginnote">
 *Note, by the way, that the output from the whole
   network is $\sigma(w_1 a_1+w_2 a_2 + b)$, where $b$ is the bias on
   the output neuron.  Obviously, this isn't the same as the weighted
@@ -570,56 +630,108 @@ respectively*<span class="marginnote">
   We're going to focus on the weighted output from the hidden layer
   right now, and only later will we think about how that relates to
   the output from the whole network.</span>.  These outputs are denoted with
-$a$s because they're often known as the neurons' <em>activations</em>.</p>
-<p>Try increasing and decreasing the step point $s_1$ of the top hidden
+$a$s because they're often known as the neurons' <em>activations</em>.-->
+右に図示しているのは<em>重み付き出力</em>$w_1 a_1 + w_2 a_2$です。
+ここで、$a_1$と$a_2$はそれぞれ上下の隠れニューロンからの出力です*<span class="marginnote">
+* ところで、$b$は出力ニューロンのバイアスとすれば、全ニューラルネットワークの出力は$\sigma(w_1 a_1+w_2 a_2 + b)$である事に注意してください。
+明らかにこの値は今辻子している隠れ層の重み付き出力とは異なります。
+今は私達は隠れ層からの重み付き出力に注目し、その後にニューラルネットワーク全体の出力との関連付けを考えます。
+</span>
+これらの出力はしばしば<em>活性(activation)</em>と呼ばれる為、$a$で表す事にします。
+</p>
+<p>
+<!--Try increasing and decreasing the step point $s_1$ of the top hidden
 neuron.  Get a feel for how this changes the weighted output from the
 hidden layer.
-	
 It's particularly worth understanding what happens when $s_1$ goes
 past $s_2$.  You'll see that the graph changes shape when this
 happens, since we have moved from a situation where the top hidden
 neuron is the first to be activated to a situation where the bottom
-hidden neuron is the first to be activated.</p>
-<p>Similarly, try manipulating the step point $s_2$ of the bottom hidden
+hidden neuron is the first to be activated.-->
+上側の隠れニューロンでの段差地点$s_1$を増減させて、
+隠れ層からの重み付き出力をどのように変化させるかについて感覚を掴んでください。
+</p>
+<p>
+<!--Similarly, try manipulating the step point $s_2$ of the bottom hidden
 neuron, and get a feel for how this changes the combined output from
-the hidden neurons.</p>
-<p>Try increasing and decreasing each of the output weights.  Notice how
+the hidden neurons.-->
+同様に、下側の隠れニューロンでの段差地点$s_2$を増減させて、
+出力が変化する様子の感覚を得てください。
+</p>
+<p>
+<!--Try increasing and decreasing each of the output weights.  Notice how
 this rescales the contribution from the respective hidden neurons.
-What happens when one of the weights is zero?</p>
-<p>Finally, try setting $w_1$ to be $0.8$ and $w_2$ to be $-0.8$.  You
+What happens when one of the weights is zero?-->
+出力の重みをそれぞれ増減させてみてください。
+それに応じてそれぞれの隠れニューロンからの寄与が拡大・縮小される事がわかります。
+</p>
+<p>
+<!--Finally, try setting $w_1$ to be $0.8$ and $w_2$ to be $-0.8$.  You
 get a "bump" function, which starts at point $s_1$, ends at point
 $s_2$, and has height $0.8$.  For instance, the weighted output might
-look like this:</p>
+look like this:-->
+最後に$w_1$を$0.8$、$w_2$を$-0.8$にセットしてみてください。
+$s_1$から始まり$s_2$で終わる高さ$0.8$のコブ状の関数が得られます。
+例えば、重み付き出力はこのような感じです：
+</p>
 <p><img src="images/bump_function.jpg"></p>
-<p>Of course, we can rescale the bump to have any height at all.  Let's
+<p>
+<!--Of course, we can rescale the bump to have any height at all.  Let's
 use a single parameter, $h$, to denote the height.  To reduce clutter
-I'll also remove the "$s_1 = \ldots$" and "$w_1 = \ldots$" notations.</p>
+I'll also remove the "$s_1 = \ldots$" and "$w_1 = \ldots$" notations.-->
+もちろん、コブの高さを任意に拡大縮小できます。
+高さを表すパラメータ$h$を導入しましょう。
+煩わしさを減らす為に"$s_1 = \ldots$"や"$w_1 = \ldots$"などの式を省略します。
+</p>
 <p><canvas id="bump_fn" width="600" height="285"></canvas></p>
-<p>Try changing the value of $h$ up and down, to see how the height of
+<p>
+<!--Try changing the value of $h$ up and down, to see how the height of
 the bump changes.  Try changing the height so it's negative, and
 observe what happens.  And try changing the step points to see how
-that changes the shape of the bump.</p>
-<p>You'll notice, by the way, that we're using our neurons in a way that
+that changes the shape of the bump.-->
+$h$の値を増減させてみて、コブの高さ変化する様子を見てください。
+高さを負の値に変化させて何が起こるかを観察してください。
+さらに、段差の点を変更してコブの形がどのように変化するかを見てください。
+</p>
+<p>
+<!--You'll notice, by the way, that we're using our neurons in a way that
 can be thought of not just in graphical terms, but in more
 conventional programming terms, as a kind of <tt>if-then-else</tt>
-statement, e.g.:</p>
-<p><div class="highlight"><pre>    <span class="k">if </span>input &gt;<span class="o">=</span> step point:
-        add 1 to the weighted output
+statement, e.g.:-->
+ところで、我々はニューロンを視覚的な説明の観点だけではなく、一般的なプログラミングの観点からも利用していて、
+ニューロンを例えば以下の様な<tt>if-then-else</tt>構文のようにみなしている事に気づいたかもしれません
+</p>
+<p><div class="highlight"><pre>
+    <span class="k">if </span>input &gt;<span class="o">=</span> step point:
+        重み付き出力に1を加える
     <span class="k">else</span>:
-        add 0 to the weighted output
+        重み付き出力に0を加える
 </pre></div>
 </p>
-<p>For the most part I'm going to stick with the graphical point of view.
+<p>
+<!--For the most part I'm going to stick with the graphical point of view.
 But in what follows you may sometimes find it helpful to switch points
-of view, and think about things in terms of <tt>if-then-else</tt>.</p>
-<p>We can use our bump-making trick to get two bumps, by gluing two pairs
-of hidden neurons together into the same network:</p>
+of view, and think about things in terms of <tt>if-then-else</tt>.-->
+多くの箇所では、視覚的な観点にこだわろうと思います。
+しかしこれ以降で、視点変えて<tt>if-then-else</tt>の観点で考えると理解に役立つ事があるかもしれません。
+</p>
+<p>
+<!--We can use our bump-making trick to get two bumps, by gluing two pairs
+of hidden neurons together into the same network:-->
+このコブを作るトリックを利用し、2組の隠れニューロンのペアを1つのニューラルネットワーク内でくっつける事で、2つのコブを作る事ができます。
+</p>
 <p><canvas id="double_bump" width="600" height = "280"></canvas></p>
-<p>I've suppressed the weights here, simply writing the $h$ values for
+<p>
+<!--I've suppressed the weights here, simply writing the $h$ values for
 each pair of hidden neurons.  Try increasing and decreasing both $h$
 values, and observe how it changes the graph.  Move the bumps around
-by changing the step points.</p>
-<p>More generally, we can use this idea to get as many peaks as we want,
+by changing the step points.-->
+ここでは重みは書かず、それぞれの隠れニューロンのペアの$h$を書きました。
+両方の$h$の値を増減させて、グラフがどのように変化するかを観察してください。
+また、段差の地点を変更させることで、コブを移動させてください。
+</p>
+<p>
+<!--More generally, we can use this idea to get as many peaks as we want,
 of any height.  In particular, we can divide the interval $[0, 1]$ up
 into a large number, $N$, of subintervals, and use $N$ pairs of hidden
 neurons to set up peaks of any desired height.  Let's see how this
@@ -627,7 +739,14 @@ works for $N = 5$.  That's quite a few neurons, so I'm going to pack
 things in a bit.  Apologies for the complexity of the diagram: I could
 hide the complexity by abstracting away further, but I think it's
 worth putting up with a little complexity, for the sake of getting a
-more concrete feel for how these networks work.</p>
+more concrete feel for how these networks work.-->
+より一般的には、このアイデアを利用して好きな高さで好きな数のピークを構成できます。
+区間$[0, 1]$を大きな数$N$個の部分空間に分割し、$N$組の隠れニューロンの組を利用して好きな高さのピークを構成できます。
+$N = 5$の場合について見てみましょう。
+たくさんのニューロンがあるので少し詰めて描きます。
+図が複雑になってしまいすみません：省略して描けば複雑さを隠せるのですが、
+どのようにニューラルネットワークが動くかの具体的な感覚を掴むために若干の複雑さは我慢する価値はあると思います。
+</p>
 <p><canvas id="five_bumps" width="600" height = "620"></canvas></p>
 <p>You can see that there are five pairs of hidden neurons.  The step
 points for the respective pairs of neurons are $0, 1/5$, then $1/5,
