@@ -748,59 +748,115 @@ $N = 5$の場合について見てみましょう。
 どのようにニューラルネットワークが動くかの具体的な感覚を掴むために若干の複雑さは我慢する価値はあると思います。
 </p>
 <p><canvas id="five_bumps" width="600" height = "620"></canvas></p>
-<p>You can see that there are five pairs of hidden neurons.  The step
+<p>
+<!--You can see that there are five pairs of hidden neurons.  The step
 points for the respective pairs of neurons are $0, 1/5$, then $1/5,
 2/5$, and so on, out to $4/5, 5/5$.  These values are fixed - they
-make it so we get five evenly spaced bumps on the graph.</p>
-<p>Each pair of neurons has a value of $h$ associated to it.  Remember,
+make it so we get five evenly spaced bumps on the graph.-->
+5組の隠れニューロンのペアが見て取れると思います。
+それぞれのペアの段差地点は$0, 1/5$、$1/5, 2/5$・・・$4/5, 5/5$です。
+これらの値は固定されており、5つの等間隔に配置されたコブを持つグラフが得られるようにします。
+</p>
+<p>
+<!--Each pair of neurons has a value of $h$ associated to it.  Remember,
 the connections output from the neurons have weights $h$ and $-h$ (not
 marked).  Click on one of the $h$ values, and drag the mouse to the
 right or left to change the value.  As you do so, watch the function
 change.  By changing the output weights we're actually
-<em>designing</em> the function!</p>
-<p>Contrariwise, try clicking on the graph, and dragging up or down to
+<em>designing</em> the function!-->
+それぞれのニューロンペアには$h$の値が伴っています。
+これらのニューロン達から出ている枝にはそれぞれ$h$、$-h$の重みが与えられています（これらは図には載せていません）。
+$h$のうち一つをクリックし、左右にドラッグして値を変えてみてください。
+それを行うとどのように関数が変化するかを観察しましょう。
+重みを変えることで、関数を<em>デザイン</em>することができるのです！
+</p>
+<p>
+<!--Contrariwise, try clicking on the graph, and dragging up or down to
 change the height of any of the bump functions.  As you change the
 heights, you can see the corresponding change in $h$ values.  And,
 although it's not shown, there is also a change in the corresponding
-output weights, which are $+h$ and $-h$.</p>
-<p>In other words, we can directly manipulate the function appearing in
+output weights, which are $+h$ and $-h$.-->
+逆に、グラフをクリックし、上下にドラッグして関数の適当なコブの高さを変化させてみてください。
+高さを変化させる事で、$h$の値が対応して変化するのが見て取れると思います。
+図には現れませんが、対応する出力の重み（これらの値は$+h$と$-h$です）も変化しています。
+</p>
+<p>
+<!--In other words, we can directly manipulate the function appearing in
 the graph on the right, and see that reflected in the $h$ values on
 the left.  A fun thing to do is to hold the mouse button down and drag
-the mouse from one side of the graph to the other.  As you do you this
-you draw out a function, and get to watch the parameters in the neural
-network adapt.</p>
-<p>Time for a challenge.</p>
-<p>Let's think back to the function I plotted at the beginning of the
-chapter:</p>
+the mouse from one side of the graph to the other.  As you do you this you draw out a function,
+and get to watch the parameters in the neural network adapt.-->
+言い換えると、我々は右のグラフ中の関数を直接操作し、左に現れる$h$の値に反映されているのを観察する事ができます。
+マウスのボタンを押しっぱなしにして、マウスを一方からもう一方までドラッグしてみると面白いです。
+こうすると、関数を引き伸ばして、ニューラルネットワークのパラメータが適応する様子を見て取れます。
+</p>
+<p>
+<!--Time for a challenge.-->
+それではチャレンジの時間です。
+</p>
+<p>
+<!--Let's think back to the function I plotted at the beginning of the
+chapter:-->
+この章の最初に私が描いた関数を思い出してください。
+</p>
 <p><center> <canvas id="function_3" width="300" height="300"></canvas>
 </center></p>
-<p>I didn't say it at the time, but what I plotted is actually the
-function
+<p>
+<!--I didn't say it at the time, but what I plotted is actually the function
 <a class="displaced_anchor" name="eqtn106"></a>\begin{eqnarray}
 f(x) = 0.2+0.4 x^2+0.3 \sin(15 x) + 0.05 \cos(50 x),
 \tag{106}\end{eqnarray}
 plotted over $x$ from $0$ to $1$, and with the $y$ axis taking
-values from $0$ to $1$.</p>
-<p>That's obviously not a trivial function.</p>
-<p>You're going to figure out how to compute it using a neural network.</p>
-<p>In our networks above we've been analysing the weighted combination
+values from $0$ to $1$.-->
+その時には言いませんでしたが、私が描いたのは実際には、
+<a class="displaced_anchor" name="eqtn106"></a>\begin{eqnarray}
+f(x) = 0.2+0.4 x^2+0.3 \sin(15 x) + 0.05 \cos(50 x),
+\tag{106}\end{eqnarray}
+という関数の$x$が$0$から$1$の部分で、$y$軸は$0$から$1$の値を取っています。
+</p>
+<p>
+<!--That's obviously not a trivial function.-->
+これは見ての通り簡単な関数ではありません。
+</p>
+<p>
+<!--You're going to figure out how to compute it using a neural network.-->
+これをニューラルネットワークでどのように計算するかを導き出します。
+</p>
+<p>
+<!--In our networks above we've been analysing the weighted combination
 $\sum_j w_j a_j$ output from the hidden neurons.  We now know how to
 get a lot of control over this quantity.  But, as I noted earlier,
 this quantity is not what's output from the network.  What's output
 from the network is $\sigma(\sum_j w_j a_j + b)$ where $b$ is the bias
 on the output neuron.  Is there some way we can achieve control over
-the actual output from the network?</p>
-<p>The solution is to design a neural network whose hidden layer has a
+the actual output from the network?-->
+上記のニューラルネットワークでは、隠れニューロンからの出力の重み付き組み合わせ$\sum_j w_j a_j$を解析してきました。
+私達はすでにこの値を調節する方法を良く知っています。
+しかし、前に指摘したように、この値はニューラルネットワークの出力ではありません。
+ニューラルネットワークの出力は$\sigma(\sum_j w_j a_j + b)$です。
+ここで、$b$は出力ニューロンのバイアス項です。
+ニューラルネットワークの実際の出力を調節を可能にする方法は何かないでしょうか？
+</p>
+<p>
+<!--The solution is to design a neural network whose hidden layer has a
 weighted output given by $\sigma^{-1} \circ f(x)$, where $\sigma^{-1}$
 is just the inverse of the $\sigma$ function.  That is, we want the
-weighted output from the hidden layer to be:</p>
+weighted output from the hidden layer to be:-->
+隠れ層の重み付き出力が$\sigma^{-1} \circ f(x)$を持つニューラルネットワークを設計するのが答えです。
+ここで、$\sigma^{-1}$は$\sigma$関数の逆関数です。
+すなわち、隠れそうからの重み付き出力を以下のようにします：
+</p>
 <p><center> <canvas id="inverted_function" width="340"
 height="300"></canvas> </center></p>
-<p>If we can do this, then the output from the network as a whole will be
+<p>
+<!--If we can do this, then the output from the network as a whole will be
 a good approximation to $f(x)$*<span class="marginnote">
-*Note that I have set the bias
-  on the output neuron to $0$.</span>.</p>
-<p>Your challenge, then, is to design a neural network to approximate the
+*Note that I have set the bias on the output neuron to $0$.</span>.-->
+もしこれができれば、ニューラルネットワーク全体での出力は$f(x)$の良い近似となります*<span class="marginnote">
+*出力ニューロンのバイアスを$0$としている事に注意してください。</span>。
+</p>
+<p>
+<!--Your challenge, then, is to design a neural network to approximate the
 goal function shown just above.  To learn as much as possible, I want
 you to solve the problem twice.  The first time, please click on the
 graph, directly adjusting the heights of the different bump functions.
@@ -809,7 +865,16 @@ function.  How well you're doing is measured by the <em>average
   deviation</em> between the goal function and the function the network is
 actually computing.  Your challenge is to drive the average deviation
 as <em>low</em> as possible.  You complete the challenge when you drive
-the average deviation to $0.40$ or below.</p>
+the average deviation to $0.40$ or below.-->
+あなたの挑戦はニューラルネットワークを設計し、目標となっている上記関数を近似する事です。
+できるだけ多くの事を学ぶために、この問題を2回解いてほしいと思っています。
+1回目はグラフをクリックし、それぞれのコブの高さを直接調節してください。
+目標とする関数に良く適合する関数を得るのは比較的簡単に感じるはずです。
+どの程度上手く調節を行えているかは、目的の関数とニューラルネットワークが実際に計算している関数との間の
+<em>平均偏差</em>で測定できます。
+あなたのチャレンジは平均偏差を出来るだけ<em>小さく</em>することです。
+平均偏差を$0.40$かそれ未満に抑える事ができたらチャレンジは終了です。
+</p>
 <p>Once you've done that, click on "Reset" to randomly re-initialize
 the bumps.  The second time you solve the problem, resist the urge to
 click on the graph.  Instead, modify the $h$ values on the left-hand
