@@ -482,7 +482,7 @@ rule twice, obtaining:
     \frac{y}{\sigma(z)} 
     -\frac{(1-y)}{1-\sigma(z)} \right)\sigma'(z) x_j.
 \tag{59}\end{eqnarray}
-Putting everything over a common denominator and simplifying this
+<!--Putting everything over a common denominator and simplifying this
 becomes:
 <a class="displaced_anchor" name="eqtn60"></a>\begin{eqnarray}
   \frac{\partial C}{\partial w_j} & = & \frac{1}{n}
@@ -498,7 +498,21 @@ just above, and it simplifies to become:
 <a class="displaced_anchor" name="eqtn61"></a>\begin{eqnarray} 
   \frac{\partial C}{\partial w_j} =  \frac{1}{n} \sum_x x_j(\sigma(z)-y).
 \tag{61}\end{eqnarray}
-This is a beautiful expression.  It tells us that the rate at which
+-->
+すべてを共通の分母でまとめて簡単にすると次の式を得ます：
+<a class="displaced_anchor" name="eqtn60"></a>\begin{eqnarray}
+  \frac{\partial C}{\partial w_j} & = & \frac{1}{n}
+  \sum_x \frac{\sigma'(z) x_j}{\sigma(z) (1-\sigma(z))}
+  (\sigma(z)-y).
+\tag{60}\end{eqnarray}
+シグモイド関数の定義を使うと$\sigma(z) =
+1/(1+e^{-z})$であり、すこしの代数的計算をすると$\sigma'(z) =
+\sigma(z)(1-\sigma(z))$であることがわかります。このことは演習で確認しますが、とりあえずはそれはわかっているものとして受け入れましょう。ちょうど上の式で、$\sigma'(z) =
+\sigma(z)(1-\sigma(z))$が消え、単純になり次のようになります：
+<a class="displaced_anchor" name="eqtn61"></a>\begin{eqnarray} 
+  \frac{\partial C}{\partial w_j} =  \frac{1}{n} \sum_x x_j(\sigma(z)-y).
+\tag{61}\end{eqnarray}
+<!-- This is a beautiful expression.  It tells us that the rate at which
 the weight learns is controlled by $\sigma(z)-y$, i.e., by the error
 in the output.  The larger the error, the faster the neuron will
 learn.  This is just what we'd intuitively expect.  In particular, it
@@ -509,8 +523,11 @@ When we use the cross-entropy, the $\sigma'(z)$ term gets cancelled
 out, and we no longer need worry about it being small.  This
 cancellation is the special miracle ensured by the cross-entropy cost
 function.  Actually, it's not really a miracle.  As we'll see later,
-the cross-entropy was specially chosen to have just this property.</p>
-<p>In a similar way, we can compute the partial derivative for the bias.
+the cross-entropy was specially chosen to have just this property.</p>-->
+これは美しい表現です。これを見ると、重みが学習する度合いは$\sigma(z)-y$つまり出力における誤りによってコントロールされてることがわかります。つまり誤りが大きくなればなるほどニューロンの学習は速くなります。これはちょうど我々が直感的に望んでいたことです。特に、二次コスト関数の同じような式、つまり式<span id="margin_907356608801_reveal" class="equation_link">(55)</span><span id="margin_907356608801" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+    \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_907356608801_reveal').click(function() {$('#margin_907356608801').toggle('slow', function() {});});</script>
+で$\sigma'(z)$が学習の速度低下の原因となっていたがそれを防いだのです。クロスエントロピーを使うと、$\sigma'(z)$の項が消え、そこのことを心配する必要がなくなるのです。この項の消滅はクロスエントロピーで起こる特別な奇跡です。実際には奇跡ではありません。あとでわかるように、クロスエントロピーはこの性質を持つように特別に選ばれたのです。</p>
+<!--<p>In a similar way, we can compute the partial derivative for the bias.
 I won't go through all the details again, but you can easily verify
 that
 <a class="displaced_anchor" name="eqtn62"></a>\begin{eqnarray} 
@@ -519,8 +536,19 @@ that
 Again, this avoids the learning slowdown caused by the $\sigma'(z)$
 term in the analogous equation for the quadratic cost,
 Equation <span id="margin_93784536101_reveal" class="equation_link">(56)</span><span id="margin_93784536101" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
-  \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z) \nonumber\end{eqnarray}</a></span><script>$('#margin_93784536101_reveal').click(function() {$('#margin_93784536101').toggle('slow', function() {});});</script>.</p><p><h4><a name="exercise_35813"></a><a href="#exercise_35813">Exercise</a></h4><ul>
-  <li> Verify that $\sigma'(z) = \sigma(z)(1-\sigma(z))$.</p><p></ul></p><p>Let's return to the toy example we played with earlier, and explore
+    \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z) \nonumber\end{eqnarray}</a></span><script>$('#margin_93784536101_reveal').click(function() {$('#margin_93784536101').toggle('slow', function() {});});</script>.</p>-->
+<p>同じようにバイアスについての偏微分も計算します。また詳細を追うことをしませんが、次の式が確認できます。
+<a class="displaced_anchor" name="eqtn62"></a>\begin{eqnarray} 
+  \frac{\partial C}{\partial b} = \frac{1}{n} \sum_x (\sigma(z)-y).
+\tag{62}\end{eqnarray}
+繰り返しますが、これにより二次コストの同じような式、つまり式<span id="margin_93784536101_reveal" class="equation_link">(56)</span><span id="margin_93784536101" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+    \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z) \nonumber\end{eqnarray}</a></span><script>$('#margin_93784536101_reveal').click(function() {$('#margin_93784536101').toggle('slow', function() {});});</script>
+で$\sigma'(z)$が学習速度低下の原因になるのを防いでいます。</p>
+<!--<p><h4><a name="exercise_35813"></a><a href="#exercise_35813">Exercise</a></h4><ul>
+    <li> Verify that $\sigma'(z) = \sigma(z)(1-\sigma(z))$.</p><p></ul></p>-->
+<p><h4><a name="exercise_35813"></a><a href="#exercise_35813">演習</a></h4><ul>
+    <li> $\sigma'(z) = \sigma(z)(1-\sigma(z))$であることを確認しなさい</p><p></ul></p>
+<p>Let's return to the toy example we played with earlier, and explore
 what happens when we use the cross-entropy instead of the quadratic
 cost.  To re-orient ourselves, we'll begin with the case where the
 quadratic cost did just fine, with starting weight $0.6$ and starting
