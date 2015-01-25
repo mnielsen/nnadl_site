@@ -548,28 +548,44 @@ Equation <span id="margin_93784536101_reveal" class="equation_link">(56)</span><
     <li> Verify that $\sigma'(z) = \sigma(z)(1-\sigma(z))$.</p><p></ul></p>-->
 <p><h4><a name="exercise_35813"></a><a href="#exercise_35813">演習</a></h4><ul>
     <li> $\sigma'(z) = \sigma(z)(1-\sigma(z))$であることを確認しなさい</p><p></ul></p>
-<p>Let's return to the toy example we played with earlier, and explore
+<!--<p>Let's return to the toy example we played with earlier, and explore
 what happens when we use the cross-entropy instead of the quadratic
 cost.  To re-orient ourselves, we'll begin with the case where the
 quadratic cost did just fine, with starting weight $0.6$ and starting
 bias $0.9$.  Press "Run" to see what happens when we replace the
-quadratic cost by the cross-entropy:</p><p><script type="text/paperscript" src="js/saturation3.js" canvas="saturation3"></script><center><canvas id="saturation3" width="520" height="300"></canvas></center></p><p>Unsurprisingly, the neuron learns perfectly well in this instance,
+quadratic cost by the cross-entropy:</p>-->
+<p>前に遊んでみたおもちゃのような例にもどり、二次コスト関数の代わりにクロスエントロピーを使うとどうなるか見てみましょう。方向転換して、まずは二次コスト関数がうまく行くケースとして、重みが$0.6$、バイアスが$0.9$のときから始めましょう。
+</p>
+<!--<p><script type="text/paperscript" src="js/saturation3.js" canvas="saturation3"></script><center><canvas id="saturation3" width="520" height="300"></canvas></center></p>
+<p>Unsurprisingly, the neuron learns perfectly well in this instance,
 just as it did earlier.  And now let's look at the case where our
 neuron got stuck before (<a href="#saturation2_anchor">link</a>, for
-comparison), with the weight and bias both starting at $2.0$:</p><p><script type="text/paperscript" src="js/saturation4.js" canvas="saturation4"></script><center><canvas id="saturation4" width="520" height="300"></canvas></center></p><p>Success!  This time the neuron learned quickly, just as we hoped.  If
+comparison), with the weight and bias both starting at $2.0$:</p>-->
+<p><script type="text/paperscript" src="js/saturation3.js" canvas="saturation3"></script><center><canvas id="saturation3" width="520" height="300"></canvas></center></p>
+<p>驚くまでもなく、この例では前と同じようにニューロンは完璧に学習します。では今度は、以前にニューロンが停滞したケース(<a href="#saturation2_anchor">link</a>, for
+comparison)、つまり重みとバイアスが両方とも$2.0$から始めるケースを見てみましょう：
+</p>
+<!--<p><script type="text/paperscript" src="js/saturation4.js" canvas="saturation4"></script><center><canvas id="saturation4" width="520" height="300"></canvas></center></p><p>Success!  This time the neuron learned quickly, just as we hoped.  If
 you observe closely you can see that the slope of the cost curve was
 much steeper initially than the initial flat region on the
 corresponding curve for the quadratic cost.  It's that steepness which
 the cross-entropy buys us, preventing us from getting stuck just when
 we'd expect our neuron to learn fastest, i.e., when the neuron starts
-out badly wrong.</p><p>I didn't say what learning rate was used in the examples just
+out badly wrong.</p>-->
+<p><script type="text/paperscript" src="js/saturation4.js" canvas="saturation4"></script><center><canvas id="saturation4" width="520" height="300"></canvas></center></p>
+<p>うまくいきました！今度はニューロンは望んだ通り早く学習します。近づいて見ると、コスト曲線の坂は、二次コスト関数の対応する初期値の平らな部分と比べると、もっと急になっていることがわかります。その傾きはクロスエントロピーがうまくやってくれていて、ニューロンが最も速く学習してほしい時に停滞してしまうこと、つまりニューロンが間違った起動のしかたをすることを防いでくれます。
+</p>
+<!--<p>I didn't say what learning rate was used in the examples just
 illustrated.  Earlier, with the quadratic cost, we used $\eta = 0.15$.
 Should we have used the same learning rate in the new examples?  In
 fact, with the change in cost function it's not possible to say
 precisely what it means to use the "same" learning rate; it's an
 apples and oranges comparison.  For both cost functions I simply
 experimented to find a learning rate that made it possible to see what
-is going on.</p><p>You might object that this makes the graphs above meaningless.  Who
+is going on.</p>-->
+<p>例で使われた学習率とはなにかについていってませんでした。以前、二次コスト関数では$\eta = 0.15$を使っていました。同じ例でも同じ学習率を使うべきでしょうか？ところが、コスト関数を変更してしまうと、学習率が「同じ」とはどういうことかを正確には言えません。リンゴとオレンジを比べているようなものです。両方のコスト関数に対して、なにが起こっているかわかるような学習率を、単純に私は経験的に見つけていたというだけです。
+</p>
+<!--<p>You might object that this makes the graphs above meaningless.  Who
 cares how fast the neuron learns, when our choice of learning rate was
 arbitrary?!  That objection misses the point.  The point of the graphs
 isn't about the absolute speed of learning.  It's about how the speed
@@ -578,7 +594,10 @@ learning is <em>slower</em> when the neuron is unambiguously wrong than
 it is later on, as the neuron gets closer to the correct output; while
 with the cross-entropy learning is faster when the neuron is
 unambiguously wrong.  Those statements don't depend on how the
-learning rate is set.</p><p>We've been studying the cross-entropy for a single neuron.  However,
+learning rate is set.</p>-->
+<p>そんなことではグラフに意味がないではないかと、あなたは反対するかもしれません。学習率の選択法が決まっていないのに、ニューロンの学習する速さに誰が興味を持つだろうか！？そのような反対意見は重要な点を見逃しています。グラフで重要な点は学習の絶対的な速度についてではないのです。学習の速度がどのように変わっていくかが重要なのです。取り立てて言うと、二次コスト関数は、後に正しい出力値に近づいたときと比べて、ニューロンが誤解の余地なく悪い状態の時に<em>遅い</em>のです。一方で、クロスエントロピーは、誤解の余地なく悪い状態の時にも速いです。これらの話は学習率がどのように設定されたかに依存しません。
+</p>
+<!--<p>We've been studying the cross-entropy for a single neuron.  However,
 it's easy to generalize the cross-entropy to many-neuron multi-layer
 networks.  In particular, suppose $y = y_1, y_2, \ldots$ are the
 desired values at the output neurons, i.e., the neurons in the final
@@ -595,7 +614,16 @@ through a derivation, but it should be plausible that using the
 expression <span id="margin_932302704635_reveal" class="equation_link">(63)</span><span id="margin_932302704635" class="marginequation" style="display: none;"><a href="chap3.html#eqtn63" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C = -\frac{1}{n} \sum_x
   \sum_j \left[y_j \ln a^L_j + (1-y_j) \ln (1-a^L_j) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_932302704635_reveal').click(function() {$('#margin_932302704635').toggle('slow', function() {});});</script> avoids a learning slowdown in
 many-neuron networks.  If you're interested, you can work through the
-derivation in the problem below.  </p><p>When should we use the cross-entropy instead of the quadratic cost?
+derivation in the problem below.  </p>-->
+<p>私達は、一つのニューロンのときのクロスエントロピーを調べてきました。しかし、多層の多くのニューロンの場合に一般化するのは簡単です。とくに、$y = y_1, y_2, \ldots$がニューロンの望まれる出力だと仮定しましょう。つまり、ニューロンの最終層の出力です。また、$a^L_1, a^L_2, \ldots$がニューロンの実際の出力だとしましょう。ここで、クロスエントロピーを次の式で定義します。
+<a class="displaced_anchor" name="eqtn63"></a>\begin{eqnarray}  C = -\frac{1}{n} \sum_x
+  \sum_j \left[y_j \ln a^L_j + (1-y_j) \ln (1-a^L_j) \right].
+\tag{63}\end{eqnarray}
+これは以前の表現、式<span id="margin_529736937390_reveal" class="equation_link">(57)</span><span id="margin_529736937390" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_529736937390_reveal').click(function() {$('#margin_529736937390').toggle('slow', function() {});});</script>と比べて、すべてのニューロンについての和$\sum_j$をとったことをのぞいて同じです。微分を明示的に計算することはしませんが、式<span id="margin_932302704635_reveal" class="equation_link">(63)</span><span id="margin_932302704635" class="marginequation" style="display: none;"><a href="chap3.html#eqtn63" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C = -\frac{1}{n} \sum_x
+  \sum_j \left[y_j \ln a^L_j + (1-y_j) \ln (1-a^L_j) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_932302704635_reveal').click(function() {$('#margin_932302704635').toggle('slow', function() {});});</script>を使えば多くのニューロンのネットワークで学習の速度低下を防げることはすばらしいことでしょう。もし興味があれば、後述する問題で微分を計算してみることはできます。
+</p>
+<!--<p>When should we use the cross-entropy instead of the quadratic cost?
 In fact, the cross-entropy is nearly always the better choice,
 provided the output neurons are sigmoid neurons.  To see why, consider
 that when we're setting up the network we usually initialize the
@@ -605,13 +633,20 @@ wrong for some training input - that is, an output neuron will have
 saturated near $1$, when it should be $0$, or vice versa.  If we're
 using the quadratic cost that will slow down learning.  It won't stop
 learning completely, since the weights will continue learning from
-other training inputs, but it's obviously undesirable.</p><p><h4><a name="exercises_824189"></a><a href="#exercises_824189">Exercises</a></h4><ul>
+other training inputs, but it's obviously undesirable.</p>-->
+<p>二次コスト関数の代わりにクロスエントロピーを使うべきなのはいつでしょうか？ところが、出力ニューロンがシグモイドニューロンであるときには、クロスエントロピーはほとんどいつもよりよい選択なのです。なぜかを理解するためには、ニューロンを設定するときには、通常重みとバイアスを同じ種類の乱数で初期化するということを考慮しなければいけません。そのような初期値は、学習の入力により決定的に悪くなる可能性があります。つまり、出力ニューロンが$0$であるべき場合に$1$付近で止まってしまったり、その逆もあり得るということです。二次コスト関数を使っていたとしたら、学習は遅くなります。重みは他の入力から学ぶことを続けるので、学習が完全に停止することはありませんが、それは明らかに私達が望んでいないことです。
+</p>
+<!--<p><h4><a name="exercises_824189"></a><a href="#exercises_824189">Exercises</a></h4><ul>
 <li> One gotcha with the cross-entropy is that it can be difficult at
   first to remember the respective roles of the $y$s and the $a$s.
   It's easy to get confused about whether the right form is $-[y \ln a
   + (1-y) \ln (1-a)]$ or $-[a \ln y + (1-a) \ln (1-y)]$.  What happens
   to the second of these expressions when $y = 0$ or $1$?  Does this
-  problem afflict the first expression?  Why or why not? </p><p><li> In the single-neuron discussion at the start of this section, I
+  problem afflict the first expression?  Why or why not? </p>-->
+<p><h4><a name="exercises_824189"></a><a href="#exercises_824189">演習</a></h4><ul>
+<li>クロスエントロピーについて気をつけなければいけないのは、最初は$y$と$a$のそれぞれの役割を覚えるのが難しいところです。正しい式が$-[y \ln a
+  + (1-y) \ln (1-a)]$であったか、$-[a \ln y + (1-a) \ln (1-y)]$であったかという点はよく混乱します。これらの後者の式の方で$y=0$または$y=1$だった場合なにが起こるでしょう？このことは前者の式に悪影響があるでしょうか？理由を考えてください。</p>
+<!--<p><li> In the single-neuron discussion at the start of this section, I
   argued that the cross-entropy is small if $\sigma(z) \approx y$ for
   all training inputs.  The argument relied on $y$ being equal to
   either $0$ or $1$.  This is usually true in classification problems,
@@ -625,7 +660,15 @@ other training inputs, but it's obviously undesirable.</p><p><h4><a name="exerci
   \tag{64}\end{eqnarray}
   The quantity $-[y \ln y+(1-y)\ln(1-y)]$ is sometimes known as the
   <a href="http://en.wikipedia.org/wiki/Binary_entropy_function">binary
-    entropy</a>.</p><p></ul></p><p><h4><a name="problems_933474"></a><a href="#problems_933474">Problems</a></h4><ul>
+    entropy</a>.</p>-->
+<p><li>
+この節の最初の一つのニューロンでの考察で、もし学習データの入力で$\sigma(z) \approx y$ならばクロスエントロピーは小さくなるという議論をしました。この議論は$y$は$0$または$1$であるという仮定の元にでした。この仮定は分類問題では通常は正しいですが、他の問題（例えば回帰問題）では$y$はときに$0$から$1$の間の値をとることがあります。すべての学習の入力について、クロスエントロピーは$\sigma(z) = y$で最小になることを示してください。これが成り立つときクロスエントロピーは次の値をとります：
+  <a class="displaced_anchor" name="eqtn64"></a>\begin{eqnarray}
+    C = -\frac{1}{n} \sum_x [y \ln y+(1-y) \ln(1-y)].
+  \tag{64}\end{eqnarray}
+  値$-[y \ln y+(1-y)\ln(1-y)]$は
+  <a href="http://en.wikipedia.org/wiki/Binary_entropy_function">バイナリエントロピー</a>と呼ばれることもあります。</p>
+<!--<p></ul></p><p><h4><a name="problems_933474"></a><a href="#problems_933474">Problems</a></h4><ul>
 <li><strong>Many-layer multi-neuron networks</strong> In the notation introduced in
   the <a href="chap2.html">last chapter</a>, show that for the quadratic
   cost the partial derivative with respect to weights in the output
@@ -652,7 +695,25 @@ other training inputs, but it's obviously undesirable.</p><p><h4><a name="exerci
   single neuron, as we saw earlier, but also in many-layer
   multi-neuron networks.  A simple variation on this analysis holds
   also for the biases.  If this is not obvious to you, then you should
-  work through that analysis as well.</p><p><li><strong>Using the quadratic cost when we have linear neurons in the
+  work through that analysis as well.</p>-->
+<p></ul></p><p><h4><a name="problems_933474"></a><a href="#problems_933474">問題</a></h4><ul>
+<li><strong>多層複数ニューロンのネットワーク</strong>
+<a href="chap2.html">前章</a>で導入した記法を使って、出力層で二次コスト関数の重みについての微分は次の式になることを示しなさい：
+  <a class="displaced_anchor" name="eqtn65"></a>\begin{eqnarray}
+      \frac{\partial C}{\partial w^L_{jk}} & = & \frac{1}{n}
+      \sum_x a^{L-1}_k  (a^L_j-y_j) \sigma'(z^L_j).
+  \tag{65}\end{eqnarray}
+  ここで$\sigma'(z^L_j)$の項は、出力ニューロンが悪い値で停滞した時に学習の速度低下を引き起こします。クロスエントロピーについて、一つの学習データの例$x$についての出力誤差$\delta^L$の重みは次の式で表されることを示しなさい：
+  <a class="displaced_anchor" name="eqtn66"></a>\begin{eqnarray} 
+    \delta^L = a^L-y.
+  \tag{66}\end{eqnarray}
+この式を使って、出力層の重みについての偏微分は次の式で与えられることを示しなさい：
+  <a class="displaced_anchor" name="eqtn67"></a>\begin{eqnarray}
+      \frac{\partial C}{\partial w^L_{jk}} & = & \frac{1}{n} \sum_x 
+      a^{L-1}_k  (a^L_j-y_j).
+  \tag{67}\end{eqnarray}
+$\sigma'(z^L_j)$の項が消え、ニューロンが一つでなく多層複数ニューロンの場合でも、クロスエントロピーは学習の速度低下を避けることがわかりました。この解析の簡単な変形でバイアスについても同じことがいえます。もしそれが明らかではないなら、同様の解析を続けてやるべきです。</p>
+<!--<p><li><strong>Using the quadratic cost when we have linear neurons in the
   output layer</strong> Suppose that we have a many-layer multi-neuron
   network.  Suppose all the neurons in the final layer are
   <em>linear neurons</em>, meaning that the sigmoid activation function
@@ -675,7 +736,22 @@ other training inputs, but it's obviously undesirable.</p><p><h4><a name="exerci
   quadratic cost will not give rise to any problems with a learning
   slowdown.  In this case the quadratic cost is, in fact, an
   appropriate cost function to use.
-</ul></p><p><h4><a name="using_the_cross-entropy_to_classify_mnist_digits"></a><a href="#using_the_cross-entropy_to_classify_mnist_digits">Using the cross-entropy to classify MNIST digits</a></h4></p><p></p><p>The cross-entropy is easy to implement as part of a program which
+</ul></p>-->
+<p><li><strong>出力に線形ニューロンがあるときの二次コストの使用</strong>
+多層複数ニューロンのネットワークがあるとします。最終層のニューロンはすべて<em>線形ニューロン</em>であると仮定します。線形ニューロンとは、シグモイド関数が適用されず、出力が単純に$a^L_j = z^L_j$であることを意味します。二次コスト関数を使えば、一つの学習データの例$x$に対する出力誤差$\delta^L$は次の式で与えられることを示しなさい：
+  <a class="displaced_anchor" name="eqtn68"></a>\begin{eqnarray}
+    \delta^L = a^L-y.
+  \tag{68}\end{eqnarray}
+前の問題と同様に、この式を使うと、出力層での重みとバイアスについての偏微分は次の式で与えられることを示しなさい：
+  <a class="displaced_anchor" name="eqtn69"></a><a class="displaced_anchor" name="eqtn70"></a>\begin{eqnarray}
+      \frac{\partial C}{\partial w^L_{jk}} & = & \frac{1}{n} \sum_x 
+      a^{L-1}_k  (a^L_j-y_j) \tag{69}\\
+      \frac{\partial C}{\partial b^L_{j}} & = & \frac{1}{n} \sum_x 
+      (a^L_j-y_j).
+  \tag{70}\end{eqnarray}
+このことにより、もし出力ニューロンが線形ニューロンならば、二次コスト関数は学習の速度低下について何の問題も産まないことがわかります。このケースでは、二次コスト関数はそれどころか使うべき適切なコスト関数です。
+</ul></p>
+<p><h4><a name="using_the_cross-entropy_to_classify_mnist_digits"></a><a href="#using_the_cross-entropy_to_classify_mnist_digits">Using the cross-entropy to classify MNIST digits</a></h4></p><p></p><p>The cross-entropy is easy to implement as part of a program which
 learns using gradient descent and backpropagation.  We'll do that
 <a href="#handwriting_recognition_revisited_the_code">later in the
   chapter</a>, developing an improved version of our
