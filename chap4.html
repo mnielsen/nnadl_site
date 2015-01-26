@@ -52,7 +52,7 @@
   </head>
   <body><div class="header"><h1 class="chapter_number">
   <a href="">CHAPTER 4</a></h1>
-  <h1 class="chapter_title"><a href="">A visual proof that neural nets can compute any function</a></h1></div><div class="section"><div id="toc"> 
+  <h1 class="chapter_title"><a href="">ニューラルネットワークが任意の関数を表現できる事の視覚的証明</a></h1></div><div class="section"><div id="toc"> 
 <p class="toc_title"><a href="index.html">Neural Networks and Deep Learning</a> (draft contents)</p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">Using neural nets to recognize handwritten digits</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
 <script>
 $('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() { 
@@ -171,62 +171,102 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 </p>
 </div>
 </p>
-<p>One of the most striking facts about neural networks is that they can
+<p>
+<!--One of the most striking facts about neural networks is that they can
 compute any function at all.  That is, suppose someone hands you some
-complicated, wiggly function, $f(x)$:</p>
+complicated, wiggly function, $f(x)$:-->
+ニューラルネットワークに関して最も著しい事実の1つはニューラルネットワークは任意の関数を表現できるということです。例えばあなたが誰かから複雑で波打った関数$f(x)$を与えられたとします：
+</p>
 <p><center><canvas id="function" width="300" height="300"></canvas></center></p>
-<p><a id="basic_network_precursor"></a> No matter what the
+<p>
+<!--<a id="basic_network_precursor"></a> No matter what the
 function, there is guaranteed to be a neural network so that for every
 possible input, $x$, the value $f(x)$ (or some close approximation) is
-output from the network, e.g.:</p>
+output from the network, e.g.:-->
+<a id="basic_network_precursor"></a> それがどんな関数であっても、考えられるすべての入力$x$に対して、$f(x)$（もしくはその近似）が出力値であるようなニューラルネットワークが存在します。例えば下図のようなものです。
+</p>
 <p><center><canvas id="basic_network" width="350" height="220"></canvas></center></p>
-<p>This result holds even if the function has many inputs, $f = f(x_1,
+<p>
+<!--This result holds even if the function has many inputs, $f = f(x_1,
 \ldots, x_m)$, and many outputs.  For instance, here's a network
-computing a function with $m = 3$ inputs and $n = 2$ outputs:</p>
+computing a function with $m = 3$ inputs and $n = 2$ outputs:-->
+この結果は入力が複数の関数$f = f(x_1, \ldots, x_m)$や出力が複数の関数でも成立します。
+例えば、下図は$m=3$個の入力と$n=2$個の出力を持つ関数を表現するニューラルネットワークです：
+</p>
 <p><center><canvas id="vector_valued_network" width="450" height="370"></canvas></center></p>
-<p>This result tells us that neural networks have a kind of
+<p>
+<!--This result tells us that neural networks have a kind of
 <em>universality</em>.  No matter what function we want to compute, we
-know that there is a neural network which can do the job.</p>
-<p>What's more, this universality theorem holds even if we restrict our
+know that there is a neural network which can do the job.-->
+この結果はニューラルネットワークが一種の<em>普遍性</em>を持っている事を示しています。
+計算したい関数が何であろうとも、それをこなすニューラルネットワークが存在する事を我々は知っているのです。
+</p>
+<p>
+<!--What's more, this universality theorem holds even if we restrict our
 networks to have just a single layer intermediate between the input
 and the output neurons - a so-called single hidden layer.  So even
-very simple network architectures can be extremely powerful.</p>
-<p>The universality theorem is well known by people who use neural
+very simple network architectures can be extremely powerful.-->
+しかも、この普遍性定理は、ニューラルネットワークとして、入力層と出力層の間の中間層、いわゆる隠れ層と呼ばれるものをたった1層しか持たないものに制限しても成立しています。
+つまり、極めて単純なニューラルネットワークのアーキテクチャでも表現力は極めて高いのです。
+</p>
+<p>
+<!--The universality theorem is well known by people who use neural
 networks.  But why it's true is not so widely understood.  Most of the
 explanations available are quite technical.  For instance, one of the
-original papers proving the
-result*<span class="marginnote">
-*<a href="http://www.dartmouth.edu/&#126;gvc/Cybenko_MCSS.pdf">Approximation
-    by superpositions of a sigmoidal function</a>, by George Cybenko
-  (1989).  The result was very much in the air at the time, and
-  several groups proved closely related results.  Cybenko's paper
-  contains a useful discussion of much of that work.  Another
-  important early paper is
-  <a href="http://www.sciencedirect.com/science/article/pii/0893608089900208">Multilayer
-    feedforward networks are universal approximators</a>, by Kurt Hornik,
-  Maxwell Stinchcombe, and Halbert White (1989).  This paper uses the
-  Stone-Weierstrass theorem to arrive at similar results.</span>  did so
-using the Hahn-Banach theorem, the Riesz Representation theorem, and
-some Fourier analysis.  If you're a mathematician the argument is not
+original papers proving the result*-->
+普遍性定理はニューラルネットワークを扱う人々の間ではよく知られています。
+しかし、なぜそれが正しいのかはそれほど広くは理解されていません。
+よく見られる説明の多くは極めてテクニカルです。
+例えば、この結果を証明している原著論文*
+<!--<span class="marginnote">
+*<a href="http://www.dartmouth.edu/&#126;gvc/Cybenko_MCSS.pdf">Approximation by superpositions of a sigmoidal function</a>, by George Cybenko (1989).
+  The result was very much in the air at the time, and
+  several groups proved closely related results. 
+  Cybenko's paper contains a useful discussion of much of that work.
+  Another important early paper is
+  <a href="http://www.sciencedirect.com/science/article/pii/0893608089900208">Multilayer feedforward networks are universal approximators</a>, by Kurt Hornik, Maxwell Stinchcombe, and Halbert White (1989).
+  This paper uses the Stone-Weierstrass theorem to arrive at similar results.</span>-->
+<span class="marginnote">
+*<a href="http://www.dartmouth.edu/&#126;gvc/Cybenko_MCSS.pdf">Approximation by superpositions of a sigmoidal function</a>, George Cybenko (1989).
+  この結果は当時とても広まり、いくつかのグループが関連した結果を証明しました。
+  Cybenkoの論文ではこの仕事に関して多くの有益な議論がなされています。
+  初期の論文でその他の重要なものとして
+  <a href="http://www.sciencedirect.com/science/article/pii/0893608089900208">Multilayer feedforward networks are universal approximators</a>, Kurt Hornik, Maxwell Stinchcombe, Halbert White (1989)があります。
+  この論文はストーン・ワイエルシュトラスの定理を用いて類似の結果を得ています。</span>
+<!--did so using the Hahn-Banach theorem, the Riesz Representation theorem, and
+some Fourier analysis.-->
+では、ハーン・バナッハの定理とリースの表現定理といくらかのフーリエ解析を利用しています。
+<!--If you're a mathematician the argument is not
 difficult to follow, but it's not so easy for most people.  That's a
 pity, since the underlying reasons for universality are simple and
-beautiful.</p>
-<p>In this chapter I give a simple and mostly visual explanation of the
-universality theorem.  We'll go step by step through the underlying
-ideas.  You'll understand why it's true that neural networks can
-compute any function.  You'll understand some of the limitations of
+beautiful.-->
+</p>
+<p>
+<!--In this chapter I give a simple and mostly visual explanation of the universality theorem.
+We'll go step by step through the underlying ideas. You'll understand why it's true that neural networks can compute any function.  You'll understand some of the limitations of
 the result.  And you'll understand how the result relates to deep
-neural networks.</p>
-<p>To follow the material in the chapter, you do not need to have read
+neural networks.-->
+本章では、普遍性定理のシンプルで大部分が視覚的な説明を行います。
+裏にあるアイデア達を1つずつ見ていきます。
+なぜニューラルネットワークが任意の関数を表現できるのかの理由、結果についてのある種の制限がある事、そしてこの結果がどのようにディープニューラルネットと関連するのかが理解できるようになるはずです。
+</p>
+<p>
+<!--To follow the material in the chapter, you do not need to have read
 earlier chapters in this book.  Instead, the chapter is structured to
 be enjoyable as a self-contained essay.  Provided you have just a
 little basic familiarity with neural networks, you should be able to
 follow the explanation.  I will, however, provide occasional links to
-earlier material, to help fill in any gaps in your knowledge.</p>
+earlier material, to help fill in any gaps in your knowledge.-->
+本章の文章を読むのに、この本のこれ以前の章を読む必要はありません。
+本章は自己完結的なエッセイとして楽しむ事ができるよう構成されています。
+ニューラルネットワークについていくらか慣れていれば、説明を追えるはずです。
+ただ、知識のギャップを埋めるのに役立つように、以前の章へのリンクを必要に応じて示すつもりです。
+</p>
 <p></p>
 <p></p>
 <p></p>
-<p>Universality theorems are a commonplace in computer science, so much
+<p>
+<!--Universality theorems are a commonplace in computer science, so much
 so that we sometimes forget how astonishing they are.  But it's worth
 reminding ourselves: the ability to compute an arbitrary function is
 truly remarkable.  Almost any process you can imagine can be thought
@@ -234,17 +274,41 @@ of as function computation.  Consider the problem of naming a piece of
 music based on a short sample of the piece.  That can be thought of as
 computing a function.  Or consider the problem of translating a
 Chinese text into English.  Again, that can be thought of as computing
-a function*<span class="marginnote">
+a function-->
+普遍性に関する定理はコンピュータ科学では珍しくなく、しばしばその定理が驚くべき定理である事を忘れてしまいます。
+しかし、任意の関数を表現できるという性質は本当に著しい特徴である事は改めて思い起こす価値のある事です。
+あなたが思いつく行為の過程は大体どれも関数の構成と思うことができます。
+一部分の短いサンプルを元に音楽に名前をつける問題を想像してみてください。
+これは関数の構成と考える事ができます。
+もしくは、中国語の文章を英語に翻訳する問題を考えてみてください。
+やはり、これも関数を構成していると考える事ができます*<span class="marginnote">
+<!--
+2015/1/14 Kenta OONO
+computing a functionは、givenな関数が与えられてそれの出力値を計算しているというよりは、
+関数そのものがどんな形をしているかを決定するという雰囲気があるように思ったので、
+ここでは関数を構成していると訳している
+-->
+<!--*<span class="marginnote">
 *Actually, computing one of many functions, since
   there are often many acceptable translations of a given piece of
-  text.</span>.  Or consider the problem of taking an mp4 movie file and
+  text.</span>.-->
+実際、文章の与えられた一部分には通常多くの妥当な訳し方があるので、多くの関数のうちの1つを構成している事になります。</span>。
+<!--Or consider the problem of taking an mp4 movie file and
 generating a description of the plot of the movie, and a discussion of
 the quality of the acting.  Again, that can be thought of as a kind of
-function computation*<span class="marginnote">
+function computation-->
+あるいは、mp4形式の映画ファイルから、その映画の物語のプロットを作成する問題を考えてみてください。これも、一種の関数構成と考える事ができます*<span class="marginnote">
+<!--
+*<span class="marginnote">
 *Ditto the remark about translation and
-  there being many possible functions.</span>.  Universality means that, in
-principle, neural networks can do all these things and many more.</p>
-<p>Of course, just because we know a neural network exists that can (say)
+  there being many possible functions.</span>. -->
+先程の翻訳と同様ですが、妥当な関数として様々なものが考えられます。</span>。
+<!--Universality means that, in principle, neural networks can do all these things and many more.-->
+ニューラルネットワークはこれらの問題やこれら以外の様々な問題も原理的には可能である事を、
+普遍性は示しています。
+</p>
+<p>
+<!--Of course, just because we know a neural network exists that can (say)
 translate Chinese text into English, that doesn't mean we have good
 techniques for constructing or even recognizing such a network.  This
 limitation applies also to traditional universality theorems for
@@ -253,12 +317,22 @@ book, neural networks have powerful algorithms for learning functions.
 That combination of learning algorithms + universality is an
 attractive mix.  Up to now, the book has focused on the learning
 algorithms.  In this chapter, we focus on universality, and what it
-means.</p>
-<p><h3><a name="two_caveats"></a><a href="#two_caveats">Two caveats</a></h3></p>
-<p>Before explaining why the universality theorem is true, I want to
+means.-->
+もちろん、（例えば）中国語の文章を英語に翻訳するニューラルネットワークが存在する事が分かる事は、そのようなニューラルネットワークを構成したり、もしくはどのようなネットワークか認識できたりする事を意味するのではありません。
+ブーリアン回路などのモデルに対する古典的な普遍性定理にもこの制限は適用されます。
+しかし、この本の前の章で見てきたように、ニューラルネットワークには関数を学習する強力なアルゴリズムがあります。
+学習アルゴリズムと普遍性の組み合わせは魅力的です。
+ここまで、この本では学習アルゴリズムに焦点を置いてきました。本章では、普遍性とそれが意味する所に焦点を置きます。
+</p>
+<p><h3><a name="two_caveats"></a><a href="#two_caveats">2つの注意点</a></h3></p>
+<p>
+<!--Before explaining why the universality theorem is true, I want to
 mention two caveats to the informal statement "a neural network can
-compute any function".</p>
-<p>First, this doesn't mean that a network can be used to <em>exactly</em>
+compute any function".-->
+普遍性定理が何故正しいかを説明する前に、「ニューラルネットワークが任意の関数を表現できる」という砕けた表現についての2つの注意点を挙げたいと思います。
+</p>
+<p>
+<!--First, this doesn't mean that a network can be used to <em>exactly</em>
 compute any function. Rather, we can get an <em>approximation</em>
 that is as good as we want.  By increasing the number of hidden
 neurons we can improve the approximation.  For instance,
@@ -266,18 +340,31 @@ neurons we can improve the approximation.  For instance,
 computing some function $f(x)$ using three hidden neurons.  For most
 functions only a low-quality approximation will be possible using
 three hidden neurons.  By increasing the number of hidden neurons
-(say, to five) we can typically get a better approximation:</p>
+(say, to five) we can typically get a better approximation:</p>-->
+まず、この表現はニューラルネットワークは任意の関数を<em>完全に</em>表現できる事を意味するのではありません。
+そうではなく、関数に<em>いくらでも近い</em>関数を得られるという意味です。
+隠れ層のニューロンを増やすことで、近似の精度を上げることができます。
+例えば、<a href="#basic_network_precursor">前に</a>ある関数$f(x)$を3つの隠れニューロンを用いて計算するニューラルネットワークを説明しました。
+大抵の関数については3個の隠れニューロンでは、精度の低い近似しか得られません。
+隠れニューロンの数を（例えば5個に）増やす事で、より良い近似が得られます。
 <p><center><canvas id="bigger_network" width="350" height="380"></canvas></center></p>
-<p>And we can do still better by further increasing the number of hidden
-neurons.  </p>
-<p>To make this statement more precise, suppose we're given a function
+<p>
+<!--And we can do still better by further increasing the number of hidden neurons. -->
+そして、隠れニューロンをさらに増やす事で、さらに近似を良くできます。
+</p>
+<p>
+<!--To make this statement more precise, suppose we're given a function
 $f(x)$ which we'd like to compute to within some desired accuracy
 $\epsilon > 0$.  The guarantee is that by using enough hidden neurons
 we can always find a neural network whose output $g(x)$ satisfies
 $|g(x) - f(x)| < \epsilon$, for all inputs $x$.  In other words, the
 approximation will be good to within the desired accuracy for every
-possible input.</p>
-<p>The second caveat is that the class of functions which can be
+possible input.-->
+ステートメントをより正確にする為に、私達が計算したい関数$f(x)$と希望の精度$\epsilon > 0$が与えられたとします。
+十分な隠れニューロンを用いる事で、出力$g(x)$が$|g(x) - f(x) < \epsilon|$を任意の入力$x$に対して満たすニューラルネットワークを常に見つけられる事を普遍性定理は保証しています。
+</p>
+<p>
+<!--The second caveat is that the class of functions which can be
 approximated in the way described are the <em>continuous</em> functions.
 If a function is discontinuous, i.e., makes sudden, sharp jumps, then
 it won't in general be possible to approximate using a neural net.
@@ -286,41 +373,79 @@ functions of their input.  However, even if the function we'd really
 like to compute is discontinuous, it's often the case that a
 continuous approximation is good enough.  If that's so, then we can
 use a neural network.  In practice, this is not usually an important
-limitation.</p>
-<p>Summing up, a more precise statement of the universality theorem is
+limitation.-->
+2つ目の注意点は、この方法で近似できる関数のクラスは<em>連続</em>関数であるという点です。
+もし関数が不連続、すなわち突然急激なジャンプが生じる場合、ニューラルネットワークを用いた近似は一般的には不可能です。
+これは驚くべき事ではありません、というのも、私達のニューラルネットワークが計算できるのは入力に対して連続な関数だからです。
+しかし、表現したい関数を不連続でも、連続関数による近似で十分な場合もあります。
+その場合には、ニューラルネットを利用できます。
+通常はこの制限は重大なものではありません。
+</p>
+<p>
+<!--Summing up, a more precise statement of the universality theorem is
 that neural networks with a single hidden layer can be used to
 approximate any continuous function to any desired precision.  In this
 chapter we'll actually prove a slightly weaker version of this result,
 using two hidden layers instead of one.  In the problems I'll briefly
 outline how the explanation can, with a few tweaks, be adapted to give
-a proof which uses only a single hidden layer.
- 
-<h3><a name="universality_with_one_input_and_one_output"></a><a href="#universality_with_one_input_and_one_output">Universality with one input and one output</a></h3></p>
-<p>To understand why the universality theorem is true, let's start by
+a proof which uses only a single hidden layer.-->
+まとめると、普遍性定理のより正確なステートメントは、「隠れ層を1つ持つニューラルネットワークを用いて任意の連続関数を任意の精度で近似できる」となります。
+本章では、隠れ層が1層ではなく、2層のもう少し弱いバージョンの定理を証明します。
+演習問題において、少し証明をひねる事で本章での証明を隠れ層が1層しかない場合に適用する方法を簡単に説明します。 
+</p>
+<h3>
+<!--<a name="universality_with_one_input_and_one_output"></a><a href="#universality_with_one_input_and_one_output">Universality with one input and one output</a>-->
+<a name="universality_with_one_input_and_one_output"></a><a href="#universality_with_one_input_and_one_output">入出力が1つの場合の普遍性定理</a>
+</h3>
+<p>
+<!--To understand why the universality theorem is true, let's start by
 understanding how to construct a neural network which approximates a
-function with just one input and one output:</p>
+function with just one input and one output:-->
+普遍性定理の正しさを理解するために、まずは1つの入力と1つの出力を持つ関数を近似するニューラルネットワークを構成方法を理解する所から始めましょう：
+</p>
 <p><center><canvas id="function_2" width="300" height="300"></canvas></center></p>
-<p>It turns out that this is the core of the problem of universality.
+<p>
+<!--It turns out that this is the core of the problem of universality.
 Once we've understood this special case it's actually pretty easy to
-extend to functions with many inputs and many outputs.</p>
-<p>To build insight into how to construct a network to compute $f$, let's
+extend to functions with many inputs and many outputs.-->
+この場合が普遍性の問題の中核をなします。
+この特別な場合を理解すれば、入出力が多数の場合に拡張するのは容易です。
+</p>
+<p>
+<!--To build insight into how to construct a network to compute $f$, let's
 start with a network containing just a single hidden layer, with two
-hidden neurons, and an output layer containing a single output neuron:</p>
+hidden neurons, and an output layer containing a single output neuron:-->
+$f$を計算するニューラルネットワークの構成方法についての直感を養うために、
+1層の隠れ層が2つの隠れニューロンを持ち、出力層が単一のニューロンを持つ場合考えます。
+</p>
 <p><center><canvas id="two_hidden_neurons" width="350" height="220"></canvas></center></p>
-<p>To get a feel for how components in the network work, let's focus on
+<p>
+<!--To get a feel for how components in the network work, let's focus on
 the top hidden neuron.  In the diagram below, click on the weight,
 $w$, and drag the mouse a little ways to the right to increase $w$.
 You can immediately see how the function computed by the top hidden
-neuron changes:</p>
+neuron changes:-->
+ニューラルネットワーク内の構成要素の挙動について感覚をつかむ為に、上の隠れニューロンに注目してみましょう。
+下図で、重み$w$の値をクリックしマウスを右に少しドラッグすると$w$の値が増加します。
+それに応じて上の隠れニューロンで計算される関数の変化の様子がわかります。
+</p>
 <p><center><canvas id="basic_manipulation" width="600" height="285"></canvas></center></p>
-<p>As we learnt <a href="chap1.html#sigmoid_neurons">earlier in the book</a>,
+<p>
+<!--As we learnt <a href="chap1.html#sigmoid_neurons">earlier in the book</a>,
 what's being computed by the hidden neuron is $\sigma(wx + b)$, where
 $\sigma(z) \equiv 1/(1+e^{-z})$ is the sigmoid function.  Up to now,
 we've made frequent use of this algebraic form.  But for the proof of
 universality we will obtain more insight by ignoring the algebra
 entirely, and instead manipulating and observing the shape shown in
-the graph.  This won't just give us a better feel for what's going on,
-it will also give us a proof*<span class="marginnote">
+the graph.
+This won't just give us a better feel for what's going on,
+it will also give us a proof*<span class="marginnote">-->
+<a href="chap1.html#sigmoid_neurons">この本の前の方</a>で学習したように、
+隠れニューロンで計算しているのは、$\sigma(z) \equiv 1/(1+e^{-z})$をシグモイド関数とすれば、$\sigma(wx + b)$です。
+これまで、この代数的な表式を頻繁に使用してきました。
+しかし、普遍性定理の証明においては、この計算式を完全に忘れて、グラフ内の形を操作して観察する方がより洞察を得ることができます。
+これは単に何が起こっているかの感覚を掴めるだけではなく、そこからシグモイド関数以外の活性化関数に適用する普遍性定理の証明*<span class="marginnote">
+<!--
 *Strictly speaking, the visual
   approach I'm taking isn't what's traditionally thought of as a
   proof.  But I believe the visual approach gives more insight into
@@ -332,22 +457,46 @@ it will also give us a proof*<span class="marginnote">
   to fill in the missing steps.  But don't lose sight of the real
   purpose: to understand why the universality theorem is true.</span> of
 universality that applies to activation functions other than the
-sigmoid function.</p>
-<p>To get started on this proof, try clicking on the bias, $b$, in the
+sigmoid function.-->
+*厳密に言えば、私が取る視覚的なアプローチは証明と伝統的に考えられているものではありません。しかし、視覚的なアプローチはなぜこの結果が正しいのかについて、伝統的な証明よりもより多くの洞察が得られると信じています。
+そして、もちろん、この種の洞察は証明の裏にある真の意図です。
+私が提示する理由付けの中にはしばしば小さなギャップが存在します：具体的には視覚的な議論を行っている箇所で妥当だけれど厳密ではない部分です。
+もしこの事が悩ましかったら、欠けている行間を埋める事に挑戦してみてください。
+しかし、なぜ普遍性定理が正しいのかを理解するという真の意図を見失わないようにしてください。
+</span>も得られます。
+</p>
+<p>
+<!--To get started on this proof, try clicking on the bias, $b$, in the
 diagram above, and dragging to the right to increase it.  You'll see
 that as the bias increases the graph moves to the left, but its shape
-doesn't change.</p>
-<p>Next, click and drag to the left in order to decrease the bias.
+doesn't change.-->
+証明を始める前に、上図のバイアス$b$をクリック・右ドラッグをして、値を増加させてみてください。
+バイアスが大きくなるに従い、グラフは左に移動しますが、形は変化しない事がわかります。
+</p>
+<p>
+<!--Next, click and drag to the left in order to decrease the bias.
 You'll see that as the bias decreases the graph moves to the right,
-but, again, its shape doesn't change.</p>
-<p>Next, decrease the weight to around $2$ or $3$.  You'll see that as
+but, again, its shape doesn't change.-->
+次にクリック・左ドラッグをしてバイアスを減らしてみてください。
+バイアスが減るにつれてグラフが右に移動しますが、やはり形は変化しない事がわかります。
+</p>
+<p>
+<!--Next, decrease the weight to around $2$ or $3$.  You'll see that as
 you decrease the weight, the curve broadens out.  You might need to
-change the bias as well, in order to keep the curve in-frame.</p>
-<p>Finally, increase the weight up past $w = 100$.  As you do, the curve
+change the bias as well, in order to keep the curve in-frame.-->
+次に、重みを$2$か$3$程度まで減らしてみてください。重みを減らすにつれて、曲線が広がっていくのがわかります。
+曲線をフレーム内に収めるために、バイアスも変える必要があるかもしれません。
+</p>
+<p>
+<!--Finally, increase the weight up past $w = 100$.  As you do, the curve
 gets steeper, until eventually it begins to look like a step function.
 Try to adjust the bias so the step occurs near $x = 0.3$.  The
 following short clip shows what your result should look like.  Click
-on the play button to play (or replay) the video:</p>
+on the play button to play (or replay) the video:-->
+最後に重みを$w = 100$過ぎまで増やしてみてください。増加させるにつれて曲線は勾配がきつくなり、最終的に階段関数のような形になります。
+段差が$x = 0.3$あたりに来るようにバイアスを調節してみてください。
+下のクリップは想定する挙動を示しています。再生ボタンを押すとビデオが再生（もしくはリプレイ）されます。
+</p>
 <p><!-- Based on http://worrydream.com/ScrubbingCalculator/, with minor changes -->
       <script type="text/javascript">
     	function playVideo (name) {
@@ -381,13 +530,19 @@ on the play button to play (or replay) the video:</p>
 		    src="movies/create_step_function.webm"></p>
 <p>	  </video>
 </div></p>
-<p>We can simplify our analysis quite a bit by increasing the weight so
+<p>
+<!--We can simplify our analysis quite a bit by increasing the weight so
 much that the output really is a step function, to a very good
 approximation.  Below I've plotted the output from the top hidden
 neuron when the weight is $w = 999$.  Note that this plot is static,
-and you can't change parameters such as the weight.</p>
+and you can't change parameters such as the weight.-->
+重みを増加させ、出力を階段関数に良く近似させる事で、解析を著しく単純にすることができます。
+下では、重みが$w = 999$の時の上の隠れニューロンの出力を図示しています。
+この図は静的で重みなどのパラメータを変化できない事に注意してください。
+</p>
 <p><img src="images/high_weight_function.jpg"></p>
-<p>It's actually quite a bit easier to work with step functions than
+<p>
+<!--It's actually quite a bit easier to work with step functions than
 general sigmoid functions.  The reason is that in the output layer we
 add up contributions from all the hidden neurons.  It's easy to
 analyse the sum of a bunch of step functions, but rather more
@@ -399,38 +554,75 @@ value, and then setting the position of the step by modifying the
 bias.  Of course, treating the output as a step function is an
 approximation, but it's a very good approximation, and for now we'll
 treat it as exact.  I'll come back later to discuss the impact of
-deviations from this approximation.</p>
-<p>At what value of $x$ does the step occur?  Put another way, how does
-the position of the step depend upon the weight and bias?</p>
-<p>To answer this question, try modifying the weight and bias in the
+deviations from this approximation.-->
+一般のシグモイド関数に比べて階段関数で考える方が簡単です。
+その理由は出力層では、全隠れニューロンからの寄与を足しあわせます。
+階段関数達の和を解析するのは簡単ですが、
+シグモイドの形をした曲線達を足しあわせた時に何が起こるのかを推論するのはそれに比べるとずっと困難です。
+ですので、隠れニューロンが階段関数を出力していると仮定する事でぐっと簡単になります。
+具体的には、重みを適当なとても大きな値に固定した後に、バイアスを変化させて段差の位置を調整する事で実現します。
+もちろん、出力を階段関数として扱うのは近似です。
+しかし、これは十分良い近似になっているので、しばらくは厳密に階段関数であるとして扱います。
+後で、ここに戻ってきてこの近似によるずれの影響を議論します。
+</p>
+<p>
+<!--At what value of $x$ does the step occur?  Put another way, how does
+the position of the step depend upon the weight and bias?-->
+どの$x$の値で段差は生じるでしょうか？
+言い換えると、段差の位置は重みや階段にどのように依存するでしょうか？
+</p>
+<p>
+<!--To answer this question, try modifying the weight and bias in the
 diagram above (you may need to scroll back a bit).  Can you figure out
 how the position of the step depends on $w$ and $b$?  With a little
 work you should be able to convince yourself that the position of the
 step is <em>proportional</em> to $b$, and <em>inversely proportional</em>
-to $w$.</p>
-<p>In fact, the step is at position $s = -b/w$, as you can see by
-modifying the weight and bias in the following diagram:</p>
+to $w$.-->
+この答えに答えるために、上図の重みやバイアスを変化させてみてください（少しスクロールする必要があるかもしれません）。
+段差の位置が$w$や$b$にどのように依存するかがわかりますでしょうか。
+少し試してみると、段差の位置は$b$に<em>比例<em>し、$w$に<em>反比例</em>している事がわかると思います。
+</p>
+<p>
+<!--In fact, the step is at position $s = -b/w$, as you can see by
+modifying the weight and bias in the following diagram:-->
+下図の重みとバイアスを変化させるとわかりますが、実は段差の位置は$s = -b/w$に生じます：
+</p>
 <p><canvas id="step" width="600" height="285"></canvas></p>
-<p>It will greatly simplify our lives to describe hidden neurons using
+<p>
+<!--It will greatly simplify our lives to describe hidden neurons using
 just a single parameter, $s$, which is the step position, $s = -b/w$.
 Try modifying $s$ in the following diagram, in order to get used to
-the new parameterization:</p>
+the new parameterization:-->
+隠れニューロンを記述するのに、段差の位置を示す単独のパラメータ$s = -b/w$を用いると解析を著しく簡単化できます。
+新しいパラメータ付けに慣れるために、下図の$s$を変化させてみてください。
+</p>
 <p><canvas id="step_parameterization" width="600" height="285"></canvas></p>
-<p>As noted above, we've implicitly set the weight $w$ on the input to be
+<p>
+<!--As noted above, we've implicitly set the weight $w$ on the input to be
 some large value - big enough that the step function is a very good
 approximation.  We can easily convert a neuron parameterized in this
-way back into the conventional model, by choosing the bias $b = -w s$.</p>
-<p>Up to now we've been focusing on the output from just the top hidden
+way back into the conventional model, by choosing the bias $b = -w s$.-->
+前述したように我々は暗黙に、適当な大きな階段関数が良い近似になっているくらい、入力の重み$w$を十分大きく取っています。
+バイアスを$b = -w s$と選ぶことで、この1つのパラメータでパラメータ付けられたニューロンを前のモデルに戻す事ができます。
+</p>
+<p>
+<!--Up to now we've been focusing on the output from just the top hidden
 neuron.  Let's take a look at the behavior of the entire network.  In
 particular, we'll suppose the hidden neurons are computing step
 functions parameterized by step points $s_1$ (top neuron) and $s_2$
 (bottom neuron).  And they'll have respective output weights $w_1$ and
-$w_2$.  Here's the network:</p>
+$w_2$.  Here's the network:-->
+これまで、私達は上の隠れニューロンの出力に注目してきました。
+ここでニューラルネットワーク全体の挙動を見てみましょう。
+隠れニューロンは段差の位置が$s_1$（上ニューロン）と$s_2$（下ニューロン）でパラメータ付けられた階段関数を計算しているとします。
+さらに、それぞれの出力の重みをそれぞれ$w_1$, $w_2$とします。
+ニューラルネットワークは以下の通りです：
+</p>
 <p><canvas id="two_hn_network" width="600" height="285"></canvas></p>
-<p>What's being plotted on the right is the <em>weighted output</em> $w_1
+<p>
+<!--What's being plotted on the right is the <em>weighted output</em> $w_1
 a_1 + w_2 a_2$ from the hidden layer.  Here, $a_1$ and $a_2$ are the
-outputs from the top and bottom hidden neurons,
-respectively*<span class="marginnote">
+outputs from the top and bottom hidden neurons, respectively*<span class="marginnote">
 *Note, by the way, that the output from the whole
   network is $\sigma(w_1 a_1+w_2 a_2 + b)$, where $b$ is the bias on
   the output neuron.  Obviously, this isn't the same as the weighted
@@ -438,56 +630,108 @@ respectively*<span class="marginnote">
   We're going to focus on the weighted output from the hidden layer
   right now, and only later will we think about how that relates to
   the output from the whole network.</span>.  These outputs are denoted with
-$a$s because they're often known as the neurons' <em>activations</em>.</p>
-<p>Try increasing and decreasing the step point $s_1$ of the top hidden
+$a$s because they're often known as the neurons' <em>activations</em>.-->
+右に図示しているのは<em>重み付き出力</em>$w_1 a_1 + w_2 a_2$です。
+ここで、$a_1$と$a_2$はそれぞれ上下の隠れニューロンからの出力です*<span class="marginnote">
+* ところで、$b$は出力ニューロンのバイアスとすれば、全ニューラルネットワークの出力は$\sigma(w_1 a_1+w_2 a_2 + b)$である事に注意してください。
+明らかにこの値は今辻子している隠れ層の重み付き出力とは異なります。
+今は私達は隠れ層からの重み付き出力に注目し、その後にニューラルネットワーク全体の出力との関連付けを考えます。
+</span>
+これらの出力はしばしば<em>活性(activation)</em>と呼ばれる為、$a$で表す事にします。
+</p>
+<p>
+<!--Try increasing and decreasing the step point $s_1$ of the top hidden
 neuron.  Get a feel for how this changes the weighted output from the
 hidden layer.
-	
 It's particularly worth understanding what happens when $s_1$ goes
 past $s_2$.  You'll see that the graph changes shape when this
 happens, since we have moved from a situation where the top hidden
 neuron is the first to be activated to a situation where the bottom
-hidden neuron is the first to be activated.</p>
-<p>Similarly, try manipulating the step point $s_2$ of the bottom hidden
+hidden neuron is the first to be activated.-->
+上側の隠れニューロンでの段差地点$s_1$を増減させて、
+隠れ層からの重み付き出力をどのように変化させるかについて感覚を掴んでください。
+</p>
+<p>
+<!--Similarly, try manipulating the step point $s_2$ of the bottom hidden
 neuron, and get a feel for how this changes the combined output from
-the hidden neurons.</p>
-<p>Try increasing and decreasing each of the output weights.  Notice how
+the hidden neurons.-->
+同様に、下側の隠れニューロンでの段差地点$s_2$を増減させて、
+出力が変化する様子の感覚を得てください。
+</p>
+<p>
+<!--Try increasing and decreasing each of the output weights.  Notice how
 this rescales the contribution from the respective hidden neurons.
-What happens when one of the weights is zero?</p>
-<p>Finally, try setting $w_1$ to be $0.8$ and $w_2$ to be $-0.8$.  You
+What happens when one of the weights is zero?-->
+出力の重みをそれぞれ増減させてみてください。
+それに応じてそれぞれの隠れニューロンからの寄与が拡大・縮小される事がわかります。
+</p>
+<p>
+<!--Finally, try setting $w_1$ to be $0.8$ and $w_2$ to be $-0.8$.  You
 get a "bump" function, which starts at point $s_1$, ends at point
 $s_2$, and has height $0.8$.  For instance, the weighted output might
-look like this:</p>
+look like this:-->
+最後に$w_1$を$0.8$、$w_2$を$-0.8$にセットしてみてください。
+$s_1$から始まり$s_2$で終わる高さ$0.8$のコブ状の関数が得られます。
+例えば、重み付き出力はこのような感じです：
+</p>
 <p><img src="images/bump_function.jpg"></p>
-<p>Of course, we can rescale the bump to have any height at all.  Let's
+<p>
+<!--Of course, we can rescale the bump to have any height at all.  Let's
 use a single parameter, $h$, to denote the height.  To reduce clutter
-I'll also remove the "$s_1 = \ldots$" and "$w_1 = \ldots$" notations.</p>
+I'll also remove the "$s_1 = \ldots$" and "$w_1 = \ldots$" notations.-->
+もちろん、コブの高さを任意に拡大縮小できます。
+高さを表すパラメータ$h$を導入しましょう。
+煩わしさを減らす為に"$s_1 = \ldots$"や"$w_1 = \ldots$"などの式を省略します。
+</p>
 <p><canvas id="bump_fn" width="600" height="285"></canvas></p>
-<p>Try changing the value of $h$ up and down, to see how the height of
+<p>
+<!--Try changing the value of $h$ up and down, to see how the height of
 the bump changes.  Try changing the height so it's negative, and
 observe what happens.  And try changing the step points to see how
-that changes the shape of the bump.</p>
-<p>You'll notice, by the way, that we're using our neurons in a way that
+that changes the shape of the bump.-->
+$h$の値を増減させてみて、コブの高さ変化する様子を見てください。
+高さを負の値に変化させて何が起こるかを観察してください。
+さらに、段差の点を変更してコブの形がどのように変化するかを見てください。
+</p>
+<p>
+<!--You'll notice, by the way, that we're using our neurons in a way that
 can be thought of not just in graphical terms, but in more
 conventional programming terms, as a kind of <tt>if-then-else</tt>
-statement, e.g.:</p>
-<p><div class="highlight"><pre>    <span class="k">if </span>input &gt;<span class="o">=</span> step point:
-        add 1 to the weighted output
+statement, e.g.:-->
+ところで、我々はニューロンを視覚的な説明の観点だけではなく、一般的なプログラミングの観点からも利用していて、
+ニューロンを例えば以下の様な<tt>if-then-else</tt>構文のようにみなしている事に気づいたかもしれません
+</p>
+<p><div class="highlight"><pre>
+    <span class="k">if </span>input &gt;<span class="o">=</span> step point:
+        重み付き出力に1を加える
     <span class="k">else</span>:
-        add 0 to the weighted output
+        重み付き出力に0を加える
 </pre></div>
 </p>
-<p>For the most part I'm going to stick with the graphical point of view.
+<p>
+<!--For the most part I'm going to stick with the graphical point of view.
 But in what follows you may sometimes find it helpful to switch points
-of view, and think about things in terms of <tt>if-then-else</tt>.</p>
-<p>We can use our bump-making trick to get two bumps, by gluing two pairs
-of hidden neurons together into the same network:</p>
+of view, and think about things in terms of <tt>if-then-else</tt>.-->
+多くの箇所では、視覚的な観点にこだわろうと思います。
+しかしこれ以降で、視点変えて<tt>if-then-else</tt>の観点で考えると理解に役立つ事があるかもしれません。
+</p>
+<p>
+<!--We can use our bump-making trick to get two bumps, by gluing two pairs
+of hidden neurons together into the same network:-->
+このコブを作るトリックを利用し、2組の隠れニューロンのペアを1つのニューラルネットワーク内でくっつける事で、2つのコブを作る事ができます。
+</p>
 <p><canvas id="double_bump" width="600" height = "280"></canvas></p>
-<p>I've suppressed the weights here, simply writing the $h$ values for
+<p>
+<!--I've suppressed the weights here, simply writing the $h$ values for
 each pair of hidden neurons.  Try increasing and decreasing both $h$
 values, and observe how it changes the graph.  Move the bumps around
-by changing the step points.</p>
-<p>More generally, we can use this idea to get as many peaks as we want,
+by changing the step points.-->
+ここでは重みは書かず、それぞれの隠れニューロンのペアの$h$を書きました。
+両方の$h$の値を増減させて、グラフがどのように変化するかを観察してください。
+また、段差の地点を変更させることで、コブを移動させてください。
+</p>
+<p>
+<!--More generally, we can use this idea to get as many peaks as we want,
 of any height.  In particular, we can divide the interval $[0, 1]$ up
 into a large number, $N$, of subintervals, and use $N$ pairs of hidden
 neurons to set up peaks of any desired height.  Let's see how this
@@ -495,61 +739,124 @@ works for $N = 5$.  That's quite a few neurons, so I'm going to pack
 things in a bit.  Apologies for the complexity of the diagram: I could
 hide the complexity by abstracting away further, but I think it's
 worth putting up with a little complexity, for the sake of getting a
-more concrete feel for how these networks work.</p>
+more concrete feel for how these networks work.-->
+より一般的には、このアイデアを利用して好きな高さで好きな数のピークを構成できます。
+区間$[0, 1]$を大きな数$N$個の部分空間に分割し、$N$組の隠れニューロンの組を利用して好きな高さのピークを構成できます。
+$N = 5$の場合について見てみましょう。
+たくさんのニューロンがあるので少し詰めて描きます。
+図が複雑になってしまいすみません：省略して描けば複雑さを隠せるのですが、
+どのようにニューラルネットワークが動くかの具体的な感覚を掴むために若干の複雑さは我慢する価値はあると思います。
+</p>
 <p><canvas id="five_bumps" width="600" height = "620"></canvas></p>
-<p>You can see that there are five pairs of hidden neurons.  The step
+<p>
+<!--You can see that there are five pairs of hidden neurons.  The step
 points for the respective pairs of neurons are $0, 1/5$, then $1/5,
 2/5$, and so on, out to $4/5, 5/5$.  These values are fixed - they
-make it so we get five evenly spaced bumps on the graph.</p>
-<p>Each pair of neurons has a value of $h$ associated to it.  Remember,
+make it so we get five evenly spaced bumps on the graph.-->
+5組の隠れニューロンのペアが見て取れると思います。
+それぞれのペアの段差地点は$0, 1/5$、$1/5, 2/5$・・・$4/5, 5/5$です。
+これらの値は固定されており、5つの等間隔に配置されたコブを持つグラフが得られるようにします。
+</p>
+<p>
+<!--Each pair of neurons has a value of $h$ associated to it.  Remember,
 the connections output from the neurons have weights $h$ and $-h$ (not
 marked).  Click on one of the $h$ values, and drag the mouse to the
 right or left to change the value.  As you do so, watch the function
 change.  By changing the output weights we're actually
-<em>designing</em> the function!</p>
-<p>Contrariwise, try clicking on the graph, and dragging up or down to
+<em>designing</em> the function!-->
+それぞれのニューロンペアには$h$の値が伴っています。
+これらのニューロン達から出ている枝にはそれぞれ$h$、$-h$の重みが与えられています（これらは図には載せていません）。
+$h$のうち一つをクリックし、左右にドラッグして値を変えてみてください。
+それを行うとどのように関数が変化するかを観察しましょう。
+重みを変えることで、関数を<em>デザイン</em>することができるのです！
+</p>
+<p>
+<!--Contrariwise, try clicking on the graph, and dragging up or down to
 change the height of any of the bump functions.  As you change the
 heights, you can see the corresponding change in $h$ values.  And,
 although it's not shown, there is also a change in the corresponding
-output weights, which are $+h$ and $-h$.</p>
-<p>In other words, we can directly manipulate the function appearing in
+output weights, which are $+h$ and $-h$.-->
+逆に、グラフをクリックし、上下にドラッグして関数の適当なコブの高さを変化させてみてください。
+高さを変化させる事で、$h$の値が対応して変化するのが見て取れると思います。
+図には現れませんが、対応する出力の重み（これらの値は$+h$と$-h$です）も変化しています。
+</p>
+<p>
+<!--In other words, we can directly manipulate the function appearing in
 the graph on the right, and see that reflected in the $h$ values on
 the left.  A fun thing to do is to hold the mouse button down and drag
-the mouse from one side of the graph to the other.  As you do you this
-you draw out a function, and get to watch the parameters in the neural
-network adapt.</p>
-<p>Time for a challenge.</p>
-<p>Let's think back to the function I plotted at the beginning of the
-chapter:</p>
+the mouse from one side of the graph to the other.  As you do you this you draw out a function,
+and get to watch the parameters in the neural network adapt.-->
+言い換えると、我々は右のグラフ中の関数を直接操作し、左に現れる$h$の値に反映されているのを観察する事ができます。
+マウスのボタンを押しっぱなしにして、マウスを一方からもう一方までドラッグしてみると面白いです。
+こうすると、関数を引き伸ばして、ニューラルネットワークのパラメータが適応する様子を見て取れます。
+</p>
+<p>
+<!--Time for a challenge.-->
+それではチャレンジの時間です。
+</p>
+<p>
+<!--Let's think back to the function I plotted at the beginning of the
+chapter:-->
+この章の最初に私が描いた関数を思い出してください。
+</p>
 <p><center> <canvas id="function_3" width="300" height="300"></canvas>
 </center></p>
-<p>I didn't say it at the time, but what I plotted is actually the
-function
+<p>
+<!--I didn't say it at the time, but what I plotted is actually the function
 <a class="displaced_anchor" name="eqtn106"></a>\begin{eqnarray}
 f(x) = 0.2+0.4 x^2+0.3 \sin(15 x) + 0.05 \cos(50 x),
 \tag{106}\end{eqnarray}
 plotted over $x$ from $0$ to $1$, and with the $y$ axis taking
-values from $0$ to $1$.</p>
-<p>That's obviously not a trivial function.</p>
-<p>You're going to figure out how to compute it using a neural network.</p>
-<p>In our networks above we've been analysing the weighted combination
+values from $0$ to $1$.-->
+その時には言いませんでしたが、私が描いたのは実際には、
+<a class="displaced_anchor" name="eqtn106"></a>\begin{eqnarray}
+f(x) = 0.2+0.4 x^2+0.3 \sin(15 x) + 0.05 \cos(50 x),
+\tag{106}\end{eqnarray}
+という関数の$x$が$0$から$1$の部分で、$y$軸は$0$から$1$の値を取っています。
+</p>
+<p>
+<!--That's obviously not a trivial function.-->
+これは見ての通り簡単な関数ではありません。
+</p>
+<p>
+<!--You're going to figure out how to compute it using a neural network.-->
+これをニューラルネットワークでどのように計算するかを導き出します。
+</p>
+<p>
+<!--In our networks above we've been analysing the weighted combination
 $\sum_j w_j a_j$ output from the hidden neurons.  We now know how to
 get a lot of control over this quantity.  But, as I noted earlier,
 this quantity is not what's output from the network.  What's output
 from the network is $\sigma(\sum_j w_j a_j + b)$ where $b$ is the bias
 on the output neuron.  Is there some way we can achieve control over
-the actual output from the network?</p>
-<p>The solution is to design a neural network whose hidden layer has a
+the actual output from the network?-->
+上記のニューラルネットワークでは、隠れニューロンからの出力の重み付き組み合わせ$\sum_j w_j a_j$を解析してきました。
+私達はすでにこの値を調節する方法を良く知っています。
+しかし、前に指摘したように、この値はニューラルネットワークの出力ではありません。
+ニューラルネットワークの出力は$\sigma(\sum_j w_j a_j + b)$です。
+ここで、$b$は出力ニューロンのバイアス項です。
+ニューラルネットワークの実際の出力を調節を可能にする方法は何かないでしょうか？
+</p>
+<p>
+<!--The solution is to design a neural network whose hidden layer has a
 weighted output given by $\sigma^{-1} \circ f(x)$, where $\sigma^{-1}$
 is just the inverse of the $\sigma$ function.  That is, we want the
-weighted output from the hidden layer to be:</p>
+weighted output from the hidden layer to be:-->
+隠れ層の重み付き出力が$\sigma^{-1} \circ f(x)$を持つニューラルネットワークを設計するのが答えです。
+ここで、$\sigma^{-1}$は$\sigma$関数の逆関数です。
+すなわち、隠れそうからの重み付き出力を以下のようにします：
+</p>
 <p><center> <canvas id="inverted_function" width="340"
 height="300"></canvas> </center></p>
-<p>If we can do this, then the output from the network as a whole will be
+<p>
+<!--If we can do this, then the output from the network as a whole will be
 a good approximation to $f(x)$*<span class="marginnote">
-*Note that I have set the bias
-  on the output neuron to $0$.</span>.</p>
-<p>Your challenge, then, is to design a neural network to approximate the
+*Note that I have set the bias on the output neuron to $0$.</span>.-->
+もしこれができれば、ニューラルネットワーク全体での出力は$f(x)$の良い近似となります*<span class="marginnote">
+*出力ニューロンのバイアスを$0$としている事に注意してください。</span>。
+</p>
+<p>
+<!--Your challenge, then, is to design a neural network to approximate the
 goal function shown just above.  To learn as much as possible, I want
 you to solve the problem twice.  The first time, please click on the
 graph, directly adjusting the heights of the different bump functions.
@@ -558,65 +865,140 @@ function.  How well you're doing is measured by the <em>average
   deviation</em> between the goal function and the function the network is
 actually computing.  Your challenge is to drive the average deviation
 as <em>low</em> as possible.  You complete the challenge when you drive
-the average deviation to $0.40$ or below.</p>
-<p>Once you've done that, click on "Reset" to randomly re-initialize
+the average deviation to $0.40$ or below.-->
+あなたの挑戦はニューラルネットワークを設計し、目標となっている上記関数を近似する事です。
+できるだけ多くの事を学ぶために、この問題を2回解いてほしいと思っています。
+1回目はグラフをクリックし、それぞれのコブの高さを直接調節してください。
+目標とする関数に良く適合する関数を得るのは比較的簡単に感じるはずです。
+どの程度上手く調節を行えているかは、目的の関数とニューラルネットワークが実際に計算している関数との間の
+<em>平均偏差</em>で測定できます。
+あなたのチャレンジは平均偏差を出来るだけ<em>小さく</em>することです。
+平均偏差を$0.40$かそれ未満に抑える事ができたらチャレンジは終了です。
+</p>
+<p>
+<!--Once you've done that, click on "Reset" to randomly re-initialize
 the bumps.  The second time you solve the problem, resist the urge to
 click on the graph.  Instead, modify the $h$ values on the left-hand
 side, and again attempt to drive the average deviation to $0.40$ or
-below.</p>
+below.-->
+1度うまくできたら、「リセット」ボタンを押してコブをランダムに初期化し直してください。
+2度目は、グラフをクリックしたくなる気持ちを抑えて問題を解いてください。
+その代わり、左側の$h$の値を変更し、平均偏差を再び$0.40$かそれ未満に抑えるのを試みてください。
+</p>
 <p><canvas id="design_function" width="600" height = "620"></canvas></p>
-<p>You've now figured out all the elements necessary for the network to
+<p>
+<!--You've now figured out all the elements necessary for the network to
 approximately compute the function $f(x)$!  It's only a coarse
 approximation, but we could easily do much better, merely by
-increasing the number of pairs of hidden neurons, allowing more bumps.</p>
-<p>In particular, it's easy to convert all the data we have found back
+increasing the number of pairs of hidden neurons, allowing more bumps.-->
+これでニューラルネットワークを用いて関数$f(x)$を近似的に計算する為に必要な要素が全て揃いました。
+これは粗い近似ですが、隠れニューロンのペアの数を増やし、コブの数を増やす事で、簡単に近似精度を良くできます。
+</p>
+<p>
+<!--In particular, it's easy to convert all the data we have found back
 into the standard parameterization used for neural networks.  Let me
-just recap quickly how that works.</p>
-<p>The first layer of weights all have some large, constant value, say $w
-= 1000$.</p>
-<p>The biases on the hidden neurons are just $b = -w s$.  So, for
+just recap quickly how that works.-->
+私達が見つけ出したデータをニューラルネットワークの通常のパラメータに戻すのは簡単です。
+どのように行うかについて簡単におさらいします。
+</p>
+<p>
+<!--The first layer of weights all have some large, constant value, say $w
+= 1000$.-->
+最初の層のニューロンの重みは全て、例えば$w=1000$など、適当な大きな定数です。
+</p>
+<p>
+<!--The biases on the hidden neurons are just $b = -w s$.  So, for
 instance, for the second hidden neuron $s = 0.2$ becomes $b = -1000
-\times 0.2 = -200$.</p>
-<p>The final layer of weights are determined by the $h$ values.  So, for
+\times 0.2 = -200$.-->
+隠れニューロンのバイアスは$b = -w s$です。例えば、2つ目の隠れニューロンで$s = 0.2$ならば、$b = -1000 \times 0.2 = -200$です。
+</p>
+<p>
+<!--The final layer of weights are determined by the $h$ values.  So, for
 instance, the value you've chosen above for the first $h$, $h = $
 <span id="h" style="font-family: MJX_Main;"></span>, means that
-the output weights from the top two hidden neurons are <span
-  id="w1" style="font-family: MJX_Main;"></span> and <span
-  id="w2" style="font-family: MJX_Main;"></span>, respectively.  And
-so on, for the entire layer of output weights.</p>
-<p>Finally, the bias on the output neuron is $0$.</p>
-<p>That's everything: we now have a complete description of a neural
+the output weights from the top two hidden neurons are
+<span id="w1" style="font-family: MJX_Main;"></span>
+and
+<span id="w2" style="font-family: MJX_Main;"></span>
+, respectively.  And so on, for the entire layer of output weights.-->
+最終層の重みは$h$の値によって決まります。例えば、最初の$h$について$h=$
+<span id="h" style="font-family: MJX_Main;"></span>
+を選んでいたら、1番上の2つの隠れニューロンでの出力側の重みは、それぞれ
+<span id="w1" style="font-family: MJX_Main;"></span>
+と
+<span id="w2" style="font-family: MJX_Main;"></span>
+です。
+他の出力側の重みでも同様です。
+</p>
+<p>
+<!--Finally, the bias on the output neuron is $0$.-->
+最後に出力ニューロンでのバイアスは$0$です。
+</p>
+<p>
+<!--That's everything: we now have a complete description of a neural
 network which does a pretty good job computing our original goal
 function.  And we understand how to improve the quality of the
-approximation by improving the number of hidden neurons.</p>
-<p>What's more, there was nothing special about our original goal
+approximation by improving the number of hidden neurons.-->
+以上で、目標関数の計算を十分良く行うニューラルネットワークを完全に記述できました。
+また、隠れニューロンの数を増やすことで近似の精度を良くする方法もわかりました。
+</p>
+<p>
+<!--What's more, there was nothing special about our original goal
 function, $f(x) = 0.2+0.4 x^2+0.3 \sin(15 x) + 0.05 \cos(50 x)$.  We
 could have used this procedure for any continuous function from $[0,
 1]$ to $[0, 1]$.  In essence, we're using our single-layer neural
 networks to build a lookup table for the function.  And we'll be able
-to build on this idea to provide a general proof of universality.</p>
-<p><h3><a name="many_input_variables"></a><a href="#many_input_variables">Many input variables</a></h3></p>
-<p>Let's extend our results to the case of many input variables.  This
+to build on this idea to provide a general proof of universality.-->
+さらに、目標関数$f(x) = 0.2+0.4 x^2+0.3 \sin(15 x) + 0.05 \cos(50 x)$について特別な仮定はしていません。
+我々は$[0, 1]$から$[0, 1]$への任意の連続関数に対してこの手順を利用できます。
+本質的な部分は関数のルックアップテーブルを構築するのに、1層のニューラルネットワークを用いている事です。
+このアイデアを用いて、一般の場合の普遍性定理の証明を行うことできます。
+</p>
+<p><h3><a name="many_input_variables"></a><a href="#many_input_variables">
+<!--Many input variables-->
+多変数の場合
+</a></h3></p>
+<p>
+<!--Let's extend our results to the case of many input variables.  This
 sounds complicated, but all the ideas we need can be understood in the
-case of just two inputs.  So let's address the two-input case.</p>
-<p>We'll start by considering what happens when we have two inputs to a
-neuron:</p>
+case of just two inputs.  So let's address the two-input case.-->
+以上の結果を多変数の場合に拡張しましょう。
+これは一見複雑そうに見えます。しかし、理解する為に必要なアイデアは全てたった2つの入力の場合で理解できます。
+ですので、2入力の場合に注目しましょう。
+</p>
+<p>
+<!--We'll start by considering what happens when we have two inputs to a neuron:-->
+ニューラルネットワークが2入力を持つ場合に何が起こるかを考える所から始めましょう：
+</p>
 <p><center> <canvas id="two_inputs" width="350" height="220"></canvas>
 </center></p>
-<p>Here, we have inputs $x$ and $y$, with corresponding weights $w_1$ and
+<p>
+<!--Here, we have inputs $x$ and $y$, with corresponding weights $w_1$ and
 $w_2$, and a bias $b$ on the neuron.  Let's set the weight $w_2$ to
 $0$, and then play around with the first weight, $w_1$, and the bias,
-$b$, to see how they affect the output from the neuron:</p>
+$b$, to see how they affect the output from the neuron:-->
+入力$x$, $y$とそれぞれに対応した重み$w_1$, $w_2$と共通のバイアス$b$があります。
+$w_2$の重みを$0$にして、最初の重み$w_1$と$b$をいじってみて、それらがニューロンからの出力にどのように影響をあたえるかを見てみましょう。
+</p>
 <p><script src="js/three.min.js"></script></p>
 <p><canvas id="ti_graph" width="200" height="220"></canvas>
 <span id="ti_graph_3d" style="position: absolute; left: 260px;"></span></p>
-<p>As you can see, with $w_2 = 0$ the input $y$ makes no difference to
-the output from the neuron.  It's as though $x$ is the only input.</p>
-<p>Given this, what do you think happens when we increase the weight
+<p>
+<!--As you can see, with $w_2 = 0$ the input $y$ makes no difference to
+the output from the neuron.  It's as though $x$ is the only input.-->
+見ての通り、$w_2=0$とすると、入力$y$の値はニューロンの出力に何の差も生み出しません。
+まるで$x$のみが入力であるかのように振る舞います。
+</p>
+<p>
+<!--Given this, what do you think happens when we increase the weight
 $w_1$ to $w_1 = 100$, with $w_2$ remaining $0$?  If you don't
 immediately see the answer, ponder the question for a bit, and see if
 you can figure out what happens.  Then try it out and see if you're
-right.  I've shown what happens in the following movie:</p>
+right.  I've shown what happens in the following movie:-->
+これを踏まえて、$w_2$を0としたまま、$w_1$の重みを増やして$w_1 = 100$とした時、何が起こると思いますでしょうか。
+もしこの答えがすぐに分からなかったら、何が起こるかを少し考えてみた後に、正しいかを試してみてください。
+以下の動画で何が起こるかを示しています。
+</p>
 <p><div>
 	<div id="b" class="videoOverlay" 
 	     style="width: 460px; height: 252px; opacity: 0.8" 
@@ -632,104 +1014,212 @@ right.  I've shown what happens in the following movie:</p>
 		    src="movies/step_3d.webm"></p>
 <p>	  </video>
 </div></p>
-<p>Just as in our earlier discussion, as the input weight gets larger the
+<p>
+<!--Just as in our earlier discussion, as the input weight gets larger the
 output approaches a step function.  The difference is that now the
 step function is in three dimensions.  Also as before, we can move the
 location of the step point around by modifying the bias.  The actual
-location of the step point is $s_x \equiv -b / w_1$.</p>
-<p>Let's redo the above using the position of the step as the parameter:</p>
+location of the step point is $s_x \equiv -b / w_1$.-->
+以前議論したように、入力の重みが大きくなるにつれ、出力は階段関数に近づきます。
+前と異なる点は、今回の階段関数が3次元である点です。
+前と同様に、バイアスを変更する事で、段差の位置を動かすことができます。
+実際の段差の位置は$s_x \equiv -b / w_1$です。
+</p>
+<p>
+<!--Let's redo the above using the position of the step as the parameter:-->
+段差の位置をパラメータとして用いて、もう1度行ってみましょう。
+</p>
 <p><canvas id="ti_graph_redux" width="200" height="220"></canvas> <span
 id="ti_graph_redux_3d" style="position: absolute; left:
 260px;"></span></p>
-<p>Here, we assume the weight on the $x$ input has some large value
+<p>
+<!--Here, we assume the weight on the $x$ input has some large value
 - I've used $w_1 = 1000$ - and the weight $w_2 = 0$.  The
 number on the neuron is the step point, and the little $x$ above the
-number reminds us that the step is in the $x$ direction.
-	
+number reminds us that the step is in the $x$ direction.	
 Of course, it's also possible to get a step function in the $y$
 direction, by making the weight on the $y$ input very large (say, $w_2
-= 1000$), and the weight on the $x$ equal to $0$, i.e., $w_1 = 0$:</p>
+= 1000$), and the weight on the $x$ equal to $0$, i.e., $w_1 = 0$:-->
+ここで、$x$の重みは適当な大きな値（私は$w_1=1000$を用いました）とし、$w_2=0$としています。
+ニューロン内の数字は段差の位置で、数字の上の小さな$x$の文字は段差が$x$方向である事を覚えておく為のものです。
+もちろん、$y$の重みを大きな値（例えば$w_2=1000$）とし$x$の重みを$0$とする、すなわち$w_1=0$とする事で、
+段差を$y$方向にも向ける事ができます：
+</p>
 <p><canvas id="y_step" width="200" height="220"></canvas> <span
 id="y_step_3d" style="position: absolute; left: 260px;"></span></p>
-<p>The number on the neuron is again the step point, and in this case the
+<p>
+<!--The number on the neuron is again the step point, and in this case the
 little $y$ above the number reminds us that the step is in the $y$
 direction.  I could have explicitly marked the weights on the $x$ and
 $y$ inputs, but decided not to, since it would make the diagram rather
 cluttered.  But do keep in mind that the little $y$ marker implicitly
-tells us that the $y$ weight is large, and the $x$ weight is $0$.</p>
-<p>We can use the step functions we've just constructed to compute a
+tells us that the $y$ weight is large, and the $x$ weight is $0$.-->
+前と同様に、ニューロンの内の数は段差地点です。
+今回の場合、数字の上の小さな$y$は段差が$y$方向を向いていることを思い出すためのものです。
+$x$と$y$それぞれの重みを明示的に書く事も出来ましたが、そうすると図が乱雑になってしまうので書かない事にしました。
+しかし、$y$の小さな文字は$y$の重みが大きく、$x$の重みは$0$だと暗黙に示している事を忘れないで下さい。
+</p>
+<p>
+<!--We can use the step functions we've just constructed to compute a
 three-dimensional bump function.  To do this, we use two neurons, each
 computing a step function in the $x$ direction.  Then we combine those
 step functions with weight $h$ and $-h$, respectively, where $h$ is
 the desired height of the bump.  It's all illustrated in the following
-diagram:</p>
+diagram:-->
+我々は今構成した階段関数を用いて3次元のコブ状の関数を表現する事ができます。
+その為には、$x$方向の階段関数を表す2つのニューロンを利用します。
+そして、それらの階段関数をそれぞれ重み$h$と$-h$で結合します。
+ここで$h$は作りたいコブの高さです。
+以上の内容が下図に表されています。
+</p>
 <p><canvas id="bump_3d" width="300" height="220"></canvas> <span
 id="bump_3d_graph" style="position: absolute; left: 360px;"></span></p>
-<p>Try changing the value of the height, $h$. Observe how it relates to
+<p>
+<!--Try changing the value of the height, $h$. Observe how it relates to
 the weights in the network.  And see how it changes the height of the
-bump function on the right.</p>
-<p>Also, try changing the step point $0.30$ associated to the top hidden
+bump function on the right.-->
+高さ$h$の値を変更してみて、それがネットワークの重みとどのように関係しているかを観察してみてください。
+また、$h$の値により右のコブ状の関数の高さをどのように変化するかを見てください。
+</p>
+<p>
+<!--Also, try changing the step point $0.30$ associated to the top hidden
 neuron.  Witness how it changes the shape of the bump.  What happens
 when you move it past the step point $0.70$ associated to the bottom
-hidden neuron?</p>
-<p>We've figured out how to make a bump function in the $x$ direction.
+hidden neuron?-->
+さらに、上の隠れニューロンによって決められている段差地点を$0.30$から変更してください。
+コブの形がどのように変化するかを見てみましょう。
+下の隠れニューロンによって決められる段差地点を$0.70$から変えてみた時何が起こるでしょうか？
+<!--
+2015/1/26 Kenta OONO
+ここのpastのニュアンスがよくわからなかった。0.70を越えてという風に訳すところかもしれないが、
+対応する図では初期値が0.70となっており、通り過ぎるという事を示唆しているようには思えなかった。
+-->
+</p>
+<p>
+<!--We've figured out how to make a bump function in the $x$ direction.
 Of course, we can easily make a bump function in the $y$ direction, by
 using two step functions in the $y$ direction.  Recall that we do this
 by making the weight large on the $y$ input, and the weight $0$ on the
-$x$ input.  Here's the result:</p>
+$x$ input.  Here's the result:-->
+私達は$x$方向にコブ状の関数を作る方法を見い出してきました。
+もちろん、$y$方向の階段関数を用いることで、簡単に$y$方向のコブ状の関数を作れます。
+それは入力$y$の重みを大きくし、入力$x$の重みを$0$にすればできる事を思い出してください。
+下図が結果です：
+</p>
 <p><canvas id="bump_3d_y" width="300" height="220"></canvas> <span
 id="bump_3d_y_graph" style="position: absolute; left: 360px;"></span></p>
-<p>This looks nearly identical to the earlier network!  The only thing
+<p>
+<!--This looks nearly identical to the earlier network!  The only thing
 explicitly shown as changing is that there's now little $y$ markers on
 our hidden neurons.  That reminds us that they're producing $y$ step
 functions, not $x$ step functions, and so the weight is very large on
 the $y$ input, and zero on the $x$ input, not vice versa.  As before,
-I decided not to show this explicitly, in order to avoid clutter.</p>
-<p>Let's consider what happens when we add up two bump functions, one in
-the $x$ direction, the other in the $y$ direction, both of height $h$:</p>
+I decided not to show this explicitly, in order to avoid clutter.-->
+これは先程のネットワークとほとんど同じものです！
+図中に明示した中で夕いつ変更している点は隠れニューロン内の小さな文字が今回は$y$になった事です。
+これは、今作っているのが$x$方向ではなく、$y$方向の階段関数である事を思い出す為のものです。
+つまり、入力$y$はとても大きく、$x$は$0$であり逆ではありません。
+前と同様に、図が煩雑にならないように、この事は明示しませんでした。
+</p>
+<p>
+<!--Let's consider what happens when we add up two bump functions, one in
+the $x$ direction, the other in the $y$ direction, both of height $h$:-->
+共に高さが$h$である$x$方向と$y$方向の2つのコブ状の関数を足しあわせた時に、何が起こるかを考えてみましょう：
+</p>
 <p><canvas id="xy_bump" width="300" height="270"></canvas> <span
 id="xy_bump_3d" style="position: absolute; left: 360px;"></span></p>
-<p>To simplify the diagram I've dropped the connections with zero weight.
+<p>
+<!--To simplify the diagram I've dropped the connections with zero weight.
 For now, I've left in the little $x$ and $y$ markers on the hidden
 neurons, to remind you in what directions the bump functions are being
 computed.  We'll drop even those markers later, since they're implied
-by the input variable.</p>
-<p>Try varying the parameter $h$.  As you can see, this causes the output
+by the input variable.-->
+図を簡単にするために、重み$0$の接続は図から除きました。
+今は、どちらの方向のコブ状の関数を計算しているかを忘れないように、
+隠れニューロン内の$x$と$y$の小さな文字は残しておきました。
+これらは入力変数からわかるので、これからはこれらの文字も除きます。
+</p>
+<p>
+<!--Try varying the parameter $h$.  As you can see, this causes the output
 weights to change, and also the heights of both the $x$ and $y$ bump
-functions.</p>
-<p>What we've built looks a little like a <em>tower</em> function:</p>
+functions.-->
+パラメータ$h$を変化させてみてください。見ての通り、これにより出力の重みが変化し、$x$と$y$両方のコブ状の関数の高さも変化します。
+</p>
+<p>
+<!--What we've built looks a little like a <em>tower</em> function:-->
+これにより<em>塔</em>に少し似た形の関数を構成することが出来ました。
+</p>
 <p><center> <span id="tower" style="position: absolute;"></span> <div
 style="height: 230px"></div> </center></p>
-<p>If we could build such tower functions, then we could use them to
+<p>
+<!--If we could build such tower functions, then we could use them to
 approximate arbitrary functions, just by adding up many towers of
-different heights, and in different locations:</p>
+different heights, and in different locations:-->
+もし、このような塔状の関数を構成できれば、様々な位置にある様々な高さの塔を足しあわせる事で任意の関数を近似できます：
+</p>
 <p><center> <span id="many_towers" style="position: absolute;"></span>
 <div style="height: 230px"></div> </center></p>
-<p>Of course, we haven't yet figured out how to build a tower function.
+<p>
+<!--
+Of course, we haven't yet figured out how to build a tower function.
 What we have constructed looks like a central tower, of height $2h$,
-with a surrounding plateau, of height $h$.</p>
-<p>But we can make a tower function.  Remember that earlier we saw
+with a surrounding plateau, of height $h$.-->
+もちろん、我々はこのような塔状の関数を構成する方法をまだ見出していません。
+私達が構成できたのは、中央のに高さ$2h$の塔とそれを囲む高さ$h$の台地のような関数です。
+</p>
+<p>
+<!--But we can make a tower function.  Remember that earlier we saw
 neurons can be used to implement a type of <tt>if-then-else</tt>
-statement:</p>
-<p><div class="highlight"><pre>    <span class="k">if </span>input &gt;<span class="o">=</span> threshold: 
+statement:-->
+ところが、私達は塔状の関数を構成できるのです。
+私達はニューロンを<tt>if-then-else</tt>構文の形の関数を構成するのに用いた事を思い出してください。
+</p>
+<p>
+<!--
+<div class="highlight"><pre>
+    <span class="k">if </span>input &gt;<span class="o">=</span> threshold: 
         output 1
     <span class="k">else</span>:
         output 0
-</pre></div>
-</p>
-<p>That was for a neuron with just a single input.  What we want is to
-apply a similar idea to the combined output from the hidden neurons:</p>
-<p><div class="highlight"><pre>    <span class="k">if </span>combined output from hidden neurons &gt;<span class="o">=</span> threshold:
-        output 1
+</pre></div>-->
+<div class="highlight"><pre>
+    <span class="k">if </span>input &gt;<span class="o">=</span> threshold: 
+        1を出力
     <span class="k">else</span>:
-        output 0
+        0を出力
 </pre></div>
 </p>
-<p>If we choose the <tt>threshold</tt> appropriately - say, a value of
+<p>
+<!--That was for a neuron with just a single input.  What we want is to
+apply a similar idea to the combined output from the hidden neurons:-->
+これは1入力しかないニューロンについてのものでした。
+今欲しいのは、隠れニューロン集合からの出力をまとめた値に対してこれと似たアイデアを適用したものです：
+</p>
+<p>
+<!--
+<div class="highlight"><pre>
+    <span class="k">if </span>combined output from hidden neurons &gt;<span class="o">=</span> threshold:
+        output 1
+     <span class="k">else</span>:
+        output 0
+</pre></div>-->
+<div class="highlight"><pre>
+    <span class="k">if </span>隠れニューロン集合からの出力をまとめた値 &gt;<span class="o">=</span> threshold:
+        1を出力
+    <span class="k">else</span>:
+        0を出力
+</pre></div>
+</p>
+<p>
+<!--If we choose the <tt>threshold</tt> appropriately - say, a value of
 $3h/2$, which is sandwiched between the height of the plateau and the
 height of the central tower - we could squash the plateau down to
-zero, and leave just the tower standing.</p>
-<p>Can you see how to do this?  Try experimenting with the following
+zero, and leave just the tower standing.-->
+<tt>threshold</tt>を適切に、例えば台地の高さと中央の塔の高さに挟まれている$3h/2$のように、設定すると、
+塔が立った状態で残したまま、台地を$0$の高さに潰すことができます。
+</p>
+<p>
+<!--Can you see how to do this?  Try experimenting with the following
 network to figure it out.  Note that we're now plotting the output
 from the entire network, not just the weighted output from the hidden
 layer.  This means we add a bias term to the weighted output from the
@@ -739,7 +1229,16 @@ think about this for a while and remain stuck, here's two hints: (1)
 To get the output neuron to show the right kind of <tt>if-then-else</tt>
 behaviour, we need the input weights (all $h$ or $-h$) to be large;
 and (2) the value of $b$ determines the scale of the
-<tt>if-then-else</tt> threshold.</p>
+<tt>if-then-else</tt> threshold.-->
+これをどのように行っているかわかりますでしょうか？
+理解するために次のニューラルネットワークで実験してみましょう。
+今回は、隠れ層からの重み付き出力ではなく、ニューラルネットワーク全体の出力を図示している事に気をつけてください。
+これは、隠れ層からの重み付き出力にバイアス項を加え、シグマ関数を適用している事を意味します。
+塔を作る為の$h$と$b$の値を見つけられますでしょうか。
+若干トリッキーなので、もししばらく考えてそれでもわからなかったら、2つのヒントを教えます：
+(1)出力ニューロンが適切な<tt>if-then-else</tt>の挙動を示す為には、入力の重み（全ての$h$と$-h$）が大きな値でなければなりません。
+(2)$b$の値は<tt>if-then-else</tt>の閾値を決定します。
+</p>
 <p><canvas id="tower_construction" width="300" height="270"></canvas>
 <span id="tower_construction_3d" style="position: absolute; left:
 350px;"></span></p>
