@@ -63,7 +63,9 @@ $('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(functio
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow.png');
    };
    $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});
-});</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">How the backpropagation algorithm works</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output_from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output  from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
+});</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">How the backpropagation algorithm works</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output
+_from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output
+  from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
 <script>
 $('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() {
    var src = $('#toc_img_how_the_backpropagation_algorithm_works').attr('src');
@@ -174,7 +176,19 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 人間の視覚がどんなに不思議なものか、考えたことはありますか？次の手書き数列を読んでみてください：
 <a name="complete_zero"></a></p><p><center><img src="images/digits.png" width="160px"></center> </p><p>
 
-  <!--  Most people effortlessly recognize those digits as 504192.  That easeis deceptive.  In each hemisphere of our brain, humans have a primaryvisual cortex, also known as V1, containing 140 million neurons, withtens of billions of connections between them.  And yet human visioninvolves not just V1, but an entire series of visual cortices - V2,V3, V4, and V5 - doing progressively more complex image processing.We carry in our heads a supercomputer, tuned by evolution overhundreds of millions of years, and superbly adapted to understand thevisual world.  Recognizing handwritten digits isn't easy.  Rather, wehumans are stupendously, astoundingly good at making sense of what oureyes show us.  But nearly all that work is done unconsciously.  And sowe don't usually appreciate how tough a problem our visual systemssolve.-->
+  <!--  Most people effortlessly recognize those digits as 504192.  That ease
+is deceptive.  In each hemisphere of our brain, humans have a primary
+visual cortex, also known as V1, containing 140 million neurons, with
+tens of billions of connections between them.  And yet human vision
+involves not just V1, but an entire series of visual cortices - V2,
+V3, V4, and V5 - doing progressively more complex image processing.
+We carry in our heads a supercomputer, tuned by evolution over
+hundreds of millions of years, and superbly adapted to understand the
+visual world.  Recognizing handwritten digits isn't easy.  Rather, we
+humans are stupendously, astoundingly good at making sense of what our
+eyes show us.  But nearly all that work is done unconsciously.  And so
+we don't usually appreciate how tough a problem our visual systems
+solve.-->
 
 大抵の人にとってはごく簡単に504192と読めると思います。でも、脳の中で起
 こっていることは簡単どころではありません。脳のふたつの半球にはそれぞれ、
@@ -186,7 +200,15 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 
 </p><p>
 
-<!--  The difficulty of visual pattern recognition becomes apparent if youattempt to write a computer program to recognize digits like thoseabove.  What seems easy when we do it ourselves suddenly becomesextremely difficult.  Simple intuitions about how we recognize shapes- "a 9 has a loop at the top, and a vertical stroke in the bottomright" - turn out to be not so simple to express algorithmically.When you try to make such rules precise, you quickly get lost in amorass of exceptions and caveats and special cases.  It seemshopeless.-->
+<!--  The difficulty of visual pattern recognition becomes apparent if you
+attempt to write a computer program to recognize digits like those
+above.  What seems easy when we do it ourselves suddenly becomes
+extremely difficult.  Simple intuitions about how we recognize shapes
+- "a 9 has a loop at the top, and a vertical stroke in the bottom
+right" - turn out to be not so simple to express algorithmically.
+When you try to make such rules precise, you quickly get lost in a
+morass of exceptions and caveats and special cases.  It seems
+hopeless.-->
 
 ひとたび、さっきの手書き数字を認識するプログラムを書こうとすれば、視覚パターン認識の困難さが明らかになります。自分でやればこんなに簡単に思えることが、突然ものすごく難しくなったように感じるでしょう。数字を認識するための直感的で単純なルール---「数字の9は、上に輪があって、右下から下に向かって線が生えている形」---をアルゴリズムで表現するのはけっして単純ではないことに気づくでしょう。このようなルールを正確にプログラムとして表現しようとすれば、すぐに膨大な例外、落とし穴、特殊ケースに気づくはずです。絶望的です。
 
@@ -194,14 +216,23 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 
 </p><p></p><p>
 
-<!--  Neural networks approach the problem in a different way.  The idea isto take a large number of handwritten digits, known as trainingexamples,-->
+<!--  Neural networks approach the problem in a different way.  The idea is
+to take a large number of handwritten digits, known as training
+examples,-->
 
 ニューラルネットワークはこのような問題に違った角度から迫ります。ニューラルネットワークの発想は、手書き数字のデータをあらかじめ沢山用意して（このようなデータを訓練例といいます）
 
 
 </p><p><center><img src="images/mnist_100_digits.png" width="440px"></center></p><p>
 
-  <!--  and then develop a system which can learn from those trainingexamples. In other words, the neural network uses the examples toautomatically infer rules for recognizing handwritten digits.Furthermore, by increasing the number of training examples, thenetwork can learn more about handwriting, and so improve its accuracy.So while I've shown just 100 training digits above, perhaps we couldbuild a better handwriting recognizer by using thousands or evenmillions or billions of training examples.-->
+  <!--  and then develop a system which can learn from those training
+examples. In other words, the neural network uses the examples to
+automatically infer rules for recognizing handwritten digits.
+Furthermore, by increasing the number of training examples, the
+network can learn more about handwriting, and so improve its accuracy.
+So while I've shown just 100 training digits above, perhaps we could
+build a better handwriting recognizer by using thousands or even
+millions or billions of training examples.-->
 
 その上で、訓練例から学習することのできるシステムを開発する、というものです。言い換えれば、ニューラルネットワークは、訓練例をもとに、数字認識のルールを自動的に推論します。さらに、訓練例を増やすほど、ニューラルネットワークは手書き文字に関する知識をより多く獲得し、精度が向上します。上図ではわずか100個の訓練例を示しましたが、何千、何万、何億個という訓練例を与えることで、よりよい手書き数字認識機を作ることができるかもしれません。
 
@@ -209,7 +240,15 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 </p><p>
 
 
-<!--  In this chapter we'll write a computer program implementing a neuralnetwork that learns to recognize handwritten digits.  The program isjust 74 lines long, and uses no special neural network libraries.  Butthis short program can recognize digits with an accuracy over 96percent, without human intervention.  Furthermore, in later chapterswe'll develop ideas which can improve accuracy to over 99 percent.  Infact, the best commercial neural networks are now so good that theyare used by banks to process cheques, and by post offices to recognizeaddresses.-->
+<!--  In this chapter we'll write a computer program implementing a neural
+network that learns to recognize handwritten digits.  The program is
+just 74 lines long, and uses no special neural network libraries.  But
+this short program can recognize digits with an accuracy over 96
+percent, without human intervention.  Furthermore, in later chapters
+we'll develop ideas which can improve accuracy to over 99 percent.  In
+fact, the best commercial neural networks are now so good that they
+are used by banks to process cheques, and by post offices to recognize
+addresses.-->
 
 この章では、手書き数字認識を学習するニューラルネットワークを実装することを目標とします。実装するプログラムはたったの74行に収まり、しかも特別なニューラルネットワークライブラリを使うわけではありません。それでも、この短いプログラムは人手の介入なしに、96%以上の精度で数字を認識することができます。2章以降で導入する新しいアイデアを組み込めば、この性能はさらに99%を上回るまで向上します。実は、現在最高レベルの商用ニューラルネットワークは、銀行での小切手の処理や郵便局での住所認識に使われるほどの高い性能に達しています。
 
@@ -217,7 +256,17 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 
 </p><p>
 
-<!--  We're focusing on handwriting recognition because it's an excellentprototype problem for learning about neural networks in general.  As aprototype it hits a sweet spot: it's challenging - it's no smallfeat to recognize handwritten digits - but it's not so difficult asto require an extremely complicated solution, or tremendouscomputational power.  Furthermore, it's a great way to develop moreadvanced techniques, such as deep learning.  And so throughout thebook we'll return repeatedly to the problem of handwritingrecognition.  Later in the book, we'll discuss how these ideas may beapplied to other problems in computer vision, and also in speech,natural language processing, and other domains.-->
+<!--  We're focusing on handwriting recognition because it's an excellent
+prototype problem for learning about neural networks in general.  As a
+prototype it hits a sweet spot: it's challenging - it's no small
+feat to recognize handwritten digits - but it's not so difficult as
+to require an extremely complicated solution, or tremendous
+computational power.  Furthermore, it's a great way to develop more
+advanced techniques, such as deep learning.  And so throughout the
+book we'll return repeatedly to the problem of handwriting
+recognition.  Later in the book, we'll discuss how these ideas may be
+applied to other problems in computer vision, and also in speech,
+natural language processing, and other domains.-->
 
   手書き文字認識は、ニューラルネットワーク一般について解説するうえでうってつけの題材なので、まずは手書き文字認識に話を絞ることにします。というのも、手書き文字認識というのは、決して一筋縄ではゆかない歯ごたえのある課題です。それでいて例えば極めて複雑な解法を必要とするとか、莫大な計算資源を必要とするとかの、非常に困難な課題というわけでもなく、ちょうどいい難易度の課題なのです。さらに、手書き文字認識は、深層学習といった発展的な技術の題材としても適しています。というわけで、この本では繰り返し、手書き文字認識という課題に立ち戻ることにします。この本の後のほうでは、これらのアイデアのコンピュータ視覚、音声、自然言語処理、その他の分野への応用をあつかいます。
 
@@ -225,7 +274,19 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Sep 2014
 
 </p><p>
 
-<!--  Of course, if the point of the chapter was only to write a computerprogram to recognize handwritten digits, then the chapter would bemuch shorter!  But along the way we'll develop many key ideas aboutneural networks, including two important types of artificial neuron(the perceptron and the sigmoid neuron), and the standard learningalgorithm for neural networks, known as stochastic gradient descent.Throughout, I focus on explaining <em>why</em> things are done the waythey are, and on building your neural networks intuition.  Thatrequires a lengthier discussion than if I just presented the basicmechanics of what's going on, but it's worth it for the deeperunderstanding you'll attain.  Amongst the payoffs, by the end of thechapter we'll be in position to understand what deep learning is, andwhy it matters.-->
+<!--  Of course, if the point of the chapter was only to write a computer
+program to recognize handwritten digits, then the chapter would be
+much shorter!  But along the way we'll develop many key ideas about
+neural networks, including two important types of artificial neuron
+(the perceptron and the sigmoid neuron), and the standard learning
+algorithm for neural networks, known as stochastic gradient descent.
+Throughout, I focus on explaining <em>why</em> things are done the way
+they are, and on building your neural networks intuition.  That
+requires a lengthier discussion than if I just presented the basic
+mechanics of what's going on, but it's worth it for the deeper
+understanding you'll attain.  Amongst the payoffs, by the end of the
+chapter we'll be in position to understand what deep learning is, and
+why it matters.-->
 
 もちろん、この章の目的がただ手書き数字を認識するプログラムを書くことだけだったなら、この章はもっと短くなったでしょう！しかし、この章では、手書き文字認識を実装する過程で、ニューラルネットワークの鍵となるアイデアをいくつも開発します。その中には、二種類の重要な人工ニューロン（パーセプトロンと、シグモイドニューロン）や、ニューラルネットワークの標準的な学習アルゴリズムである確率的勾配降下法が含まれます。本書を通じて、私は現行の手法を紹介するだけでなく*なぜ*その手法が選ばれたのかについて解説することで、あなたのニューラルネットワークにまつわる直感を鍛えてゆければと思います。おかげで、本章は流行りのトピックをただ並べた解説などよりはもずいぶん長くなってしまいますが、あなたがより深い理解に達することを思えばその価値はあると思います。とりわけ、本章を読み終わるころには、私たちは、深層学習とは何なのか、なぜ重要なのか、の理解に到達するでしょう。
 
@@ -1018,14 +1079,17 @@ cause any confusion.</p><p>
   sigmoid neurons is exactly the same as the network of perceptrons.
   How can this fail when $w \cdot x + b = 0$ for one of the
   perceptrons?
-</ul></p><p><h3><a name="the_architecture_of_neural_networks"></a><a href="#the_architecture_of_neural_networks">The architecture of neural networks</a></h3></p><p>In the next section I'll introduce a neural network that can do a
+</ul></p><!-- <p><h3><a name="the_architecture_of_neural_networks"></a><a href="#the_architecture_of_neural_networks">The architecture of neural networks</a></h3></p> -->
+<p><h3><a name="the_architecture_of_neural_networks"></a><a href="#the_architecture_of_neural_networks">ニューラルネットワークのアーキテクチャ</a></h3></p><p>
+<!-- In the next section I'll introduce a neural network that can do a
 pretty good job classifying handwritten digits.  In preparation for
 that, it helps to explain some terminology that lets us name different
-parts of a network.  Suppose we have the network:
+parts of a network.  Suppose we have the network: -->
+次の章では、手書きの数字の分類においてとても上手く働くニューラルネットワークを紹介します。その準備として、いくつかの専門用語を説明するためにニューラルネットワークのそれぞれの部分に名前をつけておきましょう。
 <center>
 <img src="images/tikz10.png"/>
 </center>
-As mentioned earlier, the leftmost layer in this network is called the
+<!-- As mentioned earlier, the leftmost layer in this network is called the
 input layer, and the neurons within the
 layer are called <em>input neurons</em>.
 The rightmost or <em>output</em> layer
@@ -1038,15 +1102,21 @@ I thought it must have some deep philosophical or mathematical
 significance - but it really means nothing more than "not an input
 or an output".  The network above has just a single hidden layer, but
 some networks have multiple hidden layers.  For example, the following
-four-layer network has two hidden layers:
+four-layer network has two hidden layers: -->
+
+以前述べた通り、一番左の層は<em>入力層(input layer)</em>と呼ばれ、その中のニューロンを<em>入力ニューロン(input neurons)</em>と言います。一番右の層または<em>出力層(output layer)</em>は、<em>出力ニューロン(output neurons)</em>から構成されています。上の場合では出力ニューロンは1つですね。中央の層は入力でも出力でもないことから、<em>隠れ層(hidden layer)</em>と呼ばれます。この"隠れ"という用語は少し不思議に聞こえるでしょう。私が初めてこの用語を聞いた時、何か哲学的または数学的意味があるのだと思いました。しかしながらこれは"入出力以外"ということを意味しているにすぎません。上記のニューラルネットワークはただ1つの隠れ層からできていますが、複数の隠れ層をもったニューラルネットワークも存在します。例として、下の4層ネットワークは2つの隠れ層をもっています。
 <center>
 <img src="images/tikz11.png"/>
 </center>
-Somewhat confusingly, and for historical reasons, such multiple layer
+<!-- Somewhat confusingly, and for historical reasons, such multiple layer
 networks are sometimes called <em>multilayer perceptrons</em> or
 <em>MLPs</em>, despite being made up of sigmoid neurons, not
 perceptrons.  I'm not going to use the MLP terminology in this book,
-since I think it's confusing, but wanted to warn you of its existence.</p><p>The design of the input and output layers in a network is often
+since I think it's confusing, but wanted to warn you of its existence. -->
+紛らわしいことに、歴史的理由から、このような複数層のネットワークをときおり<em>多層パーセプトロン(multilayer perceptrons)</em>、または<em>MPLs</em>と呼びます。しかしこれらはパーセプトロンではなく、シグモイドニューロンです。これらの用語は混乱を招くためこの本では用いませんが、その存在は知っておいてください。
+
+</p><p>
+<!-- The design of the input and output layers in a network is often
 straightforward.  For example, suppose we're trying to determine
 whether a handwritten image depicts a "9" or not.  A natural way to
 design the network is to encode the intensities of the image pixels
@@ -1055,8 +1125,10 @@ image, then we'd have $4,096 = 64 \times 64$ input neurons, with the
 intensities scaled appropriately between $0$ and $1$.  The output
 layer will contain just a single neuron, with output values of less
 than $0.5$ indicating "input image is not a 9", and values greater
-than $0.5$ indicating "input image is a 9 ".</p><p></p><p></p><p>
-While the design of the input and output layers of a neural network is
+than $0.5$ indicating "input image is a 9 ". -->
+ニューラルネットワークの入出力層の設計はしばしば単純です。例えば、手書きの画像が9かそうでないかを判断したいとします。設計の自然な方法は、その画像のピクセルあたりの色の度合いを入力ニューロンにエンコードすることです。もしその画像が$64 \times 64$の白黒画像であれば、入力ニューロンの数は$4,096 = 64 \times 64$になり、色の度合いは明度を$0$から$1$の適切な値で表します。出力層は1つのニューロンからなり、出力値が$0.5$以上なら"入力画像は9である"ということを示し、$0.5$以下なら"入力画像は9ではない"ということを示します。
+</p><p></p><p></p><p>
+<!-- While the design of the input and output layers of a neural network is
 often straightforward, there can be quite an art to the design of the
 hidden layers.  In particular, it's not possible to sum up the design
 process for the hidden layers with a few simple rules of thumb.
@@ -1065,14 +1137,21 @@ heuristics for the hidden layers, which help people get the behaviour
 they want out of their nets.  For example, such heuristics can be used
 to help determine how to trade off the number of hidden layers against
 the time required to train the network.  We'll meet several such
-design heuristics later in this book. </p><p>Up to now, we've been discussing neural networks where the output from
+design heuristics later in this book.  -->
+
+入出力層の設計が単純なのに対し、隠れ層の設計はかなり創造的なものになり得ます。とりわけ、隠れ層の設計の過程をいくつかの単純で大雑把な方法で行うのは不可能です。そのかわり、ニューラルネットワークの研究者らは、多くの隠れ層の設計ヒューリスティクスを開発してきました。そしてそれらは人々を解放しました。例として、これらのヒューリスティクスは学習時間と隠れ層の数とのトレードオフに折り合いをつけることができます。私たちも後に、この本の中でそのいくつかの設計に触れることになるでしょう。
+</p><p>
+<!-- Up to now, we've been discussing neural networks where the output from
 one layer is used as input to the next layer.  Such networks are
 called <em>feedforward</em>
 neural networks.  This means there are no loops in the network -
 information is always fed forward, never fed back.  If we did have
 loops, we'd end up with situations where the input to the $\sigma$
 function depended on the output.  That'd be hard to make sense of, and
-so we don't allow such loops.</p><p>However, there are other models of artificial neural networks in which
+so we don't allow such loops. -->
+これから、ある層の出力が次の層の入力になるようなニューラルネットワークについて考察してみましょう。このようなネットワークは<em>フィードフォワードニューラルネットワーク(feedforward neural networks)</em>と呼ばれます。これはネットワーク内にループがないということを意味しています。情報は常に前へ伝わり、後ろへは戻りません。もしループするならば、σ関数の入力はその出力に依存した状態になってしまうでしょう。そうなってはわけがわかりません。そのために私たちはそのようなループを許さないのです。
+</p><p>
+<!-- However, there are other models of artificial neural networks in which
 feedback loops are possible.  These models are called
 <a href="http://en.wikipedia.org/wiki/Recurrent_neural_network">recurrent
   neural networks</a>. The idea in these models is to have neurons which
@@ -1081,7 +1160,10 @@ That firing can stimulate other neurons, which may fire a little while
 later, also for a limited duration.  That causes still more neurons to
 fire, and so over time we get a cascade of neurons firing.  Loops
 don't cause problems in such a model, since a neuron's output only
-affects its input at some later time, not instantaneously.</p><p></p><p>Recurrent neural nets have been less influential than feedforward
+affects its input at some later time, not instantaneously. -->
+しかしながら、フィードバックループを用いることが可能な、人工ニューラルネットワークモデルも存在します。それらのモデルは<em>再帰型ニューラルネットワーク(<a href="http://en.wikipedia.org/wiki/Recurrent_neural_network">recurrent neural networks</a>)</em>と呼ばれます。これらのモデルの着想は、静止するまでの限られた時間に発火するようなニューロンをもったモデルというものです。その発火が他のニューロンを刺激し、そのニューロンもまた限られた時間の中で少し遅れて発火します。そうやってさらなる発火を引き起こし、私たちは発火の連なりを得ることができます。これらのモデルにおいてループは問題にはなりませんが、その出力はいくぶんか遅れてその入力に影響されます。
+</p><p></p><p>
+<!-- Recurrent neural nets have been less influential than feedforward
 networks, in part because the learning algorithms for recurrent nets
 are (at least to date) less powerful.  But recurrent networks are
 still extremely interesting.  They're much closer in spirit to how our
@@ -1089,7 +1171,10 @@ brains work than feedforward networks.  And it's possible that
 recurrent networks can solve important problems which can only be
 solved with great difficulty by feedforward networks.  However, to
 limit our scope, in this book we're going to concentrate on the more
-widely-used feedforward networks.</p><p><h3><a name="a_simple_network_to_classify_handwritten_digits"></a><a href="#a_simple_network_to_classify_handwritten_digits">A simple network to classify handwritten digits</a></h3></p><p>Having defined neural networks, let's return to handwriting
+widely-used feedforward networks. -->
+再帰型ニューラルネットワークはフィードフォワードニューラルネットワークに比べてあまり影響力がありませんでした。その理由の一つは、再帰型ネットワークの学習アルゴリズムが非力だったことです。それでも再帰型ネットワークは非常に興味深いと言えます。それらはフィードフォワードネットワークに比べ、私たちの脳の働き方に近いのです。そしてフィードフォワードネットワークでは困難な問題を、再帰型ネットワークでは解くことができるという可能性は十分にあります。しかしながらこの本では、より広く使われているフィードフォワードニューラルネットワークに焦点を当てたいと思います。
+</p>
+<p><h3><a name="a_simple_network_to_classify_handwritten_digits"></a><a href="#a_simple_network_to_classify_handwritten_digits">A simple network to classify handwritten digits</a></h3></p><p>Having defined neural networks, let's return to handwriting
 recognition.  We can split the problem of recognizing handwritten
 digits into two sub-problems.  First, we'd like a way of breaking an
 image containing many digits into a sequence of separate images, each
