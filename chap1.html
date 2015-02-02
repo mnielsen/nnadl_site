@@ -1085,7 +1085,7 @@ cause any confusion.</p><p>
 pretty good job classifying handwritten digits.  In preparation for
 that, it helps to explain some terminology that lets us name different
 parts of a network.  Suppose we have the network: -->
-次の章では、手書きの数字の分類においてとても上手く働くニューラルネットワークの紹介をします。その準備として、いくつかの専門用語を説明するためにニューラルネットワークのそれぞれの部分に名前をつけておきましょう。
+次の章では、手書きの数字の分類においてとても上手く働くニューラルネットワークを紹介します。その準備として、いくつかの専門用語を説明するためにニューラルネットワークのそれぞれの部分に名前をつけておきましょう。
 <center>
 <img src="images/tikz10.png"/>
 </center>
@@ -1104,7 +1104,7 @@ or an output".  The network above has just a single hidden layer, but
 some networks have multiple hidden layers.  For example, the following
 four-layer network has two hidden layers: -->
 
-以前述べた通り、一番左の層は<em>入力層(input layer)</em>と呼ばれ、その中のニューロンを<em>入力ニューロン(input neurons)</em>と言います。一番右の層または<em>出力層(output layer)</em>は<em>出力ニューロン(output neurons)</em>から構成されています。このケースでは出力ニューロンは1つですね。中央の層は入力でも出力でもないことから、<em>隠れ層(hidden layer)</em>と呼ばれます。この"隠れ"という用語は少し不思議に聞こえるでしょう。私が初めてこの用語を聞いた時、何か哲学的または数学的意味があるのだと思いました。しかしながらこれは"入出力以外"ということを意味しているにすぎないのです。上記のニューラルネットワークはただ1つの隠れ層からできていますが、複数の隠れ層をもったニューラルネットワークもあります。例として、下の4層ネットワークは2つの隠れ層をもっています。
+以前述べた通り、一番左の層は<em>入力層(input layer)</em>と呼ばれ、その中のニューロンを<em>入力ニューロン(input neurons)</em>と言います。一番右の層または<em>出力層(output layer)</em>は、<em>出力ニューロン(output neurons)</em>から構成されています。上の場合では出力ニューロンは1つですね。中央の層は入力でも出力でもないことから、<em>隠れ層(hidden layer)</em>と呼ばれます。この"隠れ"という用語は少し不思議に聞こえるでしょう。私が初めてこの用語を聞いた時、何か哲学的または数学的意味があるのだと思いました。しかしながらこれは"入出力以外"ということを意味しているにすぎません。上記のニューラルネットワークはただ1つの隠れ層からできていますが、複数の隠れ層をもったニューラルネットワークも存在します。例として、下の4層ネットワークは2つの隠れ層をもっています。
 <center>
 <img src="images/tikz11.png"/>
 </center>
@@ -1113,9 +1113,10 @@ networks are sometimes called <em>multilayer perceptrons</em> or
 <em>MLPs</em>, despite being made up of sigmoid neurons, not
 perceptrons.  I'm not going to use the MLP terminology in this book,
 since I think it's confusing, but wanted to warn you of its existence. -->
-紛らわしいことに、歴史的理由から、このような複数層のネットワークをときおり<em>多層パーセプトロン(multilayer perceptrons)</em>または<em>MPLs</em>と呼びます。しかしこれらはパーセプトロンではなく、シグモイドニューロンです。これらの用語は混乱を招くためこの本では用いませんが、その存在は知っておいてください。
+紛らわしいことに、歴史的理由から、このような複数層のネットワークをときおり<em>多層パーセプトロン(multilayer perceptrons)</em>、または<em>MPLs</em>と呼びます。しかしこれらはパーセプトロンではなく、シグモイドニューロンです。これらの用語は混乱を招くためこの本では用いませんが、その存在は知っておいてください。
 
-</p><p>The design of the input and output layers in a network is often
+</p><p>
+<!-- The design of the input and output layers in a network is often
 straightforward.  For example, suppose we're trying to determine
 whether a handwritten image depicts a "9" or not.  A natural way to
 design the network is to encode the intensities of the image pixels
@@ -1124,8 +1125,10 @@ image, then we'd have $4,096 = 64 \times 64$ input neurons, with the
 intensities scaled appropriately between $0$ and $1$.  The output
 layer will contain just a single neuron, with output values of less
 than $0.5$ indicating "input image is not a 9", and values greater
-than $0.5$ indicating "input image is a 9 ".</p><p></p><p></p><p>
-While the design of the input and output layers of a neural network is
+than $0.5$ indicating "input image is a 9 ". -->
+ニューラルネットワークの入出力層の設計はしばしば単純です。例えば、手書きの画像が9かそうでないかを判断したいとします。設計の自然な方法は、その画像のピクセルあたりの色の度合いを入力ニューロンにエンコードすることです。もしその画像が$64 \times 64$の白黒画像であれば、入力ニューロンの数は$4,096 = 64 \times 64$になり、色の度合いは明度を$0$から$1$の適切な値で表します。出力層は1つのニューロンからなり、出力値が$0.5$以上なら"入力画像は9である"ということを示し、$0.5$以下なら"入力画像は9ではない"ということを示します。
+</p><p></p><p></p><p>
+<!-- While the design of the input and output layers of a neural network is
 often straightforward, there can be quite an art to the design of the
 hidden layers.  In particular, it's not possible to sum up the design
 process for the hidden layers with a few simple rules of thumb.
@@ -1134,14 +1137,21 @@ heuristics for the hidden layers, which help people get the behaviour
 they want out of their nets.  For example, such heuristics can be used
 to help determine how to trade off the number of hidden layers against
 the time required to train the network.  We'll meet several such
-design heuristics later in this book. </p><p>Up to now, we've been discussing neural networks where the output from
+design heuristics later in this book.  -->
+
+入出力層の設計が単純なのに対し、隠れ層の設計はかなり創造的なものになり得ます。とりわけ、隠れ層の設計の過程をいくつかの単純で大雑把な方法で行うのは不可能です。そのかわり、ニューラルネットワークの研究者らは、多くの隠れ層の設計ヒューリスティクスを開発してきました。そしてそれらは人々を解放しました。例として、これらのヒューリスティクスは学習時間と隠れ層の数とのトレードオフに折り合いをつけることができます。私たちも後に、この本の中でそのいくつかの設計に触れることになるでしょう。
+</p><p>
+<!-- Up to now, we've been discussing neural networks where the output from
 one layer is used as input to the next layer.  Such networks are
 called <em>feedforward</em>
 neural networks.  This means there are no loops in the network -
 information is always fed forward, never fed back.  If we did have
 loops, we'd end up with situations where the input to the $\sigma$
 function depended on the output.  That'd be hard to make sense of, and
-so we don't allow such loops.</p><p>However, there are other models of artificial neural networks in which
+so we don't allow such loops. -->
+これから、ある層の出力が次の層の入力になるようなニューラルネットワークについて考察してみましょう。このようなネットワークは<em>フィードフォワードニューラルネットワーク(feedforward neural networks)</em>と呼ばれます。これはネットワーク内にループがないということを意味しています。情報は常に前へ伝わり、後ろへは戻りません。もしループするならば、σ関数の入力はその出力に依存した状態になってしまうでしょう。そうなってはわけがわかりません。そのために私たちはそのようなループを許さないのです。
+</p><p>
+<!-- However, there are other models of artificial neural networks in which
 feedback loops are possible.  These models are called
 <a href="http://en.wikipedia.org/wiki/Recurrent_neural_network">recurrent
   neural networks</a>. The idea in these models is to have neurons which
@@ -1150,7 +1160,10 @@ That firing can stimulate other neurons, which may fire a little while
 later, also for a limited duration.  That causes still more neurons to
 fire, and so over time we get a cascade of neurons firing.  Loops
 don't cause problems in such a model, since a neuron's output only
-affects its input at some later time, not instantaneously.</p><p></p><p>Recurrent neural nets have been less influential than feedforward
+affects its input at some later time, not instantaneously. -->
+しかしながら、フィードバックループを用いることが可能な、人工ニューラルネットワークモデルも存在します。それらのモデルは<em>再帰型ニューラルネットワーク(<a href="http://en.wikipedia.org/wiki/Recurrent_neural_network">recurrent neural networks</a>)</em>と呼ばれます。これらのモデルの着想は、静止するまでの限られた時間に発火するようなニューロンをもったモデルというものです。その発火が他のニューロンを刺激し、そのニューロンもまた限られた時間の中で少し遅れて発火します。そうやってさらなる発火を引き起こし、私たちは発火の連なりを得ることができます。これらのモデルにおいてループは問題にはなりませんが、その出力はいくぶんか遅れてその入力に影響されます。
+</p><p></p><p>
+<!-- Recurrent neural nets have been less influential than feedforward
 networks, in part because the learning algorithms for recurrent nets
 are (at least to date) less powerful.  But recurrent networks are
 still extremely interesting.  They're much closer in spirit to how our
@@ -1158,7 +1171,10 @@ brains work than feedforward networks.  And it's possible that
 recurrent networks can solve important problems which can only be
 solved with great difficulty by feedforward networks.  However, to
 limit our scope, in this book we're going to concentrate on the more
-widely-used feedforward networks.</p><p><h3><a name="a_simple_network_to_classify_handwritten_digits"></a><a href="#a_simple_network_to_classify_handwritten_digits">A simple network to classify handwritten digits</a></h3></p><p>Having defined neural networks, let's return to handwriting
+widely-used feedforward networks. -->
+再帰型ニューラルネットワークはフィードフォワードニューラルネットワークに比べてあまり影響力がありませんでした。その理由の一つは、再帰型ネットワークの学習アルゴリズムが非力だったことです。それでも再帰型ネットワークは非常に興味深いと言えます。それらはフィードフォワードネットワークに比べ、私たちの脳の働き方に近いのです。そしてフィードフォワードネットワークでは困難な問題を、再帰型ネットワークでは解くことができるという可能性は十分にあります。しかしながらこの本では、より広く使われているフィードフォワードニューラルネットワークに焦点を当てたいと思います。
+</p>
+<p><h3><a name="a_simple_network_to_classify_handwritten_digits"></a><a href="#a_simple_network_to_classify_handwritten_digits">A simple network to classify handwritten digits</a></h3></p><p>Having defined neural networks, let's return to handwriting
 recognition.  We can split the problem of recognizing handwritten
 digits into two sub-problems.  First, we'd like a way of breaking an
 image containing many digits into a sequence of separate images, each
