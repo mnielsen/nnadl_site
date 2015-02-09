@@ -1290,7 +1290,7 @@ $0$.  It does this by weighing up evidence from the hidden layer of
 neurons.  What are those hidden neurons doing?  Well, just suppose for
 the sake of argument that the first neuron in the hidden layer detects
 whether or not an image like the following is present: -->
-なぜこうするのか理解するために、ニューラルネットワークが何をしているか、その原理から考えます。最初のケース、つまり$10$個の出力ニューロンを用いた場合を考察してください。最初の出力ニューロンに焦点を当ててみると、これはその数字が$0$かどうかを決めようとしていることがわかります。これは隠れ層からの情報を考量して行います。それらの隠れ層は何をしているのでしょうか。そうですね、議論のためにとりあえず、隠れ層の最初のニューロンに、下記のような画像が存在するかどうかを検出すると思ってください。
+なぜこうするのか理解するために、ニューラルネットワークが何をしているか、その原理から考えます。最初のケース、つまり$10$個の出力ニューロンを用いた場合を考察してください。最初の出力ニューロンに焦点を当ててみると、これはその数字が$0$かどうかを決めようとしていることがわかります。これは隠れ層からの情報を考量して行います。それらの隠れ層は何をしているのでしょうか。そうですね、議論のためにとりあえず、隠れ層の最初のニューロンが、下記のような画像が存在するかどうかを検出すると思ってください。
 </p>
 <p><center><img src="images/mnist_top_left_feature.png" width="130px"></center></p>
 <p>
@@ -1300,7 +1300,7 @@ way, let's suppose for the sake of argument that the second, third,
 and fourth neurons in the hidden layer detect whether or not the
 following images are present: -->
 
-その検出は、その画像と重なった入力ピクセルに重く重み付けし、他の入力には軽い重み付けをすることで、行うことができます。同様の方法で、二番目、三番目、四番目の隠れニューロンにおいても、下記のような画像が存在するかどうかを検出すると思ってください。
+その検出は、その画像と重なった入力ピクセルに重く重み付けし、他の入力には軽い重み付けをすることで、行うことができます。同様の方法で、二番目、三番目、四番目の隠れニューロンも、下記のような画像が存在するかどうかを検出すると思ってください。
 
 </p>
 <p><center><img src="images/mnist_other_features.png" width="424px"></center></p>
@@ -1332,7 +1332,7 @@ imagine that there's any good historical reason the component shapes
 of the digit will be closely related to (say) the most significant bit
 in the output. -->
 
-ニューラルネットワークがこの方法で機能するとすれば、なぜ$10$出力ニューロンの方が$4$よりも良いのかについての尤もな説明を得ることができます。もし$4$つの出力だとすると、最初の出力ニューロンは何がその数字の最も重要な部位なのか決めようとするでしょう。しかしその最も重要な部位を、上に示したような単純な形状に関連づける方法などありません。数字を構成する要素が出力の最も重要な部位に深く関係する、という歴史的な理由は想像しがたいでしょう。
+ニューラルネットワークがこの方法で機能するとすれば、なぜ$10$出力ニューロンの方が$4$よりも良いのかについての尤もな説明を得ることができます。もし$4$つの出力だとすると、最初の出力ニューロンは何がその数字の最も重要な部位なのか決めようとするでしょう。しかしその最も重要な部位を、上に示したような単純な形状に関連づける方法はありません。数字を構成する要素が出力の最も重要な部位に深く関係する、という歴史的な理由は想像しがたいでしょう。
 </p><p>
 <!-- Now, with all that said, this is all just a heuristic.  Nothing says
 that the three-layer neural network has to operate in the way I
