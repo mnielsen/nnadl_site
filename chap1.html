@@ -1161,7 +1161,7 @@ later, also for a limited duration.  That causes still more neurons to
 fire, and so over time we get a cascade of neurons firing.  Loops
 don't cause problems in such a model, since a neuron's output only
 affects its input at some later time, not instantaneously. -->
-しかしながら、フィードバックループを用いることが可能な、人工ニューラルネットワークモデルも存在します。それらのモデルは<em>再帰型ニューラルネットワーク(<a href="http://en.wikipedia.org/wiki/Recurrent_neural_network">recurrent neural networks</a>)</em>と呼ばれます。これらのモデルの着想は、静止するまでの限られた時間に発火するようなニューロンをもったモデルというものです。その発火が他のニューロンを刺激し、そのニューロンもまた限られた時間の中で少し遅れて発火します。そうやってさらなる発火を引き起こし、私たちは発火の連なりを得ることができます。これらのモデルにおいてループは問題にはなりませんが、その出力はいくぶんか遅れてその入力に影響されます。
+しかしながら、フィードバックループを用いることが可能な、人工ニューラルネットワークモデルも存在します。それらのモデルは<em>再帰型ニューラルネットワーク(<a href="http://en.wikipedia.org/wiki/Recurrent_neural_network">recurrent neural networks</a>)</em>と呼ばれます。これらのモデルの着想は、静止するまでの限られた時間に発火するようなニューロンをもったモデルというものです。その発火が他のニューロンを刺激し、そのニューロンもまた限られた時間の中で少し遅れて発火します。そうやってさらなる発火を引き起こし、私たちは発火の連なりを得ることができます。これらのモデルにおいてループは問題にはなりません、なぜならその出力は即時ではなく、いくぶんか遅れてその入力に影響されるからです。
 </p><p></p><p>
 <!-- Recurrent neural nets have been less influential than feedforward
 networks, in part because the learning algorithms for recurrent nets
