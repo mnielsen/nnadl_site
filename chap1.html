@@ -1161,7 +1161,7 @@ later, also for a limited duration.  That causes still more neurons to
 fire, and so over time we get a cascade of neurons firing.  Loops
 don't cause problems in such a model, since a neuron's output only
 affects its input at some later time, not instantaneously. -->
-しかしながら、フィードバックループを用いることが可能な、人工ニューラルネットワークモデルも存在します。それらのモデルは<em>再帰型ニューラルネットワーク(<a href="http://en.wikipedia.org/wiki/Recurrent_neural_network">recurrent neural networks</a>)</em>と呼ばれます。これらのモデルの着想は、静止するまでの限られた時間に発火するようなニューロンをもったモデルというものです。その発火が他のニューロンを刺激し、そのニューロンもまた限られた時間の中で少し遅れて発火します。そうやってさらなる発火を引き起こし、私たちは発火の連なりを得ることができます。これらのモデルにおいてループは問題にはなりませんが、その出力はいくぶんか遅れてその入力に影響されます。
+しかしながら、フィードバックループを用いることが可能な、人工ニューラルネットワークモデルも存在します。それらのモデルは<em>再帰型ニューラルネットワーク(<a href="http://en.wikipedia.org/wiki/Recurrent_neural_network">recurrent neural networks</a>)</em>と呼ばれます。これらのモデルの着想は、静止するまでの限られた時間に発火するようなニューロンをもったモデルというものです。その発火が他のニューロンを刺激し、そのニューロンもまた限られた時間の中で少し遅れて発火します。そうやってさらなる発火を引き起こし、私たちは発火の連なりを得ることができます。これらのモデルにおいてループは問題にはなりません、なぜならその出力は即時ではなく、いくぶんか遅れてその入力に影響されるからです。
 </p><p></p><p>
 <!-- Recurrent neural nets have been less influential than feedforward
 networks, in part because the learning algorithms for recurrent nets
@@ -1174,16 +1174,38 @@ limit our scope, in this book we're going to concentrate on the more
 widely-used feedforward networks. -->
 再帰型ニューラルネットワークはフィードフォワードニューラルネットワークに比べてあまり影響力がありませんでした。その理由の一つは、再帰型ネットワークの学習アルゴリズムが非力だったことです。それでも再帰型ネットワークは非常に興味深いと言えます。それらはフィードフォワードネットワークに比べ、私たちの脳の働き方に近いのです。そしてフィードフォワードネットワークでは困難な問題を、再帰型ネットワークでは解くことができるという可能性は十分にあります。しかしながらこの本では、より広く使われているフィードフォワードニューラルネットワークに焦点を当てたいと思います。
 </p>
-<p><h3><a name="a_simple_network_to_classify_handwritten_digits"></a><a href="#a_simple_network_to_classify_handwritten_digits">A simple network to classify handwritten digits</a></h3></p><p>Having defined neural networks, let's return to handwriting
+<p><h3><a name="a_simple_network_to_classify_handwritten_digits"></a><a href="#a_simple_network_to_classify_handwritten_digits">
+<!-- A simple network to classify handwritten digits -->
+手書き数字を分類する単純なネットワーク
+</a></h3></p>
+<p>
+
+<!-- Having defined neural networks, let's return to handwriting
 recognition.  We can split the problem of recognizing handwritten
 digits into two sub-problems.  First, we'd like a way of breaking an
 image containing many digits into a sequence of separate images, each
-containing a single digit.  For example, we'd like to break the image</p><p><center><img src="images/digits.png" width="300px"></center></p><p>into six separate images,</p><p><center><img src="images/digits_separate.png" width="440px"></center> </p><p>We humans solve this <em>segmentation
+containing a single digit.  For example, we'd like to break the image -->
+ニューラルネットワークの定義を終えて、いよいよ手書き数字の認識に戻ります。私たちは手書き数字認識の問題を2つの下位問題にわけることができます。1つは、複数桁の数字からなる画像を、それぞれの数字からなる分かれた画像の列にすることです。例えばこの画像を、
+</p><p><center><img src="images/digits.png" width="300px"></center></p><p>
+<!-- into six separate images, -->
+6つの分かれた画像にします。
+</p>
+<p><center><img src="images/digits_separate.png" width="440px"></center> </p><p>
+<!-- We humans solve this <em>segmentation
   problem</em> with ease, but it's challenging
 for a computer program to correctly break up the image.  Once the
 image has been segmented, the program then needs to classify each
 individual digit.  So, for instance, we'd like our program to
-recognize that the first digit above,</p><p><center><img src="images/mnist_first_digit.png" width="64px"></center></p><p>is a 5.</p><p>We'll focus on writing a program to solve the second problem, that is,
+recognize that the first digit above, -->
+私たち人間はこの<em>分割問題(segmentation problem)</em>を容易に解くことができますが、コンピュータプログラムが正確に画像を分解することは容易ではありません。一度画像を分けてしまえば、あとは個々の数字を分類するだけです。つまり上記の数字で、最初にプログラムに認識させるのは、
+</p>
+<p><center><img src="images/mnist_first_digit.png" width="64px"></center></p>
+<p>
+<!-- is a 5. -->
+5です。
+</p>
+<p>
+<!-- We'll focus on writing a program to solve the second problem, that is,
 classifying individual digits.  We do this because it turns out that
 the segmentation problem is not so difficult to solve, once you have a
 good way of classifying individual digits.  There are many approaches
@@ -1199,10 +1221,19 @@ This idea and other variations can be used to solve the segmentation
 problem quite well.  So instead of worrying about segmentation we'll
 concentrate on developing a neural network which can solve the more
 interesting and difficult problem, namely, recognizing individual
-handwritten digits.</p><p>To recognize individual digits we will use a three-layer neural
-network:</p><p><center>
+handwritten digits. -->
+これから2つ目の問題、つまり各数字の分類問題を解くプログラムに焦点を当てます。なぜなら、この問題を解く良い方法がわかれば、1つ目の問題、つまり分割問題はそれほど難しくなくなるからです。分割問題へのアプローチは多数あります。そのひとつは、多くの異なる方法で画像を分割して、その画像の分類の結果から、それぞれの分割法を評価する方法です。すべての分割された画像で分類がうまくいけば、その分割法は高いスコアを得ます。逆にうまくいかなければそれはスコアの低い分割法となります。これは、分類でなにか問題が起これば、おそらくそれは誤った分割法を用いているからだ、というアイディアです。このアイディアやその他の派生した方法は、分割問題をうまく解くことができます。要するに私たちは、分割法に悩む代わりに、もっと面白くて難しい問題、つまり個々の手書き数字の認識問題を解くニューラルネットワークを開発していきます。
+</p>
+<p>
+<!-- To recognize individual digits we will use a three-layer neural
+network: -->
+それぞれの数字を認識するために、3層のニューラルネットワークを用います。
+</p>
+<p><center>
 <img src="images/tikz12.png"/>
-</center></p><p>The input layer of the network contains neurons encoding the values of
+</center></p>
+<p>
+<!-- The input layer of the network contains neurons encoding the values of
 the input pixels.  As discussed in the next section, our training data
 for the network will consist of many $28$ by $28$ pixel images of
 scanned handwritten digts, and so the input layer contains $784 = 28
@@ -1210,10 +1241,18 @@ scanned handwritten digts, and so the input layer contains $784 = 28
 input neurons in the diagram above.  The input pixels are greyscale,
 with a value of $0.0$ representing white, a value of $1.0$
 representing black, and in between values representing gradually
-darkening shades of grey.</p><p>The second layer of the network is a hidden layer.  We denote the
+darkening shades of grey. -->
+ネットワークの入力層はピクセルの値をエンコードするニューロンを持っています。次の章で論じますが、私たちが使う訓練用データは、手書き数字の$28 \times 28$ピクセルの画像です。つまり入力層は$28 \times 28 = 784$ニューロンからなるということです。簡単のため、上記の図ではニューロンの数を省略して書いています。入力ピクセルはグレースケールで、$0.0$は白を、$1.0$は黒を表し、その間の値はそれに応じた濃さのグレーを表します。
+</p>
+<p>
+<!-- The second layer of the network is a hidden layer.  We denote the
 number of neurons in this hidden layer by $n$, and we'll experiment
 with different values for $n$.  The example shown illustrates a small
-hidden layer, containing just $n = 15$ neurons.</p><p>The output layer of the network contains 10 neurons.  If the first
+hidden layer, containing just $n = 15$ neurons. -->
+二番目の層は隠れ層です。この隠れ層のニューロンの数を$n$とし、$n$の値を変えて実験します。この例では$n = 15$ニューロンだけもつ小規模な隠れ層を表しています。
+</p>
+<p>
+<!-- The output layer of the network contains 10 neurons.  If the first
 neuron fires, i.e., has an output $\approx 1$, then that will indicate
 that the network thinks the digit is a $0$.  If the second neuron
 fires then that will indicate that the network thinks the digit is a
@@ -1221,7 +1260,11 @@ $1$.  And so on.  A little more precisely, we number the output
 neurons from $0$ through $9$, and figure out which neuron has the
 highest activation value.  If that neuron is, say, neuron number $6$,
 then our network will guess that the input digit was a $6$.  And so on
-for the other output neurons.</p><p>You might wonder why we use $10$ output neurons.  After all, the goal
+for the other output neurons. -->
+出力層は10ニューロンから構成されています。もし最初のニューロンが発火(出力 $\approx 1$)したら、それは、ネットワークがその数字を$0$だと思っていることを示しています。もし二番目のニューロンなら$1$、その他も同様です。もう少し正確に言えば、私たちは$0$から$9$の出力ニューロンをもっていて、どのニューロンが最も高く活性化するかを計算します。例えばそのニューロンが$6$だとすると、ネットワークは入力の数字が$6$であると推測していることになります。他の出力ニューロンについても同様です。
+</p>
+<p>
+<!-- You might wonder why we use $10$ output neurons.  After all, the goal
 of the network is to tell us which digit ($0, 1, 2, \ldots, 9$)
 corresponds to the input image.  A seemingly natural way of doing that
 is to use just $4$ output neurons, treating each neuron as taking on a
@@ -1235,26 +1278,51 @@ problem, the network with $10$ output neurons learns to recognize
 digits better than the network with $4$ output neurons.  But that
 leaves us wondering <em>why</em> using $10$ output neurons works better.
 Is there some heuristic that would tell us in advance that we should
-use the $10$-output encoding instead of the $4$-output encoding?</p><p>To understand why we do this, it helps to think about what the neural
+use the $10$-output encoding instead of the $4$-output encoding? -->
+あなたは、なぜ私たちが10個の出力ニューロンを用いるか疑問に思ったでしょう。結局のところ、このネットワークのゴールは、入力の画像に対してそれがどの数字($0, 1, 2, \ldots, 9$)なのか示すことなのです。これを行うのに自然だと思われる方法は、4つの出力ニューロンを用いて、それぞれのニューロンで出力が0または1に近いかどうかに応じてバイナリの値をとることです。答えをエンコードするには4つのニューロンで十分です。なぜなら$2^4 = 16$は入力の数字の$10$より多くの値をとることができるからです。では<em>なぜ</em>私たちはその代わりに10個のニューロンを用いているのでしょうか。非効率的ではないのでしょうか。その究極の正当化は経験に基づくものです。私たちはそのどちらの方法も試し、この特定の問題においては、10個の出力ニューロンをもったネットワークの方が4つのそれよりうまく学習するということがわかったのです。しかし同時に、なぜ10個の出力ニューロンを用いた方がうまくいくのかという疑問が残りました。なにか、私たちが4-出力エンコーディングの代わりに10-出力エンコーディングを用いるべきだというヒューリスティクスがあるのでしょうか。
+</p>
+<p>
+<!-- To understand why we do this, it helps to think about what the neural
 network is doing from first principles.  Consider first the case where
 we use $10$ output neurons.  Let's concentrate on the first output
 neuron, the one that's trying to decide whether or not the digit is a
 $0$.  It does this by weighing up evidence from the hidden layer of
 neurons.  What are those hidden neurons doing?  Well, just suppose for
 the sake of argument that the first neuron in the hidden layer detects
-whether or not an image like the following is present:</p><p><center><img src="images/mnist_top_left_feature.png" width="130px"></center></p><p>It can do this by heavily weighting input pixels which overlap with
+whether or not an image like the following is present: -->
+なぜこうするのか理解するために、ニューラルネットワークが何をしているか、その原理から考えます。最初のケース、つまり$10$個の出力ニューロンを用いた場合を考察してください。最初の出力ニューロンに焦点を当ててみると、これはその数字が$0$かどうかを決めようとしていることがわかります。これは隠れ層からの情報を考量して行います。それらの隠れ層は何をしているのでしょうか。そうですね、議論のためにとりあえず、隠れ層の最初のニューロンが、下記のような画像が存在するかどうかを検出すると思ってください。
+</p>
+<p><center><img src="images/mnist_top_left_feature.png" width="130px"></center></p>
+<p>
+<!-- It can do this by heavily weighting input pixels which overlap with
 the image, and only lightly weighting the other inputs.  In a similar
 way, let's suppose for the sake of argument that the second, third,
 and fourth neurons in the hidden layer detect whether or not the
-following images are present:</p><p><center><img src="images/mnist_other_features.png" width="424px"></center></p><p>As you've may have guessed, these four images together make up the $0$
-image that we saw in the line of digits shown <a
-  href="#complete_zero">earlier</a>:</p><p><center><img src="images/mnist_complete_zero.png" width="130px"></center></p><p>So if all four of these hidden neurons are firing then we can conclude
+following images are present: -->
+
+その検出は、その画像と重なった入力ピクセルに重く重み付けし、他の入力には軽い重み付けをすることで、行うことができます。同様の方法で、二番目、三番目、四番目の隠れニューロンも、下記のような画像が存在するかどうかを検出すると思ってください。
+
+</p>
+<p><center><img src="images/mnist_other_features.png" width="424px"></center></p>
+<p>
+<!-- As you've may have guessed, these four images together make up the $0$
+image that we saw in the line of digits shown -->
+おそらくもうあなたが気付いているように、これらの4つの画像は合わせると、私たちが<a href="#complete_zero">前に</a>見た、数字の列の$0$の画像になります。
+<!-- <a href="#complete_zero">earlier</a>: -->
+</p><p><center><img src="images/mnist_complete_zero.png" width="130px"></center></p>
+<p>
+<!-- So if all four of these hidden neurons are firing then we can conclude
 that the digit is a $0$.  Of course, that's not the <em>only</em> sort
 of evidence we can use to conclude that the image was a $0$ - we
 could legitimately get a $0$ in many other ways (say, through
 translations of the above images, or slight distortions).  But it
 seems safe to say that at least in this case we'd conclude that the
-input was a $0$.</p><p></p><p></p><p></p><p>Supposing the neural network functions in this way, we can give a
+input was a $0$. -->
+
+つまり、もしその4つ全ての隠れニューロンが発火したら、私たちはその数字が$0$であると結論づけることができます。もちろんそれ<em>だけ</em>が、その画像が$0$であると結論づく証拠ではありません。私たちは、その他の多くの方法で(例えば上記の画像の変換や僅かな歪みによって)合理的に$0$を得ることができます。しかし少なくともこの場合では入力は$0$だと結論づけて差し支えないでしょう。
+</p><p></p><p></p><p></p>
+<p>
+<!-- Supposing the neural network functions in this way, we can give a
 plausible explanation for why it's better to have $10$ outputs from
 the network, rather than $4$.  If we had $4$ outputs, then the first
 output neuron would be trying to decide what the most significant bit
@@ -1262,21 +1330,35 @@ of the digit was.  And there's no easy way to relate that most
 significant bit to simple shapes like those shown above.  It's hard to
 imagine that there's any good historical reason the component shapes
 of the digit will be closely related to (say) the most significant bit
-in the output.</p><p>Now, with all that said, this is all just a heuristic.  Nothing says
+in the output. -->
+
+ニューラルネットワークがこの方法で機能するとすれば、なぜ$10$出力ニューロンの方が$4$よりも良いのかについての尤もな説明を得ることができます。もし$4$つの出力だとすると、最初の出力ニューロンは何がその数字の最も重要な部位なのか決めようとするでしょう。しかしその最も重要な部位を、上に示したような単純な形状に関連づける方法はありません。数字を構成する要素が出力の最も重要な部位に深く関係する、という歴史的な理由は想像しがたいでしょう。
+</p><p>
+<!-- Now, with all that said, this is all just a heuristic.  Nothing says
 that the three-layer neural network has to operate in the way I
 described, with the hidden neurons detecting simple component shapes.
 Maybe a clever learning algorithm will find some assignment of weights
 that lets us use only $4$ output neurons.  But as a heuristic the way
 of thinking I've described works pretty well, and can save you a lot
-of time in designing good neural network architectures.</p><p><h4><a name="exercise_513527"></a><a href="#exercise_513527">Exercise</a></h4><ul>
-<li> There is a way of determining the bitwise representation of a
-  digit by adding an extra layer to the three-layer network above.
-  The extra layer converts the output from the previous layer into a
-  binary representation, as illustrated in the figure below.  Find a
-  set of weights and biases for the new output layer.  Assume that the
-  first $3$ layers of neurons are such that the correct output in the
-  third layer (i.e., the old output layer) has activation at least
-  $0.99$, and incorrect outputs have activation less than $0.01$.
+of time in designing good neural network architectures. -->
+
+今言及したこれらのことは、すべてただのヒューリスティクスです。三層ニューラルネットワークは必ずしもこの方法、つまり私が説明した、隠れ層が単純な構成要素を検出するような方法で行う必要はありません。おそらく、巧妙な学習アルゴリズムが、$4$出力ニューロンを使うような重みの割当てを見つけるでしょう。しかし経験則的に、私が説明してきた考え方はとてもうまくいき、良いニューラルネットワークアーキテクチャを設計する上で、あなたの時間を節約することができます。
+</p><p><h4><a name="exercise_513527"></a><a href="#exercise_513527">
+<!-- Exercise -->
+エクササイズ
+</a></h4><ul>
+<li> 
+<!-- There is a way of determining the bitwise representation of a
+digit by adding an extra layer to the three-layer network above.
+The extra layer converts the output from the previous layer into a
+binary representation, as illustrated in the figure below.  Find a
+set of weights and biases for the new output layer.  Assume that the
+first $3$ layers of neurons are such that the correct output in the
+third layer (i.e., the old output layer) has activation at least
+$0.99$, and incorrect outputs have activation less than $0.01$. -->
+
+3層ネットワークの上にもう一つ層を追加することで、数字のビットワイズ表現を定める方法があります。追加した層は、下記の図のように、前の層からの出力を二進数の表現に変換します。新しい出力層のための重みとバイアスを見つけてください。ただし、最初の3層は、3層目(すなわち古い出力層)の正しい出力が少なくとも$0.99$で活性化し、誤った出力が$0.01$以下で活性化するようなものと仮定してください。
+</li>
 </ul></p><p><center>
 <img src="images/tikz13.png"/>
 </center></p><p></p><p></p><p></p><p><h3><a name="learning_with_gradient_descent"></a><a href="#learning_with_gradient_descent">Learning with gradient descent</a></h3></p><p></p><p>Now that we have a design for our neural network, how can it learn to
