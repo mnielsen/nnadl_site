@@ -1242,13 +1242,23 @@ and (2) the value of $b$ determines the scale of the
 <p><canvas id="tower_construction" width="300" height="270"></canvas>
 <span id="tower_construction_3d" style="position: absolute; left:
 350px;"></span></p>
-<p>With our initial parameters, the output looks like a flattened version
+<p>
+<!--With our initial parameters, the output looks like a flattened version
 of the earlier diagram, with its tower and plateau.  To get the
 desired behaviour, we increase the parameter $h$ until it becomes
 large.  That gives the <tt>if-then-else</tt> thresholding
 behaviour.  Second, to get the threshold right, we'll choose $b
-\approx -3h/2$.  Try it, and see how it works!</p>
-<p>Here's what it looks like, when we use $h = 10$:</p>
+\approx -3h/2$.  Try it, and see how it works!-->
+初期パラメータでは、出力は前の図での塔と台地を平らにしたような形をしています。
+望みの振るまいをさせるには、パラメータ$h$の値が大きくなるまで増やしてください。
+そうすると、<tt>if-then-else</tt>の形の閾値で切る振るまいをさせる事ができます。
+次に、閾値を正しくするために$b\approx -3h/2$としてください。
+実際にやってみて、どのようになるかを確かめてください！
+</p>
+<p>
+<!--Here's what it looks like, when we use $h = 10$:-->
+下の動画は$h=10$とした場合の様子です：
+</p>
 <p><div>
 	<div id="c" class="videoOverlay" 
 	     style="width: 556px; height: 284px; opacity: 0.8" 
@@ -1263,60 +1273,117 @@ behaviour.  Second, to get the threshold right, we'll choose $b
 	    <source type="video/webm"
 		    src="movies/tower_construction.webm">
 </video></div></p>
-<p>Even for this relatively modest value of $h$, we get a pretty good
+<p>
+<!--Even for this relatively modest value of $h$, we get a pretty good
 tower function.  And, of course, we can make it as good as we want by
-increasing $h$ still further, and keeping the bias as $b = -3h/2$.</p>
-<p>Let's try gluing two such networks together, in order to compute two
+increasing $h$ still further, and keeping the bias as $b = -3h/2$.-->
+このような比較的小さな値の$h$でも、かなり良い塔上の関数を作る事ができます。
+もちろん$h$をさらに大きくし、$b$を$b=-3h/2$に保つ事で、この関数を好きなだけ良くすることができます。
+</p>
+<p>
+<!--Let's try gluing two such networks together, in order to compute two
 different tower functions.  To make the respective roles of the two
 sub-networks clear I've put them in separate boxes, below: each box
 computes a tower function, using the technique described above.  The
 graph on the right shows the weighted output from the <em>second</em>
-hidden layer, that is, it's a weighted combination of tower functions.</p>
+hidden layer, that is, it's a weighted combination of tower functions.-->
+今度は、2つの塔状の関数を表現するために、2つのネットワークをくっつけてみましょう。
+それぞれの部分ネットワークの役割を明確にするために、下図ではそれぞれを別の箱に入れました：
+それぞれの箱はこれまでに用いたテクニックを用いて塔状の関数を計算しています。
+右側のグラフは<em>2つ目の</em>隠れ層からの重み付き出力、すなわち、2つの塔状の関数の重み付きの重ねあわせを表しています。
+</p>
 <p><canvas id="the_two_towers" width="320" height="580"></canvas> <span
 id="the_two_towers_3d" style="position: absolute; left: 370px;
 margin-top: 180px;"></span></p>
-<p>In particular, you can see that by modifying the weights in the final
-layer you can change the height of the output towers.</p>
-<p>The same idea can be used to compute as many towers as we like.  We
+<p>
+<!--In particular, you can see that by modifying the weights in the final
+layer you can change the height of the output towers.-->
+特に、最終層の重みを返る事で、出力される塔の高さを変えることができます。
+</p>
+<p>
+<!--The same idea can be used to compute as many towers as we like.  We
 can also make them as thin as we like, and whatever height we like.
 As a result, we can ensure that the weighted output from the second
-hidden layer approximates any desired function of two variables:</p>
+hidden layer approximates any desired function of two variables:-->
+同じアイデアで好きな数の塔を表現する事ができます。
+さらに、それぞれの塔は好きなだけ細くする事も、好きな高さにする事もできます。
+その結果、2つ目の隠れ層の出力はどんな2変数関数も近似できます。
+</p>
 <p><center> <span id="many_towers_2" style="position: absolute;"></span>
 <div style="height: 230px"></div> </center></p>
-<p>In particular, by making the weighted output from the second hidden
+<p>
+<!--In particular, by making the weighted output from the second hidden
 layer a good approximation to $\sigma^{-1} \circ f$, we ensure the
 output from our network will be a good approximation to any desired
-function, $f$.</p>
-<p>What about functions of more than two variables?</p>
-<p>Let's try three variables $x_1, x_2, x_3$.  The following network can
-be used to compute a tower function in four dimensions:</p>
+function, $f$.-->
+特に、2つ目の隠れ層の重み付き和を$\sigma^{-1} \circ f$の良い近似にする事で、
+ニューラルネットワーク全体の出力を好きな関数$f$の良い近似とする事ができます。
+</p>
+<p>
+<!--What about functions of more than two variables?-->
+2変数関数以上の関数ではどうでしょうか？
+</p>
+<p>
+<!--Let's try three variables $x_1, x_2, x_3$.  The following network can
+be used to compute a tower function in four dimensions:-->
+3つの変数$x_1, x_2, x_3$を考えてみましょう。
+次のニューラルネットワークは4次元空間の中の塔状の関数を表現する事ができます。
+</p>
 <p><canvas id="tower_n_dim" width="300" height="410"></canvas></p>
-<p>Here, the $x_1, x_2, x_3$ denote inputs to the network.  The $s_1,
+<p>
+<!--Here, the $x_1, x_2, x_3$ denote inputs to the network.  The $s_1,
 t_1$ and so on are step points for neurons - that is, all the
 weights in the first layer are large, and the biases are set to give
 the step points $s_1, t_1, s_2, \ldots$.  The weights in the second
 layer alternate $+h, -h$, where $h$ is some very large number.  And
-the output bias is $-5h/2$.</p>
-<p>This network computes a function which is $1$ provided three
+the output bias is $-5h/2$.-->
+ここで、$x_1, x_2, x_3$はネットワークの入力を表します。
+$s_1, t_1$等でニューロンの段差の点を表します。
+すなわち、最初の層の全ての重みを大きくし、バイアスを段差点が$s_1, t_1, s_2, \ldots$となるようにセットします。
+2つ目の層の重みは交互に$+h$と$-h$とします。ここで、$h$は適当な大きな値です。
+さらに、出力のバイアスを$-5h/2$とします。
+</p>
+<p>
+<!--This network computes a function which is $1$ provided three
 conditions are met: $x_1$ is between $s_1$ and $t_1$; $x_2$ is between
 $s_2$ and $t_2$; and $x_3$ is between $s_3$ and $t_3$.  The network is
 $0$ everywhere else.  That is, it's a kind of tower which is $1$ in a
-little region of input space, and $0$ everywhere else.</p>
-<p>By glueing together many such networks we can get as many towers as we
+little region of input space, and $0$ everywhere else.-->
+3つの条件：「$x_1$が$s_1$と$t_1$の間にある」「$x_2$が$s_2$と$t_2$の間にある」「$x_3$が$s_3$と$t_3$の間にある」が満たされると、
+このネットワークは$1$を出力します。それ以外の場合には$0$を出力します。
+すなわち、この関数は入力空間の微小な領域では$1$を出力し、それ以外では$0$を出力する一種の塔状の関数を表しています。
+</p>
+<p>
+<!--By glueing together many such networks we can get as many towers as we
 want, and so approximate an arbitrary function of three variables.
 Exactly the same idea works in $m$ dimensions.  The only change needed
 is to make the output bias $(-m+1/2)h$, in order to get the right kind
-of sandwiching behavior to level the plateau.</p>
-<p>Okay, so we now know how to use neural networks to approximate a
+of sandwiching behavior to level the plateau.-->
+このようなネットワークをたくさんつなげる事で、好きな数の塔を作って3変数の好きな関数を近似できます。
+同様のアイデアを$m$次元の場合にも当てはめられます。
+唯一変更しなければならない点は、台地の高さにあわせて閾値を挟むために出力のバイアスを$(-m+1/2)h$とする点のみです。
+</p>
+<p>
+<!--Okay, so we now know how to use neural networks to approximate a
 real-valued function of many variables.  What about vector-valued
 functions $f(x_1, \ldots, x_m) \in R^n$?  Of course, such a function
 can be regarded as just $n$ separate real-valued functions, $f^1(x_1,
 \ldots, x_m), f^2(x_1, \ldots, x_m)$, and so on.  So we create a
 network approximating $f^1$, another network for $f^2$, and so on.
 And then we simply glue all the networks together.  So that's also
-easy to cope with.</p>
-<p><h4><a name="problem_863961"></a><a href="#problem_863961">Problem</a></h4><ul></p>
-<p><li> We've seen how to use networks with two hidden layers to
+easy to cope with.-->
+これで、ニューラルネットワークを用いて実数値の多変数関数を近似する方法がわかりました。
+それでは、ベクトル値関数$f(x_1, \ldots, x_m) \in R^n$の場合はどうでしょうか？
+もちろん、このような関数は$n$個の独立した実数値関数$f^1(x_1,\ldots, x_m), f^2(x_1, \ldots, x_m)$とみなす事ができます。
+従って、$f^1$を近似するニューラルネットワーク、$f^2$を近似する別のニューラルネットワーク、・・・を構成できます。
+それらを単純につなぎ合わせれば、簡単にベクトル値関数の場合にも対応することができます。
+</p>
+<p><h4><a name="problem_863961"></a><a href="#problem_863961">
+<!--Problem-->
+問題
+</a></h4><ul></p>
+<p><li> 
+<!--We've seen how to use networks with two hidden layers to
   approximate an arbitrary function.  Can you find a proof showing
   that it's possible with just a single hidden layer?  As a hint, try
   working in the case of just two input variables, and showing that:
@@ -1327,134 +1394,255 @@ easy to cope with.</p>
   using these circular towers, it's possible to approximate an
   arbitrary function.  To do part (c) it may help to use ideas from a
   <a href="#fixing_up_the_step_functions">bit later in this
-    chapter</a>.</p>
+    chapter</a>.-->
+ここまで2つの隠れ層を用いて任意の関数を近似してきました。
+それでは、1つの隠れ層だけを用いても近似が可能である事の証明はわかりますでしょうか？
+ヒントとして、入力変数が2つしかない場合で次の事を示してください：
+(a)階段上の関数は$x$や$y$方向だけではなく任意の方向にも構成できる事
+(b)(a)での構成した関数を足し合わせる事で、長方形ではなく円周の形をした塔状の関数を近似できる事
+(c)この塔状の関数を用いて任意の関数を近似できる事。
+(c)を解く際に、<a href="#fixing_up_the_step_functions">この章で少し後</a>に紹介するアイデアが役立つかもしれません。
+</p>
 <p></ul></p>
 <p><h3><a name="extension_beyond_sigmoid_neurons"></a><a href="#extension_beyond_sigmoid_neurons">Extension beyond sigmoid neurons</a></h3></p>
-<p>We've proved that networks made up of sigmoid neurons can compute any
+<p>
+<!--We've proved that networks made up of sigmoid neurons can compute any
 function.  Recall that in a sigmoid neuron the inputs $x_1, x_2,
 \ldots$ result in the output $\sigma(\sum_j w_j x_j + b)$, where $w_j$
 are the weights, $b$ is the bias, and $\sigma$ is the sigmoid
-function:</p>
+function:-->
+私達はこれまでシグモイドニューロンでできたニューラルネットワークが任意の関数を計算できることを証明してきました。
+シグモイドニューロンでは、入力$x_1, x_2, \ldots$から$\sigma(\sum_j w_j x_j + b)$を出力することを思い出してください。
+ここで、$w_j$は重みで、$b$はバイアス、$\sigma$はシグモイド関数です。
+</p>
 <p><center> <canvas id="sigmoid" width="500" height="200"></canvas>
 </center></p>
-<p>What if we consider a different type of neuron, one using some other
-activation function, $s(z)$:</p>
+<p>
+<!--What if we consider a different type of neuron, one using some other
+activation function, $s(z)$:-->
+それでは、これとは別の活性化関数$s(z)$を用いる、他の種類のニューロンを考えたらどうなるでしょうか：
+</p>
 <p><center> <canvas id="sigmoid_like" width="500" height="200"></canvas>
 </center></p>
-<p>That is, we'll assume that if our neurons has inputs $x_1, x_2,
+<p>
+<!--That is, we'll assume that if our neurons has inputs $x_1, x_2,
 \ldots$, weights $w_1, w_2, \ldots$ and bias $b$, then the output is
-$s(\sum_j w_j x_j + b)$.</p>
-<p>We can use this activation function to get a step function, just as we
+$s(\sum_j w_j x_j + b)$.-->
+つまり、ニューロンが入力$x_1, x_2, \ldots$, 重み$w_1, w_2, \ldots$、バイアス$b$から、$s(\sum_j w_j x_j + b)$を出力すると仮定します。
+</p>
+<p>
+<!--We can use this activation function to get a step function, just as we
 did with the sigmoid.  Try ramping up the weight in the following, say
-to $w = 100$:</p>
+to $w = 100$:-->
+</p>
+シグモイドの時に行ったのと同様にして、この活性化関数を用いて階段関数を作ることが出来ます。
+次の図の重みを例えば、$w = 100$まで増加させてみてください：
 <p><canvas id="ramping" width="600" height="200"></canvas></p>
-<p>Just as with the sigmoid, this causes the activation function to
+<p>
+<!--Just as with the sigmoid, this causes the activation function to
 contract, and ultimately it becomes a very good approximation to a
 step function.  Try changing the bias, and you'll see that we can set
 the position of the step to be wherever we choose.  And so we can use
-all the same tricks as before to compute any desired function.</p>
-<p>What properties does $s(z)$ need to satisfy in order for this to work?
+all the same tricks as before to compute any desired function.-->
+シグモイド関数の時と同様に、活性化関数は縮んでいき、最終的には階段関数の良い近似となります。
+バイアス項を変化させてみてください。すると、段差の位置を自分が選んだ好きな位置に置くことができることがわかるはずです。
+これにより、私達は任意の好きな関数を計算するために、これまでと同様のトリックを使うことができるのです。
+</p>
+<p>
+<!--What properties does $s(z)$ need to satisfy in order for this to work?
 We do need to assume that $s(z)$ is well-defined as $z \rightarrow
 -\infty$ and $z \rightarrow \infty$.  These two limits are the two
 values taken on by our step function.  We also need to assume that
 these limits are different from one another.  If they weren't, there'd
 be no step, simply a flat graph!  But provided the activation function
 $s(z)$ satisfies these properties, neurons based on such an activation
-function are universal for computation.</p>
-<p><h4><a name="problems_963556"></a><a href="#problems_963556">Problems</a></h4><ul>
-<li> Earlier in the book we met another type of neuron known as a <a
+function are universal for computation.-->
+</p>
+<p><h4><a name="problems_963556"></a><a href="#problems_963556">
+<!--Problems-->
+問題
+</a></h4><ul>
+<li>
+<!--Earlier in the book we met another type of neuron known as a <a
   href="chap3.html#other_models_of_artificial_neuron">rectified linear
   unit</a>.  Explain why such neurons don't satisfy the conditions
   just given for universality.  Find a proof of universality showing
-  that rectified linear units are universal for computation.</p>
-<p><li> Suppose we consider linear neurons, i.e., neurons with the
+  that rectified linear units are universal for computation.-->
+この本の前の方で、<a href="chap3.html#other_models_of_artificial_neuron">Rectified Linear Unit</a>と呼ばれる、別の種類のニューロンを見ました。
+このニューロンが普遍性定理の条件を満たさない理由を説明してください。
+にも関わらず、Rectifier Linear Unitは計算の普遍性を持ちます。
+その事の証明をしてください。
+</p>
+<p><li>
+<!--Suppose we consider linear neurons, i.e., neurons with the
   activation function $s(z) = z$.  Explain why linear neurons don't
   satisfy the conditions just given for universality.  Show that such
-  neurons can't be used to do universal computation.
+  neurons can't be used to do universal computation.-->
+線形ニューロン、つまり、$s(z) = z$という活性化関数を持つニューロンを考えます。
+線形ニューロンは普遍性定理の条件を満たさない事を説明してください。
+また、このニューロンは計算の普遍性を持たないことを示してください。
 </ul></p>
-<p><h3><a name="fixing_up_the_step_functions"></a><a href="#fixing_up_the_step_functions">Fixing up the step functions</a></h3></p>
-<p>Up to now, we've been assuming that our neurons can produce step
+<p><h3><a name="fixing_up_the_step_functions"></a><a href="#fixing_up_the_step_functions">
+<!--Fixing up the step functions-->
+階段関数を修正する
+</a></h3></p>
+<p>
+<!--Up to now, we've been assuming that our neurons can produce step
 functions exactly.  That's a pretty good approximation, but it is only
 an approximation.  In fact, there will be a narrow window of failure,
 illustrated in the following graph, in which the function behaves very
-differently from a step function:</p>
+differently from a step function:-->
+これまで、我々が考えていたニューロンは階段関数を作ることを仮定してきました。
+この仮定はとてもよい近似です。しかしこれは近似でしかありません。
+実際、次のグラフで表示している非常に狭い「窓」では、関数が階段関数とは大きく異なる振る舞いをしています：
+</p>
 <p><canvas id="failure" width="220" height="200"></canvas></p>
-<p>In these windows of failure the explanation I've given for
-universality will fail.</p>
-<p>Now, it's not a terrible failure.  By making the weights input to the
+<p>
+<!--In these windows of failure the explanation I've given for
+universality will fail.-->
+これらの窓では、普遍性について私が説明してきたことは成り立っていません。
+</p>
+<p>
+<!--Now, it's not a terrible failure.  By making the weights input to the
 neurons big enough we can make these windows of failure as small as we
 like.  Certainly, we can make the window much narrower than I've shown
 above - narrower, indeed, than our eye could see.  So perhaps we
-might not worry too much about this problem.</p>
-<p>Nonetheless, it'd be nice to have some way of addressing the problem.</p>
-<p>In fact, the problem turns out to be easy to fix.  Let's look at the
+might not worry too much about this problem.-->
+しかし、これはそれほどひどいことではありません。
+ニューロンへの入力対する重みを十分大きくすることで、これらの窓を好きなだけ小さくすることが出来ます。確かに、この窓を前に示した幅よりも狭く、目で判別できるよりもずっと狭くすることができます。ですので、おそらく私達はこの問題に気にすることはなさそうです。
+</p>
+<p>
+<!--Nonetheless, it'd be nice to have some way of addressing the problem.-->
+ですが、この問題について何らかの対処をしておくのは悪いことではありません。
+</p>
+<p>
+<!--In fact, the problem turns out to be easy to fix.  Let's look at the
 fix for neural networks computing functions with just one input and
 one input.  The same ideas work also to address the problem when there
-are more inputs and outputs.</p>
-<p>In particular, suppose we want our network to compute some function,
+are more inputs and outputs.-->
+この問題は簡単に修正することが出来ます。
+入力も出力も1つしかいないニューラルネットワークについてこの修正をみていきましょう。
+同じアイデアはもっと多くの入出力がある場合も同じように扱うことが出来ます。
+</p>
+<p>
+<!--In particular, suppose we want our network to compute some function,
 $f$.  As before, we do this by trying to design our network so that
 the weighted output from our hidden layer of neurons is $\sigma^{-1}
-\circ f(x)$:</p>
+\circ f(x)$:-->
+ニューラルネットワークがとある関数$f$を計算するようにしたいとします。
+これまでと同じように、隠れ層の重み付き出力が$\sigma^{-1} \circ f(x)$を出力するように、ニューラルネットワークを設計してこれを実現します：
+</p>
 <p><center> <canvas id="inverted_function_2" width="340"
 height="300"></canvas> </center></p>
-<p>If we were to do this using the technique described earlier, we'd use
-the hidden neurons to produce a sequence of bump functions:</p>
+<p>
+<!--If we were to do this using the technique described earlier, we'd use
+the hidden neurons to produce a sequence of bump functions:-->
+もしこれまでに書いたテクニックを用いることができれば、隠れ層ニューロンを用いて、コブ状の関数の列を作ることが出来ます。
+</p>
 <p><center> <canvas id="series_of_bumps" width="340"
 height="300"></canvas> </center></p>
-<p>Again, I've exaggerated the size of the windows of failure, in order
+<p>
+<!--Again, I've exaggerated the size of the windows of failure, in order
 to make them easier to see.  It should be pretty clear that if we add
 all these bump functions up we'll end up with a reasonable
 approximation to $\sigma^{-1} \circ f(x)$, except within the windows
-of failure.</p>
-<p>Suppose that instead of using the approximation just described, we use
+of failure.-->
+見やすくするために、前と同様に窓の幅を強調しています。これらのコブ状の関数を足し合わせれば、窓の外では$\sigma^{-1} \circ f(x)$の良い近似になる事は比較的明らかでしょう。
+</p>
+<p>
+<!--Suppose that instead of using the approximation just described, we use
 a set of hidden neurons to compute an approximation to <em>half</em> our
 original goal function, i.e., to $\sigma^{-1} \circ f(x) / 2$.  Of
-course, this looks just like a scaled down version of the last graph:</p>
+course, this looks just like a scaled down version of the last graph:-->
+今書いた近似方法を用いる代わりに、目的の関数の<em>半分</em>の関数、すなわち$\sigma^{-1} \circ f(x) / 2$を近似するように隠れニューロンを調整したとします。
+もちろんこれは、直前のグラフの高さを低くしたもののような形となります。
+</p>
 <p><center> <canvas id="half_bumps" width="340" height="300"></canvas>
 </center></p>
-<p>And suppose we use another set of hidden neurons to compute an
+<p>
+<!--And suppose we use another set of hidden neurons to compute an
 approximation to $\sigma^{-1} \circ f(x)/ 2$, but with the bases of
-the bumps <em>shifted</em> by half the width of a bump:</p>
+the bumps <em>shifted</em> by half the width of a bump:-->
+そして、もう1組の隠れニューロンのセットを用いて、同様に$\sigma^{-1} \circ f(x)/ 2$を近似します。しかし、今度は位置をコブの幅の半分だけ<em>ずらした</em>コブを用います：
+</p>
 <p><center> <canvas id="shifted_bumps" width="340" height="300"></canvas>
 </center></p>
-<p>Now we have two different approximations to $\sigma^{-1} \circ f(x) /
+<p>
+<!--Now we have two different approximations to $\sigma^{-1} \circ f(x) /
 2$.  If we add up the two approximations we'll get an overall
 approximation to $\sigma^{-1} \circ f(x)$.  That overall approximation
 will still have failures in small windows.  But the problem will be
 much less that before.  The reason is that points in a failure window
 for one approximation won't be in a failure window for the other.  And
 so the approximation will be a factor roughly $2$ better in those
-windows.</p>
-<p>We could do even better by adding up a large number, $M$, of
+windows.-->
+これにより、$\sigma^{-1} \circ f(x) / 2$の異なる2つ近似を得られました。
+これらを足し合わせることで、$\sigma^{-1} \circ f(x)$全体の近似が得られます。
+この関数は、依然として近似がうまくできていない微小な窓の中を持っています。
+しかし、前に比べるとその問題はずっと小さくなっています。
+というのも、一方の近似関数での窓は、他方では窓になっていないからです。
+従って、これらの窓において、近似はおおよそ$2$倍程度良くなっています。
+</p>
+<p>
+<!--We could do even better by adding up a large number, $M$, of
 overlapping approximations to the function $\sigma^{-1} \circ f(x) /
 M$. Provided the windows of failure are narrow enough, a point will
 only ever be in one window of failure.  And provided we're using a
 large enough number $M$ of overlapping approximations, the result will
-be an excellent overall approximation.</p>
-<p><h3><a name="conclusion"></a><a href="#conclusion">Conclusion</a></h3></p>
-<p>The explanation for universality we've discussed is certainly not a
+be an excellent overall approximation.-->
+大きな数$M$に対して、$M$個の互いに重なりあった$\sigma^{-1} \circ f(x) / M $の近似関数を足し合わせることでさらに近似を良くすることが出来ます。
+窓が十分狭ければ、各点高々1個の関数に対する窓となります。
+そして、重複する関数の個数$M$を十分大きく取れば、その結果得られる関数は全体を十分に近似できるものになります。
+</p>
+<p><h3><a name="conclusion"></a><a href="#conclusion">
+<!--Conclusion-->
+結論
+</a></h3></p>
+<p>
+<!--The explanation for universality we've discussed is certainly not a
 practical prescription for how to compute using neural networks!  In
 this, it's much like proofs of universality for <tt>NAND</tt> gates and
 the like.  For this reason, I've focused mostly on trying to make the
 construction clear and easy to follow, and not on optimizing the
 details of the construction.  However, you may find it a fun and
-instructive exercise to see if you can improve the construction.</p>
-<p>Although the result isn't directly useful in constructing networks,
+instructive exercise to see if you can improve the construction.-->
+これまでの普遍性定理の説明はニューラルネットワークを使って計算する現実的な処方箋ではありません！
+この観点では<tt>NAND</tt>ゲートに対する普遍性定理と状況は同じです。
+この理由により、構成方法は明快で説明を追いやすくすることに注力し、構成方法の詳細を最適化することにはしませんでした。
+しかし、この構成方法を更に良くするのは面白く勉強になるでしょう。
+</p>
+<p>
+<!--Although the result isn't directly useful in constructing networks,
 it's important because it takes off the table the question of whether
 any particular function is computable using a neural network.  The
 answer to that question is always "yes".  So the right question to
 ask is not whether any particular function is computable, but rather
-what's a <em>good</em> way to compute the function.</p>
-<p>The universality construction we've developed uses just two hidden
+what's a <em>good</em> way to compute the function.-->
+本章での結果はニューラルネットワークを構成するのに直接は有用ではないですが、
+任意の関数をニューラルネットワークを計算可能かという問題を議論から外すことができます。
+その答えは常に「可能である」だからです。
+そのため、より適切な問題はある特定の関数を計算可能かではなく、
+関数を計算する<em>良い</em>方法は何かです。
+</p>
+<p>
+<!--The universality construction we've developed uses just two hidden
 layers to compute an arbitrary function.  Furthermore, as we've
 discussed, it's possible to get the same result with just a single
 hidden layer.  Given this, you might wonder why we would ever be
 interested in deep networks, i.e., networks with many hidden layers.
 Can't we simply replace those networks with shallow, single hidden
-layer networks?</p>
-<p><span class="marginnote"><strong>Chapter
-  acknowledgements:</strong> Thanks to <a
-  href="http://jendodd.com">Jen Dodd</a> and <a
+layer networks?-->
+普遍性定理の証明では任意の関数を計算するのに、2層の隠れ層を用いました。
+さらに、前述のように1層の隠れ層でも同様の結果が得られます。
+そうするとなぜ私達が深いネットワーク、つまり隠れ層をたくさん持つネットワークに
+興味を持っているかを疑問に思うかもしれません。
+このような深いネットワークを隠れ層が1層しかない浅いネットワークに置き換えることは出来ないでしょうか？
+</p>
+<p><span class="marginnote"><strong>
+<!--Chapter acknowledgements:-->
+謝辞
+</strong>
+<!--Thanks to <a href ="http://jendodd.com">Jen Dodd</a> and <a
   href="http://colah.github.io/about.html">Chris Olah</a> for many
   discussions about universality in neural networks.  My thanks, in
   particular, to Chris for suggesting the use of a lookup table to
@@ -1463,9 +1651,20 @@ layer networks?</p>
   href="http://bost.ocks.org/mike/algorithms/">Mike Bostock</a>, <a
   href="http://www-cs-students.stanford.edu/&#126;amitp/">Amit
   Patel</a>, <a href="http://worrydream.com">Bret Victor</a>, and <a
-  href="http://acko.net/">Steven Wittens</a>. </span></p>
-<p>While in principle that's possible, there are good practical reasons
-to use deep networks.  As argued in
+  href="http://acko.net/">Steven Wittens</a>. -->
+ニューラルネットワークの普遍性に関する多くの議論を行った<a href ="http://jendodd.com">Jen Dodd</a>と<a href="http://colah.github.io/about.html">Chris Olah</a>に感謝します。
+特にChrisには、普遍性定理の証明の中でルックアップテーブルを利用することを提案してもらいました。
+本章のインタラクティブで視覚的な図は
+<a href="http://bost.ocks.org/mike/algorithms/">Mike Bostock</a>、
+<a href="http://www-cs-students.stanford.edu/&#126;amitp/">Amit Patel</a>、
+<a href="http://worrydream.com">Bret Victor</a>、
+<a href="http://acko.net/">Steven Wittens</a>
+などの方達の仕事を参考にしました。
+</span>
+</p>
+<p>
+<!--While in principle that's possible, there are good practical reasons to use deep networks. 
+As argued in
 <a href="chap1.html#toward_deep_learning">Chapter 1</a>, deep networks
 have a hierarchical structure which makes them particularly well
 adapted to learn the hierarchies of knowledge that seem to be useful
@@ -1479,7 +1678,18 @@ networks at learning such hierarchies of knowledge.  To sum up:
 universality tells us that neural networks can compute any function;
 and empirical evidence suggests that deep networks are the networks
 best adapted to learn the functions useful in solving many real-world
-problems.</p>
+problems.-->
+原理的にはそのような浅いネットワークへの置き替えは可能ですが、
+深いネットワークを利用するにはきちんとした現実的な理由があります。
+<a href="chap1.html#toward_deep_learning">第1章</a>で議論したとおり、
+深いネットワークは階層的な構造をしているため、知識の階層構造を学習するのに適しており、
+そのことが現実世界の問題を解くのに有用であります。
+もう少し具体的に言うと、画像認識などの問題に取り組む場合、個々のピクセルを認識するだけではなく、輪郭や単純な図形から始まり、
+複雑で多物体からなるシーンに至るまで、より複雑な概念を理解するのに役立ちます。
+この後の章では、深いネットワークが浅いネットワークに比べてこのような知識階層を学習するのに適している事を示唆する証拠を見ていきます。
+まとめると、普遍性定理からニューラルネットワークが任意の関数を計算できることがわかります。
+そして、深いネットワークは多くの現実世界の問題を解くのに有用な関数を学習するのに適していることが経験から示唆されています。
+</p>
 <p><!-- Seems to be necessary to ensure the font loads --> <span style="font-family: MJX_Math; color: #fff;">.</span> <span style="font-family: MJX_Main; color: #fff;">.</span></p>
 <p><script src="js/chap4.js"></script>
 <script src="js/canvas.js"></script>

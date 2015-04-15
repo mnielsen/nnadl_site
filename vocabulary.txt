@@ -31,6 +31,7 @@ neuron			ニューロン
 pertubation		摂動
 quadratic cost function	2乗コスト関数
 recurrent neural networks	再帰型ニューラルネットワーク
+rectified linear unit		Rectified Linear Unit/ReLU
 saturation/saturated	飽和/飽和している
 step function		階段関数
 training example        訓練例
