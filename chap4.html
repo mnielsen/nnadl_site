@@ -968,8 +968,8 @@ to build on this idea to provide a general proof of universality.-->
 sounds complicated, but all the ideas we need can be understood in the
 case of just two inputs.  So let's address the two-input case.-->
 以上の結果を多変数の場合に拡張しましょう。
-これは一見複雑そうに見えます。しかし、理解する為に必要なアイデアは全てたった2つの入力の場合で理解できます。
-ですので、2入力の場合に注目しましょう。
+これは複雑そうに聞こえるかも知れません。
+しかし、必要なアイデアは全て入力が2つの場合で理解できますので、2入力の場合に注目して考えてみましょう。
 </p>
 <p>
 <!--We'll start by considering what happens when we have two inputs to a neuron:-->
@@ -982,8 +982,8 @@ case of just two inputs.  So let's address the two-input case.-->
 $w_2$, and a bias $b$ on the neuron.  Let's set the weight $w_2$ to
 $0$, and then play around with the first weight, $w_1$, and the bias,
 $b$, to see how they affect the output from the neuron:-->
-入力$x$, $y$とそれぞれに対応した重み$w_1$, $w_2$と共通のバイアス$b$があります。
-$w_2$の重みを$0$にして、最初の重み$w_1$と$b$をいじってみて、それらがニューロンからの出力にどのように影響をあたえるかを見てみましょう。
+入力$x$, $y$とそれぞれに対応した重み$w_1$, $w_2$とバイアス$b$があります。
+$w_2$の重みを$0$にした状態で1つ目の重み$w_1$とバイアス$b$をいじり、それらがニューロンの出力にどのように影響を与えるかを見てみましょう。
 </p>
 <p><script src="js/three.min.js"></script></p>
 <p><canvas id="ti_graph" width="200" height="220"></canvas>
@@ -991,7 +991,7 @@ $w_2$の重みを$0$にして、最初の重み$w_1$と$b$をいじってみて�
 <p>
 <!--As you can see, with $w_2 = 0$ the input $y$ makes no difference to
 the output from the neuron.  It's as though $x$ is the only input.-->
-見ての通り、$w_2=0$とすると、入力$y$の値はニューロンの出力に何の差も生み出しません。
+見ての通り、$w_2=0$とすると入力$y$の値はニューロンの出力に何の違いも生み出しません。
 まるで$x$のみが入力であるかのように振る舞います。
 </p>
 <p>
@@ -1000,9 +1000,9 @@ $w_1$ to $w_1 = 100$, with $w_2$ remaining $0$?  If you don't
 immediately see the answer, ponder the question for a bit, and see if
 you can figure out what happens.  Then try it out and see if you're
 right.  I've shown what happens in the following movie:-->
-これを踏まえて、$w_2$を0としたまま、$w_1$の重みを増やして$w_1 = 100$とした時、何が起こると思いますでしょうか。
-もしこの答えがすぐに分からなかったら、何が起こるかを少し考えてみた後に、正しいかを試してみてください。
-以下の動画で何が起こるかを示しています。
+これを踏まえて、$w_2$を0としたまま$w_1$の重みを増やして$w_1 = 100$とした時、何が起こると思いますでしょうか。
+もしすぐにこの答えが分からなかったら何が起こるかを少し考えてから、それが正しいかを試してみてください。
+以下の動画で何が起こるかを示しています：
 </p>
 <p><div>
 	<div id="b" class="videoOverlay" 
@@ -1025,14 +1025,14 @@ output approaches a step function.  The difference is that now the
 step function is in three dimensions.  Also as before, we can move the
 location of the step point around by modifying the bias.  The actual
 location of the step point is $s_x \equiv -b / w_1$.-->
-以前議論したように、入力の重みが大きくなるにつれ、出力は階段関数に近づきます。
-前と異なる点は、今回の階段関数が3次元である点です。
-前と同様に、バイアスを変更する事で、段差の位置を動かすことができます。
+以前議論したように、入力の重みが大きくなるにつれて出力は階段関数に近づきます。
+前と異なるのは今回は階段関数が3次元である点です。
+前と同様にバイアスを変更することで段差の位置を動かすことができます。
 実際の段差の位置は$s_x \equiv -b / w_1$です。
 </p>
 <p>
 <!--Let's redo the above using the position of the step as the parameter:-->
-段差の位置をパラメータとして用いて、もう1度行ってみましょう。
+段差の位置をパラメータとして、同じことをもう1度行ってみましょう：
 </p>
 <p><canvas id="ti_graph_redux" width="200" height="220"></canvas> <span
 id="ti_graph_redux_3d" style="position: absolute; left:
@@ -1046,9 +1046,9 @@ Of course, it's also possible to get a step function in the $y$
 direction, by making the weight on the $y$ input very large (say, $w_2
 = 1000$), and the weight on the $x$ equal to $0$, i.e., $w_1 = 0$:-->
 ここで、$x$の重みは適当な大きな値（私は$w_1=1000$を用いました）とし、$w_2=0$としています。
-ニューロン内の数字は段差の位置で、数字の上の小さな$x$の文字は段差が$x$方向である事を覚えておく為のものです。
-もちろん、$y$の重みを大きな値（例えば$w_2=1000$）とし$x$の重みを$0$とする、すなわち$w_1=0$とする事で、
-段差を$y$方向にも向ける事ができます：
+ニューロン内の数字は段差の位置を示し、数字の上の小さな$x$の文字は段差が$x$方向である事を表しています。
+もちろん、$y$の重みを大きな値（例えば$w_2=1000$）とし$x$の重みを$0$とする（すなわち$w_1=0$とする）ことで
+段差を$y$方向に向けられます：
 </p>
 <p><canvas id="y_step" width="200" height="220"></canvas> <span
 id="y_step_3d" style="position: absolute; left: 260px;"></span></p>
@@ -1059,10 +1059,10 @@ direction.  I could have explicitly marked the weights on the $x$ and
 $y$ inputs, but decided not to, since it would make the diagram rather
 cluttered.  But do keep in mind that the little $y$ marker implicitly
 tells us that the $y$ weight is large, and the $x$ weight is $0$.-->
-前と同様に、ニューロンの内の数は段差地点です。
-今回の場合、数字の上の小さな$y$は段差が$y$方向を向いていることを思い出すためのものです。
-$x$と$y$それぞれの重みを明示的に書く事も出来ましたが、そうすると図が乱雑になってしまうので書かない事にしました。
-しかし、$y$の小さな文字は$y$の重みが大きく、$x$の重みは$0$だと暗黙に示している事を忘れないで下さい。
+前と同様に、ニューロン内の数は段差地点です。
+数字の上の小さな$y$は段差が今度は$y$方向を向いていることを表しています。
+$x$と$y$それぞれの重みを明示することも出来ましたが、そうすると図が混雑してしまうので書きませんでした。
+しかし、小さな文字$y$により暗に$y$の重みが大きくて$x$の重みが$0$であることを示していることを忘れないで下さい。
 </p>
 <p>
 <!--We can use the step functions we've just constructed to compute a
@@ -1071,9 +1071,8 @@ computing a step function in the $x$ direction.  Then we combine those
 step functions with weight $h$ and $-h$, respectively, where $h$ is
 the desired height of the bump.  It's all illustrated in the following
 diagram:-->
-我々は今構成した階段関数を用いて3次元のコブ状の関数を表現する事ができます。
-その為には、$x$方向の階段関数を表す2つのニューロンを利用します。
-そして、それらの階段関数をそれぞれ重み$h$と$-h$で結合します。
+今つくった階段関数を用いて3次元のコブ状の関数を構成できます。
+そのためには、$x$方向の階段関数を計算する2つのニューロンを用意し、それらの階段関数をそれぞれ重み$h$と$-h$で結合すればよいです。
 ここで$h$は作りたいコブの高さです。
 以上の内容が下図に表されています。
 </p>
@@ -1084,7 +1083,7 @@ id="bump_3d_graph" style="position: absolute; left: 360px;"></span></p>
 the weights in the network.  And see how it changes the height of the
 bump function on the right.-->
 高さ$h$の値を変更してみて、それがネットワークの重みとどのように関係しているかを観察してみてください。
-また、$h$の値により右のコブ状の関数の高さをどのように変化するかを見てください。
+また、$h$の値により右のコブ状の関数の高さがどのように変化するかを見てください。
 </p>
 <p>
 <!--Also, try changing the step point $0.30$ associated to the top hidden
@@ -1093,7 +1092,7 @@ when you move it past the step point $0.70$ associated to the bottom
 hidden neuron?-->
 さらに、上の隠れニューロンによって決められている段差地点を$0.30$から変更してください。
 コブの形がどのように変化するかを見てみましょう。
-下の隠れニューロンによって決められる段差地点を$0.70$から変えてみた時何が起こるでしょうか？
+下の隠れニューロンによって決められる段差地点を$0.70$から変えた時に何が起こるでしょうか？
 <!--
 2015/1/26 Kenta OONO
 ここのpastのニュアンスがよくわからなかった。0.70を越えてという風に訳すところかもしれないが、
@@ -1107,8 +1106,8 @@ using two step functions in the $y$ direction.  Recall that we do this
 by making the weight large on the $y$ input, and the weight $0$ on the
 $x$ input.  Here's the result:-->
 私達は$x$方向にコブ状の関数を作る方法を見い出してきました。
-もちろん、$y$方向の階段関数を用いることで、簡単に$y$方向のコブ状の関数を作れます。
-それは入力$y$の重みを大きくし、入力$x$の重みを$0$にすればできる事を思い出してください。
+もちろん、$y$方向の階段関数を用いることで$y$方向のコブ状の関数を簡単に作れます。
+そうするには、入力$y$の重みを大きくして入力$x$の重みを$0$にすればよい事を思い出してください。
 下図が結果です：
 </p>
 <p><canvas id="bump_3d_y" width="300" height="220"></canvas> <span
@@ -1121,10 +1120,10 @@ functions, not $x$ step functions, and so the weight is very large on
 the $y$ input, and zero on the $x$ input, not vice versa.  As before,
 I decided not to show this explicitly, in order to avoid clutter.-->
 これは先程のネットワークとほとんど同じものです！
-図中に明示した中で夕いつ変更している点は隠れニューロン内の小さな文字が今回は$y$になった事です。
-これは、今作っているのが$x$方向ではなく、$y$方向の階段関数である事を思い出す為のものです。
-つまり、入力$y$はとても大きく、$x$は$0$であり逆ではありません。
-前と同様に、図が煩雑にならないように、この事は明示しませんでした。
+図中に示した中で唯一変更しているのは、隠れニューロン内の小さな文字を$y$にした点だけです。
+これは、今作っているのが$x$方向ではなく$y$方向の階段関数であることを思い出すためのものです。
+つまり入力$y$はとても大きくて$x$は$0$であり逆ではありません。
+前と同様に図が煩雑にならないようにこの事は明示しませんでした。
 </p>
 <p>
 <!--Let's consider what happens when we add up two bump functions, one in
@@ -1139,20 +1138,19 @@ For now, I've left in the little $x$ and $y$ markers on the hidden
 neurons, to remind you in what directions the bump functions are being
 computed.  We'll drop even those markers later, since they're implied
 by the input variable.-->
-図を簡単にするために、重み$0$の接続は図から除きました。
-今は、どちらの方向のコブ状の関数を計算しているかを忘れないように、
-隠れニューロン内の$x$と$y$の小さな文字は残しておきました。
-これらは入力変数からわかるので、これからはこれらの文字も除きます。
+図を簡単にするために、重み$0$の枝は図から取り除きました。
+この図ではどちらの方向のコブ状の関数を計算しているかを忘れないように隠れニューロン内の$x$と$y$の小さな文字は残しておきました。
+しかし、コブの方向は入力変数からわかるので今後はこれらの文字も取り除きます。
 </p>
 <p>
 <!--Try varying the parameter $h$.  As you can see, this causes the output
 weights to change, and also the heights of both the $x$ and $y$ bump
 functions.-->
-パラメータ$h$を変化させてみてください。見ての通り、これにより出力の重みが変化し、$x$と$y$両方のコブ状の関数の高さも変化します。
+パラメータ$h$を変化させてみてください。見ての通りこれにより出力の重みが変化し、$x$と$y$両方のコブ状の関数の高さも変化します。
 </p>
 <p>
 <!--What we've built looks a little like a <em>tower</em> function:-->
-これにより<em>塔</em>に少し似た形の関数を構成することが出来ました。
+これにより少し<em>塔</em>に似た形の関数を構成することが出来ました：
 </p>
 <p><center> <span id="tower" style="position: absolute;"></span> <div
 style="height: 230px"></div> </center></p>
@@ -1160,7 +1158,7 @@ style="height: 230px"></div> </center></p>
 <!--If we could build such tower functions, then we could use them to
 approximate arbitrary functions, just by adding up many towers of
 different heights, and in different locations:-->
-もし、このような塔状の関数を構成できれば、様々な位置にある様々な高さの塔を足しあわせる事で任意の関数を近似できます：
+もし、このような塔状の関数を構成できれば、様々な位置にある様々な高さの塔を足しあわせることで任意の関数を近似できます：
 </p>
 <p><center> <span id="many_towers" style="position: absolute;"></span>
 <div style="height: 230px"></div> </center></p>
@@ -1170,14 +1168,18 @@ Of course, we haven't yet figured out how to build a tower function.
 What we have constructed looks like a central tower, of height $2h$,
 with a surrounding plateau, of height $h$.-->
 もちろん、我々はこのような塔状の関数を構成する方法をまだ見出していません。
-私達が構成できたのは、中央のに高さ$2h$の塔とそれを囲む高さ$h$の台地のような関数です。
+私達が実際に構成できているのは中央に高さ$2h$の塔がありそれを高さ$h$の台地が囲むような関数です。
 </p>
 <p>
 <!--But we can make a tower function.  Remember that earlier we saw
 neurons can be used to implement a type of <tt>if-then-else</tt>
 statement:-->
-ところが、私達は塔状の関数を構成できるのです。
-私達はニューロンを<tt>if-then-else</tt>構文の形の関数を構成するのに用いた事を思い出してください。
+ところが、私達はここから塔状の関数を構成できるのです。
+ニューロンを<tt>if-then-else</tt>構文の形の関数を用いたことを思い出してください。
+<!--
+2015/4/19 Kenta OONO
+英文の主客が逆のように思う。if-then-elseを用いてニューロンを構成しているのでは？
+-->
 </p>
 <p>
 <!--
@@ -1198,7 +1200,7 @@ statement:-->
 <!--That was for a neuron with just a single input.  What we want is to
 apply a similar idea to the combined output from the hidden neurons:-->
 これは1入力しかないニューロンについてのものでした。
-今欲しいのは、隠れニューロン集合からの出力をまとめた値に対してこれと似たアイデアを適用したものです：
+今欲しいのは同様のアイデアを複数の隠れニューロン集合からの出力をまとめた値に対して適用したものです：
 </p>
 <p>
 <!--
@@ -1221,7 +1223,7 @@ $3h/2$, which is sandwiched between the height of the plateau and the
 height of the central tower - we could squash the plateau down to
 zero, and leave just the tower standing.-->
 <tt>threshold</tt>を適切に、例えば台地の高さと中央の塔の高さに挟まれている$3h/2$のように、設定すると、
-塔が立った状態で残したまま、台地を$0$の高さに潰すことができます。
+塔が立った状態で残したまま、台地を高さ$0$に潰すことができます。
 </p>
 <p>
 <!--Can you see how to do this?  Try experimenting with the following
@@ -1237,12 +1239,12 @@ and (2) the value of $b$ determines the scale of the
 <tt>if-then-else</tt> threshold.-->
 これをどのように行っているかわかりますでしょうか？
 理解するために次のニューラルネットワークで実験してみましょう。
-今回は、隠れ層からの重み付き出力ではなく、ニューラルネットワーク全体の出力を図示している事に気をつけてください。
-これは、隠れ層からの重み付き出力にバイアス項を加え、シグマ関数を適用している事を意味します。
-塔を作る為の$h$と$b$の値を見つけられますでしょうか。
-若干トリッキーなので、もししばらく考えてそれでもわからなかったら、2つのヒントを教えます：
-(1)出力ニューロンが適切な<tt>if-then-else</tt>の挙動を示す為には、入力の重み（全ての$h$と$-h$）が大きな値でなければなりません。
-(2)$b$の値は<tt>if-then-else</tt>の閾値を決定します。
+今回は隠れ層からの重み付き出力ではなく、ニューラルネットワーク全体の出力を図示していることに気をつけてください。
+つまり、隠れ層からの重み付き出力にバイアス項を加え、シグマ関数を適用しています。
+塔を作るための$h$と$b$の値を見つけられますでしょうか。
+若干トリッキーなので、しばらく考えてそれでもわからなかったら次の2つのヒントを見てください：
+ (1) 出力ニューロンが適切な<tt>if-then-else</tt>の挙動を示すためには、入力の重み（全ての$h$と$-h$）が大きな値でなければなりません。
+ (2) $b$の値は<tt>if-then-else</tt>の閾値を決定します。
 </p>
 <p><canvas id="tower_construction" width="300" height="270"></canvas>
 <span id="tower_construction_3d" style="position: absolute; left:
@@ -1254,11 +1256,11 @@ desired behaviour, we increase the parameter $h$ until it becomes
 large.  That gives the <tt>if-then-else</tt> thresholding
 behaviour.  Second, to get the threshold right, we'll choose $b
 \approx -3h/2$.  Try it, and see how it works!-->
-初期パラメータでは、出力は前の図での塔と台地を平らにしたような形をしています。
-望みの振るまいをさせるには、パラメータ$h$の値が大きくなるまで増やしてください。
-そうすると、<tt>if-then-else</tt>の形の閾値で切る振るまいをさせる事ができます。
-次に、閾値を正しくするために$b\approx -3h/2$としてください。
-実際にやってみて、どのようになるかを確かめてください！
+初期パラメータでは、出力は前の図での塔と台地を潰したような形をしています。
+望みの塔状の関数を作るには、まずパラメータ$h$の値を十分に大きくしてください。
+そうすると、関数を<tt>if-then-else</tt>の形の閾値で切るような形にすることが出来ます。
+次に、$b\approx -3h/2$として適切な閾値を設定してください。
+実際にやってみてどのようになるかを確かめてください！
 </p>
 <p>
 <!--Here's what it looks like, when we use $h = 10$:-->
@@ -1282,8 +1284,8 @@ behaviour.  Second, to get the threshold right, we'll choose $b
 <!--Even for this relatively modest value of $h$, we get a pretty good
 tower function.  And, of course, we can make it as good as we want by
 increasing $h$ still further, and keeping the bias as $b = -3h/2$.-->
-このような比較的小さな値の$h$でも、かなり良い塔上の関数を作る事ができます。
-もちろん$h$をさらに大きくし、$b$を$b=-3h/2$に保つ事で、この関数を好きなだけ良くすることができます。
+このような比較的小さな値の$h$でも、かなり良い塔状の関数を作る事ができます。
+もちろん$h$をさらに大きくしつつ$b=-3h/2$を保つことで、この関数の形をいくらでも良くすることができます。
 </p>
 <p>
 <!--Let's try gluing two such networks together, in order to compute two
@@ -1293,9 +1295,9 @@ computes a tower function, using the technique described above.  The
 graph on the right shows the weighted output from the <em>second</em>
 hidden layer, that is, it's a weighted combination of tower functions.-->
 今度は、2つの塔状の関数を表現するために、2つのネットワークをくっつけてみましょう。
-それぞれの部分ネットワークの役割を明確にするために、下図ではそれぞれを別の箱に入れました：
-それぞれの箱はこれまでに用いたテクニックを用いて塔状の関数を計算しています。
-右側のグラフは<em>2つ目の</em>隠れ層からの重み付き出力、すなわち、2つの塔状の関数の重み付きの重ねあわせを表しています。
+それぞれの部分ネットワークの役割を明確にするために、下図ではそれぞれを別の箱に入れました。
+それぞれの箱はこれまでのテクニックを用いて塔状の関数を計算しています。
+右側のグラフは<em>2層目</em>の隠れ層からの重み付き出力、すなわち、2つの塔状の関数の重み付きの重ねあわせを表しています。
 </p>
 <p><canvas id="the_two_towers" width="320" height="580"></canvas> <span
 id="the_two_towers_3d" style="position: absolute; left: 370px;
@@ -1303,16 +1305,15 @@ margin-top: 180px;"></span></p>
 <p>
 <!--In particular, you can see that by modifying the weights in the final
 layer you can change the height of the output towers.-->
-特に、最終層の重みを返る事で、出力される塔の高さを変えることができます。
+特に、最終層の重みを変える事で、出力される塔の高さを変えることができます。
 </p>
 <p>
 <!--The same idea can be used to compute as many towers as we like.  We
 can also make them as thin as we like, and whatever height we like.
 As a result, we can ensure that the weighted output from the second
 hidden layer approximates any desired function of two variables:-->
-同じアイデアで好きな数の塔を表現する事ができます。
-さらに、それぞれの塔は好きなだけ細くする事も、好きな高さにする事もできます。
-その結果、2つ目の隠れ層の出力はどんな2変数関数も近似できます。
+同じアイデアで好きな数の塔を計算することができます。さらにそれぞれの塔は好きな幅で好きな高さにすることもできます。
+従って2つ目の隠れ層の出力はどんな2変数関数も近似できることがわかります：
 </p>
 <p><center> <span id="many_towers_2" style="position: absolute;"></span>
 <div style="height: 230px"></div> </center></p>
@@ -1345,8 +1346,7 @@ the output bias is $-5h/2$.-->
 ここで、$x_1, x_2, x_3$はネットワークの入力を表します。
 $s_1, t_1$等でニューロンの段差の点を表します。
 すなわち、最初の層の全ての重みを大きくし、バイアスを段差点が$s_1, t_1, s_2, \ldots$となるようにセットします。
-2つ目の層の重みは交互に$+h$と$-h$とします。ここで、$h$は適当な大きな値です。
-さらに、出力のバイアスを$-5h/2$とします。
+2つ目の層の重みは交互に$+h$と$-h$とします。ここで$h$は適当な大きな値です。さらに出力のバイアスを$-5h/2$とします。
 </p>
 <p>
 <!--This network computes a function which is $1$ provided three
@@ -1354,9 +1354,9 @@ conditions are met: $x_1$ is between $s_1$ and $t_1$; $x_2$ is between
 $s_2$ and $t_2$; and $x_3$ is between $s_3$ and $t_3$.  The network is
 $0$ everywhere else.  That is, it's a kind of tower which is $1$ in a
 little region of input space, and $0$ everywhere else.-->
-3つの条件：「$x_1$が$s_1$と$t_1$の間にある」「$x_2$が$s_2$と$t_2$の間にある」「$x_3$が$s_3$と$t_3$の間にある」が満たされると、
+「$x_1$が$s_1$と$t_1$の間にある」「$x_2$が$s_2$と$t_2$の間にある」「$x_3$が$s_3$と$t_3$の間にある」の3つの条件が満たされると、
 このネットワークは$1$を出力します。それ以外の場合には$0$を出力します。
-すなわち、この関数は入力空間の微小な領域では$1$を出力し、それ以外では$0$を出力する一種の塔状の関数を表しています。
+すなわち、この関数は入力空間の微小な領域では$1$を出力しそれ以外では$0$を出力する一種の塔状の関数を表しています。
 </p>
 <p>
 <!--By glueing together many such networks we can get as many towers as we
@@ -1364,9 +1364,9 @@ want, and so approximate an arbitrary function of three variables.
 Exactly the same idea works in $m$ dimensions.  The only change needed
 is to make the output bias $(-m+1/2)h$, in order to get the right kind
 of sandwiching behavior to level the plateau.-->
-このようなネットワークをたくさんつなげる事で、好きな数の塔を作って3変数の好きな関数を近似できます。
+このようなネットワークをたくさんつなげる事で、好きな数の塔を作り3変数の任意の関数を近似できます。
 同様のアイデアを$m$次元の場合にも当てはめられます。
-唯一変更しなければならない点は、台地の高さにあわせて閾値を挟むために出力のバイアスを$(-m+1/2)h$とする点のみです。
+唯一変更しなければならない点は、台地の高さにあわせて適切な閾値を設定するために出力のバイアスを$(-m+1/2)h$とする点のみです。
 </p>
 <p>
 <!--Okay, so we now know how to use neural networks to approximate a
@@ -1380,7 +1380,7 @@ easy to cope with.-->
 これで、ニューラルネットワークを用いて実数値の多変数関数を近似する方法がわかりました。
 それでは、ベクトル値関数$f(x_1, \ldots, x_m) \in R^n$の場合はどうでしょうか？
 もちろん、このような関数は$n$個の独立した実数値関数$f^1(x_1,\ldots, x_m), f^2(x_1, \ldots, x_m)$とみなす事ができます。
-従って、$f^1$を近似するニューラルネットワーク、$f^2$を近似する別のニューラルネットワーク、・・・を構成できます。
+従って、$f^1$を近似するニューラルネットワーク、$f^2$を近似する別のニューラルネットワーク・・・を構成できます。
 それらを単純につなぎ合わせれば、簡単にベクトル値関数の場合にも対応することができます。
 </p>
 <p><h4><a name="problem_863961"></a><a href="#problem_863961">
@@ -1401,15 +1401,15 @@ easy to cope with.-->
   <a href="#fixing_up_the_step_functions">bit later in this
     chapter</a>.-->
 ここまで2つの隠れ層を用いて任意の関数を近似してきました。
-それでは、1つの隠れ層だけを用いても近似が可能である事の証明はわかりますでしょうか？
-ヒントとして、入力変数が2つしかない場合で次の事を示してください：
-(a)階段上の関数は$x$や$y$方向だけではなく任意の方向にも構成できる事
-(b)(a)での構成した関数を足し合わせる事で、長方形ではなく円周の形をした塔状の関数を近似できる事
-(c)この塔状の関数を用いて任意の関数を近似できる事。
-(c)を解く際に、<a href="#fixing_up_the_step_functions">この章で少し後</a>に紹介するアイデアが役立つかもしれません。
+それでは、1つの隠れ層だけを用いても近似が可能であることを証明できますでしょうか？
+ヒントとして、入力変数が2つしかない場合で次のことを示してください：
+ (a) 階段上の関数は$x$や$y$方向だけではなく任意の方向にも構成できること
+ (b) (a) での構成した関数を足し合わせて、長方形ではなく円周の形をした塔状の関数を近似できること
+ (c) この塔状の関数を用いて任意の関数を近似できる事。
+ (c) を解く際に、<a href="#fixing_up_the_step_functions">この章で少し後</a>に紹介するアイデアが役立つかもしれません。
 </p>
 <p></ul></p>
-<p><h3><a name="extension_beyond_sigmoid_neurons"></a><a href="#extension_beyond_sigmoid_neurons">Extension beyond sigmoid neurons</a></h3></p>
+<p><h3><a name="extension_beyond_sigmoid_neurons"></a><a href="#extension_beyond_sigmoid_neurons">シグモイド関数以外への拡張</a></h3></p>
 <p>
 <!--We've proved that networks made up of sigmoid neurons can compute any
 function.  Recall that in a sigmoid neuron the inputs $x_1, x_2,
