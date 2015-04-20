@@ -33,7 +33,7 @@ quadratic cost function	2乗コスト関数
 recurrent neural networks	再帰型ニューラルネットワーク
 rectified linear unit		Rectified Linear Unit/ReLU
 saturation/saturated	飽和/飽和している
-step function		階段関数
+step function		ステップ関数
 training example        訓練例
 universal               万能な(for computation)
 universality theorem	普遍性定理

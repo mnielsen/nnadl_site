@@ -499,7 +499,7 @@ gets steeper, until eventually it begins to look like a step function.
 Try to adjust the bias so the step occurs near $x = 0.3$.  The
 following short clip shows what your result should look like.  Click
 on the play button to play (or replay) the video:-->
-最後に重みを$w = 100$過ぎまで増やしてみてください。増加させるにつれて曲線の勾配がきつくなり、最終的に階段関数のような形になります。
+最後に重みを$w = 100$過ぎまで増やしてみてください。増加させるにつれて曲線の勾配がきつくなり、最終的にステップ関数のような形になります。
 段差が$x = 0.3$あたりに来るようにバイアスを調節してみてください。
 下のクリップは想定する挙動を示しています。再生ボタンを押すとビデオが再生（もしくはリプレイ）されます。
 </p>
@@ -542,7 +542,7 @@ much that the output really is a step function, to a very good
 approximation.  Below I've plotted the output from the top hidden
 neuron when the weight is $w = 999$.  Note that this plot is static,
 and you can't change parameters such as the weight.-->
-重みを増加させ、出力を階段関数に十分近づけることで、解析を著しく単純にすることができます。
+重みを増加させ、出力をステップ関数に十分近づけることで、解析を著しく単純にすることができます。
 下では、重みが$w = 999$の時の上の隠れニューロンの出力を図示しています。
 この図は静的で、重みなどのパラメータを変化できない事に注意してください。
 </p>
@@ -561,13 +561,13 @@ bias.  Of course, treating the output as a step function is an
 approximation, but it's a very good approximation, and for now we'll
 treat it as exact.  I'll come back later to discuss the impact of
 deviations from this approximation.-->
-一般のシグモイド関数に比べて階段関数で考える方が簡単です。
+一般のシグモイド関数に比べてステップ関数で考える方が簡単です。
 その理由は出力層がすべての隠れニューロンからの寄与を足しあわせるからです。
-階段関数達の和を解析するのは簡単ですが、シグモイドの形をした曲線達を足しあわせた時に何が起こるのかを解析するのはそれに比べるとずっと難しいです。
-ですので、隠れニューロンが階段関数を出力していると仮定することでずっと簡単になります。
+ステップ関数達の和を解析するのは簡単ですが、シグモイドの形をした曲線達を足しあわせた時に何が起こるのかを解析するのはそれに比べるとずっと難しいです。
+ですので、隠れニューロンがステップ関数を出力していると仮定することでずっと簡単になります。
 具体的には、重みを適当なとても大きな値に固定した後にバイアスを変化させて段差の位置を調整する事でこれを実現できます。
-もちろん出力を階段関数として扱うのは近似です。
-しかしこれは十分良い近似になっているので、しばらくは厳密に階段関数であるとして扱います。
+もちろん出力をステップ関数として扱うのは近似です。
+しかしこれは十分良い近似になっているので、しばらくは厳密にステップ関数であるとして扱います。
 後でこの部分に戻ってきて、この近似によるずれの影響を議論します。
 </p>
 <p>
@@ -607,7 +607,7 @@ the new parameterization:-->
 some large value - big enough that the step function is a very good
 approximation.  We can easily convert a neuron parameterized in this
 way back into the conventional model, by choosing the bias $b = -w s$.-->
-前述したように、入力の重み$w$を十分大きく取り、階段関数が良い近似になっていることを我々は暗黙のうちに仮定しています。
+前述したように、入力の重み$w$を十分大きく取り、ステップ関数が良い近似になっていることを我々は暗黙のうちに仮定しています。
 バイアスを$b = -w s$と選ぶことで、1つのパラメータ$s$で特徴づけられたニューロンを前のモデルに戻す事ができます。
 </p>
 <p>
@@ -619,7 +619,7 @@ functions parameterized by step points $s_1$ (top neuron) and $s_2$
 $w_2$.  Here's the network:-->
 これまで、私達は上の隠れニューロンの出力に注目してきました。
 ここでニューラルネットワーク全体の挙動を見てみましょう。
-2つの隠れニューロンは段差の位置が$s_1$（上ニューロン）と$s_2$（下ニューロン）でパラメータ付けられた階段関数を計算しているとします。
+2つの隠れニューロンは段差の位置が$s_1$（上ニューロン）と$s_2$（下ニューロン）でパラメータ付けられたステップ関数を計算しているとします。
 さらに、出力の重みをそれぞれ$w_1$, $w_2$とします。ニューラルネットワークは以下の通りです：
 </p>
 <p><canvas id="two_hn_network" width="600" height="285"></canvas></p>
@@ -1025,8 +1025,8 @@ output approaches a step function.  The difference is that now the
 step function is in three dimensions.  Also as before, we can move the
 location of the step point around by modifying the bias.  The actual
 location of the step point is $s_x \equiv -b / w_1$.-->
-以前議論したように、入力の重みが大きくなるにつれて出力は階段関数に近づきます。
-前と異なるのは今回は階段関数が3次元である点です。
+以前議論したように、入力の重みが大きくなるにつれて出力はステップ関数に近づきます。
+前と異なるのは今回はステップ関数が3次元である点です。
 前と同様にバイアスを変更することで段差の位置を動かすことができます。
 実際の段差の位置は$s_x \equiv -b / w_1$です。
 </p>
@@ -1071,8 +1071,8 @@ computing a step function in the $x$ direction.  Then we combine those
 step functions with weight $h$ and $-h$, respectively, where $h$ is
 the desired height of the bump.  It's all illustrated in the following
 diagram:-->
-今つくった階段関数を用いて3次元のコブ状の関数を構成できます。
-そのためには、$x$方向の階段関数を計算する2つのニューロンを用意し、それらの階段関数をそれぞれ重み$h$と$-h$で結合すればよいです。
+今つくったステップ関数を用いて3次元のコブ状の関数を構成できます。
+そのためには、$x$方向のステップ関数を計算する2つのニューロンを用意し、それらのステップ関数をそれぞれ重み$h$と$-h$で結合すればよいです。
 ここで$h$は作りたいコブの高さです。
 以上の内容が下図に表されています。
 </p>
@@ -1106,7 +1106,7 @@ using two step functions in the $y$ direction.  Recall that we do this
 by making the weight large on the $y$ input, and the weight $0$ on the
 $x$ input.  Here's the result:-->
 私達は$x$方向にコブ状の関数を作る方法を見い出してきました。
-もちろん、$y$方向の階段関数を用いることで$y$方向のコブ状の関数を簡単に作れます。
+もちろん、$y$方向のステップ関数を用いることで$y$方向のコブ状の関数を簡単に作れます。
 そうするには、入力$y$の重みを大きくして入力$x$の重みを$0$にすればよい事を思い出してください。
 下図が結果です：
 </p>
@@ -1121,7 +1121,7 @@ the $y$ input, and zero on the $x$ input, not vice versa.  As before,
 I decided not to show this explicitly, in order to avoid clutter.-->
 これは先程のネットワークとほとんど同じものです！
 図中に示した中で唯一変更しているのは、隠れニューロン内の小さな文字を$y$にした点だけです。
-これは、今作っているのが$x$方向ではなく$y$方向の階段関数であることを思い出すためのものです。
+これは、今作っているのが$x$方向ではなく$y$方向のステップ関数であることを思い出すためのものです。
 つまり入力$y$はとても大きくて$x$は$0$であり逆ではありません。
 前と同様に図が煩雑にならないようにこの事は明示しませんでした。
 </p>
@@ -1440,7 +1440,7 @@ $s(\sum_j w_j x_j + b)$.-->
 did with the sigmoid.  Try ramping up the weight in the following, say
 to $w = 100$:-->
 </p>
-シグモイド関数の時に行ったのと同様にして、この活性化関数を用いて階段関数を作ることが出来ます。
+シグモイド関数の時に行ったのと同様にして、この活性化関数を用いてステップ関数を作ることが出来ます。
 次の図の重みを例えば$w = 100$まで増加させてみてください：
 <p><canvas id="ramping" width="600" height="200"></canvas></p>
 <p>
@@ -1449,7 +1449,7 @@ contract, and ultimately it becomes a very good approximation to a
 step function.  Try changing the bias, and you'll see that we can set
 the position of the step to be wherever we choose.  And so we can use
 all the same tricks as before to compute any desired function.-->
-シグモイド関数の時と同様に活性化関数は縮んでいき、最終的には階段関数の良い近似となります。
+シグモイド関数の時と同様に活性化関数は縮んでいき、最終的にはステップ関数の良い近似となります。
 バイアス項を変化させてみてください。すると、段差を自分が選んだ好きな位置に置けることがわかるはずです。
 これにより、私達は任意の好きな関数を計算するためにこれまでと同様のトリックを使うことができるのです。
 </p>
@@ -1464,7 +1464,7 @@ $s(z)$ satisfies these properties, neurons based on such an activation
 function are universal for computation.-->
 この話がうまくいくためには、$s(z)$はどのような性質を持っている必要があるでしょうか。
 $s(z)$は$z \rightarrow -\infty$と$z \rightarrow \infty$でwell-definedでなければなりません。
-これらの極限は階段関数がとる2つの値です。
+これらの極限はステップ関数がとる2つの値です。
 また、これらの2つの値は異なることも仮定する必要があります。
 もしそうでなかったとすると、階段のないただの平坦なグラフになってしまいます。
 $s(z)$がこの性質さえ持っていれば、それを活性化関数にもつニューロンを用いたニューラルネットワークは普遍性を持ちます。
@@ -1495,7 +1495,7 @@ $s(z)$がこの性質さえ持っていれば、それを活性化関数にも�
 </ul></p>
 <p><h3><a name="fixing_up_the_step_functions"></a><a href="#fixing_up_the_step_functions">
 <!--Fixing up the step functions-->
-階段関数
+ステップ関数
 </a></h3></p>
 <p>
 <!--Up to now, we've been assuming that our neurons can produce step
@@ -1503,9 +1503,9 @@ functions exactly.  That's a pretty good approximation, but it is only
 an approximation.  In fact, there will be a narrow window of failure,
 illustrated in the following graph, in which the function behaves very
 differently from a step function:-->
-これまで、我々が考えていたニューロンは階段関数を計算できると仮定してきました。
+これまで、我々が考えていたニューロンはステップ関数を計算できると仮定してきました。
 この仮定はとてもよい近似ですが、近似でしかありません。
-実際、次のグラフで示した非常に狭い「窓」において、ニューロンの出力は階段関数とは大きく異なる振る舞いをしています：
+実際、次のグラフで示した非常に狭い「窓」において、ニューロンの出力はステップ関数とは大きく異なる振る舞いをしています：
 </p>
 <p><canvas id="failure" width="220" height="200"></canvas></p>
 <p>
