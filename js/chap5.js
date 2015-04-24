@@ -6,51 +6,54 @@ var defaultText = "#333";
 var defaultMathText = "#555";
 var graphColor = "#FFA933";
 
-initialGradient();
+$(function() {
 
-function initialGradient() {
-    var initialGradientCanvas = $("#initial_gradient")[0];
-    var initialGradientContext = initialGradientCanvas.getContext("2d");
+    initialGradient();
 
-    function layer(x) {
-	var l = [];
-	for (var j = 0; j < 6; j++) {
-	    l.push(new neuron(initialGradientContext, x, 65+100*j));
+    function initialGradient() {
+	var initialGradientCanvas = $("#initial_gradient")[0];
+	var initialGradientContext = initialGradientCanvas.getContext("2d");
+
+	function layer(x) {
+	    var l = [];
+	    for (var j = 0; j < 6; j++) {
+		l.push(new neuron(initialGradientContext, x, 65+100*j));
+	    }
+	    return l;
 	}
-	return l;
-    }
 
-    var xs = [60, 410]
+	var xs = [60, 410];
 
-    var hiddenLayer1 = layer(xs[0]);
-    var hiddenLayer2 = layer(xs[1]);
-    var allLayers = [hiddenLayer1, hiddenLayer2];
-    connectLayers(hiddenLayer1, hiddenLayer2);
+	var hiddenLayer1 = layer(xs[0]);
+	var hiddenLayer2 = layer(xs[1]);
+	var allLayers = [hiddenLayer1, hiddenLayer2];
+	connectLayers(hiddenLayer1, hiddenLayer2);
 
-    initialGradientContext.text(
-	"hidden layer 1", xs[0], 10, 
-	{"font": "14px Arial", "text-align": "center"});
-    initialGradientContext.text(
-	"hidden layer 2", xs[1], 10, 
-	{"font": "14px Arial", "text-align": "center"});
+	initialGradientContext.text(
+	    "hidden layer 1", xs[0], 10, 
+	    {"font": "14px Arial", "text-align": "center"});
+	initialGradientContext.text(
+	    "hidden layer 2", xs[1], 10, 
+	    {"font": "14px Arial", "text-align": "center"});
 
-    $.getJSON("js/initial_gradient.json", function(data) {
-	var nn, error;
-	for (var l=0; l < 2; l++) {
-	    for (var n=0; n < 6; n++) {
-		nn = allLayers[l][n];
-		error = data[l][n];
-		initialGradientContext.line(
-		    nn.x, nn.y-0.5, nn.x, nn.y-0.5-error*700, graphColor, 10);
+	$.getJSON("js/initial_gradient.json", function(data) {
+	    var nn, error;
+	    for (var l=0; l < 2; l++) {
+		for (var n=0; n < 6; n++) {
+		    nn = allLayers[l][n];
+		    error = data[l][n];
+		    initialGradientContext.line(
+			nn.x, nn.y-0.5, nn.x, nn.y-0.5-error*700, graphColor, 10);
+		};
 	    };
-	};
-    });
+	});
 
-    var allNeurons = hiddenLayer1.concat(hiddenLayer2);
-    allNeurons.forEach(function(n) {
-	initialGradientContext.line(n.x-10, n.y-0.5, n.x+10, n.y-0.5);
-    });
-}
+	var allNeurons = hiddenLayer1.concat(hiddenLayer2);
+	allNeurons.forEach(function(n) {
+	    initialGradientContext.line(n.x-10, n.y-0.5, n.x+10, n.y-0.5);
+	});
+    };
+});
 
 
 function sigmoid(x) {return 1/(1+Math.exp(-x));}
