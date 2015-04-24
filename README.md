@@ -1,7 +1,7 @@
 ニューラルネットワークと深層学習(日本語訳)
 =============
 
-著者からの許諾にもとづき、無料のオンライン本 "Neural Networks and Deep Learning" を翻訳します。
+著者からの許諾にもとづき、無料のオンライン本 "ニューラルネットワークと深層学習" を翻訳します。
 参加者募集中です。レポジトリの書き込み権限あげます。pull resquestください！
 
 - オリジナルサイトはこちら： http://neuralnetworksanddeeplearning.com/
