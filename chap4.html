@@ -575,7 +575,7 @@ deviations from this approximation.-->
 <p>
 <!--At what value of $x$ does the step occur?  Put another way, how does
 the position of the step depend upon the weight and bias?-->
-どの$x$の値で段差は生じるでしょうか？
+ステップがあるのは$x$の値でいえばどこでしょうか？
 言い換えると、段差の位置は重みや階段にどのように依存するでしょうか？
 </p>
 <p>
@@ -706,7 +706,7 @@ can be thought of not just in graphical terms, but in more
 conventional programming terms, as a kind of <tt>if-then-else</tt>
 statement, e.g.:-->
 ところで、我々はニューロンを視覚的説明の観点からだけではなく、プログラミングの観点からも見ることができ、
-ニューロンを以下の様な<tt>if-then-else</tt>構文のようにみなしている事に気づいたかもしれません。例えば次の通りです
+ニューロンを以下の様な<tt>if-then-else</tt>構文のようもみなせる事に気づいたかもしれません。例えば次の通りです
 </p>
 <p><div class="highlight"><pre>
     <span class="k">if </span>input &gt;<span class="o">=</span> step point:
@@ -905,7 +905,7 @@ increasing the number of pairs of hidden neurons, allowing more bumps.-->
 <!--In particular, it's easy to convert all the data we have found back
 into the standard parameterization used for neural networks.  Let me
 just recap quickly how that works.-->
-私達が見つけ出したデータをニューラルネットワークの通常のパラメータに戻すのは簡単です。
+私達が見つけ出したデータをニューラルネットワークの通常のパラメータでの表現に戻すのは簡単です。
 どのように行うかを簡単におさらいします。
 </p>
 <p>
@@ -1002,7 +1002,7 @@ $w_1$ to $w_1 = 100$, with $w_2$ remaining $0$?  If you don't
 immediately see the answer, ponder the question for a bit, and see if
 you can figure out what happens.  Then try it out and see if you're
 right.  I've shown what happens in the following movie:-->
-これを踏まえて、$w_2$を0としたまま$w_1$の重みを増やして$w_1 = 100$とした時、何が起こると思いますでしょうか。
+これを踏まえて、$w_2$を0としたまま$w_1$の重みを増やして$w_1 = 100$とした時、何が起こると思いますか。
 もしすぐにこの答えが分からなかったら何が起こるかを少し考えてから、それが正しいかを試してみてください。
 以下の動画で何が起こるかを示しています：
 </p>
@@ -1107,7 +1107,7 @@ Of course, we can easily make a bump function in the $y$ direction, by
 using two step functions in the $y$ direction.  Recall that we do this
 by making the weight large on the $y$ input, and the weight $0$ on the
 $x$ input.  Here's the result:-->
-私達は$x$方向にコブ状の関数を作る方法を見い出してきました。
+私達は$x$方向にコブ状の関数を作る方法を見つけました。
 もちろん、$y$方向のステップ関数を用いることで$y$方向のコブ状の関数を簡単に作れます。
 そうするには、入力$y$の重みを大きくして入力$x$の重みを$0$にすればよい事を思い出してください。
 下図が結果です：
@@ -1239,11 +1239,11 @@ To get the output neuron to show the right kind of <tt>if-then-else</tt>
 behaviour, we need the input weights (all $h$ or $-h$) to be large;
 and (2) the value of $b$ determines the scale of the
 <tt>if-then-else</tt> threshold.-->
-これをどのように行っているかわかりますでしょうか？
+これをどのように行っているかわかりますか？
 理解するために次のニューラルネットワークで実験してみましょう。
 今回は隠れ層からの重み付き出力ではなく、ニューラルネットワーク全体の出力を図示していることに気をつけてください。
 つまり、隠れ層からの重み付き出力にバイアス項を加え、シグマ関数を適用しています。
-塔を作るための$h$と$b$の値を見つけられますでしょうか。
+塔を作るための$h$と$b$の値を見つけられますか。
 若干トリッキーなので、しばらく考えてそれでもわからなかったら次の2つのヒントを見てください：
  (1) 出力ニューロンが適切な<tt>if-then-else</tt>の挙動を示すためには、入力の重み（全ての$h$と$-h$）が大きな値でなければなりません。
  (2) $b$の値は<tt>if-then-else</tt>の閾値を決定します。
@@ -1403,7 +1403,7 @@ easy to cope with.-->
   <a href="#fixing_up_the_step_functions">bit later in this
     chapter</a>.-->
 ここまで2つの隠れ層を用いて任意の関数を近似してきました。
-それでは、1つの隠れ層だけを用いても近似が可能であることを証明できますでしょうか？
+それでは、1つの隠れ層だけを用いても近似が可能であることを証明できますか？
 ヒントとして、入力変数が2つしかない場合で次のことを示してください：
  (a) 階段上の関数は$x$や$y$方向だけではなく任意の方向にも構成できること
  (b) (a) での構成した関数を足し合わせて、長方形ではなく円周の形をした塔状の関数を近似できること
@@ -1635,10 +1635,10 @@ any particular function is computable using a neural network.  The
 answer to that question is always "yes".  So the right question to
 ask is not whether any particular function is computable, but rather
 what's a <em>good</em> way to compute the function.-->
-本章での結果はニューラルネットワークを構成するのに直接は有用ではないですが、
-任意の関数をニューラルネットワークを計算可能かという問題を議論から外すことができます。
-その答えは常に「可能である」だからです。
-従ってある特定の関数を計算可能かではなく、その関数を計算する<em>良い</em>方法は何かというのがより適切な問題設定となります。
+本章での結果はニューラルネットワークを構成するのに直接有用ではありませんが、
+任意の関数をニューラルネットワークで計算可能かという問いを議題から外すことができる、という点では重要です。
+その問いへの答えは常に「可能である」だからです。
+従ってある特定の関数を計算可能かではなく、その関数を計算する<em>良い</em>方法は何かというのが正しい問題設定となります。
 </p>
 <p>
 <!--The universality construction we've developed uses just two hidden
