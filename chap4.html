@@ -15,7 +15,7 @@
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: {inlineMath: [['$','$']]},
-        "HTML-CSS": 
+        "HTML-CSS":
           {scale: 92},
         TeX: { equationNumbers: { autoNumber: "AMS" }}});
     </script>
@@ -52,79 +52,79 @@
   </head>
   <body><div class="header"><h1 class="chapter_number">
   <a href="">CHAPTER 4</a></h1>
-  <h1 class="chapter_title"><a href="">ニューラルネットワークが任意の関数を表現できることの視覚的証明</a></h1></div><div class="section"><div id="toc"> 
+  <h1 class="chapter_title"><a href="">ニューラルネットワークが任意の関数を表現できることの視覚的証明</a></h1></div><div class="section"><div id="toc">
 <p class="toc_title"><a href="index.html">Neural Networks and Deep Learning</a> (draft contents)</p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">Using neural nets to recognize handwritten digits</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
 <script>
-$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() { 
+$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() {
    var src = $('#toc_img_using_neural_nets_to_recognize_handwritten_digits').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow.png');
    };
-   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});  
+   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">How the backpropagation algorithm works</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output
 _from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output
   from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
 <script>
-$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() { 
+$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() {
    var src = $('#toc_img_how_the_backpropagation_algorithm_works').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow.png');
    };
-   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});  
+   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_improving_the_way_neural_networks_learn_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_improving_the_way_neural_networks_learn" src="images/arrow.png" width="15px"></a><a href="chap3.html">Improving the way neural networks learn</a><div id="toc_improving_the_way_neural_networks_learn" style="display: none;"><p class="toc_section"><ul><a href="chap3.html#the_cross-entropy_cost_function"><li>The cross-entropy cost function</li></a><a href="chap3.html#overfitting_and_regularization"><li>Overfitting and regularization</li></a><a href="chap3.html#weight_initialization"><li>Weight initialization</li></a><a href="chap3.html#handwriting_recognition_revisited_the_code"><li>Handwriting recognition revisited: the code</li></a><a href="chap3.html#how_to_choose_a_neural_network's_hyper-parameters"><li>How to choose a neural network's hyper-parameters?</li></a><a href="chap3.html#other_techniques"><li>Other techniques</li></a></ul></p></div>
 <script>
-$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() { 
+$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() {
    var src = $('#toc_img_improving_the_way_neural_networks_learn').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow.png');
    };
-   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});  
+   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_a_visual_proof_that_neural_nets_can_compute_any_function" src="images/arrow.png" width="15px"></a><a href="chap4.html">A visual proof that neural nets can compute any function</a><div id="toc_a_visual_proof_that_neural_nets_can_compute_any_function" style="display: none;"><p class="toc_section"><ul><a href="chap4.html#two_caveats"><li>Two caveats</li></a><a href="chap4.html#universality_with_one_input_and_one_output"><li>Universality with one input and one output</li></a><a href="chap4.html#many_input_variables"><li>Many input variables</li></a><a href="chap4.html#extension_beyond_sigmoid_neurons"><li>Extension beyond sigmoid neurons</li></a><a href="chap4.html#fixing_up_the_step_functions"><li>Fixing up the step functions</li></a><a href="chap4.html#conclusion"><li>Conclusion</li></a></ul></p></div>
 <script>
-$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() { 
+$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() {
    var src = $('#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow.png');
    };
-   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});  
+   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_why_deep_neural_networks_are_hard_to_train_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_why_deep_neural_networks_are_hard_to_train" src="images/arrow.png" width="15px"></a>Why deep neural networks are hard to train<div id="toc_why_deep_neural_networks_are_hard_to_train" style="display: none;"><p class="toc_section"><ul><li>The vanishing gradient problem</li><li>What's causing the vanishing gradient problem?  Unstable gradients in deep neural nets</li><li>How should we approach deep learning?</li></ul></p></div>
 <script>
-$('#toc_why_deep_neural_networks_are_hard_to_train_reveal').click(function() { 
+$('#toc_why_deep_neural_networks_are_hard_to_train_reveal').click(function() {
    var src = $('#toc_img_why_deep_neural_networks_are_hard_to_train').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_why_deep_neural_networks_are_hard_to_train").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_why_deep_neural_networks_are_hard_to_train").attr('src', 'images/arrow.png');
    };
-   $('#toc_why_deep_neural_networks_are_hard_to_train').toggle('fast', function() {});  
+   $('#toc_why_deep_neural_networks_are_hard_to_train').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_deep_learning_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_deep_learning" src="images/arrow.png" width="15px"></a>Deep learning<div id="toc_deep_learning" style="display: none;"><p class="toc_section"><ul><li>Convolutional neural networks</li><li>Pretraining</li><li>Feature discovery</li><li>The state of the art in image recognition</li></ul></p></div>
 <script>
-$('#toc_deep_learning_reveal').click(function() { 
+$('#toc_deep_learning_reveal').click(function() {
    var src = $('#toc_img_deep_learning').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_deep_learning").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_deep_learning").attr('src', 'images/arrow.png');
    };
-   $('#toc_deep_learning').toggle('fast', function() {});  
+   $('#toc_deep_learning').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_the_future_of_neural_nets_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_the_future_of_neural_nets" src="images/arrow.png" width="15px"></a>The future of neural nets<div id="toc_the_future_of_neural_nets" style="display: none;"><p class="toc_section"><ul><li>Will neural networks ever lead to artificial intelligence?</li><li>Could neural networks be used to simulate a human brain?</li></ul></p></div>
 <script>
-$('#toc_the_future_of_neural_nets_reveal').click(function() { 
+$('#toc_the_future_of_neural_nets_reveal').click(function() {
    var src = $('#toc_img_the_future_of_neural_nets').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_the_future_of_neural_nets").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_the_future_of_neural_nets").attr('src', 'images/arrow.png');
    };
-   $('#toc_the_future_of_neural_nets').toggle('fast', function() {});  
+   $('#toc_the_future_of_neural_nets').toggle('fast', function() {});
 });</script><p class="toc_not_mainchapter">Further reading</p><p class="toc_not_mainchapter">Acknowledgements</p>
 <hr>
 <span class="sidebar_title">Sponsors</span>
@@ -138,7 +138,7 @@ style="padding: 0px 0px 10px 8px; border-style: none;"></a>
 
 <a href='http://www.visionsmarts.com'><img
 src='assets/visionsmarts.png' width='160px' style="padding: 0px 0px
-0px 0px; border-style: none;"></a> <br/> 
+0px 0px; border-style: none;"></a> <br/>
 
 <p class="sidebar">Thanks to all the <a
 href="supporters.html">supporters</a> who made the book possible.
@@ -224,7 +224,7 @@ original papers proving the result*-->
 <!--<span class="marginnote">
 *<a href="http://www.dartmouth.edu/&#126;gvc/Cybenko_MCSS.pdf">Approximation by superpositions of a sigmoidal function</a>, by George Cybenko (1989).
   The result was very much in the air at the time, and
-  several groups proved closely related results. 
+  several groups proved closely related results.
   Cybenko's paper contains a useful discussion of much of that work.
   Another important early paper is
   <a href="http://www.sciencedirect.com/science/article/pii/0893608089900208">Multilayer feedforward networks are universal approximators</a>, by Kurt Hornik, Maxwell Stinchcombe, and Halbert White (1989).
@@ -395,7 +395,7 @@ outline how the explanation can, with a few tweaks, be adapted to give
 a proof which uses only a single hidden layer.-->
 まとめると、普遍性定理のより正確なステートメントは、「隠れ層を1つ持つニューラルネットワークを用いて任意の連続関数を任意の精度で近似できる」となります。
 本章では隠れ層が1層ではなく2層の場合のもう少し弱いバージョンの定理を証明します。
-少し証明をひねる事で本章での証明を隠れ層が1層しかない場合に適用する方法を、演習問題において簡単に説明します。 
+少し証明をひねる事で本章での証明を隠れ層が1層しかない場合に適用する方法を、演習問題において簡単に説明します。
 </p>
 <h3>
 <!--<a name="universality_with_one_input_and_one_output"></a><a href="#universality_with_one_input_and_one_output">Universality with one input and one output</a>-->
@@ -506,7 +506,7 @@ on the play button to play (or replay) the video:-->
 <p><!-- Based on http://worrydream.com/ScrubbingCalculator/, with minor changes -->
       <script type="text/javascript">
     	function playVideo (name) {
-    		var div = $("#"+name)[0]; 
+    		var div = $("#"+name)[0];
     		div.style.backgroundColor = "transparent";
     		div.style.cursor = "default";
     		div.getElementsByTagName("img")[0].style.display = "none";
@@ -522,13 +522,13 @@ on the play button to play (or replay) the video:-->
     	}
       </script>
       <div>
-	<div id="a" class="videoOverlay" 
-	     style="width: 560px; height: 280px; opacity: 0.8" 
+	<div id="a" class="videoOverlay"
+	     style="width: 560px; height: 280px; opacity: 0.8"
 	     onclick="playVideo('a');">
-	  <img style="left: 210px; top: 75px;" 
+	  <img style="left: 210px; top: 75px;"
 	       src="images/play.png" width="128px">
 	</div>
-	  <video id="va" width="560" height="280" preload 
+	  <video id="va" width="560" height="280" preload
 		 onended="videoEnded('a');">
 	    <source type="video/mp4"
 		    src="movies/create_step_function.mp4">
@@ -1005,13 +1005,13 @@ right.  I've shown what happens in the following movie:-->
 以下の動画で何が起こるかを示しています：
 </p>
 <p><div>
-	<div id="b" class="videoOverlay" 
-	     style="width: 460px; height: 252px; opacity: 0.8" 
+	<div id="b" class="videoOverlay"
+	     style="width: 460px; height: 252px; opacity: 0.8"
 	     onclick="playVideo('b');">
-	  <img style="left: 160px; top: 70px;" 
+	  <img style="left: 160px; top: 70px;"
 	       src="images/play.png" width="128px">
 	</div>
-	  <video id="vb" width="460" height="252" preload 
+	  <video id="vb" width="460" height="252" preload
 		 onended="videoEnded('b');">
 	    <source type="video/mp4"
 		    src="movies/step_3d.mp4">
@@ -1041,7 +1041,7 @@ id="ti_graph_redux_3d" style="position: absolute; left:
 <!--Here, we assume the weight on the $x$ input has some large value
 - I've used $w_1 = 1000$ - and the weight $w_2 = 0$.  The
 number on the neuron is the step point, and the little $x$ above the
-number reminds us that the step is in the $x$ direction.	
+number reminds us that the step is in the $x$ direction.
 Of course, it's also possible to get a step function in the $y$
 direction, by making the weight on the $y$ input very large (say, $w_2
 = 1000$), and the weight on the $x$ equal to $0$, i.e., $w_1 = 0$:-->
@@ -1184,13 +1184,13 @@ statement:-->
 <p>
 <!--
 <div class="highlight"><pre>
-    <span class="k">if </span>input &gt;<span class="o">=</span> threshold: 
+    <span class="k">if </span>input &gt;<span class="o">=</span> threshold:
         output 1
     <span class="k">else</span>:
         output 0
 </pre></div>-->
 <div class="highlight"><pre>
-    <span class="k">if </span>input &gt;<span class="o">=</span> threshold: 
+    <span class="k">if </span>input &gt;<span class="o">=</span> threshold:
         1を出力
     <span class="k">else</span>:
         0を出力
@@ -1267,13 +1267,13 @@ behaviour.  Second, to get the threshold right, we'll choose $b
 下の動画は$h=10$とした場合の様子です：
 </p>
 <p><div>
-	<div id="c" class="videoOverlay" 
-	     style="width: 556px; height: 284px; opacity: 0.8" 
+	<div id="c" class="videoOverlay"
+	     style="width: 556px; height: 284px; opacity: 0.8"
 	     onclick="playVideo('c');">
-	  <img style="left: 210px; top: 80px;" 
+	  <img style="left: 210px; top: 80px;"
 	       src="images/play.png" width="128px">
 	</div>
-	  <video id="vc" width="556" height="284" preload 
+	  <video id="vc" width="556" height="284" preload
 		 onended="videoEnded('c');">
 	    <source type="video/mp4"
 		    src="movies/tower_construction.mp4">
@@ -1387,7 +1387,7 @@ easy to cope with.-->
 <!--Problem-->
 問題
 </a></h4><ul></p>
-<p><li> 
+<p><li>
 <!--We've seen how to use networks with two hidden layers to
   approximate an arbitrary function.  Can you find a proof showing
   that it's possible with just a single hidden layer?  As a hint, try
@@ -1676,7 +1676,7 @@ layer networks?-->
 </span>
 </p>
 <p>
-<!--While in principle that's possible, there are good practical reasons to use deep networks. 
+<!--While in principle that's possible, there are good practical reasons to use deep networks.
 As argued in
 <a href="chap1.html#toward_deep_learning">Chapter 1</a>, deep networks
 have a hierarchical structure which makes them particularly well
