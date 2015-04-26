@@ -812,12 +812,18 @@ output.  That's the crucial fact which will allow a network of sigmoid
 シグモイドニューロンはパーセプトロンと似ていますが、シグモイドニューロンの重みやバイアスに微小な変化を与えたとき、それに応じて生じる出力の変化も微小なものに留まるように調整されています。このことは、シグモイドニューロンで構成されているニューラルネットワークの学習を可能にする、決定的な違いとなります。
 
 </p><p>
-
+    
+<!--
   Okay, let me describe the sigmoid neuron.  We'll depict sigmoid
 neurons in the same way we depicted perceptrons:
+-->
+よし、それではシグモイドニューロンを描いてお見せしましょう。シグモイドニューロンを描くと、パーセプトロンと同じような見た目になるでしょう：
+
 <center>
 <img src="images/tikz9.png"/>
 </center>
+
+<!--
 Just like a perceptron, the sigmoid neuron has inputs, $x_1, x_2,
 \ldots$.  But instead of being just $0$ or $1$, these inputs can also
 take on any values <em>between</em> $0$ and $1$.  So, for instance,
@@ -835,6 +841,20 @@ Instead, it's $\sigma(w \cdot x+b)$, where $\sigma$ is called the
   people working with neural nets.  However, we'll stick with the
   sigmoid terminology.</span>, and is defined
 by:
+-->
+ちょうどパーセプトロンがそうであるように、シグモイドニューロンは$x_1, x_2,\ldots$といった入力を取ります。しかし、これらの入力値は、単に$0$や$1$だけではなく、$0$から$1$<em>の間</em>のあらゆる値をとることができます。そのため、たとえば、$0.638\ldots$といった値も、シグモイドニューロンにとっては有効な入力値となります。
+パーセプトロンがそうであるように、シグモイドニューロンはそれぞれの入力に対して、重み($w_1, w_2,\ldots$)を持ち、またニューロン全体に対するバイアスと呼ばれる値($b$)を持っています。しかし、出力は、$0$や$1$だけではありません。
+代わりに、出力としては$\sigma(w \cdot x+b)$という値をとります。$\sigma$は<em>シグモイド関数</em>*<span class="marginnote">
+*Incidentally, $\sigma$ is sometimes
+  called the <em>logistic
+    function</em>, and this
+  new class of neurons called <em>logistic
+    neurons</em>.  It's useful
+  to remember this terminology, since these terms are used by many
+  people working with neural nets.  However, we'll stick with the
+  sigmoid terminology.</span>
+  と呼ばれており、次の式で定義されます：
+
 <a class="displaced_anchor" name="eqtn3"></a>\begin{eqnarray}
   \sigma(z) \equiv \frac{1}{1+e^{-z}}.
 \tag{3}\end{eqnarray}
