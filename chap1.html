@@ -858,16 +858,30 @@ by:
 <a class="displaced_anchor" name="eqtn3"></a>\begin{eqnarray}
   \sigma(z) \equiv \frac{1}{1+e^{-z}}.
 \tag{3}\end{eqnarray}
+<!--
 To put it all a little more explicitly, the output of a sigmoid neuron
 with inputs $x_1,x_2,\ldots$, weights $w_1,w_2,\ldots$, and bias $b$ is
+-->
+より明確に表現すると、シグモイドニューロンの出力は、入力が$x_1,x_2,\ldots$で、重みが$w_1,w_2,\ldots$で、そしてバイアスが$b$のとき、次の形を取ります。
+
 <a class="displaced_anchor" name="eqtn4"></a>\begin{eqnarray}
   \frac{1}{1+\exp(-\sum_j w_j x_j-b)}.
-\tag{4}\end{eqnarray}</p><p>At first sight, sigmoid neurons appear very different to perceptrons.
+\tag{4}\end{eqnarray}</p><p>
+
+<!--
+At first sight, sigmoid neurons appear very different to perceptrons.
 The algebraic form of the sigmoid function may seem opaque and
 forbidding if you're not already familiar with it.  In fact, there are
 many similarities between perceptrons and sigmoid neurons, and the
 algebraic form of the sigmoid function turns out to be more of a
-technical detail than a true barrier to understanding.</p><p>To understand the similarity to the perceptron model, suppose $z
+technical detail than a true barrier to understanding.
+-->
+一見すると、シグモイドニューロンはパーセプトロンとは大きく異なるように見えます。シグモイド関数は代数形式で表現されており、こういった表現方法に慣れていない人にとっては、理解困難で近づき難く感じられるかもしれません。
+しかし実は、パーセプトロンとシグモイドニューロンには多くの共通点があり、シグモイド関数が代数形式で表現されていることは、真の理解の妨げになるどころか、技術的な細部を伝えてくれるものとなるでしょう。
+
+</p><p>
+    
+To understand the similarity to the perceptron model, suppose $z
 \equiv w \cdot x + b$ is a large positive number.  Then $e^{-z}
 \approx 0$ and so $\sigma(z) \approx 1$.  In other words, when $z = w
 \cdot x+b$ is large and positive, the output from the sigmoid neuron
