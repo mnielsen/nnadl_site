@@ -800,20 +800,30 @@ problem.  But it's not immediately obvious how we can get a network of
 
 </p><p>
 
+<!--
   We can overcome this problem by introducing a new type of artificial
 neuron called a <em>sigmoid</em> neuron.
 Sigmoid neurons are similar to perceptrons, but modified so that small
 changes in their weights and bias cause only a small change in their
 output.  That's the crucial fact which will allow a network of sigmoid
   neurons to learn.
+-->
+この問題は、<em>シグモイド</em>ニューロンと呼ばれる、新しいタイプの人工ニューロンを導入することによって克服することができます。
+シグモイドニューロンはパーセプトロンと似ていますが、シグモイドニューロンの重みやバイアスに微小な変化を与えたとき、それに応じて生じる出力の変化も微小なものに留まるように調整されています。このことは、シグモイドニューロンで構成されているニューラルネットワークの学習を可能にする、決定的な違いとなります。
 
 </p><p>
 
+<!--
   Okay, let me describe the sigmoid neuron.  We'll depict sigmoid
 neurons in the same way we depicted perceptrons:
+-->
+よし、それではシグモイドニューロンをご説明しましょう。シグモイドニューロンは、パーセプトロンと同じような見た目で描くことにします：
+
 <center>
 <img src="images/tikz9.png"/>
 </center>
+
+<!--
 Just like a perceptron, the sigmoid neuron has inputs, $x_1, x_2,
 \ldots$.  But instead of being just $0$ or $1$, these inputs can also
 take on any values <em>between</em> $0$ and $1$.  So, for instance,
@@ -831,19 +841,45 @@ Instead, it's $\sigma(w \cdot x+b)$, where $\sigma$ is called the
   people working with neural nets.  However, we'll stick with the
   sigmoid terminology.</span>, and is defined
 by:
+-->
+ちょうどパーセプトロンがそうであるように、シグモイドニューロンは$x_1, x_2,\ldots$といった入力を取ります。しかし、これらの入力値は、単に$0$や$1$だけではなく、$0$から$1$<em>の間</em>のあらゆる値をとることができます。そのため、たとえば、$0.638\ldots$といった値も、シグモイドニューロンにとっては有効な入力値となります。
+パーセプトロンがそうであるように、シグモイドニューロンはそれぞれの入力に対して、重み($w_1, w_2,\ldots$)を持ち、またニューロン全体に対するバイアスと呼ばれる値($b$)を持っています。しかし、出力は、$0$や$1$だけではありません。
+代わりに、出力としては$\sigma(w \cdot x+b)$という値をとります。$\sigma$は<em>シグモイド関数</em>*<span class="marginnote">
+*たまに、 $\sigma$ を
+   <em>ロジスティック関数</em>と呼び、この新しいニューロンを
+   <em>ロジスティック・ニューロン</em>と呼ぶことがあります。
+   こちらの用語を使うニューラルネット研究者も大勢いますので、
+   この用語を覚えておくと便利です。
+とはいえ、私たちは一貫してシグモイド関数という用語の方を使うことにします。</span>
+  と呼ばれており、次の式で定義されます：
+
 <a class="displaced_anchor" name="eqtn3"></a>\begin{eqnarray}
   \sigma(z) \equiv \frac{1}{1+e^{-z}}.
 \tag{3}\end{eqnarray}
+<!--
 To put it all a little more explicitly, the output of a sigmoid neuron
 with inputs $x_1,x_2,\ldots$, weights $w_1,w_2,\ldots$, and bias $b$ is
+-->
+より明確に表現すると、シグモイドニューロンの出力は、入力が$x_1,x_2,\ldots$で、重みが$w_1,w_2,\ldots$で、そしてバイアスが$b$のとき、次の形を取ります。
+
 <a class="displaced_anchor" name="eqtn4"></a>\begin{eqnarray}
   \frac{1}{1+\exp(-\sum_j w_j x_j-b)}.
-\tag{4}\end{eqnarray}</p><p>At first sight, sigmoid neurons appear very different to perceptrons.
+\tag{4}\end{eqnarray}</p><p>
+
+<!--
+At first sight, sigmoid neurons appear very different to perceptrons.
 The algebraic form of the sigmoid function may seem opaque and
 forbidding if you're not already familiar with it.  In fact, there are
 many similarities between perceptrons and sigmoid neurons, and the
 algebraic form of the sigmoid function turns out to be more of a
-technical detail than a true barrier to understanding.</p><p>To understand the similarity to the perceptron model, suppose $z
+technical detail than a true barrier to understanding.
+-->
+一見すると、シグモイドニューロンはパーセプトロンとは大きく異なるように見えます。シグモイド関数の数式は、こういった表現方法に慣れていない人にとっては、理解困難で近づき難く感じられるかもしれません。
+しかし実は、パーセプトロンとシグモイドニューロンには多くの共通点があり、シグモイド関数が代数形式で表現されていることは、真の理解の妨げになるどころか、技術的な細部を伝えてくれるものとなるでしょう。
+
+</p><p>
+
+To understand the similarity to the perceptron model, suppose $z
 \equiv w \cdot x + b$ is a large positive number.  Then $e^{-z}
 \approx 0$ and so $\sigma(z) \approx 1$.  In other words, when $z = w
 \cdot x+b$ is large and positive, the output from the sigmoid neuron
