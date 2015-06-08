@@ -15,7 +15,7 @@
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: {inlineMath: [['$','$']]},
-        "HTML-CSS": 
+        "HTML-CSS":
           {scale: 92},
         TeX: { equationNumbers: { autoNumber: "AMS" }}});
     </script>
@@ -51,67 +51,67 @@
 </style>
 
   </head>
-  <body><div class="nonumber_header"><h2>What this book is about</h2></div><div class="section"><div id="toc"> 
-<p class="toc_title"><a href="index.html">ニューラルネットワークと深層学習</a></p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">Using neural nets to recognize handwritten digits</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
+  <body><div class="nonumber_header"><h2>What this book is about</h2></div><div class="section"><div id="toc">
+<p class="toc_title"><a href="index.html">ニューラルネットワークと深層学習</a></p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">ニューラルネットワークを用いた手書き文字認識</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
 <script>
-$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() { 
+$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() {
    var src = $('#toc_img_using_neural_nets_to_recognize_handwritten_digits').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow.png');
    };
-   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});  
-});</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">How the backpropagation algorithm works</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output_from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output  from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
+   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});
+});</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">逆伝播の仕組み</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output_from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output  from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
 <script>
-$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() { 
+$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() {
    var src = $('#toc_img_how_the_backpropagation_algorithm_works').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow.png');
    };
-   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});  
-});</script><p class='toc_mainchapter'><a id="toc_improving_the_way_neural_networks_learn_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_improving_the_way_neural_networks_learn" src="images/arrow.png" width="15px"></a><a href="chap3.html">Improving the way neural networks learn</a><div id="toc_improving_the_way_neural_networks_learn" style="display: none;"><p class="toc_section"><ul><a href="chap3.html#the_cross-entropy_cost_function"><li>The cross-entropy cost function</li></a><a href="chap3.html#overfitting_and_regularization"><li>Overfitting and regularization</li></a><a href="chap3.html#weight_initialization"><li>Weight initialization</li></a><a href="chap3.html#handwriting_recognition_revisited_the_code"><li>Handwriting recognition revisited: the code</li></a><a href="chap3.html#how_to_choose_a_neural_network's_hyper-parameters"><li>How to choose a neural network's hyper-parameters?</li></a><a href="chap3.html#other_techniques"><li>Other techniques</li></a></ul></p></div>
+   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});
+});</script><p class='toc_mainchapter'><a id="toc_improving_the_way_neural_networks_learn_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_improving_the_way_neural_networks_learn" src="images/arrow.png" width="15px"></a><a href="chap3.html">ニューラルネットワークの学習の改善</a><div id="toc_improving_the_way_neural_networks_learn" style="display: none;"><p class="toc_section"><ul><a href="chap3.html#the_cross-entropy_cost_function"><li>The cross-entropy cost function</li></a><a href="chap3.html#overfitting_and_regularization"><li>Overfitting and regularization</li></a><a href="chap3.html#weight_initialization"><li>Weight initialization</li></a><a href="chap3.html#handwriting_recognition_revisited_the_code"><li>Handwriting recognition revisited: the code</li></a><a href="chap3.html#how_to_choose_a_neural_network's_hyper-parameters"><li>How to choose a neural network's hyper-parameters?</li></a><a href="chap3.html#other_techniques"><li>Other techniques</li></a></ul></p></div>
 <script>
-$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() { 
+$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() {
    var src = $('#toc_img_improving_the_way_neural_networks_learn').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow.png');
    };
-   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});  
-});</script><p class='toc_mainchapter'><a id="toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_a_visual_proof_that_neural_nets_can_compute_any_function" src="images/arrow.png" width="15px"></a><a href="chap4.html">A visual proof that neural nets can compute any function</a><div id="toc_a_visual_proof_that_neural_nets_can_compute_any_function" style="display: none;"><p class="toc_section"><ul><a href="chap4.html#two_caveats"><li>Two caveats</li></a><a href="chap4.html#universality_with_one_input_and_one_output"><li>Universality with one input and one output</li></a><a href="chap4.html#many_input_variables"><li>Many input variables</li></a><a href="chap4.html#extension_beyond_sigmoid_neurons"><li>Extension beyond sigmoid neurons</li></a><a href="chap4.html#fixing_up_the_step_functions"><li>Fixing up the step functions</li></a><a href="chap4.html#conclusion"><li>Conclusion</li></a></ul></p></div>
+   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});
+});</script><p class='toc_mainchapter'><a id="toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_a_visual_proof_that_neural_nets_can_compute_any_function" src="images/arrow.png" width="15px"></a><a href="chap4.html">ニューラルネットワークが任意の関数を表現できることの視覚的証明</a><div id="toc_a_visual_proof_that_neural_nets_can_compute_any_function" style="display: none;"><p class="toc_section"><ul><a href="chap4.html#two_caveats"><li>Two caveats</li></a><a href="chap4.html#universality_with_one_input_and_one_output"><li>Universality with one input and one output</li></a><a href="chap4.html#many_input_variables"><li>Many input variables</li></a><a href="chap4.html#extension_beyond_sigmoid_neurons"><li>Extension beyond sigmoid neurons</li></a><a href="chap4.html#fixing_up_the_step_functions"><li>Fixing up the step functions</li></a><a href="chap4.html#conclusion"><li>Conclusion</li></a></ul></p></div>
 <script>
-$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() { 
+$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() {
    var src = $('#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow.png');
    };
-   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});  
-});</script><p class='toc_mainchapter'><a id="toc_why_are_deep_neural_networks_hard_to_train_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_why_are_deep_neural_networks_hard_to_train" src="images/arrow.png" width="15px"></a><a href="chap5.html">Why are deep neural networks hard to train?</a><div id="toc_why_are_deep_neural_networks_hard_to_train" style="display: none;"><p class="toc_section"><ul><a href="chap5.html#the_vanishing_gradient_problem"><li>The vanishing gradient problem</li></a><a href="chap5.html#what's_causing_the_vanishing_gradient_problem_unstable_gradients_in_deep_neural_nets"><li>What's causing the vanishing gradient problem?  Unstable gradients in deep neural nets</li></a><a href="chap5.html#unstable_gradients_in_more_complex_networks"><li>Unstable gradients in more complex networks</li></a><a href="chap5.html#other_obstacles_to_deep_learning"><li>Other obstacles to deep learning</li></a></ul></p></div>
+   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});
+});</script><p class='toc_mainchapter'><a id="toc_why_are_deep_neural_networks_hard_to_train_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_why_are_deep_neural_networks_hard_to_train" src="images/arrow.png" width="15px"></a><a href="chap5.html">ニューラルネットワークを訓練するのはなぜ難しいのか</a><div id="toc_why_are_deep_neural_networks_hard_to_train" style="display: none;"><p class="toc_section"><ul><a href="chap5.html#the_vanishing_gradient_problem"><li>The vanishing gradient problem</li></a><a href="chap5.html#what's_causing_the_vanishing_gradient_problem_unstable_gradients_in_deep_neural_nets"><li>What's causing the vanishing gradient problem?  Unstable gradients in deep neural nets</li></a><a href="chap5.html#unstable_gradients_in_more_complex_networks"><li>Unstable gradients in more complex networks</li></a><a href="chap5.html#other_obstacles_to_deep_learning"><li>Other obstacles to deep learning</li></a></ul></p></div>
 <script>
-$('#toc_why_are_deep_neural_networks_hard_to_train_reveal').click(function() { 
+$('#toc_why_are_deep_neural_networks_hard_to_train_reveal').click(function() {
    var src = $('#toc_img_why_are_deep_neural_networks_hard_to_train').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_why_are_deep_neural_networks_hard_to_train").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_why_are_deep_neural_networks_hard_to_train").attr('src', 'images/arrow.png');
    };
-   $('#toc_why_are_deep_neural_networks_hard_to_train').toggle('fast', function() {});  
+   $('#toc_why_are_deep_neural_networks_hard_to_train').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_deep_learning_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_deep_learning" src="images/arrow.png" width="15px"></a>Deep learning<div id="toc_deep_learning" style="display: none;"><p class="toc_section"><ul><li>Convolutional neural networks</li><li>Pretraining</li><li>Recurrent neural networks, Boltzmann machines, and other  models</li><li>Is there a universal thinking algorithm?</li><li>On the future of neural networks</li></ul></p></div>
 <script>
-$('#toc_deep_learning_reveal').click(function() { 
+$('#toc_deep_learning_reveal').click(function() {
    var src = $('#toc_img_deep_learning').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_deep_learning").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_deep_learning").attr('src', 'images/arrow.png');
    };
-   $('#toc_deep_learning').toggle('fast', function() {});  
+   $('#toc_deep_learning').toggle('fast', function() {});
 });</script><p class="toc_not_mainchapter"><a href="acknowledgements.html">Acknowledgements</a></p><p class="toc_not_mainchapter"><a href="faq.html">Frequently Asked Questions</a></p>
 <hr>
 <span class="sidebar_title">Sponsors</span>
@@ -125,7 +125,7 @@ style="padding: 0px 0px 10px 8px; border-style: none;"></a>
 
 <a href='http://www.visionsmarts.com'><img
 src='assets/visionsmarts.png' width='160px' style="padding: 0px 0px
-0px 0px; border-style: none;"></a> <br/> 
+0px 0px; border-style: none;"></a> <br/>
 
 <p class="sidebar">Thanks to all the <a
 href="supporters.html">supporters</a> who made the book possible.
@@ -158,7 +158,88 @@ href="faq.html">FAQ</a> first.</p>
 By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Dec 2014
 </p>
 </div>
-</p><p>Neural networks are one of the most beautiful programming paradigmsever invented.  In the conventional approach to programming, we tellthe computer what to do, breaking big problems up into many small,precisely defined tasks that the computer can easily perform.  Bycontrast, in a neural network we don't tell the computer how to solveour problem.  Instead, it learns from observational data, figuring outits own solution to the problem at hand.</p><p>Automatically learning from data sounds promising.  However, until2006 we didn't know how to train neural networks to surpass moretraditional approaches, except for a few specialized problems.  Whatchanged in 2006 was the discovery of techniques for learning inso-called deep neural networks.  These techniques are now known asdeep learning.  They've been developed further, and today deep neuralnetworks and deep learning achieve outstanding performance on manyimportant problems in computer vision, speech recognition, and naturallanguage processing.  They're being deployed on a large scale bycompanies such as Google, Microsoft, and Chinese search giant Baidu.</p><p>The purpose of this book is to help you master the core concepts ofneural networks, including modern techniques for deep learning.  Afterworking through the book you will have written code that uses neuralnetworks and deep learning to solve complex pattern recognitionproblems.  And you will have a foundation to use neural networks anddeep learning to attack problems of your own devising.</p><p><h3><a name="a_principle-oriented_approach"></a><a href="#a_principle-oriented_approach">A principle-oriented approach</a></h3></p><p>One conviction underlying the book is that it's better to obtain asolid understanding of the core principles of neural networks and deeplearning, rather than a hazy understanding of a long laundry list ofideas.  If you've understood the core ideas well, you can rapidlyunderstand other new material.  In programming language terms, thinkof it as mastering the core syntax, libraries and data structures of anew language.  You may still only "know" a tiny fraction of thetotal language - many languages have enormous standard libraries -but new libraries and data structures can be understood quickly andeasily.</p><p>This means the book is emphatically not a tutorial in how to use someparticular neural network library.  If you mostly want to learn yourway around a library, don't read this book!  Find the library you wishto learn, and work through the tutorials and documentation.  But bewarned.  While this has an immediate problem-solving payoff, if youwant to understand what's really going on in neural networks, if youwant insights that will still be relevant years from now, then it'snot enough just to learn some hot library.  You need to understand thedurable, lasting insights underlying how neural networks work.Technologies come and technologies go, but insight is forever.</p><p><h3><a name="a_hands-on_approach"></a><a href="#a_hands-on_approach">A hands-on approach</a></h3></p><p>We'll learn the core principles behind neural networks and deeplearning by attacking a concrete problem: the problem of teaching acomputer to recognize handwritten digits.  This problem is extremelydifficult to solve using the conventional approach to programming.And yet, as we'll see, it can be solved pretty well using a simpleneural network, with just a few tens of lines of code, and no speciallibraries.  What's more, we'll improve the program through manyiterations, gradually incorporating more and more of the core ideasabout neural networks and deep learning.</p><p>This hands-on approach means that you'll need some programmingexperience to read the book.  But you don't need to be a professionalprogrammer.  I've written the code in Python (version 2.7), which,even if you don't program in Python, should be easy to understand withjust a little effort.  Through the course of the book we will developa little neural network library, which you can use to experiment andto build understanding.  All the code is available for download<a href="https://github.com/mnielsen/neural-networks-and-deep-learning">here</a>.Once you've finished the book, or as you read it, you can easily pickup one of the more feature-complete neural network libraries intendedfor use in production.</p><p>On a related note, the mathematical requirements to read the book aremodest.  There is some mathematics in most chapters, but it's usuallyjust elementary algebra and plots of functions, which I expect mostreaders will be okay with.  I occasionally use more advancedmathematics, but have structured the material so you can follow evenif some mathematical details elude you.  The one chapter which usesheavier mathematics extensively is <a href="chap2.html">Chapter 2</a>, whichrequires a little multivariable calculus and linear algebra.  If thosearen't familiar, I begin <a href="chap2.html">Chapter 2</a> with adiscussion of how to navigate the mathematics.  If you're finding itreally heavy going, you can simply skip to the<a href="chap2.html#the_backpropagation_algorithm">summary</a> of thechapter's main results.  In any case, there's no need to worry aboutthis at the outset.</p><p>It's rare for a book to aim to be both principle-oriented andhands-on.  But I believe you'll learn best if we build out thefundamental ideas of neural networks.  We'll develop living code, notjust abstract theory, code which you can explore and extend.  This wayyou'll understand the fundamentals, both in theory and practice, andbe well set to add further to your knowledge.</p><p></p><p></p><p></p><p></p><p></p><p></p><p></div><div class="footer"> <span class="left_footer"> In academic work,
+</p><p>
+  <!-- Neural networks are one of the most beautiful programming paradigms
+  ever invented. -->
+ニューラルネットワークはこれまで発明されたなかでも最も美しいプログラミングパラダイムの一つです。
+  In the conventional approach to programming, we tell
+the computer what to do, breaking big problems up into many small,
+  precisely defined tasks that the computer can easily perform.
+
+  プログラミングする従来の方法では、我々は、解きたい大きな問題を、コンピュータにも実行できるよう明確に定義された無数の小さなタスクに分割し、コンピュータが何をすべきかを逐一指示します。
+
+  By
+contrast, in a neural network we don't tell the computer how to solve
+our problem.  Instead, it learns from observational data, figuring out
+its own solution to the problem at hand.</p><p>Automatically learning from data sounds promising.  However, until
+2006 we didn't know how to train neural networks to surpass more
+traditional approaches, except for a few specialized problems.  What
+changed in 2006 was the discovery of techniques for learning in
+so-called deep neural networks.  These techniques are now known as
+deep learning.  They've been developed further, and today deep neural
+networks and deep learning achieve outstanding performance on many
+important problems in computer vision, speech recognition, and natural
+language processing.  They're being deployed on a large scale by
+companies such as Google, Microsoft, and Chinese search giant Baidu.</p><p>The purpose of this book is to help you master the core concepts of
+neural networks, including modern techniques for deep learning.  After
+working through the book you will have written code that uses neural
+networks and deep learning to solve complex pattern recognition
+problems.  And you will have a foundation to use neural networks and
+deep learning to attack problems of your own devising.</p><p><h3><a name="a_principle-oriented_approach"></a><a href="#a_principle-oriented_approach">A principle-oriented approach</a></h3></p><p>One conviction underlying the book is that it's better to obtain a
+solid understanding of the core principles of neural networks and deep
+learning, rather than a hazy understanding of a long laundry list of
+ideas.  If you've understood the core ideas well, you can rapidly
+understand other new material.  In programming language terms, think
+of it as mastering the core syntax, libraries and data structures of a
+new language.  You may still only "know" a tiny fraction of the
+total language - many languages have enormous standard libraries -
+but new libraries and data structures can be understood quickly and
+easily.</p><p>This means the book is emphatically not a tutorial in how to use some
+particular neural network library.  If you mostly want to learn your
+way around a library, don't read this book!  Find the library you wish
+to learn, and work through the tutorials and documentation.  But be
+warned.  While this has an immediate problem-solving payoff, if you
+want to understand what's really going on in neural networks, if you
+want insights that will still be relevant years from now, then it's
+not enough just to learn some hot library.  You need to understand the
+durable, lasting insights underlying how neural networks work.
+Technologies come and technologies go, but insight is forever.</p><p><h3><a name="a_hands-on_approach"></a><a href="#a_hands-on_approach">A hands-on approach</a></h3></p><p>We'll learn the core principles behind neural networks and deep
+learning by attacking a concrete problem: the problem of teaching a
+computer to recognize handwritten digits.  This problem is extremely
+difficult to solve using the conventional approach to programming.
+And yet, as we'll see, it can be solved pretty well using a simple
+neural network, with just a few tens of lines of code, and no special
+libraries.  What's more, we'll improve the program through many
+iterations, gradually incorporating more and more of the core ideas
+about neural networks and deep learning.</p><p>This hands-on approach means that you'll need some programming
+experience to read the book.  But you don't need to be a professional
+programmer.  I've written the code in Python (version 2.7), which,
+even if you don't program in Python, should be easy to understand with
+just a little effort.  Through the course of the book we will develop
+a little neural network library, which you can use to experiment and
+to build understanding.  All the code is available for download
+<a href="https://github.com/mnielsen/neural-networks-and-deep-learning">here</a>.
+Once you've finished the book, or as you read it, you can easily pick
+up one of the more feature-complete neural network libraries intended
+for use in production.</p><p>On a related note, the mathematical requirements to read the book are
+modest.  There is some mathematics in most chapters, but it's usually
+just elementary algebra and plots of functions, which I expect most
+readers will be okay with.  I occasionally use more advanced
+mathematics, but have structured the material so you can follow even
+if some mathematical details elude you.  The one chapter which uses
+heavier mathematics extensively is <a href="chap2.html">Chapter 2</a>, which
+requires a little multivariable calculus and linear algebra.  If those
+aren't familiar, I begin <a href="chap2.html">Chapter 2</a> with a
+discussion of how to navigate the mathematics.  If you're finding it
+really heavy going, you can simply skip to the
+<a href="chap2.html#the_backpropagation_algorithm">summary</a> of the
+chapter's main results.  In any case, there's no need to worry about
+this at the outset.</p><p>It's rare for a book to aim to be both principle-oriented and
+hands-on.  But I believe you'll learn best if we build out the
+fundamental ideas of neural networks.  We'll develop living code, not
+just abstract theory, code which you can explore and extend.  This way
+you'll understand the fundamentals, both in theory and practice, and
+be well set to add further to your knowledge.</p><p></p><p></p><p></p><p></p><p></p><p></p><p></div><div class="footer"> <span class="left_footer"> In academic work,
 please cite this book as: Michael A. Nielsen, "Neural Networks and
 Deep Learning", Determination Press, 2015
 

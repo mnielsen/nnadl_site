@@ -52,8 +52,8 @@
   </head>
   <body><div class="header"><h1 class="chapter_number">
   <a href="">CHAPTER 1</a></h1>
-  <h1 class="chapter_title"><a href="">Using neural nets to recognize handwritten digits</a></h1></div><div class="section"><div id="toc">
-<p class="toc_title"><a href="index.html">ニューラルネットワークと深層学習</a> (draft contents)</p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">Using neural nets to recognize handwritten digits</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
+  <h1 class="chapter_title"><a href="">ニューラルネットワークを用いた手書き文字認識</a></h1></div><div class="section"><div id="toc">
+<p class="toc_title"><a href="index.html">ニューラルネットワークと深層学習</a> (draft contents)</p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">ニューラルネットワークを用いた手書き文字認識</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
 <script>
 $('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() {
    var src = $('#toc_img_using_neural_nets_to_recognize_handwritten_digits').attr('src');
@@ -63,7 +63,7 @@ $('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(functio
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow.png');
    };
    $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});
-});</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">How the backpropagation algorithm works</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output
+});</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">逆伝播の仕組み</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output
 _from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output
   from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
 <script>
@@ -75,7 +75,7 @@ $('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() {
      $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow.png');
    };
    $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});
-});</script><p class='toc_mainchapter'><a id="toc_improving_the_way_neural_networks_learn_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_improving_the_way_neural_networks_learn" src="images/arrow.png" width="15px"></a><a href="chap3.html">Improving the way neural networks learn</a><div id="toc_improving_the_way_neural_networks_learn" style="display: none;"><p class="toc_section"><ul><a href="chap3.html#the_cross-entropy_cost_function"><li>The cross-entropy cost function</li></a><a href="chap3.html#overfitting_and_regularization"><li>Overfitting and regularization</li></a><a href="chap3.html#weight_initialization"><li>Weight initialization</li></a><a href="chap3.html#handwriting_recognition_revisited_the_code"><li>Handwriting recognition revisited: the code</li></a><a href="chap3.html#how_to_choose_a_neural_network's_hyper-parameters"><li>How to choose a neural network's hyper-parameters?</li></a><a href="chap3.html#other_techniques"><li>Other techniques</li></a></ul></p></div>
+});</script><p class='toc_mainchapter'><a id="toc_improving_the_way_neural_networks_learn_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_improving_the_way_neural_networks_learn" src="images/arrow.png" width="15px"></a><a href="chap3.html">ニューラルネットワークの学習の改善</a><div id="toc_improving_the_way_neural_networks_learn" style="display: none;"><p class="toc_section"><ul><a href="chap3.html#the_cross-entropy_cost_function"><li>The cross-entropy cost function</li></a><a href="chap3.html#overfitting_and_regularization"><li>Overfitting and regularization</li></a><a href="chap3.html#weight_initialization"><li>Weight initialization</li></a><a href="chap3.html#handwriting_recognition_revisited_the_code"><li>Handwriting recognition revisited: the code</li></a><a href="chap3.html#how_to_choose_a_neural_network's_hyper-parameters"><li>How to choose a neural network's hyper-parameters?</li></a><a href="chap3.html#other_techniques"><li>Other techniques</li></a></ul></p></div>
 <script>
 $('#toc_improving_the_way_neural_networks_learn_reveal').click(function() {
    var src = $('#toc_img_improving_the_way_neural_networks_learn').attr('src');
@@ -85,7 +85,7 @@ $('#toc_improving_the_way_neural_networks_learn_reveal').click(function() {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow.png');
    };
    $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});
-});</script><p class='toc_mainchapter'><a id="toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_a_visual_proof_that_neural_nets_can_compute_any_function" src="images/arrow.png" width="15px"></a><a href="chap4.html">A visual proof that neural nets can compute any function</a><div id="toc_a_visual_proof_that_neural_nets_can_compute_any_function" style="display: none;"><p class="toc_section"><ul><a href="chap4.html#two_caveats"><li>Two caveats</li></a><a href="chap4.html#universality_with_one_input_and_one_output"><li>Universality with one input and one output</li></a><a href="chap4.html#many_input_variables"><li>Many input variables</li></a><a href="chap4.html#extension_beyond_sigmoid_neurons"><li>Extension beyond sigmoid neurons</li></a><a href="chap4.html#fixing_up_the_step_functions"><li>Fixing up the step functions</li></a><a href="chap4.html#conclusion"><li>Conclusion</li></a></ul></p></div>
+});</script><p class='toc_mainchapter'><a id="toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_a_visual_proof_that_neural_nets_can_compute_any_function" src="images/arrow.png" width="15px"></a><a href="chap4.html">ニューラルネットワークが任意の関数を表現できることの視覚的証明</a><div id="toc_a_visual_proof_that_neural_nets_can_compute_any_function" style="display: none;"><p class="toc_section"><ul><a href="chap4.html#two_caveats"><li>Two caveats</li></a><a href="chap4.html#universality_with_one_input_and_one_output"><li>Universality with one input and one output</li></a><a href="chap4.html#many_input_variables"><li>Many input variables</li></a><a href="chap4.html#extension_beyond_sigmoid_neurons"><li>Extension beyond sigmoid neurons</li></a><a href="chap4.html#fixing_up_the_step_functions"><li>Fixing up the step functions</li></a><a href="chap4.html#conclusion"><li>Conclusion</li></a></ul></p></div>
 <script>
 $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() {
    var src = $('#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function').attr('src');
@@ -95,7 +95,7 @@ $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(
      $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow.png');
    };
    $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});
-});</script><p class='toc_mainchapter'><a id="toc_why_deep_neural_networks_are_hard_to_train_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_why_deep_neural_networks_are_hard_to_train" src="images/arrow.png" width="15px"></a>Why deep neural networks are hard to train<div id="toc_why_deep_neural_networks_are_hard_to_train" style="display: none;"><p class="toc_section"><ul><li>The vanishing gradient problem</li><li>What's causing the vanishing gradient problem?  Unstable gradients in deep neural nets</li><li>How should we approach deep learning?</li></ul></p></div>
+});</script><p class='toc_mainchapter'><a id="toc_why_deep_neural_networks_are_hard_to_train_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_why_deep_neural_networks_are_hard_to_train" src="images/arrow.png" width="15px"></a>ニューラルネットワークを訓練するのはなぜ難しいのか<div id="toc_why_deep_neural_networks_are_hard_to_train" style="display: none;"><p class="toc_section"><ul><li>The vanishing gradient problem</li><li>What's causing the vanishing gradient problem?  Unstable gradients in deep neural nets</li><li>How should we approach deep learning?</li></ul></p></div>
 <script>
 $('#toc_why_deep_neural_networks_are_hard_to_train_reveal').click(function() {
    var src = $('#toc_img_why_deep_neural_networks_are_hard_to_train').attr('src');
@@ -800,20 +800,30 @@ problem.  But it's not immediately obvious how we can get a network of
 
 </p><p>
 
+<!--
   We can overcome this problem by introducing a new type of artificial
 neuron called a <em>sigmoid</em> neuron.
 Sigmoid neurons are similar to perceptrons, but modified so that small
 changes in their weights and bias cause only a small change in their
 output.  That's the crucial fact which will allow a network of sigmoid
   neurons to learn.
+-->
+この問題は、<em>シグモイド</em>ニューロンと呼ばれる、新しいタイプの人工ニューロンを導入することによって克服することができます。
+シグモイドニューロンはパーセプトロンと似ていますが、シグモイドニューロンの重みやバイアスに微小な変化を与えたとき、それに応じて生じる出力の変化も微小なものに留まるように調整されています。このことは、シグモイドニューロンで構成されているニューラルネットワークの学習を可能にする、決定的な違いとなります。
 
 </p><p>
 
+<!--
   Okay, let me describe the sigmoid neuron.  We'll depict sigmoid
 neurons in the same way we depicted perceptrons:
+-->
+よし、それではシグモイドニューロンをご説明しましょう。シグモイドニューロンは、パーセプトロンと同じような見た目で描くことにします：
+
 <center>
 <img src="images/tikz9.png"/>
 </center>
+
+<!--
 Just like a perceptron, the sigmoid neuron has inputs, $x_1, x_2,
 \ldots$.  But instead of being just $0$ or $1$, these inputs can also
 take on any values <em>between</em> $0$ and $1$.  So, for instance,
@@ -831,19 +841,45 @@ Instead, it's $\sigma(w \cdot x+b)$, where $\sigma$ is called the
   people working with neural nets.  However, we'll stick with the
   sigmoid terminology.</span>, and is defined
 by:
+-->
+ちょうどパーセプトロンがそうであるように、シグモイドニューロンは$x_1, x_2,\ldots$といった入力を取ります。しかし、これらの入力値は、単に$0$や$1$だけではなく、$0$から$1$<em>の間</em>のあらゆる値をとることができます。そのため、たとえば、$0.638\ldots$といった値も、シグモイドニューロンにとっては有効な入力値となります。
+パーセプトロンがそうであるように、シグモイドニューロンはそれぞれの入力に対して、重み($w_1, w_2,\ldots$)を持ち、またニューロン全体に対するバイアスと呼ばれる値($b$)を持っています。しかし、出力は、$0$や$1$だけではありません。
+代わりに、出力としては$\sigma(w \cdot x+b)$という値をとります。$\sigma$は<em>シグモイド関数</em>*<span class="marginnote">
+*たまに、 $\sigma$ を
+   <em>ロジスティック関数</em>と呼び、この新しいニューロンを
+   <em>ロジスティック・ニューロン</em>と呼ぶことがあります。
+   こちらの用語を使うニューラルネット研究者も大勢いますので、
+   この用語を覚えておくと便利です。
+とはいえ、私たちは一貫してシグモイド関数という用語の方を使うことにします。</span>
+  と呼ばれており、次の式で定義されます：
+
 <a class="displaced_anchor" name="eqtn3"></a>\begin{eqnarray}
   \sigma(z) \equiv \frac{1}{1+e^{-z}}.
 \tag{3}\end{eqnarray}
+<!--
 To put it all a little more explicitly, the output of a sigmoid neuron
 with inputs $x_1,x_2,\ldots$, weights $w_1,w_2,\ldots$, and bias $b$ is
+-->
+より明確に表現すると、シグモイドニューロンの出力は、入力が$x_1,x_2,\ldots$で、重みが$w_1,w_2,\ldots$で、そしてバイアスが$b$のとき、次の形を取ります。
+
 <a class="displaced_anchor" name="eqtn4"></a>\begin{eqnarray}
   \frac{1}{1+\exp(-\sum_j w_j x_j-b)}.
-\tag{4}\end{eqnarray}</p><p>At first sight, sigmoid neurons appear very different to perceptrons.
+\tag{4}\end{eqnarray}</p><p>
+
+<!--
+At first sight, sigmoid neurons appear very different to perceptrons.
 The algebraic form of the sigmoid function may seem opaque and
 forbidding if you're not already familiar with it.  In fact, there are
 many similarities between perceptrons and sigmoid neurons, and the
 algebraic form of the sigmoid function turns out to be more of a
-technical detail than a true barrier to understanding.</p><p>To understand the similarity to the perceptron model, suppose $z
+technical detail than a true barrier to understanding.
+-->
+一見すると、シグモイドニューロンはパーセプトロンとは大きく異なるように見えます。シグモイド関数の数式は、こういった表現方法に慣れていない人にとっては、理解困難で近づき難く感じられるかもしれません。
+しかし実は、パーセプトロンとシグモイドニューロンには多くの共通点があり、シグモイド関数が代数形式で表現されていることは、真の理解の妨げになるどころか、技術的な細部を伝えてくれるものとなるでしょう。
+
+</p><p>
+
+To understand the similarity to the perceptron model, suppose $z
 \equiv w \cdot x + b$ is a large positive number.  Then $e^{-z}
 \approx 0$ and so $\sigma(z) \approx 1$.  In other words, when $z = w
 \cdot x+b$ is large and positive, the output from the sigmoid neuron
