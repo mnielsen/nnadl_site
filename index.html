@@ -10,13 +10,13 @@
     <meta name="citation_fulltext_html_url" content="http://neuralnetworksanddeeplearning.com">
     <meta name="citation_publisher" content="Determination Press">
     <link rel="icon" href="nnadl_favicon.ICO" />
-    <!--    <title>Neural networks and deep learning</title>-->
-    <title>ニューラルネットワークと深層学習</title>
+    <!--    <title></title>-->
+    <title>Neural networks and deep learning</title>
     <script src="assets/jquery.min.js"></script>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: {inlineMath: [['$','$']]},
-        "HTML-CSS": 
+        "HTML-CSS":
           {scale: 92},
         TeX: { equationNumbers: { autoNumber: "AMS" }}});
     </script>
@@ -52,80 +52,80 @@
 
   </head>
 <body>
-  <!--<div class="nonumber_header"><h2><a href="index.html">ニューラルネットワークと深層学習</a></h2></div>-->
+  <!--<div class="nonumber_header"><h2><a href="index.html">Neural networks and deep learning</a></h2></div>-->
 <div class="nonumber_header"><h2><a href="index.html">ニューラルネットワークと深層学習</a></h2></div>
 
-  <div class="section"><div id="toc"> 
+  <div class="section"><div id="toc">
 <p class="toc_title"><a href="index.html">ニューラルネットワークと深層学習</a> (draft contents)</p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">ニューラルネットワークを用いた手書き文字認識</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
 <script>
-$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() { 
+$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() {
    var src = $('#toc_img_using_neural_nets_to_recognize_handwritten_digits').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow.png');
    };
-   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});  
+   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">逆伝播の仕組み</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output _from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output   from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
 <script>
-$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() { 
+$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() {
    var src = $('#toc_img_how_the_backpropagation_algorithm_works').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow.png');
    };
-   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});  
+   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_improving_the_way_neural_networks_learn_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_improving_the_way_neural_networks_learn" src="images/arrow.png" width="15px"></a><a href="chap3.html">ニューラルネットワークの学習の改善</a><div id="toc_improving_the_way_neural_networks_learn" style="display: none;"><p class="toc_section"><ul><a href="chap3.html#the_cross-entropy_cost_function"><li>The cross-entropy cost function</li></a><a href="chap3.html#overfitting_and_regularization"><li>Overfitting and regularization</li></a><a href="chap3.html#weight_initialization"><li>Weight initialization</li></a><a href="chap3.html#handwriting_recognition_revisited_the_code"><li>Handwriting recognition revisited: the code</li></a><a href="chap3.html#how_to_choose_a_neural_network's_hyper-parameters"><li>How to choose a neural network's hyper-parameters?</li></a><a href="chap3.html#other_techniques"><li>Other techniques</li></a></ul></p></div>
 <script>
-$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() { 
+$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() {
    var src = $('#toc_img_improving_the_way_neural_networks_learn').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow.png');
    };
-   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});  
+   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_a_visual_proof_that_neural_nets_can_compute_any_function" src="images/arrow.png" width="15px"></a><a href="chap4.html">ニューラルネットワークが任意の関数を表現できることの視覚的証明</a><div id="toc_a_visual_proof_that_neural_nets_can_compute_any_function" style="display: none;"><p class="toc_section"><ul><a href="chap4.html#two_caveats"><li>Two caveats</li></a><a href="chap4.html#universality_with_one_input_and_one_output"><li>Universality with one input and one output</li></a><a href="chap4.html#many_input_variables"><li>Many input variables</li></a><a href="chap4.html#extension_beyond_sigmoid_neurons"><li>Extension beyond sigmoid neurons</li></a><a href="chap4.html#fixing_up_the_step_functions"><li>Fixing up the step functions</li></a><a href="chap4.html#conclusion"><li>Conclusion</li></a></ul></p></div>
 <script>
-$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() { 
+$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() {
    var src = $('#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow.png');
    };
-   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});  
+   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_why_deep_neural_networks_are_hard_to_train_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_why_deep_neural_networks_are_hard_to_train" src="images/arrow.png" width="15px"></a>ニューラルネットワークを訓練するのはなぜ難しいのか<div id="toc_why_deep_neural_networks_are_hard_to_train" style="display: none;"><p class="toc_section"><ul><li>The vanishing gradient problem</li><li>What's causing the vanishing gradient problem?  Unstable gradients in deep neural nets</li><li>How should we approach deep learning?</li></ul></p></div>
 <script>
-$('#toc_why_deep_neural_networks_are_hard_to_train_reveal').click(function() { 
+$('#toc_why_deep_neural_networks_are_hard_to_train_reveal').click(function() {
    var src = $('#toc_img_why_deep_neural_networks_are_hard_to_train').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_why_deep_neural_networks_are_hard_to_train").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_why_deep_neural_networks_are_hard_to_train").attr('src', 'images/arrow.png');
    };
-   $('#toc_why_deep_neural_networks_are_hard_to_train').toggle('fast', function() {});  
+   $('#toc_why_deep_neural_networks_are_hard_to_train').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_deep_learning_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_deep_learning" src="images/arrow.png" width="15px"></a>Deep learning<div id="toc_deep_learning" style="display: none;"><p class="toc_section"><ul><li>Convolutional neural networks</li><li>Pretraining</li><li>Feature discovery</li><li>The state of the art in image recognition</li></ul></p></div>
 <script>
-$('#toc_deep_learning_reveal').click(function() { 
+$('#toc_deep_learning_reveal').click(function() {
    var src = $('#toc_img_deep_learning').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_deep_learning").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_deep_learning").attr('src', 'images/arrow.png');
    };
-   $('#toc_deep_learning').toggle('fast', function() {});  
+   $('#toc_deep_learning').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_the_future_of_neural_nets_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_the_future_of_neural_nets" src="images/arrow.png" width="15px"></a>The future of neural nets<div id="toc_the_future_of_neural_nets" style="display: none;"><p class="toc_section"><ul><li>Will neural networks ever lead to artificial intelligence?</li><li>Could neural networks be used to simulate a human brain?</li></ul></p></div>
 <script>
-$('#toc_the_future_of_neural_nets_reveal').click(function() { 
+$('#toc_the_future_of_neural_nets_reveal').click(function() {
    var src = $('#toc_img_the_future_of_neural_nets').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_the_future_of_neural_nets").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_the_future_of_neural_nets").attr('src', 'images/arrow.png');
    };
-   $('#toc_the_future_of_neural_nets').toggle('fast', function() {});  
+   $('#toc_the_future_of_neural_nets').toggle('fast', function() {});
 });</script><p class="toc_not_mainchapter">Further reading</p><p class="toc_not_mainchapter">Acknowledgements</p>
 <hr>
 <span class="sidebar_title">Sponsors</span>
@@ -139,7 +139,7 @@ style="padding: 0px 0px 10px 8px; border-style: none;"></a>
 
 <a href='http://www.visionsmarts.com'><img
 src='assets/visionsmarts.png' width='160px' style="padding: 0px 0px
-0px 0px; border-style: none;"></a> <br/> 
+0px 0px; border-style: none;"></a> <br/>
 
 <p class="sidebar">Thanks to all the <a
 href="supporters.html">supporters</a> who made the book possible.
@@ -173,83 +173,83 @@ mn@michaelnielsen.org.</p>
   訳：<a href="https://github.com/nnadl-ja/nnadl_site_ja">「ニューラルネットワークと深層学習」翻訳プロジェクト</a>
 </p>
 </div>
-      <p> 
+      <p>
 	<!--
-<em>ニューラルネットワークと深層学習</em> is a free online book.  The 
-book will teach you about: 
+<em>Neural networks and deep learning</em> is a free online book.  The
+book will teach you about:
 -->
 	「ニューラルネットワークと深層学習」は無料のオンライン書籍です。
 	この本では、次のような内容を扱います。
 	<!--
-<ul> 
-<li>Neural networks, a beautiful biologically-inspired programming 
-paradigm which enables a computer to learn from observational data 
- 
-<li>Deep learning, a powerful set of techniques for learning in neural 
-networks 
- 
+<ul>
+<li>Neural networks, a beautiful biologically-inspired programming
+paradigm which enables a computer to learn from observational data
+
+<li>Deep learning, a powerful set of techniques for learning in neural
+networks
+
 </ul>-->
 
 
-<ul> 
+<ul>
   <li>ニューラルネットワーク：コンピュータに、観測データにもとづいて学習する能力を与える、生物学にヒントを得たプログラミングパラダイム。
   <li>深層学習：ニューラルネットワークに学習をさせるための強力な手法。
 </ul>
 
 
 <!--
-Neural networks and deep learning currently provide the best solutions 
-to many problems in image recognition, speech recognition, and natural 
-language processing.  This book will teach you the core concepts 
+Neural networks and deep learning currently provide the best solutions
+to many problems in image recognition, speech recognition, and natural
+language processing.  This book will teach you the core concepts
 behind neural networks and deep learning. -->
 
 ニューラルネットワークと深層学習は、現時点において、画像認識、音声認識、自然言語処理などの分野の様々な
 問題に対して、最も優れた解決策を与える手法です。この本では、ニューラルネットワークと深層学習の背後にある
 核心的概念を扱います。
 
-</p> 
- 
-<p> 
+</p>
+
+<p>
 <!--
-  The book is currently an incomplete beta draft.  More chapters will be 
+  The book is currently an incomplete beta draft.  More chapters will be
 added over the coming months. For now, you can:
   -->
 この本は現時点では未完成のベータ版原稿です。著者によれば、数ヶ月のうちに追加の章を執筆するつもりのようです。
 今は、以下の章が読めます。。
 
-</p> 
- 
-<p> 
-<ul> 
- 
-<!--<li><b><a href="chap1.html">Read Chapter 1</a></b>, which explains how 
+</p>
+
+<p>
+<ul>
+
+<!--<li><b><a href="chap1.html">Read Chapter 1</a></b>, which explains how
 neural networks can learn to recognize handwriting -->
 <li><b><a href="chap1.html">第1章</a></b>では、ニューラルネットワークが手書き文字を認識するしくみを説明します。
- 
-<!--<li><b><a href="chap2.html">Read Chapter 2</a></b>, which explains 
-backpropagation, the most important algorithm used to learn in neural 
+
+<!--<li><b><a href="chap2.html">Read Chapter 2</a></b>, which explains
+backpropagation, the most important algorithm used to learn in neural
   networks.-->
 <li><b><a href="chap2.html">第2章</a></b>では、ニューラルネットワークを学習させる最も重要なアルゴリズムである、逆伝播という手法を説明します。
 
- 
-<!--<li><b><a href="chap3.html">Read Chapter 3</a></b>, which explains 
-many techniques which can be used to improve the performance of 
+
+<!--<li><b><a href="chap3.html">Read Chapter 3</a></b>, which explains
+many techniques which can be used to improve the performance of
   backpropagation.-->
 <li><b><a href="chap3.html">第3章</a></b>では、逆伝播の性能を向上させるための様々な技法を紹介します。
 
- 
-<!--<li><b><a href="chap4.html">Read Chapter 4</a></b>, which explains why 
+
+<!--<li><b><a href="chap4.html">Read Chapter 4</a></b>, which explains why
   neural networks can compute any function.-->
   <li><b><a href="chap4.html">第4章</a></b>では、ニューラルネットワークがなぜ任意の関数を計算できるのかを証明します。
- 
-<!--<li><b><a href="about.html">Learn more about the approach taken in 
-this book</a></b> 
+
+<!--<li><b><a href="about.html">Learn more about the approach taken in
+this book</a></b>
   -->
 <li><b><a href="about.html">この本について</a></b>では、この本で採用したアプローチについて説明します。
-</ul> 
-</p> 
- 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> 
+</ul>
+</p>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 </div><div class="footer"> <span class="left_footer"> In academic work,
 please cite this book as: Michael A. Nielsen, "Neural Networks and
 Deep Learning", Determination Press, 2014
