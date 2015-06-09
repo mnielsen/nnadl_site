@@ -1075,24 +1075,24 @@ explicitly state when we're using such a convention, so it shouldn't
 cause any confusion.</p><p>
 <h4><a name="exercises_191892"></a><a href="#exercises_191892">Exercises</a></h4><ul>
 <li><strong>シグモイドニューロンのシミュレーション パート I</strong> $\mbox{}$ <br/>
-  今、全ての重みとバイアスをパーセプトロンのネットワークに取り込み、
-  それらを全て$c > 0$となるような正の数で定数倍するとします。
-  このときネットワークの振る舞いは変わらないことを試してみてください。
+  今、あるパーセプトロンのネットワークのすべての重みとバイアスをとって、
+  ある正の定数$c > 0$で定数倍するとします。
+  このときネットワークの振る舞いは変わらないことを示してみてください。
 <!--Suppose we take all the weights and biases in a network of
   perceptrons, and multiply them by a positive constant, $c > 0$.
   Show that the behaviour of the network doesn't change.--></p><p><li><strong>シグモイドニューロンのシミュレーション パート II</strong> $\mbox{}$
   <br/>
   先ほどの問題(=パーセプトロンのネットワーク)と同じ設定で考えます。
-  さらにパーセプトロンネットワークへの入力全体が選ばれるとします。
-  ここで何か具体的な値を入れる必要はなく、何か定まった値であれば問題ありません。
-  重みとバイアスは任意のパーセプトロンネットワークにおいて、
-  入力$x$に対し$w \cdot x + b \neq 0$を満たします。
+  さらにパーセプトロンネットワークへの入力全体はすでに選ばれているとします。
+  ここで、入力の具体的な値は必要ではなく、入力値が固定されてさえいれば問題ありません。
+  重みとバイアスは、ネットワーク内の任意のパーセプトロンにおいて、
+  入力$x$に対し$w \cdot x + b \neq 0$を満たしているものとします。
   今、ネットワーク内の全てのパーセプトロンをシグモイドニューロンで置き換え、
   重みとバイアスを全て$c > 0$となるような正の数で定数倍するとします。
-  このとき$c \rightarrow \infty$の極限値において、
-  このシグモイドニューロンのネットワークはパーセプトロンの場合と全く同じように振る舞うことを確認して下さい。
+  このとき$c \rightarrow \infty$の極限において、
+  このシグモイドニューロンのネットワークはパーセプトロンの場合と全く同じように振る舞うことを示して下さい。
   またパーセプトロンのうちの1つが$w \cdot x + b = 0$を満たす場合には
-  どうしてこれが失敗するのでしょうか。
+  この性質は成り立ちません。なぜでしょうか？
   <!--Suppose we have the same setup as the last problem - a
   network of perceptrons.  Suppose also that the overall input to the
   network of perceptrons has been chosen.  We won't need the actual
