@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Produced from a LaTeX source file.  Note that the production is done -->
+<!-- by a very rough-and-ready (and buggy) script, so the HTML and other  -->
+<!-- code is quite ugly!  Later versions should be better.                -->
+    <meta charset="utf-8">
+    <meta name="citation_title" content="ニューラルネットワークと深層学習">
+    <meta name="citation_author" content="Nielsen, Michael A.">
+    <meta name="citation_publication_date" content="2015">
+    <meta name="citation_fulltext_html_url" content="http://neuralnetworksanddeeplearning.com">
+    <meta name="citation_publisher" content="Determination Press">
+    <link rel="icon" href="nnadl_favicon.ICO" />
+    <title>ニューラルネットワークと深層学習</title>
+    <script src="assets/jquery.min.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$']]},
+        "HTML-CSS":
+          {scale: 92},
+        TeX: { equationNumbers: { autoNumber: "AMS" }}});
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+    <link href="assets/style.css" rel="stylesheet">
+    <link href="assets/pygments.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+<style>
+/* Adapted from */
+/* https://groups.google.com/d/msg/mathjax-users/jqQxrmeG48o/oAaivLgLN90J, */
+/* by David Cervone */
+
+@font-face {
+    font-family: 'MJX_Math';
+    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot'); /* IE9 Compat Modes */
+    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot?iefix') format('eot'),
+    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff')  format('woff'),
+    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf')  format('opentype'),
+    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/svg/MathJax_Math-Italic.svg#MathJax_Math-Italic') format('svg');
+}
+
+@font-face {
+    font-family: 'MJX_Main';
+    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot'); /* IE9 Compat Modes */
+    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot?iefix') format('eot'),
+    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff')  format('woff'),
+    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf')  format('opentype'),
+    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/svg/MathJax_Main-Regular.svg#MathJax_Main-Regular') format('svg');
+}
+</style>
+
+  </head>
+  <body><div class="nonumber_header"><h2><a href="index.html">訳者謝辞</a></h2></div><div class="section"><div id="toc">
+<p class="toc_title"><a href="index.html">ニューラルネットワークと深層学習</a></p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">ニューラルネットワークを用いた手書き文字認識</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
+<script>
+$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() {
+   var src = $('#toc_img_using_neural_nets_to_recognize_handwritten_digits').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow.png');
+   };
+   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});
+});</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">逆伝播の仕組み</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output_from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output  from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
+<script>
+$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() {
+   var src = $('#toc_img_how_the_backpropagation_algorithm_works').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow.png');
+   };
+   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});
+});</script><p class='toc_mainchapter'><a id="toc_improving_the_way_neural_networks_learn_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_improving_the_way_neural_networks_learn" src="images/arrow.png" width="15px"></a><a href="chap3.html">ニューラルネットワークの学習の改善</a><div id="toc_improving_the_way_neural_networks_learn" style="display: none;"><p class="toc_section"><ul><a href="chap3.html#the_cross-entropy_cost_function"><li>The cross-entropy cost function</li></a><a href="chap3.html#overfitting_and_regularization"><li>Overfitting and regularization</li></a><a href="chap3.html#weight_initialization"><li>Weight initialization</li></a><a href="chap3.html#handwriting_recognition_revisited_the_code"><li>Handwriting recognition revisited: the code</li></a><a href="chap3.html#how_to_choose_a_neural_network's_hyper-parameters"><li>How to choose a neural network's hyper-parameters?</li></a><a href="chap3.html#other_techniques"><li>Other techniques</li></a></ul></p></div>
+<script>
+$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() {
+   var src = $('#toc_img_improving_the_way_neural_networks_learn').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow.png');
+   };
+   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});
+});</script><p class='toc_mainchapter'><a id="toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_a_visual_proof_that_neural_nets_can_compute_any_function" src="images/arrow.png" width="15px"></a><a href="chap4.html">ニューラルネットワークが任意の関数を表現できることの視覚的証明</a><div id="toc_a_visual_proof_that_neural_nets_can_compute_any_function" style="display: none;"><p class="toc_section"><ul><a href="chap4.html#two_caveats"><li>Two caveats</li></a><a href="chap4.html#universality_with_one_input_and_one_output"><li>Universality with one input and one output</li></a><a href="chap4.html#many_input_variables"><li>Many input variables</li></a><a href="chap4.html#extension_beyond_sigmoid_neurons"><li>Extension beyond sigmoid neurons</li></a><a href="chap4.html#fixing_up_the_step_functions"><li>Fixing up the step functions</li></a><a href="chap4.html#conclusion"><li>Conclusion</li></a></ul></p></div>
+<script>
+$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() {
+   var src = $('#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow.png');
+   };
+   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});
+});</script><p class='toc_mainchapter'><a id="toc_why_are_deep_neural_networks_hard_to_train_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_why_are_deep_neural_networks_hard_to_train" src="images/arrow.png" width="15px"></a><a href="chap5.html">ニューラルネットワークを訓練するのはなぜ難しいのか</a><div id="toc_why_are_deep_neural_networks_hard_to_train" style="display: none;"><p class="toc_section"><ul><a href="chap5.html#the_vanishing_gradient_problem"><li>The vanishing gradient problem</li></a><a href="chap5.html#what's_causing_the_vanishing_gradient_problem_unstable_gradients_in_deep_neural_nets"><li>What's causing the vanishing gradient problem?  Unstable gradients in deep neural nets</li></a><a href="chap5.html#unstable_gradients_in_more_complex_networks"><li>Unstable gradients in more complex networks</li></a><a href="chap5.html#other_obstacles_to_deep_learning"><li>Other obstacles to deep learning</li></a></ul></p></div>
+<script>
+$('#toc_why_are_deep_neural_networks_hard_to_train_reveal').click(function() {
+   var src = $('#toc_img_why_are_deep_neural_networks_hard_to_train').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_why_are_deep_neural_networks_hard_to_train").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_why_are_deep_neural_networks_hard_to_train").attr('src', 'images/arrow.png');
+   };
+   $('#toc_why_are_deep_neural_networks_hard_to_train').toggle('fast', function() {});
+});</script><p class='toc_mainchapter'><a id="toc_deep_learning_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_deep_learning" src="images/arrow.png" width="15px"></a>Deep learning<div id="toc_deep_learning" style="display: none;"><p class="toc_section"><ul><li>Convolutional neural networks</li><li>Pretraining</li><li>Recurrent neural networks, Boltzmann machines, and other  models</li><li>Is there a universal thinking algorithm?</li><li>On the future of neural networks</li></ul></p></div>
+<script>
+$('#toc_deep_learning_reveal').click(function() {
+   var src = $('#toc_img_deep_learning').attr('src');
+   if(src == 'images/arrow.png') {
+     $("#toc_img_deep_learning").attr('src', 'images/arrow_down.png');
+   } else {
+     $("#toc_img_deep_learning").attr('src', 'images/arrow.png');
+   };
+   $('#toc_deep_learning').toggle('fast', function() {});
+});</script><p class="toc_not_mainchapter"><a href="acknowledgements.html">Acknowledgements</a></p><p class="toc_not_mainchapter"><a href="faq.html">Frequently Asked Questions</a></p>
+<hr>
+<span class="sidebar_title">Sponsors</span>
+<br/>
+<a href='http://www.ersatz1.com/'><img src='assets/ersatz.png' width='140px' style="padding: 0px 0px 10px 8px; border-style: none;"></a>
+
+<a href='http://gsquaredcapital.com/'><img src='assets/gsquared.png' width='150px' style="padding: 0px 0px 10px 10px; border-style: none;"></a>
+
+<a href='http://www.tineye.com'><img src='assets/tineye.png' width='150px'
+style="padding: 0px 0px 10px 8px; border-style: none;"></a>
+
+<a href='http://www.visionsmarts.com'><img
+src='assets/visionsmarts.png' width='160px' style="padding: 0px 0px
+0px 0px; border-style: none;"></a> <br/>
+
+
+<!--
+<p class="sidebar">Thanks to all the <a
+href="supporters.html">supporters</a> who made the book possible.
+Thanks also to all the contributors to the <a
+href="bugfinder.html">Bugfinder Hall of Fame</a>.  </p>
+
+<p class="sidebar">The book is currently a beta release, and is still
+under active development.  Please send error reports to
+mn@michaelnielsen.org.  For other enquiries, please see the <a
+href="faq.html">FAQ</a> first.</p>
+-->
+
+<p class="sidebar">著者と共にこの本を作り出してくださった<a
+href="supporters.html">サポーター</a>の皆様に感謝いたします。
+また、<a
+href="bugfinder.html">バグ発見者の殿堂</a>に名を連ねる皆様にも感謝いたします。</p>
+
+<p class="sidebar">この本は目下のところベータ版で、開発続行中です。
+エラーレポートは mn@michaelnielsen.org まで、日本語版に関する質問は muranushi@gmail.com までお送りください。
+その他の質問については、まずは<a
+href="faq.html">FAQ</a>を見てください。</p>
+
+
+
+<hr>
+<span class="sidebar_title">Resources</span>
+
+<p class="sidebar">
+<a href="https://github.com/mnielsen/neural-networks-and-deep-learning">Code repository</a></p>
+
+<p class="sidebar">
+<a href="http://eepurl.com/BYr9L">Mailing list for book announcements</a>
+</p>
+
+<p class="sidebar">
+<a href="http://eepurl.com/0Xxjb">Michael Nielsen's project announcement mailing list</a>
+</p>
+
+<hr>
+<a href="http://michaelnielsen.org"><img src="assets/Michael_Nielsen_Web_Small.jpg" width="160px" style="border-style: none;"/></a>
+
+<p class="sidebar">
+By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Dec 2014
+</p>
+</div>
+<!--<p>A big thankyou to all the supporters whose contributions have made this work possible.  Supporters include:</p>-->
+<p>
+この本は、私の拙い、ともすれば途切れがちな監訳（と呼ぶのはおこがましい何か）のもと、以下の方々が本業と両立させながら翻訳を続けられています。
+翻訳チームの皆様に感謝いたします。</p>
+      <p>
+        <table style='border-spacing: 10px 0px;'><tr>
+<tr><td>第一章：ニューラルネットワークを用いた手書き文字認識</td><td></td></tr>
+<tr><td>Perceptrons</td><td>村主崇行</td></tr>
+<tr><td>Sigmoid neurons</td><td></td></tr>
+<tr><td>The architecture of neural networks</td><td></td></tr>
+<tr><td>A simple network to classify handwritten digits</td><td>Seiya Sasaki様</td></tr>
+<tr><td>Learning with gradient descent</td><td></td></tr>
+<tr><td>Implementing our network to classify digits</td><td>incheon様</td></tr>
+<tr><td>Toward deep learning</td><td></td></tr>
+<tr><td>第二章：逆伝播の仕組み</td><td>Kenta OONO様</td></tr>
+<tr><td>Warm up: a fast matrix-based approach to computing the output from a neural network</td><td></td></tr>
+<tr><td>The two assumptions we need about the cost function</td><td></td></tr>
+<tr><td>The Hadamard product, $s \odot t$</td><td></td></tr>
+<tr><td>The four fundamental equations behind backpropagation</td><td></td></tr>
+<tr><td>Proof of the four fundamental equations (optional)</td><td></td></tr>
+<tr><td>The backpropagation algorithm</td><td></td></tr>
+<tr><td>The code for backpropagation</td><td></td></tr>
+<tr><td>In what sense is backpropagation a fast algorithm?</td><td></td></tr>
+<tr><td>Backpropagation: the big picture</td><td></td></tr>
+<tr><td>第三章：ニューラルネットワークの学習の改善</td><td></td></tr>
+<tr><td>The cross-entropy cost function</td><td></td></tr>
+<tr><td>Overfitting and regularization</td><td></td></tr>
+<tr><td>Weight initialization</td><td></td></tr>
+<tr><td>Handwriting recognition revisited: the code</td><td></td></tr>
+<tr><td>How to choose a neural network's hyper-parameters?</td><td></td></tr>
+<tr><td>Other techniques</td><td></td></tr>
+<tr><td>第四章：ニューラルネットワークが任意の関数を表現できることの視覚的証明</td><td></td></tr>
+<tr><td>Two caveats</td><td></td></tr>
+<tr><td>Universality with one input and one output</td><td></td></tr>
+<tr><td>Many input variables</td><td></td></tr>
+<tr><td>Extension beyond sigmoid neurons</td><td></td></tr>
+<tr><td>Fixing up the step functions</td><td></td></tr>
+<tr><td>Conclusion</td><td></td></tr>
+<tr><td>第五章：ニューラルネットワークを訓練するのはなぜ難しいのか</td><td></td></tr>
+<tr><td>The vanishing gradient problem</td><td></td></tr>
+<tr><td>What's causing the vanishing gradient problem? Unstable gradients in deep neural nets</td><td></td></tr>
+<tr><td>Unstable gradients in more complex networks</td><td></td></tr>
+<tr><td>Other obstacles to deep learning</td><td></td></tr>
+<tr><td>第六章：深層学習</td><td></td></tr>
+<tr><td>Convolutional neural networks</td><td></td></tr>
+<tr><td>Pretraining</td><td></td></tr>
+<tr><td>Recurrent neural networks, Boltzmann machines, and other models</td><td></td></tr>
+<tr><td>Is there a universal thinking algorithm?</td><td></td></tr>
+<tr><td>On the future of neural networks</td><td></td></tr>
+</table>
+      <p>
+また、日本語訳版にパッチを下さった方々に感謝いたします。
+<table style='border-spacing: 10px 0px;'><tr>
+<td>Anonymous</td>
+<td>Ivan Adanja</td>
+<td>Kartik Agaram</td>
+</tr>
+</table>
+</p>
+
+</table></div><div class="footer"> <span class="left_footer"> In academic work,
+please cite this book as: Michael A. Nielsen, "Neural Networks and
+Deep Learning", Determination Press, 2015
+
+<br/>
+<br/>
+
+This work is licensed under a <a rel="license"
+href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_GB"
+style="color: #eee;">Creative Commons Attribution-NonCommercial 3.0
+Unported License</a>.  This means you're free to copy, share, and
+build on this book, but not to sell it.  If you're interested in
+commercial use, please <a
+href="mailto:mn@michaelnielsen.org">contact me</a>.
+</span>
+<span class="right_footer">
+Last update: Sun Dec 21 14:49:05 2014
+<br/>
+<br/>
+<br/>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_GB"><img alt="Creative Commons Licence" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a>
+</span>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44208967-1', 'neuralnetworksanddeeplearning.com');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
