@@ -15,7 +15,7 @@
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: {inlineMath: [['$','$']]},
-        "HTML-CSS": 
+        "HTML-CSS":
           {scale: 92},
         TeX: { equationNumbers: { autoNumber: "AMS" }}});
     </script>
@@ -52,79 +52,79 @@
   </head>
   <body><div class="header"><h1 class="chapter_number">
   <a href="">第3章</a></h1>
-  <h1 class="chapter_title"><a href="">ニューラルネットワークの学習の改善</a></h1></div><div class="section"><div id="toc"> 
+  <h1 class="chapter_title"><a href="">ニューラルネットワークの学習の改善</a></h1></div><div class="section"><div id="toc">
 <p class="toc_title"><a href="index.html">ニューラルネットワークと深層学習</a> (draft contents)</p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">ニューラルネットワークを用いた手書き文字認識</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
 <script>
-$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() { 
+$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() {
    var src = $('#toc_img_using_neural_nets_to_recognize_handwritten_digits').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow.png');
    };
-   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});  
+   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">逆伝播の仕組み</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output
 _from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output
   from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
 <script>
-$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() { 
+$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() {
    var src = $('#toc_img_how_the_backpropagation_algorithm_works').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow.png');
    };
-   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});  
+   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_improving_the_way_neural_networks_learn_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_improving_the_way_neural_networks_learn" src="images/arrow.png" width="15px"></a><a href="chap3.html">ニューラルネットワークの学習の改善</a><div id="toc_improving_the_way_neural_networks_learn" style="display: none;"><p class="toc_section"><ul><a href="chap3.html#the_cross-entropy_cost_function"><li>The cross-entropy cost function</li></a><a href="chap3.html#overfitting_and_regularization"><li>Overfitting and regularization</li></a><a href="chap3.html#weight_initialization"><li>Weight initialization</li></a><a href="chap3.html#handwriting_recognition_revisited_the_code"><li>Handwriting recognition revisited: the code</li></a><a href="chap3.html#how_to_choose_a_neural_network's_hyper-parameters"><li>How to choose a neural network's hyper-parameters?</li></a><a href="chap3.html#other_techniques"><li>Other techniques</li></a></ul></p></div>
 <script>
-$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() { 
+$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() {
    var src = $('#toc_img_improving_the_way_neural_networks_learn').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow.png');
    };
-   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});  
+   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_a_visual_proof_that_neural_nets_can_compute_any_function" src="images/arrow.png" width="15px"></a><a href="chap4.html">ニューラルネットワークが任意の関数を表現できることの視覚的証明</a><div id="toc_a_visual_proof_that_neural_nets_can_compute_any_function" style="display: none;"><p class="toc_section"><ul><a href="chap4.html#two_caveats"><li>Two caveats</li></a><a href="chap4.html#universality_with_one_input_and_one_output"><li>Universality with one input and one output</li></a><a href="chap4.html#many_input_variables"><li>Many input variables</li></a><a href="chap4.html#extension_beyond_sigmoid_neurons"><li>Extension beyond sigmoid neurons</li></a><a href="chap4.html#fixing_up_the_step_functions"><li>Fixing up the step functions</li></a><a href="chap4.html#conclusion"><li>Conclusion</li></a></ul></p></div>
 <script>
-$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() { 
+$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() {
    var src = $('#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow.png');
    };
-   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});  
+   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_why_deep_neural_networks_are_hard_to_train_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_why_deep_neural_networks_are_hard_to_train" src="images/arrow.png" width="15px"></a>ニューラルネットワークを訓練するのはなぜ難しいのか<div id="toc_why_deep_neural_networks_are_hard_to_train" style="display: none;"><p class="toc_section"><ul><li>The vanishing gradient problem</li><li>What's causing the vanishing gradient problem?  Unstable gradients in deep neural nets</li><li>How should we approach deep learning?</li></ul></p></div>
 <script>
-$('#toc_why_deep_neural_networks_are_hard_to_train_reveal').click(function() { 
+$('#toc_why_deep_neural_networks_are_hard_to_train_reveal').click(function() {
    var src = $('#toc_img_why_deep_neural_networks_are_hard_to_train').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_why_deep_neural_networks_are_hard_to_train").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_why_deep_neural_networks_are_hard_to_train").attr('src', 'images/arrow.png');
    };
-   $('#toc_why_deep_neural_networks_are_hard_to_train').toggle('fast', function() {});  
+   $('#toc_why_deep_neural_networks_are_hard_to_train').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_deep_learning_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_deep_learning" src="images/arrow.png" width="15px"></a>Deep learning<div id="toc_deep_learning" style="display: none;"><p class="toc_section"><ul><li>Convolutional neural networks</li><li>Pretraining</li><li>Feature discovery</li><li>The state of the art in image recognition</li></ul></p></div>
 <script>
-$('#toc_deep_learning_reveal').click(function() { 
+$('#toc_deep_learning_reveal').click(function() {
    var src = $('#toc_img_deep_learning').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_deep_learning").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_deep_learning").attr('src', 'images/arrow.png');
    };
-   $('#toc_deep_learning').toggle('fast', function() {});  
+   $('#toc_deep_learning').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_the_future_of_neural_nets_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_the_future_of_neural_nets" src="images/arrow.png" width="15px"></a>The future of neural nets<div id="toc_the_future_of_neural_nets" style="display: none;"><p class="toc_section"><ul><li>Will neural networks ever lead to artificial intelligence?</li><li>Could neural networks be used to simulate a human brain?</li></ul></p></div>
 <script>
-$('#toc_the_future_of_neural_nets_reveal').click(function() { 
+$('#toc_the_future_of_neural_nets_reveal').click(function() {
    var src = $('#toc_img_the_future_of_neural_nets').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_the_future_of_neural_nets").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_the_future_of_neural_nets").attr('src', 'images/arrow.png');
    };
-   $('#toc_the_future_of_neural_nets').toggle('fast', function() {});  
+   $('#toc_the_future_of_neural_nets').toggle('fast', function() {});
 });</script><p class="toc_not_mainchapter">Further reading</p><p class="toc_not_mainchapter">Acknowledgements</p>
 <hr>
 <span class="sidebar_title">Sponsors</span>
@@ -138,7 +138,7 @@ style="padding: 0px 0px 10px 8px; border-style: none;"></a>
 
 <a href='http://www.visionsmarts.com'><img
 src='assets/visionsmarts.png' width='160px' style="padding: 0px 0px
-0px 0px; border-style: none;"></a> <br/> 
+0px 0px; border-style: none;"></a> <br/>
 
 <p class="sidebar">Thanks to all the <a
 href="supporters.html">supporters</a> who made the book possible.
@@ -337,9 +337,9 @@ used, and $y = 0$ is the corresponding desired output.  To write this
 more explicitly in terms of the weight and bias, recall that $a =
 \sigma(z)$, where $z = wx+b$.  Using the chain rule to differentiate
 with respect to the weight and bias we get
-<a class="displaced_anchor" name="eqtn55"></a><a class="displaced_anchor" name="eqtn56"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn55"></a><a class="displaced_anchor" name="eqtn56"></a>\begin{eqnarray}
   \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z) \tag{55}\\
-  
+
   \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z),
 \tag{56}\end{eqnarray}
 where I have substituted $x = 1$ and $y = 0$.  To understand the
@@ -347,9 +347,9 @@ behaviour of these expressions, let's look more closely at the
 $\sigma'(z)$ term on the right-hand side.  Recall the shape of the
 $\sigma$ function:</p>-->
 ここで、$a$は学習の入力$x = 1$に対するニューロンの出力であり、$y = 0$は対応する期待される出力です。このことを重みとバイアスの言葉でもっとはっきり記述するために、$z = wx+b$のとき$a = \sigma(z)$と表せることを思い出しましょう。合成関数微分の公式を使い、重みとバイアスで微分すると以下の式を得ます。
-<a class="displaced_anchor" name="eqtn55"></a><a class="displaced_anchor" name="eqtn56"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn55"></a><a class="displaced_anchor" name="eqtn56"></a>\begin{eqnarray}
   \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z) \tag{55}\\
-  
+
   \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z),
 \tag{56}\end{eqnarray}
 ここで、$x = 1$と$y = 0$の代入を使いました。これらの表現の振る舞いを理解するためには、右辺に出てくる$\sigma'(z)$の項に注目しましょう。関数$\sigma$のグラフの形状をみてみましょう。
@@ -367,8 +367,8 @@ var xmax = 5;
 var sample = 400;
 var x1 = d3.scale.linear().domain([0, sample]).range([xmin, xmax]);
 var data = d3.range(sample).map(function(d){ return {
-        x: x1(d), 
-        y: s(x1(d))}; 
+        x: x1(d),
+        y: s(x1(d))};
     });
 var x = d3.scale.linear().domain([xmin, xmax]).range([0, width]);
 var y = d3.scale.linear()
@@ -407,25 +407,25 @@ graph.append("text")
      .attr("y", height+35)
      .text("z");
 graph.append("text")
-        .attr("x", (width / 2))             
+        .attr("x", (width / 2))
         .attr("y", -10)
-        .attr("text-anchor", "middle")  
-        .style("font-size", "16px") 
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
         .text("sigmoid function");
 </script>
 </p>
 <!--<p>We can see from this graph that when the neuron's output is close to
 $1$, the curve gets very flat, and so $\sigma'(z)$ gets very small.
-Equations <span id="margin_506983300551_reveal" class="equation_link">(55)</span><span id="margin_506983300551" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_506983300551_reveal').click(function() {$('#margin_506983300551').toggle('slow', function() {});});</script> and <span id="margin_277682059598_reveal" class="equation_link">(56)</span><span id="margin_277682059598" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+Equations <span id="margin_506983300551_reveal" class="equation_link">(55)</span><span id="margin_506983300551" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_506983300551_reveal').click(function() {$('#margin_506983300551').toggle('slow', function() {});});</script> and <span id="margin_277682059598_reveal" class="equation_link">(56)</span><span id="margin_277682059598" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z) \nonumber\end{eqnarray}</a></span><script>$('#margin_277682059598_reveal').click(function() {$('#margin_277682059598').toggle('slow', function() {});});</script> then tell us that
 $\partial C / \partial w$ and $\partial C / \partial b$ get very
 small.  This is the origin of the learning slowdown.  What's more, as
 we shall see a little later, the learning slowdown occurs for
 essentially the same reason in more general neural networks, not just
 the toy example we've been playing with.</p>-->
-ニューロンが$1$に近づくと曲線がとても平らになり、そのため$\sigma'(z)$がとても小さくなることがわかります。そして、式<span id="margin_506983300551_reveal" class="equation_link">(55)</span><span id="margin_506983300551" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_506983300551_reveal').click(function() {$('#margin_506983300551').toggle('slow', function() {});});</script>と<span id="margin_277682059598_reveal" class="equation_link">(56)</span><span id="margin_277682059598" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+ニューロンが$1$に近づくと曲線がとても平らになり、そのため$\sigma'(z)$がとても小さくなることがわかります。そして、式<span id="margin_506983300551_reveal" class="equation_link">(55)</span><span id="margin_506983300551" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_506983300551_reveal').click(function() {$('#margin_506983300551').toggle('slow', function() {});});</script>と<span id="margin_277682059598_reveal" class="equation_link">(56)</span><span id="margin_277682059598" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z) \nonumber\end{eqnarray}</a></span><script>$('#margin_277682059598_reveal').click(function() {$('#margin_277682059598').toggle('slow', function() {});});</script>により$\partial C / \partial w$と$\partial C / \partial b$がとても小さくなります。これが学習が遅くなる原因です。さらにいうと、いままで扱ってきた単純な例に限らずとも、もっと一般的なニューラルネットワークでも学習が遅くなるのは根本的には同じ理由によるものです。
 <!--<p><h4><a name="introducing_the_cross-entropy_cost_function"></a><a href="#introducing_the_cross-entropy_cost_function">Introducing the cross-entropy cost function</a></h4></p>-->
 <p><h4><a name="introducing_the_cross-entropy_cost_function"></a><a href="#introducing_the_cross-entropy_cost_function">クロスエントロピーコスト関数の導入</a></h4></p>
@@ -442,7 +442,7 @@ $w_1, w_2, \ldots$, and a bias, $b$:
 The output from the neuron is, of course, $a = \sigma(z)$, where $z =
 \sum_j w_j x_j+b$ is the weighted sum of the inputs.  We define the
 cross-entropy cost function for this neuron by
-<a class="displaced_anchor" name="eqtn57"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn57"></a>\begin{eqnarray}
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right],
 \tag{57}\end{eqnarray}
 where $n$ is the total number of items of training data, the sum is
@@ -454,29 +454,29 @@ output.</p>-->
 </center>
 ニューロンの出力はもちろん$a = \sigma(z)$となり、ここで$z =
 \sum_j w_j x_j+b$は重み付きの入力の和です。このニューロンのクロスエントロピーを次の式で定義します。
-<a class="displaced_anchor" name="eqtn57"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn57"></a>\begin{eqnarray}
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right],
 \tag{57}\end{eqnarray}
 ここで$n$は学習データのデータ数で、和の計算はすべての学習の入力$x$についてで、$y$は対応する望まれる出力です。
 </p>
-<!--<p>It's not obvious that the expression <span id="margin_691582954050_reveal" class="equation_link">(57)</span><span id="margin_691582954050" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<!--<p>It's not obvious that the expression <span id="margin_691582954050_reveal" class="equation_link">(57)</span><span id="margin_691582954050" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_691582954050_reveal').click(function() {$('#margin_691582954050').toggle('slow', function() {});});</script>
 fixes the learning slowdown problem.  In fact, frankly, it's not even
 obvious that it makes sense to call this a cost function!  Before
 addressing the learning slowdown, let's see in what sense the
 cross-entropy can be interpreted as a cost function.</p>-->
-<p>この式<span id="margin_691582954050_reveal" class="equation_link">(57)</span><span id="margin_691582954050" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<p>この式<span id="margin_691582954050_reveal" class="equation_link">(57)</span><span id="margin_691582954050" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_691582954050_reveal').click(function() {$('#margin_691582954050').toggle('slow', function() {});});</script>が、学習が遅くなる問題を解決するということは明らかではありません。それどころか、これをコスト関数と呼んでいいかすら明らかではないでしょう。学習が遅くなる問題に注目する前に、どういう意味でクロスエントロピーがコスト関数として解釈できるかを見てみましょう。
 </p>
 <!--<p>Two properties in particular make it reasonable to interpret the
 cross-entropy as a cost function.  First, it's non-negative, that is,
 $C > 0$.  To see this, notice that all the individual terms in the sum
-in <span id="margin_607315497502_reveal" class="equation_link">(57)</span><span id="margin_607315497502" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+in <span id="margin_607315497502_reveal" class="equation_link">(57)</span><span id="margin_607315497502" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_607315497502_reveal').click(function() {$('#margin_607315497502').toggle('slow', function() {});});</script> are positive, since: (a) both
 logarithms are of numbers in the range $0$ to $1$, and thus are
 negative; and (b) there is a minus sign out the front.</p>-->
 <p>
-二つの性質によりクロスエントロピーはコスト関数であると解釈できます。一つにはそれは非負、つうまり$C>0$であることです。このことを知るには、式<span id="margin_607315497502_reveal" class="equation_link">(57)</span><span id="margin_607315497502" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+二つの性質によりクロスエントロピーはコスト関数であると解釈できます。一つにはそれは非負、つうまり$C>0$であることです。このことを知るには、式<span id="margin_607315497502_reveal" class="equation_link">(57)</span><span id="margin_607315497502" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_607315497502_reveal').click(function() {$('#margin_607315497502').toggle('slow', function() {});});</script>のすべての項が正であることを確認すればいいです。これは、(a)両方のlogの引数が0から1の範囲なのでその値は負になり、(b)前にマイナス符号が付いているからです。
 </p>
 <!--<p>Second, if the neuron's actual output is close to the desired output,
@@ -490,14 +490,14 @@ will be close to zero*<span class="marginnote">
   this section.</span>.  To see this, suppose for example that $y(x) = 0$
 and $a \approx 0$ for some input $x$.  This is a case when the neuron
 is doing a good job on that input.  We see that the first term in the
-expression <span id="margin_161232079323_reveal" class="equation_link">(57)</span><span id="margin_161232079323" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+expression <span id="margin_161232079323_reveal" class="equation_link">(57)</span><span id="margin_161232079323" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_161232079323_reveal').click(function() {$('#margin_161232079323').toggle('slow', function() {});});</script> for the cost vanishes, since
 $y(x) = 0$, while the second term is just $-\ln (1-a) \approx 0$.  A
 similar analysis holds when $y(x) = 1$ and $a \approx 1$.  And so the
 contribution to the cost will be low provided the actual output is
 close to the desired output.</p>-->
 <p>二つ目には、すべての学習の入力$x$についてニューロンの出力が望まれる出力、つまり$y=y(x)$に近いのなら、クロスエントロピーはゼロに近づく<span class="marginnote">
-*このことそ証明するには、望まれる出力$y(x)$が$0$か$1$であることを仮定しなければなりません。これは、例えば分類問題や真偽値関数を計算しているときについては通常成り立ちます。この仮定をおかない時になにが起こるかを理解するには、この節の最後の演習を参照してください。</span>ということです。このことを見るために、例えば同じ入力$x$に対し$y(x)=0$かつ$a \approx 0$と仮定しましょう。これはニューロンがその入力に対して良い仕事をした場合です。$y(x) = 0$なので、式<span id="margin_161232079323_reveal" class="equation_link">(57)</span><span id="margin_161232079323" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+*このことそ証明するには、望まれる出力$y(x)$が$0$か$1$であることを仮定しなければなりません。これは、例えば分類問題や真偽値関数を計算しているときについては通常成り立ちます。この仮定をおかない時になにが起こるかを理解するには、この節の最後の演習を参照してください。</span>ということです。このことを見るために、例えば同じ入力$x$に対し$y(x)=0$かつ$a \approx 0$と仮定しましょう。これはニューロンがその入力に対して良い仕事をした場合です。$y(x) = 0$なので、式<span id="margin_161232079323_reveal" class="equation_link">(57)</span><span id="margin_161232079323" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_161232079323_reveal').click(function() {$('#margin_161232079323').toggle('slow', function() {});});</script>の最初の項が消え、2項目は$-\ln (1-a) \approx 0$となります。$y(x) = 1$かつ$a \approx 1$の場合も同様な解析ができます。このことにより、実際の出力が望まれる出力に近いとき、コストへの寄与は小さいことがわかります。
 </p>
 <!--<p>Summing up, the cross-entropy is positive, and tends toward zero as
@@ -509,25 +509,25 @@ cross-entropy.  But the cross-entropy cost function has the benefit
 that, unlike the quadratic cost, it avoids the problem of learning
 slowing down.  To see this, let's compute the partial derivative of
 the cross-entropy cost with respect to the weights.  We substitute $a
-= \sigma(z)$ into <span id="margin_261134997286_reveal" class="equation_link">(57)</span><span id="margin_261134997286" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+= \sigma(z)$ into <span id="margin_261134997286_reveal" class="equation_link">(57)</span><span id="margin_261134997286" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_261134997286_reveal').click(function() {$('#margin_261134997286').toggle('slow', function() {});});</script>, and apply the chain
 rule twice, obtaining:
 <a class="displaced_anchor" name="eqtn58"></a><a class="displaced_anchor" name="eqtn59"></a>\begin{eqnarray}
   \frac{\partial C}{\partial w_j} & = & -\frac{1}{n} \sum_x \left(
     \frac{y }{\sigma(z)} -\frac{(1-y)}{1-\sigma(z)} \right)
   \frac{\partial \sigma}{\partial w_j} \tag{58}\\
- & = & -\frac{1}{n} \sum_x \left( 
-    \frac{y}{\sigma(z)} 
+ & = & -\frac{1}{n} \sum_x \left(
+    \frac{y}{\sigma(z)}
     -\frac{(1-y)}{1-\sigma(z)} \right)\sigma'(z) x_j.
 \tag{59}\end{eqnarray}-->
-<p>まとめると、クロスエントロピーは正で、すべての学習の入力$x$と望まれる出力$y$に関して、ニューロンがより良くなるとクロスエントロピーは$0$に近づきます。この両方の性質は、私達がコスト関数に対して直感的に期待する性質です。実際、これらの性質は二次コスト関数でも満たされています。これはクロスエントロピーにとって良いニュースです。しかし、クロスエントロピーは二次コスト関数と違って、学習が遅くなる問題がないという良い性質があります。このことを見るために、クロスエントロピーの重みについての偏微分を計算してみましょう。式<span id="margin_261134997286_reveal" class="equation_link">(57)</span><span id="margin_261134997286" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<p>まとめると、クロスエントロピーは正で、すべての学習の入力$x$と望まれる出力$y$に関して、ニューロンがより良くなるとクロスエントロピーは$0$に近づきます。この両方の性質は、私達がコスト関数に対して直感的に期待する性質です。実際、これらの性質は二次コスト関数でも満たされています。これはクロスエントロピーにとって良いニュースです。しかし、クロスエントロピーは二次コスト関数と違って、学習が遅くなる問題がないという良い性質があります。このことを見るために、クロスエントロピーの重みについての偏微分を計算してみましょう。式<span id="margin_261134997286_reveal" class="equation_link">(57)</span><span id="margin_261134997286" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_261134997286_reveal').click(function() {$('#margin_261134997286').toggle('slow', function() {});});</script>に$a = \sigma(z)$を代入して、合成関数の公式を2度適用すると以下の式を得ます：
 <a class="displaced_anchor" name="eqtn58"></a><a class="displaced_anchor" name="eqtn59"></a>\begin{eqnarray}
   \frac{\partial C}{\partial w_j} & = & -\frac{1}{n} \sum_x \left(
     \frac{y }{\sigma(z)} -\frac{(1-y)}{1-\sigma(z)} \right)
   \frac{\partial \sigma}{\partial w_j} \tag{58}\\
- & = & -\frac{1}{n} \sum_x \left( 
-    \frac{y}{\sigma(z)} 
+ & = & -\frac{1}{n} \sum_x \left(
+    \frac{y}{\sigma(z)}
     -\frac{(1-y)}{1-\sigma(z)} \right)\sigma'(z) x_j.
 \tag{59}\end{eqnarray}
 <!--Putting everything over a common denominator and simplifying this
@@ -543,7 +543,7 @@ Using the definition of the sigmoid function, $\sigma(z) =
 below, but for now let's accept it as given.  We see that the
 $\sigma'(z)$ and $\sigma(z)(1-\sigma(z))$ terms cancel in the equation
 just above, and it simplifies to become:
-<a class="displaced_anchor" name="eqtn61"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn61"></a>\begin{eqnarray}
   \frac{\partial C}{\partial w_j} =  \frac{1}{n} \sum_x x_j(\sigma(z)-y).
 \tag{61}\end{eqnarray}
 -->
@@ -557,7 +557,7 @@ just above, and it simplifies to become:
 1/(1+e^{-z})$であり、すこしの代数的計算をすると$\sigma'(z) =
 \sigma(z)(1-\sigma(z))$であることがわかります。このことは演習で確認しますが、とりあえずはそれはわかっているものとして受け入れましょう。ちょうど上の式で、$\sigma'(z) =
 \sigma(z)(1-\sigma(z))$が消え、単純になり次のようになります：
-<a class="displaced_anchor" name="eqtn61"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn61"></a>\begin{eqnarray}
   \frac{\partial C}{\partial w_j} =  \frac{1}{n} \sum_x x_j(\sigma(z)-y).
 \tag{61}\end{eqnarray}
 <!-- This is a beautiful expression.  It tells us that the rate at which
@@ -565,31 +565,31 @@ the weight learns is controlled by $\sigma(z)-y$, i.e., by the error
 in the output.  The larger the error, the faster the neuron will
 learn.  This is just what we'd intuitively expect.  In particular, it
 avoids the learning slowdown caused by the $\sigma'(z)$ term in the
-analogous equation for the quadratic cost, Equation <span id="margin_907356608801_reveal" class="equation_link">(55)</span><span id="margin_907356608801" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+analogous equation for the quadratic cost, Equation <span id="margin_907356608801_reveal" class="equation_link">(55)</span><span id="margin_907356608801" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_907356608801_reveal').click(function() {$('#margin_907356608801').toggle('slow', function() {});});</script>.
 When we use the cross-entropy, the $\sigma'(z)$ term gets cancelled
 out, and we no longer need worry about it being small.  This
 cancellation is the special miracle ensured by the cross-entropy cost
 function.  Actually, it's not really a miracle.  As we'll see later,
 the cross-entropy was specially chosen to have just this property.</p>-->
-これは美しい表現です。これを見ると、重みが学習する度合いは$\sigma(z)-y$つまり出力における誤りによってコントロールされてることがわかります。つまり誤りが大きくなればなるほどニューロンの学習は速くなります。これはちょうど我々が直感的に望んでいたことです。特に、二次コスト関数の同じような式、つまり式<span id="margin_907356608801_reveal" class="equation_link">(55)</span><span id="margin_907356608801" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+これは美しい表現です。これを見ると、重みが学習する度合いは$\sigma(z)-y$つまり出力における誤りによってコントロールされてることがわかります。つまり誤りが大きくなればなるほどニューロンの学習は速くなります。これはちょうど我々が直感的に望んでいたことです。特に、二次コスト関数の同じような式、つまり式<span id="margin_907356608801_reveal" class="equation_link">(55)</span><span id="margin_907356608801" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
     \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_907356608801_reveal').click(function() {$('#margin_907356608801').toggle('slow', function() {});});</script>
 で$\sigma'(z)$が学習の速度低下の原因となっていたがそれを防いだのです。クロスエントロピーを使うと、$\sigma'(z)$の項が消え、そこのことを心配する必要がなくなるのです。この項の消滅はクロスエントロピーで起こる特別な奇跡です。実際には奇跡ではありません。あとでわかるように、クロスエントロピーはこの性質を持つように特別に選ばれたのです。</p>
 <!--<p>In a similar way, we can compute the partial derivative for the bias.
 I won't go through all the details again, but you can easily verify
 that
-<a class="displaced_anchor" name="eqtn62"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn62"></a>\begin{eqnarray}
   \frac{\partial C}{\partial b} = \frac{1}{n} \sum_x (\sigma(z)-y).
 \tag{62}\end{eqnarray}
 Again, this avoids the learning slowdown caused by the $\sigma'(z)$
 term in the analogous equation for the quadratic cost,
-Equation <span id="margin_93784536101_reveal" class="equation_link">(56)</span><span id="margin_93784536101" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+Equation <span id="margin_93784536101_reveal" class="equation_link">(56)</span><span id="margin_93784536101" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
     \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z) \nonumber\end{eqnarray}</a></span><script>$('#margin_93784536101_reveal').click(function() {$('#margin_93784536101').toggle('slow', function() {});});</script>.</p>-->
 <p>同じようにバイアスについての偏微分も計算します。また詳細を追うことをしませんが、次の式が確認できます。
-<a class="displaced_anchor" name="eqtn62"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn62"></a>\begin{eqnarray}
   \frac{\partial C}{\partial b} = \frac{1}{n} \sum_x (\sigma(z)-y).
 \tag{62}\end{eqnarray}
-繰り返しますが、これにより二次コストの同じような式、つまり式<span id="margin_93784536101_reveal" class="equation_link">(56)</span><span id="margin_93784536101" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+繰り返しますが、これにより二次コストの同じような式、つまり式<span id="margin_93784536101_reveal" class="equation_link">(56)</span><span id="margin_93784536101" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
     \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z) \nonumber\end{eqnarray}</a></span><script>$('#margin_93784536101_reveal').click(function() {$('#margin_93784536101').toggle('slow', function() {});});</script>
 で$\sigma'(z)$が学習速度低下の原因になるのを防いでいます。</p>
 <!--<p><h4><a name="exercise_35813"></a><a href="#exercise_35813">Exercise</a></h4><ul>
@@ -655,7 +655,7 @@ Then we define the cross-entropy by
   \sum_j \left[y_j \ln a^L_j + (1-y_j) \ln (1-a^L_j) \right].
 \tag{63}\end{eqnarray}
 This is the same as our earlier expression,
-Equation <span id="margin_529736937390_reveal" class="equation_link">(57)</span><span id="margin_529736937390" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+Equation <span id="margin_529736937390_reveal" class="equation_link">(57)</span><span id="margin_529736937390" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_529736937390_reveal').click(function() {$('#margin_529736937390').toggle('slow', function() {});});</script>, except now we've got the
 $\sum_j$ summing over all the output neurons.  I won't explicitly work
 through a derivation, but it should be plausible that using the
@@ -667,7 +667,7 @@ derivation in the problem below.  </p>-->
 <a class="displaced_anchor" name="eqtn63"></a>\begin{eqnarray}  C = -\frac{1}{n} \sum_x
   \sum_j \left[y_j \ln a^L_j + (1-y_j) \ln (1-a^L_j) \right].
 \tag{63}\end{eqnarray}
-これは以前の表現、式<span id="margin_529736937390_reveal" class="equation_link">(57)</span><span id="margin_529736937390" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+これは以前の表現、式<span id="margin_529736937390_reveal" class="equation_link">(57)</span><span id="margin_529736937390" class="marginequation" style="display: none;"><a href="chap3.html#eqtn57" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   C = -\frac{1}{n} \sum_x \left[y \ln a + (1-y ) \ln (1-a) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_529736937390_reveal').click(function() {$('#margin_529736937390').toggle('slow', function() {});});</script>と比べて、すべてのニューロンについての和$\sum_j$をとったことをのぞいて同じです。微分を明示的に計算することはしませんが、式<span id="margin_932302704635_reveal" class="equation_link">(63)</span><span id="margin_932302704635" class="marginequation" style="display: none;"><a href="chap3.html#eqtn63" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C = -\frac{1}{n} \sum_x
   \sum_j \left[y_j \ln a^L_j + (1-y_j) \ln (1-a^L_j) \right] \nonumber\end{eqnarray}</a></span><script>$('#margin_932302704635_reveal').click(function() {$('#margin_932302704635').toggle('slow', function() {});});</script>を使えば多くのニューロンのネットワークで学習の速度低下を防げることはすばらしいことでしょう。もし興味があれば、後述する問題で微分を計算してみることはできます。
 </p>
@@ -729,13 +729,13 @@ other training inputs, but it's obviously undesirable.</p>-->
   output neuron saturates on the wrong value.  Show that for the
   cross-entropy cost the output error $\delta^L$ for a single training
   example $x$ is given by
-  <a class="displaced_anchor" name="eqtn66"></a>\begin{eqnarray} 
+  <a class="displaced_anchor" name="eqtn66"></a>\begin{eqnarray}
     \delta^L = a^L-y.
   \tag{66}\end{eqnarray}
   Use this expression to show that the partial derivative with respect
   to the weights in the output layer is given by
   <a class="displaced_anchor" name="eqtn67"></a>\begin{eqnarray}
-      \frac{\partial C}{\partial w^L_{jk}} & = & \frac{1}{n} \sum_x 
+      \frac{\partial C}{\partial w^L_{jk}} & = & \frac{1}{n} \sum_x
       a^{L-1}_k  (a^L_j-y_j).
   \tag{67}\end{eqnarray}
   The $\sigma'(z^L_j)$ term has vanished, and so the cross-entropy
@@ -752,12 +752,12 @@ other training inputs, but it's obviously undesirable.</p>-->
       \sum_x a^{L-1}_k  (a^L_j-y_j) \sigma'(z^L_j).
   \tag{65}\end{eqnarray}
   ここで$\sigma'(z^L_j)$の項は、出力ニューロンが悪い値で停滞した時に学習の速度低下を引き起こします。クロスエントロピーについて、一つの学習データの例$x$についての出力誤差$\delta^L$の重みは次の式で表されることを示しなさい：
-  <a class="displaced_anchor" name="eqtn66"></a>\begin{eqnarray} 
+  <a class="displaced_anchor" name="eqtn66"></a>\begin{eqnarray}
     \delta^L = a^L-y.
   \tag{66}\end{eqnarray}
 この式を使って、出力層の重みについての偏微分は次の式で与えられることを示しなさい：
   <a class="displaced_anchor" name="eqtn67"></a>\begin{eqnarray}
-      \frac{\partial C}{\partial w^L_{jk}} & = & \frac{1}{n} \sum_x 
+      \frac{\partial C}{\partial w^L_{jk}} & = & \frac{1}{n} \sum_x
       a^{L-1}_k  (a^L_j-y_j).
   \tag{67}\end{eqnarray}
 $\sigma'(z^L_j)$の項が消え、ニューロンが一つでなく多層複数ニューロンの場合でも、クロスエントロピーは学習の速度低下を避けることがわかりました。この解析の簡単な変形でバイアスについても同じことがいえます。もしそれが明らかではないなら、同様の解析を続けてやるべきです。</p>
@@ -775,9 +775,9 @@ $\sigma'(z^L_j)$の項が消え、ニューロンが一つでなく多層複数�
   the partial derivatives with respect to the weights and biases in
   the output layer are given by
   <a class="displaced_anchor" name="eqtn69"></a><a class="displaced_anchor" name="eqtn70"></a>\begin{eqnarray}
-      \frac{\partial C}{\partial w^L_{jk}} & = & \frac{1}{n} \sum_x 
+      \frac{\partial C}{\partial w^L_{jk}} & = & \frac{1}{n} \sum_x
       a^{L-1}_k  (a^L_j-y_j) \tag{69}\\
-      \frac{\partial C}{\partial b^L_{j}} & = & \frac{1}{n} \sum_x 
+      \frac{\partial C}{\partial b^L_{j}} & = & \frac{1}{n} \sum_x
       (a^L_j-y_j).
   \tag{70}\end{eqnarray}
   This shows that if the output neurons are linear neurons then the
@@ -792,9 +792,9 @@ $\sigma'(z^L_j)$の項が消え、ニューロンが一つでなく多層複数�
   \tag{68}\end{eqnarray}
 前の問題と同様に、この式を使うと、出力層での重みとバイアスについての偏微分は次の式で与えられることを示しなさい：
   <a class="displaced_anchor" name="eqtn69"></a><a class="displaced_anchor" name="eqtn70"></a>\begin{eqnarray}
-      \frac{\partial C}{\partial w^L_{jk}} & = & \frac{1}{n} \sum_x 
+      \frac{\partial C}{\partial w^L_{jk}} & = & \frac{1}{n} \sum_x
       a^{L-1}_k  (a^L_j-y_j) \tag{69}\\
-      \frac{\partial C}{\partial b^L_{j}} & = & \frac{1}{n} \sum_x 
+      \frac{\partial C}{\partial b^L_{j}} & = & \frac{1}{n} \sum_x
       (a^L_j-y_j).
   \tag{70}\end{eqnarray}
 このことにより、もし出力ニューロンが線形ニューロンならば、二次コスト関数は学習の速度低下について何の問題も産まないことがわかります。このケースでは、二次コスト関数はそれどころか使うべき適切なコスト関数です。
@@ -899,16 +899,16 @@ how could we have dreamed up the cross-entropy in the first place?</p><p>Let's b
 motivated us to think up the cross-entropy in the first place?
 Suppose we'd discovered the learning slowdown described earlier, and
 understood that the origin was the $\sigma'(z)$ terms in
-Equations <span id="margin_957799962109_reveal" class="equation_link">(55)</span><span id="margin_957799962109" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_957799962109_reveal').click(function() {$('#margin_957799962109').toggle('slow', function() {});});</script> and <span id="margin_397648571817_reveal" class="equation_link">(56)</span><span id="margin_397648571817" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+Equations <span id="margin_957799962109_reveal" class="equation_link">(55)</span><span id="margin_957799962109" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_957799962109_reveal').click(function() {$('#margin_957799962109').toggle('slow', function() {});});</script> and <span id="margin_397648571817_reveal" class="equation_link">(56)</span><span id="margin_397648571817" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z) \nonumber\end{eqnarray}</a></span><script>$('#margin_397648571817_reveal').click(function() {$('#margin_397648571817').toggle('slow', function() {});});</script>.  After staring at
 those equations for a bit, we might wonder if it's possible to choose
 a cost function so that the $\sigma'(z)$ term disappeared.  In that
 case, the cost $C = C_x$ for a single training example $x$ would
 satisfy
-<a class="displaced_anchor" name="eqtn71"></a><a class="displaced_anchor" name="eqtn72"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn71"></a><a class="displaced_anchor" name="eqtn72"></a>\begin{eqnarray}
   \frac{\partial C}{\partial w_j} & = & x_j(a-y) \tag{71}\\
-  
+
   \frac{\partial C}{\partial b } & = & (a-y).
 \tag{72}\end{eqnarray}
 If we could choose the cost function to make these equations true,
@@ -919,16 +919,16 @@ these equations we'll now show that it's possible to derive the form
 of the cross-entropy, simply by following our mathematical noses.  To
 see this, note that from the chain rule we have
 <a class="displaced_anchor" name="eqtn73"></a>\begin{eqnarray}
-  \frac{\partial C}{\partial b} = \frac{\partial C}{\partial a} 
+  \frac{\partial C}{\partial b} = \frac{\partial C}{\partial a}
   \sigma'(z).
 \tag{73}\end{eqnarray}
 Using $\sigma'(z) = \sigma(z)(1-\sigma(z)) = a(1-a)$ the last equation
 becomes
 <a class="displaced_anchor" name="eqtn74"></a>\begin{eqnarray}
-  \frac{\partial C}{\partial b} = \frac{\partial C}{\partial a} 
+  \frac{\partial C}{\partial b} = \frac{\partial C}{\partial a}
   a(1-a).
 \tag{74}\end{eqnarray}
-Comparing to Equation <span id="margin_645820283975_reveal" class="equation_link">(72)</span><span id="margin_645820283975" class="marginequation" style="display: none;"><a href="chap3.html#eqtn72" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+Comparing to Equation <span id="margin_645820283975_reveal" class="equation_link">(72)</span><span id="margin_645820283975" class="marginequation" style="display: none;"><a href="chap3.html#eqtn72" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial b } & = & (a-y) \nonumber\end{eqnarray}</a></span><script>$('#margin_645820283975_reveal').click(function() {$('#margin_645820283975').toggle('slow', function() {});});</script> we obtain
 <a class="displaced_anchor" name="eqtn75"></a>\begin{eqnarray}
   \frac{\partial C}{\partial a} = \frac{a-y}{a(1-a)}.
@@ -945,9 +945,9 @@ function we must average over training examples, obtaining
 \tag{77}\end{eqnarray}
 where the constant here is the average of the individual constants for
 each training example.  And so we see that
-Equations <span id="margin_172115178513_reveal" class="equation_link">(71)</span><span id="margin_172115178513" class="marginequation" style="display: none;"><a href="chap3.html#eqtn71" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+Equations <span id="margin_172115178513_reveal" class="equation_link">(71)</span><span id="margin_172115178513" class="marginequation" style="display: none;"><a href="chap3.html#eqtn71" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w_j} & = & x_j(a-y)  \nonumber\end{eqnarray}</a></span><script>$('#margin_172115178513_reveal').click(function() {$('#margin_172115178513').toggle('slow', function() {});});</script>
-and <span id="margin_419838980882_reveal" class="equation_link">(72)</span><span id="margin_419838980882" class="marginequation" style="display: none;"><a href="chap3.html#eqtn72" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+and <span id="margin_419838980882_reveal" class="equation_link">(72)</span><span id="margin_419838980882" class="marginequation" style="display: none;"><a href="chap3.html#eqtn72" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial b } & = & (a-y) \nonumber\end{eqnarray}</a></span><script>$('#margin_419838980882_reveal').click(function() {$('#margin_419838980882').toggle('slow', function() {});});</script> uniquely determine the form
 of the cross-entropy, up to an overall constant term.  The
 cross-entropy isn't something that was miraculously pulled out of thin
@@ -979,7 +979,7 @@ Kraft inequality in chapter 5 of the book about information theory by
 <li> We've discussed at length the learning slowdown that can occur
   when output neurons saturate, in networks using the quadratic cost
   to train.  Another factor that may inhibit learning is the presence
-  of the $x_j$ term in Equation <span id="margin_113861306005_reveal" class="equation_link">(61)</span><span id="margin_113861306005" class="marginequation" style="display: none;"><a href="chap3.html#eqtn61" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+  of the $x_j$ term in Equation <span id="margin_113861306005_reveal" class="equation_link">(61)</span><span id="margin_113861306005" class="marginequation" style="display: none;"><a href="chap3.html#eqtn61" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w_j} =  \frac{1}{n} \sum_x x_j(\sigma(z)-y) \nonumber\end{eqnarray}</a></span><script>$('#margin_113861306005_reveal').click(function() {$('#margin_113861306005').toggle('slow', function() {});});</script>.  Because of
   this term, when an input $x_j$ is near to zero, the corresponding
   weight $w_j$ will learn slowly.  Explain why it is not possible to
@@ -1023,12 +1023,12 @@ function, with a learning rate of $\eta = 0.5$ and a mini-batch size
 of $10$.  However, we'll train for 400 epochs, a somewhat larger
 number than before, because we're not using as many training examples.
 Let's use <tt>network2</tt> to look at the way the cost function
-changes:</p><p><div class="highlight"><pre> 
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">mnist_loader</span> 
+changes:</p><p><div class="highlight"><pre>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">mnist_loader</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">training_data</span><span class="p">,</span> <span class="n">validation_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> \
 <span class="o">...</span> <span class="n">mnist_loader</span><span class="o">.</span><span class="n">load_data_wrapper</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">network2</span> 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">net</span> <span class="o">=</span> <span class="n">network2</span><span class="o">.</span><span class="n">Network</span><span class="p">([</span><span class="mi">784</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">cost</span><span class="o">=</span><span class="n">network2</span><span class="o">.</span><span class="n">CrossEntropyCost</span><span class="p">)</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">network2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">net</span> <span class="o">=</span> <span class="n">network2</span><span class="o">.</span><span class="n">Network</span><span class="p">([</span><span class="mi">784</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">cost</span><span class="o">=</span><span class="n">network2</span><span class="o">.</span><span class="n">CrossEntropyCost</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">large_weight_initializer</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">training_data</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">evaluation_data</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span>
 <span class="o">...</span> <span class="n">monitor_evaluation_accuracy</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">monitor_training_cost</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -1093,12 +1093,12 @@ necessarily a sign of overfitting.  It might be that accuracy on the
 test data and the training data both stop improving at the same time.
 Still, adopting this strategy will prevent overfitting.</p><p>In fact, we'll use a variation on this strategy.  Recall that when we
 load in the MNIST data we load in three data sets:
-<div class="highlight"><pre> 
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">mnist_loader</span> 
+<div class="highlight"><pre>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">mnist_loader</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">training_data</span><span class="p">,</span> <span class="n">validation_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> \
 <span class="o">...</span> <span class="n">mnist_loader</span><span class="o">.</span><span class="n">load_data_wrapper</span><span class="p">()</span>
 </pre></div>
- 
+
 Up to now we've been using the <tt>training_data</tt> and
 <tt>test_data</tt>, and ignoring the <tt>validation_data</tt>.  The
 <tt>validation_data</tt> contains $10,000$ images of digits, images
@@ -1227,9 +1227,9 @@ neural network.  In particular, we need to know how to compute the
 partial derivatives $\partial C / \partial w$ and $\partial C
 / \partial b$ for all the weights and biases in the network.  Taking
 the partial derivatives of Equation <span id="margin_87298027313_reveal" class="equation_link">(80)</span><span id="margin_87298027313" class="marginequation" style="display: none;"><a href="chap3.html#eqtn80" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C = C_0 + \frac{\lambda}{2n}
-\sum_w w^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_87298027313_reveal').click(function() {$('#margin_87298027313').toggle('slow', function() {});});</script> gives</p><p><a class="displaced_anchor" name="eqtn81"></a><a class="displaced_anchor" name="eqtn82"></a>\begin{eqnarray} 
-  \frac{\partial C}{\partial w} & = & \frac{\partial C_0}{\partial w} + 
-  \frac{\lambda}{n} w \tag{81}\\ 
+\sum_w w^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_87298027313_reveal').click(function() {$('#margin_87298027313').toggle('slow', function() {});});</script> gives</p><p><a class="displaced_anchor" name="eqtn81"></a><a class="displaced_anchor" name="eqtn82"></a>\begin{eqnarray}
+  \frac{\partial C}{\partial w} & = & \frac{\partial C_0}{\partial w} +
+  \frac{\lambda}{n} w \tag{81}\\
   \frac{\partial C}{\partial b} & = & \frac{\partial C_0}{\partial b}.
 \tag{82}\end{eqnarray} </p><p>The $\partial C_0 / \partial w$ and $\partial C_0 / \partial b$ terms
 can be computed using backpropagation, as described in
@@ -1240,11 +1240,11 @@ partial derivative of all the weight terms.  The partial derivatives
 with respect to the biases are unchanged, and so the gradient descent
 learning rule for the biases doesn't change from the usual rule:</p><p><a class="displaced_anchor" name="eqtn83"></a>\begin{eqnarray}
 b & \rightarrow & b -\eta \frac{\partial C_0}{\partial b}.
-\tag{83}\end{eqnarray}</p><p>The learning rule for the weights becomes:</p><p><a class="displaced_anchor" name="eqtn84"></a><a class="displaced_anchor" name="eqtn85"></a>\begin{eqnarray} 
+\tag{83}\end{eqnarray}</p><p>The learning rule for the weights becomes:</p><p><a class="displaced_anchor" name="eqtn84"></a><a class="displaced_anchor" name="eqtn85"></a>\begin{eqnarray}
   w & \rightarrow & w-\eta \frac{\partial C_0}{\partial
-    w}-\frac{\eta \lambda}{n} w \tag{84}\\ 
+    w}-\frac{\eta \lambda}{n} w \tag{84}\\
   & = & \left(1-\frac{\eta \lambda}{n}\right) w -\eta \frac{\partial
-    C_0}{\partial w}. 
+    C_0}{\partial w}.
 \tag{85}\end{eqnarray}</p><p>This is exactly the same as the usual gradient descent learning rule,
 except we first rescale the weight $w$ by a factor $1-\frac{\eta
   \lambda}{n}$.  This rescaling is sometimes referred to as
@@ -1257,18 +1257,18 @@ gradient descent?  Well, just as in unregularized stochastic gradient
 descent, we can estimate $\partial C_0 / \partial w$ by averaging over
 a mini-batch of $m$ training examples.  Thus the regularized learning
 rule for stochastic gradient descent becomes
-(c.f. Equation <span id="margin_637276429741_reveal" class="equation_link">(20)</span><span id="margin_637276429741" class="marginequation" style="display: none;"><a href="chap1.html#eqtn20" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+(c.f. Equation <span id="margin_637276429741_reveal" class="equation_link">(20)</span><span id="margin_637276429741" class="marginequation" style="display: none;"><a href="chap1.html#eqtn20" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   w_k & \rightarrow & w_k' = w_k-\frac{\eta}{m}
-  \sum_j \frac{\partial C_{X_j}}{\partial w_k}  \nonumber\end{eqnarray}</a></span><script>$('#margin_637276429741_reveal').click(function() {$('#margin_637276429741').toggle('slow', function() {});});</script>)</p><p><a class="displaced_anchor" name="eqtn86"></a>\begin{eqnarray} 
+  \sum_j \frac{\partial C_{X_j}}{\partial w_k}  \nonumber\end{eqnarray}</a></span><script>$('#margin_637276429741_reveal').click(function() {$('#margin_637276429741').toggle('slow', function() {});});</script>)</p><p><a class="displaced_anchor" name="eqtn86"></a>\begin{eqnarray}
   w \rightarrow \left(1-\frac{\eta \lambda}{n}\right) w -\frac{\eta}{m}
-  \sum_x \frac{\partial C_x}{\partial w}, 
+  \sum_x \frac{\partial C_x}{\partial w},
 \tag{86}\end{eqnarray}</p><p>where the sum is over training examples $x$ in the mini-batch, and
 $C_x$ is the (unregularized) cost for each training example.  This is
 exactly the same as the usual rule for stochastic gradient descent,
 except for the $1-\frac{\eta \lambda}{n}$ weight decay factor.
 Finally, and for completeness, let me state the regularized learning
 rule for the biases.  This is, of course, exactly the same as in the
-unregularized case (c.f. Equation <span id="margin_891921584746_reveal" class="equation_link">(21)</span><span id="margin_891921584746" class="marginequation" style="display: none;"><a href="chap1.html#eqtn21" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+unregularized case (c.f. Equation <span id="margin_891921584746_reveal" class="equation_link">(21)</span><span id="margin_891921584746" class="marginequation" style="display: none;"><a href="chap1.html#eqtn21" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   b_l & \rightarrow & b_l' = b_l-\frac{\eta}{m}
   \sum_j \frac{\partial C_{X_j}}{\partial b_l} \nonumber\end{eqnarray}</a></span><script>$('#margin_891921584746_reveal').click(function() {$('#margin_891921584746').toggle('slow', function() {});});</script>),</p><p><a class="displaced_anchor" name="eqtn87"></a>\begin{eqnarray}
   b \rightarrow b - \frac{\eta}{m} \sum_x \frac{\partial C_x}{\partial b},
@@ -1286,11 +1286,11 @@ I decided to use the <tt>test_data</tt> because it makes the results
 more directly comparable with our earlier, unregularized results.  You
 can easily change the code to use the <tt>validation_data</tt> instead,
 and you'll find that it gives similar results.
-<div class="highlight"><pre> 
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">mnist_loader</span> 
+<div class="highlight"><pre>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">mnist_loader</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">training_data</span><span class="p">,</span> <span class="n">validation_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> \
-<span class="o">...</span> <span class="n">mnist_loader</span><span class="o">.</span><span class="n">load_data_wrapper</span><span class="p">()</span> 
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">network2</span> 
+<span class="o">...</span> <span class="n">mnist_loader</span><span class="o">.</span><span class="n">load_data_wrapper</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">network2</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span> <span class="o">=</span> <span class="n">network2</span><span class="o">.</span><span class="n">Network</span><span class="p">([</span><span class="mi">784</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">cost</span><span class="o">=</span><span class="n">network2</span><span class="o">.</span><span class="n">CrossEntropyCost</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">large_weight_initializer</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">training_data</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>
@@ -1324,7 +1324,7 @@ is because the size $n$ of the training set has changed from $n =
 would mean much less weight decay, and thus much less of a
 regularization effect.  We compensate by changing to $\lambda = 5.0$.</p><p>Okay, let's train our network, stopping first to re-initialize the
 weights:
-<div class="highlight"><pre> 
+<div class="highlight"><pre>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">large_weight_initializer</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>
 <span class="o">...</span> <span class="n">evaluation_data</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span> <span class="n">lmbda</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">,</span>
@@ -1342,7 +1342,7 @@ use 100 hidden neurons and a regularization parameter of $\lambda =
 5.0$. I won't go through a detailed analysis of overfitting here, this
 is purely for fun, just to see how high an accuracy we can get when we
 use our new tricks: the cross-entropy cost function and L2
-regularization.</p><p><div class="highlight"><pre> 
+regularization.</p><p><div class="highlight"><pre>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span> <span class="o">=</span> <span class="n">network2</span><span class="o">.</span><span class="n">Network</span><span class="p">([</span><span class="mi">784</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">cost</span><span class="o">=</span><span class="n">network2</span><span class="o">.</span><span class="n">CrossEntropyCost</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">large_weight_initializer</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">lmbda</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
@@ -1381,7 +1381,7 @@ pretty terse story, though, and contains several elements that perhaps
 seem dubious or mystifying.  Let's unpack the story and examine it
 critically.  To do that, let's suppose we have a simple data set for
 which we wish to build a model:</p><p><div
-id="simple_model"></div> <script type="text/javascript" src="js/simple_data.js"> 
+id="simple_model"></div> <script type="text/javascript" src="js/simple_data.js">
  </script> </p><p>Implicitly, we're studying some real-world phenomenon here, with $x$
 and $y$ representing real-world data.  Our goal is to build a model
 which lets us predict $y$ as a function of $x$.  We could try using
@@ -1599,13 +1599,13 @@ function.  Differentiating <span id="margin_81306900706_reveal" class="equation_
 positive, and $-1$ if $w$ is negative.  Using this expression, we can
 easily modify backpropagation to do stochastic gradient descent using
 L1 regularization.  The resulting update rule for an L1 regularized
-network is 
+network is
 <a class="displaced_anchor" name="eqtn90"></a>\begin{eqnarray}  w \rightarrow w' =
   w-\frac{\eta \lambda}{n} \mbox{sgn}(w) - \eta \frac{\partial
     C_0}{\partial w},
 \tag{90}\end{eqnarray} </p><p>where, as per usual, we can estimate $\partial C_0 / \partial w$ using
 a mini-batch average, if we wish.  Compare that to the update rule for
-L2 regularization (c.f. Equation <span id="margin_398765654565_reveal" class="equation_link">(86)</span><span id="margin_398765654565" class="marginequation" style="display: none;"><a href="chap3.html#eqtn86" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+L2 regularization (c.f. Equation <span id="margin_398765654565_reveal" class="equation_link">(86)</span><span id="margin_398765654565" class="marginequation" style="display: none;"><a href="chap3.html#eqtn86" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   w \rightarrow \left(1-\frac{\eta \lambda}{n}\right) w -\frac{\eta}{m}
   \sum_x \frac{\partial C_x}{\partial w},  \nonumber\end{eqnarray}</a></span><script>$('#margin_398765654565_reveal').click(function() {$('#margin_398765654565').toggle('slow', function() {});});</script>),
 <a class="displaced_anchor" name="eqtn91"></a>\begin{eqnarray}
@@ -1974,7 +1974,7 @@ initialization:
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span> <span class="o">=</span> <span class="n">network2</span><span class="o">.</span><span class="n">Network</span><span class="p">([</span><span class="mi">784</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">cost</span><span class="o">=</span><span class="n">network2</span><span class="o">.</span><span class="n">CrossEntropyCost</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">large_weight_initializer</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">lmbda</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">,</span>
-<span class="o">...</span> <span class="n">evaluation_data</span><span class="o">=</span><span class="n">validation_data</span><span class="p">,</span> 
+<span class="o">...</span> <span class="n">evaluation_data</span><span class="o">=</span><span class="n">validation_data</span><span class="p">,</span>
 <span class="o">...</span> <span class="n">monitor_evaluation_accuracy</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 
@@ -1984,7 +1984,7 @@ initializing the weights is using this new approach.  That means we
 can omit the <tt>net.large_weight_initializer()</tt> call above:
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">net</span> <span class="o">=</span> <span class="n">network2</span><span class="o">.</span><span class="n">Network</span><span class="p">([</span><span class="mi">784</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">cost</span><span class="o">=</span><span class="n">network2</span><span class="o">.</span><span class="n">CrossEntropyCost</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">lmbda</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">,</span>
-<span class="o">...</span> <span class="n">evaluation_data</span><span class="o">=</span><span class="n">validation_data</span><span class="p">,</span> 
+<span class="o">...</span> <span class="n">evaluation_data</span><span class="o">=</span><span class="n">validation_data</span><span class="p">,</span>
 <span class="o">...</span> <span class="n">monitor_evaluation_accuracy</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 
@@ -2069,7 +2069,7 @@ square root of the number of connections input to the neuron.  Also in
 this method we'll initialize the biases, using Gaussian random
 variables with mean $0$ and standard deviation $1$.  Here's the code:</p><p><div class="highlight"><pre>    <span class="k">def</span> <span class="nf">default_weight_initializer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
                         <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:])]</span>
 </pre></div>
 </p><p>To understand the code, it may help to recall that <tt>np</tt> is the
@@ -2084,7 +2084,7 @@ weights and biases initialized as Gaussian random variables with mean
 $0$ and standard deviation $1$.  The code is, of course, only a tiny
 bit different from the <tt>default_weight_initializer</tt>:</p><p><div class="highlight"><pre>    <span class="k">def</span> <span class="nf">large_weight_initializer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
                         <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:])]</span>
 </pre></div>
 </p><p>I've included the <tt>large_weight_initializer</tt> method mostly as a
@@ -2126,7 +2126,7 @@ cost function enters our network.  Recall from
 compute the network's output error, $\delta^L$. The form of the output
 error depends on the choice of cost function: different cost function,
 different form for the output error.  For the cross-entropy the output
-error is, as we saw in Equation <span id="margin_33201621799_reveal" class="equation_link">(66)</span><span id="margin_33201621799" class="marginequation" style="display: none;"><a href="chap3.html#eqtn66" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+error is, as we saw in Equation <span id="margin_33201621799_reveal" class="equation_link">(66)</span><span id="margin_33201621799" class="marginequation" style="display: none;"><a href="chap3.html#eqtn66" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
     \delta^L = a^L-y.
    \nonumber\end{eqnarray}</a></span><script>$('#margin_33201621799_reveal').click(function() {$('#margin_33201621799').toggle('slow', function() {});});</script>,</p><p><a class="displaced_anchor" name="eqtn92"></a>\begin{eqnarray}
   \delta^L = a^L-y.
@@ -2143,7 +2143,7 @@ mostly use the cross entropy.  The code is just below.  The
 quadratic cost associated to the actual output, <tt>a</tt>, and the
 desired output, <tt>y</tt>.  The value returned by
 <tt>QuadraticCost.delta</tt> is based on the
-expression <span id="margin_667945012404_reveal" class="equation_link">(30)</span><span id="margin_667945012404" class="marginequation" style="display: none;"><a href="chap2.html#eqtn30" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+expression <span id="margin_667945012404_reveal" class="equation_link">(30)</span><span id="margin_667945012404" class="marginequation" style="display: none;"><a href="chap2.html#eqtn30" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L = (a^L-y) \odot \sigma'(z^L) \nonumber\end{eqnarray}</a></span><script>$('#margin_667945012404_reveal').click(function() {$('#margin_667945012404').toggle('slow', function() {});});</script> for the output error for the
 quadratic cost, which we derived back in Chapter 2.</p><p><div class="highlight"><pre><span class="k">class</span> <span class="nc">QuadraticCost</span><span class="p">:</span>
 
@@ -2264,7 +2264,7 @@ later.  Anyway, here's the code:</p><p><div class="highlight"><pre><span class="
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
                         <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:])]</span>
 
     <span class="k">def</span> <span class="nf">large_weight_initializer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -2284,7 +2284,7 @@ later.  Anyway, here's the code:</p><p><div class="highlight"><pre><span class="
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
                         <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:])]</span>
 
     <span class="k">def</span> <span class="nf">feedforward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
@@ -2293,12 +2293,12 @@ later.  Anyway, here's the code:</p><p><div class="highlight"><pre><span class="
             <span class="n">a</span> <span class="o">=</span> <span class="n">sigmoid_vec</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">a</span>
 
-    <span class="k">def</span> <span class="nf">SGD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">training_data</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">mini_batch_size</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> 
-            <span class="n">lmbda</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> 
-            <span class="n">evaluation_data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
+    <span class="k">def</span> <span class="nf">SGD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">training_data</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">mini_batch_size</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span>
+            <span class="n">lmbda</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="n">evaluation_data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
             <span class="n">monitor_evaluation_cost</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
             <span class="n">monitor_evaluation_accuracy</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-            <span class="n">monitor_training_cost</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+            <span class="n">monitor_training_cost</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
             <span class="n">monitor_training_accuracy</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Train the neural network using mini-batch stochastic gradient</span>
 <span class="sd">        descent.  The ``training_data`` is a list of tuples ``(x, y)``</span>
@@ -2368,9 +2368,9 @@ later.  Anyway, here's the code:</p><p><div class="highlight"><pre><span class="
             <span class="n">delta_nabla_b</span><span class="p">,</span> <span class="n">delta_nabla_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backprop</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
             <span class="n">nabla_b</span> <span class="o">=</span> <span class="p">[</span><span class="n">nb</span><span class="o">+</span><span class="n">dnb</span> <span class="k">for</span> <span class="n">nb</span><span class="p">,</span> <span class="n">dnb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nabla_b</span><span class="p">,</span> <span class="n">delta_nabla_b</span><span class="p">)]</span>
             <span class="n">nabla_w</span> <span class="o">=</span> <span class="p">[</span><span class="n">nw</span><span class="o">+</span><span class="n">dnw</span> <span class="k">for</span> <span class="n">nw</span><span class="p">,</span> <span class="n">dnw</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nabla_w</span><span class="p">,</span> <span class="n">delta_nabla_w</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="o">-</span><span class="n">eta</span><span class="o">*</span><span class="p">(</span><span class="n">lmbda</span><span class="o">/</span><span class="n">n</span><span class="p">))</span><span class="o">*</span><span class="n">w</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nw</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="o">-</span><span class="n">eta</span><span class="o">*</span><span class="p">(</span><span class="n">lmbda</span><span class="o">/</span><span class="n">n</span><span class="p">))</span><span class="o">*</span><span class="n">w</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nw</span>
                         <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">nw</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="n">nabla_w</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nb</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nb</span>
                        <span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">nb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">,</span> <span class="n">nabla_b</span><span class="p">)]</span>
 
     <span class="k">def</span> <span class="nf">backprop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -2431,7 +2431,7 @@ later.  Anyway, here's the code:</p><p><div class="highlight"><pre><span class="
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">convert</span><span class="p">:</span>
-            <span class="n">results</span> <span class="o">=</span> <span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feedforward</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> 
+            <span class="n">results</span> <span class="o">=</span> <span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feedforward</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
                        <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">results</span> <span class="o">=</span> <span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feedforward</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">y</span><span class="p">)</span>
@@ -2543,7 +2543,7 @@ flags telling us to monitor the cost and accuracy on both the
 monitor our <tt>Network</tt>'s performance.  Furthermore,
 <tt>network2.py</tt>'s <tt>Network.SGD</tt> method returns a four-element
 tuple representing the results of the monitoring.  We can use this as
-follows:</p><p><div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">evaluation_cost</span><span class="p">,</span> <span class="n">evaluation_accuracy</span><span class="p">,</span> 
+follows:</p><p><div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">evaluation_cost</span><span class="p">,</span> <span class="n">evaluation_accuracy</span><span class="p">,</span>
 <span class="o">...</span> <span class="n">training_cost</span><span class="p">,</span> <span class="n">training_accuracy</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>
 <span class="o">...</span> <span class="n">lmbda</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">,</span>
 <span class="o">...</span> <span class="n">evaluation_data</span><span class="o">=</span><span class="n">validation_data</span><span class="p">,</span>
@@ -3183,7 +3183,13 @@ whether machine learning can help solve the problem at all.  On the
 other hand, if getting optimal performance is important, then you may
 need to try approaches that require more specialist knowledge.  While
 it would be nice if machine learning were always easy, there is no
-<em>a priori</em> reason it should be trivially simple.</p><p><h3><a name="other_techniques"></a><a href="#other_techniques">Other techniques</a></h3></p><p>Each technique developed in this chapter is valuable to know in its
+  <em>a priori</em> reason it should be trivially simple.</p><p>
+
+<!--  <h3><a name="other_techniques"></a><a href="#other_techniques">Other techniques</a></h3>-->
+  <h3><a name="other_techniques"></a><a href="#other_techniques">その他の手法</a></h3>
+
+<!--
+</p><p>Each technique developed in this chapter is valuable to know in its
 own right, but that's not the only reason I've explained them.  The
 larger point is to familiarize you with some of the problems which can
 occur in neural networks, and with a style of analysis which can help
@@ -3191,7 +3197,22 @@ overcome those problems.  In a sense, we've been learning how to think
 about neural nets.  Over the remainder of this chapter I briefly
 sketch a handful of other techniques.  These sketches are less
 in-depth than the earlier discussions, but should convey some feeling
-for the diversity of techniques available for use in neural networks.</p><p><h4><a name="variations_on_stochastic_gradient_descent"></a><a href="#variations_on_stochastic_gradient_descent">Variations on stochastic gradient descent</a></h4></p><p>Stochastic gradient descent by backpropagation has served us well in
+  for the diversity of techniques available for use in neural networks.</p>
+-->
+
+</p><p>
+この章で開発したさまざまな手法は、それ自身知っておく価値があるものたちばかりです。
+しかし、私がそれらの手法を説明したのは、単にそれ自体の価値のためだけではありません。
+ニューラルネットワークを扱う上で起こりうる問題や、それを克服する助けとなる解析のスタイルについて、皆様にも慣れていただく、
+というのが、より重要な目標でした。
+ある意味では、私たちはニューラルネットについて考える方法を学習していたのです。
+この章の残りでは、これまでにカバーしきれなかった他の手法を軽く紹介します。
+これからの紹介は、これまでの議論よりは深みに欠けるものになってしまいますが、
+ニューラルネットワークを扱う手法の多様さを感じていただければ幸いです。
+</p>
+
+
+<p><h4><a name="variations_on_stochastic_gradient_descent"></a><a href="#variations_on_stochastic_gradient_descent">Variations on stochastic gradient descent</a></h4></p><p>Stochastic gradient descent by backpropagation has served us well in
 attacking the MNIST digit classification problem.  However, there are
 many other approaches to optimizing the cost function, and sometimes
 those other approaches offer performance superior to mini-batch
@@ -3216,7 +3237,7 @@ where $\nabla C$ is the usual gradient vector, and $H$ is a matrix
 known as the <em>Hessian matrix</em>, whose $jk$th entry is $\partial^2
 C / \partial w_j \partial w_k$.  Suppose we approximate $C$ by
 discarding the higher-order terms represented by $\ldots$ above,
-<a class="displaced_anchor" name="eqtn98"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn98"></a>\begin{eqnarray}
   C(w+\Delta w) \approx C(w) + \nabla C \cdot \Delta w +
   \frac{1}{2} \Delta w^T H \Delta w.
 \tag{98}\end{eqnarray}
@@ -3230,7 +3251,7 @@ can be minimized*<span class="marginnote">
 <a class="displaced_anchor" name="eqtn99"></a>\begin{eqnarray}
   \Delta w = -H^{-1} \nabla C.
 \tag{99}\end{eqnarray}
-Provided <span id="margin_341200104540_reveal" class="equation_link">(98)</span><span id="margin_341200104540" class="marginequation" style="display: none;"><a href="chap3.html#eqtn98" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+Provided <span id="margin_341200104540_reveal" class="equation_link">(98)</span><span id="margin_341200104540" class="marginequation" style="display: none;"><a href="chap3.html#eqtn98" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   C(w+\Delta w) \approx C(w) + \nabla C \cdot \Delta w +
   \frac{1}{2} \Delta w^T H \Delta w \nonumber\end{eqnarray}</a></span><script>$('#margin_341200104540_reveal').click(function() {$('#margin_341200104540').toggle('slow', function() {});});</script> is a good approximate expression for the
 cost function, then we'd expect that moving from the point $w$ to
@@ -3241,7 +3262,7 @@ cost:</p><p><ul>
   Hessian $H$ and $\nabla C$ are computed at $w$.</p><p><li> Update $w'$ to a new point $w{'}{'} = w'-H'^{-1} \nabla' C$,
   where the Hessian $H'$ and $\nabla' C$ are computed at $w'$.</p><p><li> $\ldots$
 </ul>
-In practice, <span id="margin_681684129137_reveal" class="equation_link">(98)</span><span id="margin_681684129137" class="marginequation" style="display: none;"><a href="chap3.html#eqtn98" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+In practice, <span id="margin_681684129137_reveal" class="equation_link">(98)</span><span id="margin_681684129137" class="marginequation" style="display: none;"><a href="chap3.html#eqtn98" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   C(w+\Delta w) \approx C(w) + \nabla C \cdot \Delta w +
   \frac{1}{2} \Delta w^T H \Delta w \nonumber\end{eqnarray}</a></span><script>$('#margin_681684129137_reveal').click(function() {$('#margin_681684129137').toggle('slow', function() {});});</script> is only an approximation, and it's
 better to take smaller steps.  We do this by repeatedly changing $w$
@@ -3288,9 +3309,9 @@ $w_j$ variable*<span class="marginnote">
 *In a neural net the $w_j$ variables would, of
   course, include all weights and biases.</span>. Then we replace the
 gradient descent update rule $w \rightarrow w'= w-\eta \nabla C$ by
-<a class="displaced_anchor" name="eqtn100"></a><a class="displaced_anchor" name="eqtn101"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn100"></a><a class="displaced_anchor" name="eqtn101"></a>\begin{eqnarray}
   v & \rightarrow  & v' = \mu v - \eta \nabla C \tag{100}\\
-  
+
   w & \rightarrow & w' = w+v'.
 \tag{101}\end{eqnarray}
 In these equations, $\mu$ is a hyper-parameter which controls the
@@ -3311,16 +3332,16 @@ the momentum technique to work much faster than standard gradient
 descent.  Of course, a problem is that once we reach the bottom of the
 valley we will overshoot.  Or, if the gradient should change rapidly,
 then we could find ourselves moving in the wrong direction.  That's
-the reason for the $\mu$ hyper-parameter in <span id="margin_821276191177_reveal" class="equation_link">(100)</span><span id="margin_821276191177" class="marginequation" style="display: none;"><a href="chap3.html#eqtn100" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+the reason for the $\mu$ hyper-parameter in <span id="margin_821276191177_reveal" class="equation_link">(100)</span><span id="margin_821276191177" class="marginequation" style="display: none;"><a href="chap3.html#eqtn100" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   v & \rightarrow  & v' = \mu v - \eta \nabla C  \nonumber\end{eqnarray}</a></span><script>$('#margin_821276191177_reveal').click(function() {$('#margin_821276191177').toggle('slow', function() {});});</script>.  I
 said earlier that $\mu$ controls the amount of friction in the system;
 to be a little more precise, you should think of $1-\mu$ as the amount
 of friction in the system.  When $\mu = 1$, as we've seen, there is no
 friction, and the velocity is completely driven by the gradient
 $\nabla C$.  By contrast, when $\mu = 0$ there's a lot of friction,
-the velocity can't build up, and Equations <span id="margin_1375636495_reveal" class="equation_link">(100)</span><span id="margin_1375636495" class="marginequation" style="display: none;"><a href="chap3.html#eqtn100" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+the velocity can't build up, and Equations <span id="margin_1375636495_reveal" class="equation_link">(100)</span><span id="margin_1375636495" class="marginequation" style="display: none;"><a href="chap3.html#eqtn100" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   v & \rightarrow  & v' = \mu v - \eta \nabla C  \nonumber\end{eqnarray}</a></span><script>$('#margin_1375636495_reveal').click(function() {$('#margin_1375636495').toggle('slow', function() {});});</script>
-and <span id="margin_834321992917_reveal" class="equation_link">(101)</span><span id="margin_834321992917" class="marginequation" style="display: none;"><a href="chap3.html#eqtn101" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+and <span id="margin_834321992917_reveal" class="equation_link">(101)</span><span id="margin_834321992917" class="marginequation" style="display: none;"><a href="chap3.html#eqtn101" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   w & \rightarrow & w' = w+v' \nonumber\end{eqnarray}</a></span><script>$('#margin_834321992917_reveal').click(function() {$('#margin_834321992917').toggle('slow', function() {});});</script> reduce to the usual equation for gradient
 descent, $w \rightarrow w'=w-\eta \nabla C$.  In practice, using a
 value of $\mu$ interediate between $0$ and $1$ can give us much of the
@@ -3384,7 +3405,7 @@ neuron, which replaces the sigmoid function by the hyperbolic tangent
 function.  The output of a tanh neuron with input $x$, weight vector
 $w$, and bias $b$ is given by
 <a class="displaced_anchor" name="eqtn102"></a>\begin{eqnarray}
- \tanh(w \cdot x+b), 
+ \tanh(w \cdot x+b),
 \tag{102}\end{eqnarray}
 where $\tanh$ is, of course, the hyperbolic tangent function.  It
 turns out that this is very closely related to the sigmoid neuron.  To
@@ -3393,7 +3414,7 @@ see this, recall that the $\tanh$ function is defined by
   \tanh(z) \equiv \frac{e^z-e^{-z}}{e^z+e^{-z}}.
 \tag{103}\end{eqnarray}
 With a little algebra it can easily be verified that
-<a class="displaced_anchor" name="eqtn104"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn104"></a>\begin{eqnarray}
   \sigma(z) = \frac{1+\tanh(z/2)}{2},
 \tag{104}\end{eqnarray}
 that is, $\tanh$ is just a rescaled version of the sigmoid function.
@@ -3410,8 +3431,8 @@ var xmax = 5;
 var sample = 400;
 var x1 = d3.scale.linear().domain([0, sample]).range([xmin, xmax]);
 var data = d3.range(sample).map(function(d){ return {
-        x: x1(d), 
-        y: s(x1(d))}; 
+        x: x1(d),
+        y: s(x1(d))};
     });
 var x = d3.scale.linear().domain([xmin, xmax]).range([0, width]);
 var y = d3.scale.linear()
@@ -3449,10 +3470,10 @@ graph.append("text")
      .attr("y", height/2+8)
      .text("z");
 graph.append("text")
-        .attr("x", (width / 2))             
+        .attr("x", (width / 2))
         .attr("y", -10)
-        .attr("text-anchor", "middle")  
-        .style("font-size", "16px") 
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
         .text("tanh function");
 </script>
 </p><p>One difference between tanh neurons and sigmoid neurons is that the
@@ -3470,7 +3491,7 @@ principle, compute any function*<span class="marginnote">
 inputs to the range -1 to 1.  Furthermore, ideas such as
 backpropagation and stochastic gradient descent are as easily applied
 to a network of tanh neurons as to a network of sigmoid neurons.</p><p><h4><a name="exercise_935719"></a><a href="#exercise_935719">Exercise</a></h4><ul>
-<li> Prove the identity in Equation <span id="margin_620778500926_reveal" class="equation_link">(104)</span><span id="margin_620778500926" class="marginequation" style="display: none;"><a href="chap3.html#eqtn104" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<li> Prove the identity in Equation <span id="margin_620778500926_reveal" class="equation_link">(104)</span><span id="margin_620778500926" class="marginequation" style="display: none;"><a href="chap3.html#eqtn104" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \sigma(z) = \frac{1+\tanh(z/2)}{2} \nonumber\end{eqnarray}</a></span><script>$('#margin_620778500926_reveal').click(function() {$('#margin_620778500926').toggle('slow', function() {});});</script>.
 </ul></p><p>Which type of neuron should you use in your networks, the tanh or
 sigmoid?  <em>A priori</em> the answer is not obvious, to put it mildly!
@@ -3532,8 +3553,8 @@ var xmax = 5;
 var sample = 100;
 var x1 = d3.scale.linear().domain([0, sample]).range([xmin, xmax]);
 var data = d3.range(sample).map(function(d){ return {
-        x: x1(d), 
-        y: s(x1(d))}; 
+        x: x1(d),
+        y: s(x1(d))};
     });
 var x = d3.scale.linear().domain([xmin, xmax]).range([0, width]);
 var y = d3.scale.linear()
@@ -3571,10 +3592,10 @@ graph.append("text")
      .attr("y", height/2+8)
      .text("z");
 graph.append("text")
-        .attr("x", (width / 2))             
+        .attr("x", (width / 2))
         .attr("y", -10)
-        .attr("text-anchor", "middle")  
-        .style("font-size", "16px") 
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
         .text("max(0, z)");
 </script></p><p>Obviously such neurons are quite different from both sigmoid and tanh
 neurons.  However, like the sigmoid and tanh neurons, rectified linear
