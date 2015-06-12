@@ -877,9 +877,9 @@ technical detail than a true barrier to understanding.
 一見すると、シグモイドニューロンはパーセプトロンとは大きく異なるように見えます。シグモイド関数の数式は、こういった表現方法に慣れていない人にとっては、理解困難で近づき難く感じられるかもしれません。
 しかし実は、パーセプトロンとシグモイドニューロンには多くの共通点があり、シグモイド関数が代数形式で表現されていることは、真の理解の妨げになるどころか、技術的な細部を伝えてくれるものとなるでしょう。
 
-</p><p>
+</p>
 
-To understand the similarity to the perceptron model, suppose $z
+<!--To understand the similarity to the perceptron model, suppose $z
 \equiv w \cdot x + b$ is a large positive number.  Then $e^{-z}
 \approx 0$ and so $\sigma(z) \approx 1$.  In other words, when $z = w
 \cdot x+b$ is large and positive, the output from the sigmoid neuron
@@ -889,10 +889,24 @@ Then $e^{-z} \rightarrow \infty$, and $\sigma(z) \approx 0$.  So when
 $z = w \cdot x +b$ is very negative, the behaviour of a sigmoid neuron
 also closely approximates a perceptron.  It's only when $w \cdot x+b$
 is of modest size that there's much deviation from the perceptron
-model.</p><p>What about the algebraic form of $\sigma$?  How can we understand
+model.</p>
+<p>What about the algebraic form of $\sigma$?  How can we understand
 that?  In fact, the exact form of $\sigma$ isn't so important - what
 really matters is the shape of the function when plotted.  Here's the
-shape:</p><p>
+shape:</p>
+<p>-->
+
+パーセプトロンとの共通点を理解するために、$z \equiv w \cdot x + b$を大きな正の数としてみましょう。
+このとき、$e^{-z} \approx 0$、つまり$\sigma(z) \approx 1$となります。
+言い換えると、$z = w \cdot x+b$を大きな数であるとき、シグモイドニューロンの出力はほぼ$1$となり、パーセプトロンと同じになります。
+逆に、$z = w \cdot x+b$は大きな負の数とします。そのとき$e^{-z} \rightarrow \infty$であり、$\sigma(z) \approx 0$になります。
+つまり、$z = w \cdot x +b$が大きな負の数となるときも、シグモイドニューロンはパーセプトロンとほぼ同じ動きをします。
+ただし、$w \cdot x+b$がそこまで大きな数でない場合はパーセプトロンと同じにはなりません。
+</p>
+<p>
+$\sigma$についてですが、 代数的視点から私達はこれをどう理解すればいいのでしょうか？
+実は、$\sigma$がなんであるかはそこまで重要ではありません。重要なのはどういう形のグラフになるかです。これがそのグラフの形です。
+</p>
 
 <div id="sigmoid_graph"><a name="sigmoid_graph"></a></div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -952,7 +966,9 @@ graph.append("text")
         .style("font-size", "16px")
         .text("sigmoid function");
 </script>
-</p><p>This shape is a smoothed out version of a step function:</p><p>
+</p>
+<p>This shape is a smoothed out version of a step function:</p>
+<p>
 <div id="step_graph"></div>
 <script>
 function s(x) {return x < 0 ? 0 : 1;}
@@ -1010,7 +1026,9 @@ graph.append("text")
         .style("font-size", "16px")
         .text("step function");
 </script>
-</p><p>If $\sigma$ had in fact been a step function, then the sigmoid neuron
+</p>
+
+<!--<p>If $\sigma$ had in fact been a step function, then the sigmoid neuron
 would <em>be</em> a perceptron, since the output would be $1$ or $0$
 depending on whether $w\cdot x+b$ was positive or
 negative*<span class="marginnote">
@@ -1042,7 +1060,30 @@ to choose small changes in the weights and biases to achieve any
 desired small change in the output.  So while sigmoid neurons have
 much of the same qualitative behaviour as perceptrons, they make it
 much easier to figure out how changing the weights and biases will
-change the output.</p><p>If it's the shape of $\sigma$ which really matters, and not its exact
+change the output.</p>-->
+
+<p>
+もし$\sigma$が実際にステップ関数であれば、シグモイドニューロンはパーセプトロンと<em>等しくなります</em>。
+これは、$w\cdot x+b$が負か正かになるになることで出力が$1$か$0$となるからです。
+<span class="marginnote">
+  実は、$w \cdot x +b = 0$のとき、ステップ関数の出力が$1$に対して、パーセプトロンの出力は$0$です。
+  正確に言うと、この一点においてステップ関数を変更する必要があります。しかし、わかりますよね。
+</span>
+本当の$\sigma$関数を使うことによって、上にあるように、なめらかなパーセプトロンになります。
+確かに、$\sigma$関数の滑らかさは重大な事実ですが、本質ではありません。
+$\sigma$の滑らかさは、重みについて$\Delta w_j$、バイアスについて$\Delta b$の小さな変化は、ニューロンの出力について$\Delta \mbox{output}$の小さな変化を生み出す、ということを意味しています。
+実際下記の計算から、$\Delta \mbox{output}$は大体上手くいっているとわかります。
+<a class="displaced_anchor" name="eqtn5"></a>\begin{eqnarray}
+  \Delta \mbox{output} \approx \sum_j \frac{\partial \, \mbox{output}}{\partial w_j}
+  \Delta w_j + \frac{\partial \, \mbox{output}}{\partial b} \Delta b,
+\tag{5}\end{eqnarray}
+ここではsumは全ての重み$w_j$の和、$\partial \, \mbox{output} / \partial w_j$と$\partial \, \mbox{output} /\partial b$は$\mbox{output}$の偏微分を表し、それぞれに$w_j$と$b$をかけています。
+偏微分について知らなくてもパニックにならないでください！この記法は複雑に見えますが、全ての偏微分は実は非常にシンプルなことを表現しています（そしてとてもいいことです）。つまり、$\Delta \mbox{output}$は重みとバイアスにおいて、$\Delta w_j$と$\Delta b$の変化に対して<em>線形</em>である、と言っているのです。
+この線形性は、欲しいoutputがどんな小さな変化でも、重みとバイアスを小さく変化させることで簡単に得られることを示しています。
+このことから、シグモイドニューロンはパーセプトロンとほぼ同等な動きをするにも関わらず、より容易に重みとバイアスの変化がoutputを変化させるかがわかります。
+</p>
+
+<!--<p>If it's the shape of $\sigma$ which really matters, and not its exact
 form, then why use the particular form used for $\sigma$ in
 Equation <span id="margin_128354118695_reveal" class="equation_link">(3)</span><span id="margin_128354118695" class="marginequation" style="display: none;"><a href="chap1.html#eqtn3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \sigma(z) \equiv \frac{1}{1+e^{-z}} \nonumber\end{eqnarray}</a></span><script>$('#margin_128354118695_reveal').click(function() {$('#margin_128354118695').toggle('slow', function() {});});</script>?  In fact, later in the book we will
@@ -1057,7 +1098,8 @@ compute those partial derivatives later, using $\sigma$ will simplify
 the algebra, simply because exponentials have lovely properties when
 differentiated.  In any case, $\sigma$ is commonly-used in work on
 neural nets, and is the activation function we'll use most often in
-this book.</p><p>How should we interpret the output from a sigmoid neuron?  Obviously,
+this book.</p>
+<p>How should we interpret the output from a sigmoid neuron?  Obviously,
 one big difference between perceptrons and sigmoid neurons is that
 sigmoid neurons don't just output $0$ or $1$.  They can have as output
 any real number between $0$ and $1$, so values such as $0.173\ldots$
@@ -1072,7 +1114,43 @@ set up a convention to deal with this, for example, by deciding to
 interpret any output of at least $0.5$ as indicating a "9", and any
 output less than $0.5$ as indicating "not a 9".  I'll always
 explicitly state when we're using such a convention, so it shouldn't
-cause any confusion.</p><p>
+cause any confusion.</p>
+-->
+
+<p>もし、本当に重要であるのが$\sigma$のグラフの形であり、その式自体でないのであれば、なぜ$\sigma$で使われるような特定の等式を使うのでしょうか
+<span id="margin_128354118695_reveal" class="equation_link">(3)</span><span id="margin_128354118695" class="marginequation" style="display: none;"><a href="chap1.
+html#eqtn3" style="padding-bottom: 5px;" onMouseOver="this.
+style.
+borderBottom='1px solid #2A6EA6';" onMouseOut="this.
+style.
+borderBottom='0px';">\begin{eqnarray}  \sigma(z) \equiv \frac{1}{1+e^{-z}} \nonumber\end{eqnarray}</a></span><script>$('#margin_128354118695_reveal').
+click(function() {$('#margin_128354118695').
+toggle('slow', function() {});});</script>?
+実際、後に時折別の<em>アクティベーション関数</em>$f(\cdot)$を使った$f(w \cdot x + b)$の出力を持つニューロンを考えます。
+別のアクティベーション関数を使った時の主な違いは、等式における偏微分の特定の値です。
+  <span id="margin_231995366761_reveal" class="equation_link">(5)</span><span id="margin_231995366761" class="marginequation" style="display: none;"><a href="chap1.
+html#eqtn5" style="padding-bottom: 5px;" onMouseOver="this.
+style.
+borderBottom='1px solid #2A6EA6';" onMouseOut="this.
+style.
+borderBottom='0px';">\begin{eqnarray}  \Delta \mbox{output} \approx \sum_j \frac{\partial \, \mbox{output}}{\partial w_j}  \Delta w_j + \frac{\partial \, \mbox{output}}{\partial b} \Delta b \nonumber\end{eqnarray}</a></span><script>$('#margin_231995366761_reveal').
+click(function() {$('#margin_231995366761').
+toggle('slow', function() {});});</script>
+  後々これらの偏微分を計算するとき、$\sigma$を使うことで代数的考えが楽になります。これは単に、指数関数の値は指数によって決まるからです。
+  とにかく、$\sigma$はニューラルネットでよく使われており、この本で最もよく使うアクティベーション関数です。
+</p>
+<p>
+シグモイドニューロンからの出力をどう変換すべきでしょうか？明らかなことですが、パーセプトロンとシグモイドニューロンの大きな違いの一つは、シグモイドニューロンの出力ががちょうど$0$または$1$ではないことです。
+シグモイドニューロンは$0$から$1$の間のあらゆる実数を出力することが出来ます。例えば$0.173\ldots$ や $0.689\ldots$ は正当な出力と言えます。
+このことはとても有用となりえます。例えば、出力値をニューラルネットワークに対する入力画像のピクセル平均色度合いとして表したい時です。
+しかし、時々厄介なものともなりえます。
+ネットワークからの出力を「入力画像が９」もしくは「入力画像が９でない」として示したいとします。
+明らかに、最も簡単は方法はパーセプトロンのように出力を$0$もしくは$1$とすることです。
+しかし実際のところ、この例を扱うためにルールを設定することが出来ます。例えば、0.5より大きな出力は"9"とみなし、0.5以下の出力は"9ではない"とみなす方法です。
+混乱がないように、このようなルールを使うときは常に明示することにします。
+</p>
+
+<p>
 <h4><a name="exercises_191892"></a><a href="#exercises_191892">Exercises</a></h4><ul>
 <li><strong>シグモイドニューロンのシミュレーション パート I</strong> $\mbox{}$ <br/>
   今、あるパーセプトロンのネットワークのすべての重みとバイアスをとって、
