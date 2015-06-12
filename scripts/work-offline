@@ -1,0 +1,7 @@
+#!/bin/sh
+
+while :
+do
+    ./scripts/disable-mathjax $1
+    inotifywait -e modify $1
+done
