@@ -53,67 +53,67 @@
   </head>
   <body><div class="header"><h1 class="chapter_number">
   <a href="">CHAPTER 5</a></h1>
-  <h1 class="chapter_title"><a href="">ニューラルネットワークを訓練するのはなぜ難しいのか</a></h1></div><div class="section"><div id="toc"> 
+  <h1 class="chapter_title"><a href="">ニューラルネットワークを訓練するのはなぜ難しいのか</a></h1></div><div class="section"><div id="toc">
 <p class="toc_title"><a href="index.html">ニューラルネットワークと深層学習</a></p><p class="toc_not_mainchapter"><a href="about.html">What this book is about</a></p><p class="toc_not_mainchapter"><a href="exercises_and_problems.html">On the exercises and problems</a></p><p class='toc_mainchapter'><a id="toc_using_neural_nets_to_recognize_handwritten_digits_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_using_neural_nets_to_recognize_handwritten_digits" src="images/arrow.png" width="15px"></a><a href="chap1.html">ニューラルネットワークを用いた手書き文字認識</a><div id="toc_using_neural_nets_to_recognize_handwritten_digits" style="display: none;"><p class="toc_section"><ul><a href="chap1.html#perceptrons"><li>Perceptrons</li></a><a href="chap1.html#sigmoid_neurons"><li>Sigmoid neurons</li></a><a href="chap1.html#the_architecture_of_neural_networks"><li>The architecture of neural networks</li></a><a href="chap1.html#a_simple_network_to_classify_handwritten_digits"><li>A simple network to classify handwritten digits</li></a><a href="chap1.html#learning_with_gradient_descent"><li>Learning with gradient descent</li></a><a href="chap1.html#implementing_our_network_to_classify_digits"><li>Implementing our network to classify digits</li></a><a href="chap1.html#toward_deep_learning"><li>Toward deep learning</li></a></ul></p></div>
 <script>
-$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() { 
+$('#toc_using_neural_nets_to_recognize_handwritten_digits_reveal').click(function() {
    var src = $('#toc_img_using_neural_nets_to_recognize_handwritten_digits').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_using_neural_nets_to_recognize_handwritten_digits").attr('src', 'images/arrow.png');
    };
-   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});  
+   $('#toc_using_neural_nets_to_recognize_handwritten_digits').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_how_the_backpropagation_algorithm_works_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_how_the_backpropagation_algorithm_works" src="images/arrow.png" width="15px"></a><a href="chap2.html">逆伝播の仕組み</a><div id="toc_how_the_backpropagation_algorithm_works" style="display: none;"><p class="toc_section"><ul><a href="chap2.html#warm_up_a_fast_matrix-based_approach_to_computing_the_output_from_a_neural_network"><li>Warm up: a fast matrix-based approach to computing the output  from a neural network</li></a><a href="chap2.html#the_two_assumptions_we_need_about_the_cost_function"><li>The two assumptions we need about the cost function</li></a><a href="chap2.html#the_hadamard_product_$s_\odot_t$"><li>The Hadamard product, $s \odot t$</li></a><a href="chap2.html#the_four_fundamental_equations_behind_backpropagation"><li>The four fundamental equations behind backpropagation</li></a><a href="chap2.html#proof_of_the_four_fundamental_equations_(optional)"><li>Proof of the four fundamental equations (optional)</li></a><a href="chap2.html#the_backpropagation_algorithm"><li>The backpropagation algorithm</li></a><a href="chap2.html#the_code_for_backpropagation"><li>The code for backpropagation</li></a><a href="chap2.html#in_what_sense_is_backpropagation_a_fast_algorithm"><li>In what sense is backpropagation a fast algorithm?</li></a><a href="chap2.html#backpropagation_the_big_picture"><li>Backpropagation: the big picture</li></a></ul></p></div>
 <script>
-$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() { 
+$('#toc_how_the_backpropagation_algorithm_works_reveal').click(function() {
    var src = $('#toc_img_how_the_backpropagation_algorithm_works').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_how_the_backpropagation_algorithm_works").attr('src', 'images/arrow.png');
    };
-   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});  
+   $('#toc_how_the_backpropagation_algorithm_works').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_improving_the_way_neural_networks_learn_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_improving_the_way_neural_networks_learn" src="images/arrow.png" width="15px"></a><a href="chap3.html">ニューラルネットワークの学習の改善</a><div id="toc_improving_the_way_neural_networks_learn" style="display: none;"><p class="toc_section"><ul><a href="chap3.html#the_cross-entropy_cost_function"><li>The cross-entropy cost function</li></a><a href="chap3.html#overfitting_and_regularization"><li>Overfitting and regularization</li></a><a href="chap3.html#weight_initialization"><li>Weight initialization</li></a><a href="chap3.html#handwriting_recognition_revisited_the_code"><li>Handwriting recognition revisited: the code</li></a><a href="chap3.html#how_to_choose_a_neural_network's_hyper-parameters"><li>How to choose a neural network's hyper-parameters?</li></a><a href="chap3.html#other_techniques"><li>Other techniques</li></a></ul></p></div>
 <script>
-$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() { 
+$('#toc_improving_the_way_neural_networks_learn_reveal').click(function() {
    var src = $('#toc_img_improving_the_way_neural_networks_learn').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_improving_the_way_neural_networks_learn").attr('src', 'images/arrow.png');
    };
-   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});  
+   $('#toc_improving_the_way_neural_networks_learn').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_a_visual_proof_that_neural_nets_can_compute_any_function" src="images/arrow.png" width="15px"></a><a href="chap4.html">ニューラルネットワークが任意の関数を表現できることの視覚的証明</a><div id="toc_a_visual_proof_that_neural_nets_can_compute_any_function" style="display: none;"><p class="toc_section"><ul><a href="chap4.html#two_caveats"><li>Two caveats</li></a><a href="chap4.html#universality_with_one_input_and_one_output"><li>Universality with one input and one output</li></a><a href="chap4.html#many_input_variables"><li>Many input variables</li></a><a href="chap4.html#extension_beyond_sigmoid_neurons"><li>Extension beyond sigmoid neurons</li></a><a href="chap4.html#fixing_up_the_step_functions"><li>Fixing up the step functions</li></a><a href="chap4.html#conclusion"><li>Conclusion</li></a></ul></p></div>
 <script>
-$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() { 
+$('#toc_a_visual_proof_that_neural_nets_can_compute_any_function_reveal').click(function() {
    var src = $('#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_a_visual_proof_that_neural_nets_can_compute_any_function").attr('src', 'images/arrow.png');
    };
-   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});  
+   $('#toc_a_visual_proof_that_neural_nets_can_compute_any_function').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_why_are_deep_neural_networks_hard_to_train_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_why_are_deep_neural_networks_hard_to_train" src="images/arrow.png" width="15px"></a><a href="chap5.html">ニューラルネットワークを訓練するのはなぜ難しいのか</a><div id="toc_why_are_deep_neural_networks_hard_to_train" style="display: none;"><p class="toc_section"><ul><a href="chap5.html#the_vanishing_gradient_problem"><li>The vanishing gradient problem</li></a><a href="chap5.html#what's_causing_the_vanishing_gradient_problem_unstable_gradients_in_deep_neural_nets"><li>What's causing the vanishing gradient problem?  Unstable gradients in deep neural nets</li></a><a href="chap5.html#unstable_gradients_in_more_complex_networks"><li>Unstable gradients in more complex networks</li></a><a href="chap5.html#other_obstacles_to_deep_learning"><li>Other obstacles to deep learning</li></a></ul></p></div>
 <script>
-$('#toc_why_are_deep_neural_networks_hard_to_train_reveal').click(function() { 
+$('#toc_why_are_deep_neural_networks_hard_to_train_reveal').click(function() {
    var src = $('#toc_img_why_are_deep_neural_networks_hard_to_train').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_why_are_deep_neural_networks_hard_to_train").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_why_are_deep_neural_networks_hard_to_train").attr('src', 'images/arrow.png');
    };
-   $('#toc_why_are_deep_neural_networks_hard_to_train').toggle('fast', function() {});  
+   $('#toc_why_are_deep_neural_networks_hard_to_train').toggle('fast', function() {});
 });</script><p class='toc_mainchapter'><a id="toc_deep_learning_reveal" class="toc_reveal" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';"><img id="toc_img_deep_learning" src="images/arrow.png" width="15px"></a>Deep learning<div id="toc_deep_learning" style="display: none;"><p class="toc_section"><ul><li>Convolutional neural networks</li><li>Pretraining</li><li>Recurrent neural networks, Boltzmann machines, and other  models</li><li>Is there a universal thinking algorithm?</li><li>On the future of neural networks</li></ul></p></div>
 <script>
-$('#toc_deep_learning_reveal').click(function() { 
+$('#toc_deep_learning_reveal').click(function() {
    var src = $('#toc_img_deep_learning').attr('src');
    if(src == 'images/arrow.png') {
      $("#toc_img_deep_learning").attr('src', 'images/arrow_down.png');
    } else {
      $("#toc_img_deep_learning").attr('src', 'images/arrow.png');
    };
-   $('#toc_deep_learning').toggle('fast', function() {});  
+   $('#toc_deep_learning').toggle('fast', function() {});
 });</script><p class="toc_not_mainchapter"><a href="acknowledgements.html">Acknowledgements</a></p><p class="toc_not_mainchapter"><a href="faq.html">Frequently Asked Questions</a></p>
 <hr>
 <span class="sidebar_title">Sponsors</span>
@@ -127,8 +127,10 @@ style="padding: 0px 0px 10px 8px; border-style: none;"></a>
 
 <a href='http://www.visionsmarts.com'><img
 src='assets/visionsmarts.png' width='160px' style="padding: 0px 0px
-0px 0px; border-style: none;"></a> <br/> 
+0px 0px; border-style: none;"></a> <br/>
 
+
+<!--
 <p class="sidebar">Thanks to all the <a
 href="supporters.html">supporters</a> who made the book possible.
 Thanks also to all the contributors to the <a
@@ -138,6 +140,19 @@ href="bugfinder.html">Bugfinder Hall of Fame</a>.  </p>
 under active development.  Please send error reports to
 mn@michaelnielsen.org.  For other enquiries, please see the <a
 href="faq.html">FAQ</a> first.</p>
+-->
+
+<p class="sidebar">著者と共にこの本を作り出してくださった<a
+href="supporters.html">サポーター</a>の皆様に感謝いたします。
+また、<a
+href="bugfinder.html">バグ発見者の殿堂</a>に名を連ねる皆様にも感謝いたします。</p>
+
+<p class="sidebar">この本は目下のところベータ版で、開発続行中です。
+エラーレポートは mn@michaelnielsen.org まで、日本語版に関する質問は muranushi@gmail.com までお送りください。
+その他の質問については、まずは<a
+href="faq.html">FAQ</a>をごらんください。</p>
+
+
 
 <hr>
 <span class="sidebar_title">Resources</span>
@@ -160,6 +175,7 @@ href="faq.html">FAQ</a> first.</p>
 By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Dec 2014
 </p>
 </div>
+
 </p><p>Imagine you're an engineer who has been asked to design a computerfrom scratch.  One day you're working away in your office, designinglogical circuits, setting out <CODE>AND</CODE> gates, <CODE>OR</CODE> gates,and so on, when your boss walks in with bad news. The customer hasjust added a surprising design requirement: the circuit for the entirecomputer must be just two layers deep:</p><p><center><img src="images/shallow_circuit.png" width="500px"></center></p><p>You're dumbfounded, and tell your boss: "The customer is crazy!"</p><p>Your boss replies: "I think they're crazy, too.  But what thecustomer wants, they get."</p><p>In fact, there's a limited sense in which the customer isn't crazy.Suppose you're allowed to use a special logical gate which lets you<CODE>AND</CODE> together as many inputs as you want.  And you're alsoallowed a many-input <CODE>NAND</CODE> gate, that is, a gate which can<CODE>AND</CODE> multiple inputs and then negate the output.  With thesespecial gates it turns out to be possible to compute any function atall using a circuit that's just two layers deep.</p><p>But just because something is possible doesn't make it a good idea.In practice, when solving circuit design problems (or most any kind ofalgorithmic problem), we usually start by figuring out how to solvesub-problems, and then gradually integrate the solutions.  In otherwords, we build up to a solution through multiple layers ofabstraction.  </p><p>For instance, suppose we're designing a logical circuit to multiplytwo numbers.  Chances are we want to build it up out of sub-circuitsdoing operations like adding two numbers.  The sub-circuits for addingtwo numbers will, in turn, be built up out of sub-sub-circuits foradding two bits.  Very roughly speaking our circuit will look like:</p><p><center><img src="images/circuit_multiplication.png" width="500px"></center></p><p>That is, our final circuit contains at least three layers of circuitelements.  In fact, it'll probably contain more than three layers, aswe break the sub-tasks down into smaller units than I've described.But you get the general idea.</p><p>So deep circuits make the process of design easier.  But they're notjust helpful for design.  There are, in fact, mathematical proofsshowing that for some functions very shallow circuits requireexponentially more circuit elements to compute than do deep circuits.For instance, a famous 1984 paper by Furst, Saxe andSipser*<span class="marginnote">*See  <a href="http://link.springer.com/article/10.1007/BF01744431">Parity,    Circuits, and the Polynomial-Time Hierarchy</a>, by Merrick Furst,  James B. Saxe, and Michael Sipser (1984).</span> showed that computing theparity of a set of bits requires exponentially many gates, if donewith a shallow circuit.  On the other hand, if you use deeper circuitsit's easy to compute the parity using a small circuit: you justcompute the parity of pairs of bits, then use those results to computethe parity of pairs of pairs of bits, and so on, building up quicklyto the overall parity.  Deep circuits thus can be intrinsically muchmore powerful than shallow circuits.</p><p>Up to now, this book has approached neural networks like the crazycustomer.  Almost all the networks we've worked with have just asingle hidden layer of neurons (plus the input and output layers):</p><p><center><img src="images/tikz35.png"/></center></p><p>These simple networks have been remarkably useful: in earlier chapterswe used networks like this to classify handwritten digits with betterthan 98 percent accuracy!  Nonetheless, intuitively we'd expectnetworks with many more hidden layers to be more powerful:</p><p><center><img src="images/tikz36.png"/></center></p><p>Such networks could use the intermediate layers to build up multiplelayers of abstraction, just as we do in Boolean circuits.  Forinstance, if we're doing visual pattern recognition, then the neuronsin the first layer might learn to recognize edges, the neurons in thesecond layer could learn to recognize more complex shapes, saytriangle or rectangles, built up from edges.  The third layer wouldthen recognize still more complex shapes.  And so on.  These multiplelayers of abstraction seem likely to give deep networks a compellingadvantage in learning to solve complex pattern recognition problems.Moreover, just as in the case of circuits, there are theoreticalresults suggesting that deep networks are instrinsically more powerfulthan shallow networks*<span class="marginnote">*For certain problems and network  architectures this is proved in  <a href="http://arxiv.org/pdf/1312.6098.pdf">On the number of response    regions of deep feed forward networks with piece-wise linear    activations</a>, by Razvan Pascanu, Guido Montúfar, and Yoshua Bengio  (2014). See also the more informal discussion in section 2 of  <a href="http://www.iro.umontreal.ca/&#126;bengioy/papers/ftml_book.pdf">Learning    deep architectures for AI</a>, by Yoshua Bengio (2009).</span>.</p><p>How can we train such deep networks?  In this chapter, we'll trytraining deep networks using our workhorse learning algorithm -<a href="chap1.html#learning_with_gradient_descent">stochastic  gradient descent</a> by <a href="chap2.html">backpropagation</a>.  But we'llrun into trouble, with our deep networks not performing much (if atall) better than shallow networks.</p><p>That failure seems surprising in the light of the discussion above.Rather than give up on deep networks, we'll dig down and try tounderstand what's making our deep networks hard to train.  When welook closely, we'll discover that the different layers in our deepnetwork are learning at vastly different speeds.  In particular, whenlater layers in the network are learning well, early layers often getstuck during training, learning almost nothing at all.  This stucknessisn't simply due to bad luck.  Rather, we'll discover there arefundamental reasons the learning slowdown occurs, connected to our useof gradient-based learning techniques.</p><p>As we delve into the problem more deeply, we'll learn that theopposite phenomenon can also occur: the early layers may be learningwell, but later layers can become stuck.  In fact, we'll find thatthere's an intrinsic instability associated to learning by gradientdescent in deep, many-layer neural networks.  This instability tendsto result in either the early or the later layers getting stuck duringtraining.</p><p>This all sounds like bad news.  But by delving into thesedifficulties, we can begin to gain insight into what's required totrain deep networks effectively.  And so these investigations are goodpreparation for the next chapter, where we'll use deep learning toattack image recognition problems.</p><p><h3><a name="the_vanishing_gradient_problem"></a><a href="#the_vanishing_gradient_problem">The vanishing gradient problem</a></h3></p><p>So, what goes wrong when we try to train a deep network?</p><p>To answer that question, let's first revisit the case of a networkwith just a single hidden layer.  As per usual, we'll use the MNISTdigit classification problem as our playground for learning andexperimentation*<span class="marginnote">*I introduced the MNIST problem and data  <a href="chap1.html#learning_with_gradient_descent">here</a> and  <a href="chap1.html#implementing_our_network_to_classify_digits">here</a>.</span>.</p><p>If you wish, you can follow along by training networks on yourcomputer.  It is also, of course, fine to just read along.  If you dowish to follow live, then you'll need Python 2.7, Numpy, and a copy ofthe code, which you can get by cloning the relevant repository fromthe command line:<div class="highlight"><pre>git clone https://github.com/mnielsen/neural-networks-and-deep-learning.git
 </pre></div>
 If you don't use <tt>git</tt> then you can download the data and code<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/archive/master.zip">here</a>.  You'll need to change into the <tt>src</tt> subdirectory.</p><p>Then, from a Python shell we load the MNIST data:</p><p><div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">mnist_loader</span>

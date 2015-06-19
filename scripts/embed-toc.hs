@@ -27,7 +27,7 @@ htmlFiles = [ "about.html"
 main :: IO ()
 main = do
   tocContent <- T.readFile "scripts/toc.html"
-  process tocContent "chap1.html"
+  mapM_ (process tocContent) htmlFiles
 
 process :: T.Text -> FilePath -> IO ()
 process toc fn = do
