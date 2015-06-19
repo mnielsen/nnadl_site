@@ -56,4 +56,5 @@ endOfTOC = do
   string "</p>"
   skipSpace
   string "</div>"
+  skipSpace
   return ()
