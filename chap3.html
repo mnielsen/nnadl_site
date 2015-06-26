@@ -282,7 +282,7 @@ introduced back in Chapter 1.  I'll remind you of the exact form of
 the cost function shortly, so there's no need to go and dig up the
 definition.  Note that you can run the animation multiple times by
 clicking on "Run" again.</p>-->
-<p>話をはっきりするために、初期の重みを$0.6$、バイアスを$0.9$としましょう。この設定は学習の前の設定として一般的なものです。とにかく特別な値を採用したわけではありません。ニューロンからの出力の初期値は$0.82$なので、ニューロンが望まれる出力の$0.0$を出すようになるようになるには、それなりの時間がかかりそうです。出力が$0.0$にとても近くなるまでにどのようにニューロンが学習していくかを見るには、右下にある「Run」ボタンを押してみてください。これは録画された動画ではないことに注意してください。ブラウザは実際に勾配を計算して、その勾配は重みとバイアスを更新するのに使われて、結果が表示されています。学習係数は$\eta = 0.15$であり、これの値は、なにが起こっているかを見るには十分に遅く、しかし数秒でそれなりの学習をさせるには十分に速い値です。コスト関数は、第1章で紹介した二次コスト関数です。コスト関数の厳密な式は後で復習するので、今とくに定義を深く追う必要はありません。このアニメーションは「Run」を押せば何度でも実行できます。
+<p>話をはっきりするために、初期の重みを$0.6$、バイアスを$0.9$としましょう。この設定は学習の前の設定として適当に選んだもので、とにかく特別な値を採用したわけではありません。ニューロンからの出力の初期値は$0.82$なので、ニューロンが望まれる出力の$0.0$を出すようになるようになるには、それなりの時間がかかりそうです。出力が$0.0$にとても近くなるまでにどのようにニューロンが学習していくかを見るには、右下にある「Run」ボタンを押してみてください。これは録画された動画ではないことに注意してください。ブラウザは実際に勾配を計算して、その勾配は重みとバイアスを更新するのに使われて、結果が表示されています。学習係数は$\eta = 0.15$であり、これの値は、なにが起こっているかを見るには十分に遅く、しかし数秒でそれなりの学習をさせるには十分に速い値です。コスト関数は、第1章で紹介した二次コスト関数です。コスト関数の厳密な式は後で復習するので、今とくに定義を深く追う必要はありません。このアニメーションは「Run」を押せば何度でも実行できます。
 </p>
 <p>
 <script type="text/javascript" src="js/paper.js"></script>
@@ -652,7 +652,7 @@ it is later on, as the neuron gets closer to the correct output; while
 with the cross-entropy learning is faster when the neuron is
 unambiguously wrong.  Those statements don't depend on how the
 learning rate is set.</p>-->
-<p>そんなことではグラフに意味がないではないかと、あなたは反対するかもしれません。学習率の選択法が決まっていないのに、ニューロンの学習する速さに誰が興味を持つだろうか！？そのような反対意見は重要な点を見逃しています。グラフで重要な点は学習の絶対的な速度についてではないのです。学習の速度がどのように変わっていくかが重要なのです。取り立てて言うと、二次コスト関数は、後に正しい出力値に近づいたときと比べて、ニューロンが誤解の余地なく悪い状態の時に<em>遅い</em>のです。一方で、クロスエントロピーは、誤解の余地なく悪い状態の時にも速いです。これらの話は学習率がどのように設定されたかに依存しません。
+<p>そんなことではグラフに意味がないではないかと、あなたは反対するかもしれません。学習率の選択法が決まっていないのに、ニューロンの学習する速さに誰が興味を持つだろうか！？そのような反対意見は重要な点を見逃しています。グラフで重要な点は学習の絶対的な速度についてではないのです。学習の速度がどのように変わっていくかが重要なのです。取り立てて言うと、二次コスト関数は、後に正しい出力値に近づいたときと比べて、ニューロンがあきらかに間違っている状態の時に<em>遅い</em>のです。一方で、クロスエントロピーは、あきらかに間違っている状態の時にも速いです。これらの話は学習率がどのように設定されたかに依存しません。
 </p>
 <!--<p>We've been studying the cross-entropy for a single neuron.  However,
 it's easy to generalize the cross-entropy to many-neuron multi-layer
@@ -822,7 +822,7 @@ techniques developed in this chapter*<span class="marginnote">
     GitHub</a>.</span>.-->
 <p><h4><a name="using_the_cross-entropy_to_classify_mnist_digits"></a><a href="#using_the_cross-entropy_to_classify_mnist_digits">クロスエントロピーを使ったMNISTの分類</a></h4></p><p></p><p>最急降下法とバックプロパゲーションを使って学習プログラムの一部として、クロスエントロピーを実装するのは簡単です。そのことは<a href="#handwriting_recognition_revisited_the_code">この章のあと</a>で、MNISTの手書き数字の分類に関する<a href="chap1.html#implementing_our_network_to_classify_digits">前述のプログラム</a><tt>network.py</tt>の改善版を開発することで示します。
 新しいプログラムは<tt>network2.py</tt>という名前で、これはだたクロスエントロピーを取り込んだだけではなく、この章で使ったいくつかのテクニックを取り込んでいます*<span class="marginnote">
-*コードはGitHub上<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/code/network2.py">から手に入れることができます</a>。</span>。
+    *コードは<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/network2.py">GitHub上</a>から手に入れることができます。</span>。
 <!-- For now, let's look at how well our new program
 classifies MNIST digits.  As was the case in Chapter 1, we'll use a
 network with $30$ hidden neurons, and we'll use a mini-batch size of
@@ -954,12 +954,12 @@ satisfy
 
   \frac{\partial C}{\partial b } & = & (a-y).
 \tag{72}\end{eqnarray}-->
-これらの疑問のうち最後のもの：どうやったらクロスエントロピーのようなものを最初に思いつくのか?から始めましょう。前に述べたように学習の速度低下をすでに発見していて、その原因は式<span id="margin_957799962109_reveal" class="equation_link">(55)</span><span id="margin_957799962109" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_957799962109_reveal').click(function() {$('#margin_957799962109').toggle('slow', function() {});});</script> and <span id="margin_397648571817_reveal" class="equation_link">(56)</span><span id="margin_397648571817" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+これらの疑問のうち最後のもの：どうやったらクロスエントロピーのようなものを最初に思いつくのか?から始めましょう。前に述べたように学習の速度低下をすでに発見していて、その原因は式<span id="margin_957799962109_reveal" class="equation_link">(55)</span><span id="margin_957799962109" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_957799962109_reveal').click(function() {$('#margin_957799962109').toggle('slow', function() {});});</script> and <span id="margin_397648571817_reveal" class="equation_link">(56)</span><span id="margin_397648571817" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
     \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z) \nonumber\end{eqnarray}</a></span><script>$('#margin_397648571817_reveal').click(function() {$('#margin_397648571817').toggle('slow', function() {});});</script>の$\sigma'(z)$の項であるということまで分かっているとしましょう。これらの式を少しの間見ていると、どのようなコスト関数を選べば$\sigma'(z)$の項を消すことができるかを考えるようになるかもしれません。その場合、一つの学習データのサンプル$x$に対してコスト$C = C_x$は次を満たさなければいけません。
-<a class="displaced_anchor" name="eqtn71"></a><a class="displaced_anchor" name="eqtn72"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn71"></a><a class="displaced_anchor" name="eqtn72"></a>\begin{eqnarray}
   \frac{\partial C}{\partial w_j} & = & x_j(a-y) \tag{71}\\
-  
+
   \frac{\partial C}{\partial b } & = & (a-y).
 \tag{72}\end{eqnarray}
 <!--If we could choose the cost function to make these equations true,
@@ -996,15 +996,15 @@ function we must average over training examples, obtaining
 \tag{77}\end{eqnarray}-->
 もし、これらの式が成り立つようなコスト関数が選べたとすると、初期誤りが大きければニューロンはより速く学習するという直感を簡単に実現することになります。またそのことは、学習の速度低下の問題も解決します。実際、この式から始めて単純に数学的な考えを進めると、クロスエントロピーの式を導くことができます。このことを見るため、まずは合成関数の微分の法則を考えます。
 <a class="displaced_anchor" name="eqtn73"></a>\begin{eqnarray}
-  \frac{\partial C}{\partial b} = \frac{\partial C}{\partial a} 
+  \frac{\partial C}{\partial b} = \frac{\partial C}{\partial a}
   \sigma'(z).
 \tag{73}\end{eqnarray}
 $\sigma'(z) = \sigma(z)(1-\sigma(z)) = a(1-a)$ということを使うと、2つ目の式は次のようになります。
 <a class="displaced_anchor" name="eqtn74"></a>\begin{eqnarray}
-  \frac{\partial C}{\partial b} = \frac{\partial C}{\partial a} 
+  \frac{\partial C}{\partial b} = \frac{\partial C}{\partial a}
   a(1-a).
 \tag{74}\end{eqnarray}
-式<span id="margin_645820283975_reveal" class="equation_link">(72)</span><span id="margin_645820283975" class="marginequation" style="display: none;"><a href="chap3.html#eqtn72" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+式<span id="margin_645820283975_reveal" class="equation_link">(72)</span><span id="margin_645820283975" class="marginequation" style="display: none;"><a href="chap3.html#eqtn72" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial b } & = & (a-y) \nonumber\end{eqnarray}</a></span><script>$('#margin_645820283975_reveal').click(function() {$('#margin_645820283975').toggle('slow', function() {});});</script>と比べて、次を得ます。
 <a class="displaced_anchor" name="eqtn75"></a>\begin{eqnarray}
   \frac{\partial C}{\partial a} = \frac{a-y}{a(1-a)}.
@@ -1028,8 +1028,8 @@ cross-entropy isn't something that was miraculously pulled out of thin
 air.  Rather, it's something that we could have discovered in a simple
 and natural way.</p>-->
 <p>ここでの定数はそれぞれの学習データのサンプルに対する定数の平均値です。
-式<span id="margin_172115178513_reveal" class="equation_link">(71)</span><span id="margin_172115178513" class="marginequation" style="display: none;"><a href="chap3.html#eqtn71" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{\partial C}{\partial w_j} & = & x_j(a-y)  \nonumber\end{eqnarray}</a></span><script>$('#margin_172115178513_reveal').click(function() {$('#margin_172115178513').toggle('slow', function() {});});</script>と<span id="margin_419838980882_reveal" class="equation_link">(72)</span><span id="margin_419838980882" class="marginequation" style="display: none;"><a href="chap3.html#eqtn72" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+式<span id="margin_172115178513_reveal" class="equation_link">(71)</span><span id="margin_172115178513" class="marginequation" style="display: none;"><a href="chap3.html#eqtn71" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial w_j} & = & x_j(a-y)  \nonumber\end{eqnarray}</a></span><script>$('#margin_172115178513_reveal').click(function() {$('#margin_172115178513').toggle('slow', function() {});});</script>と<span id="margin_419838980882_reveal" class="equation_link">(72)</span><span id="margin_419838980882" class="marginequation" style="display: none;"><a href="chap3.html#eqtn72" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
       \frac{\partial C}{\partial b } & = & (a-y) \nonumber\end{eqnarray}</a></span><script>$('#margin_419838980882_reveal').click(function() {$('#margin_419838980882').toggle('slow', function() {});});</script>により、クロスエントロピーの式を定数項を除いて唯一に定めます。クロスエントロピーは薄い空気の中から奇跡的に生まれるものではないのです。むしろ単純かつ自然に発見されるべきものなのです。</p>
 <!--<p>What about the intuitive meaning of the cross-entropy?  How should we
 think about it?  Explaining this in depth would take us further afield
@@ -1067,7 +1067,7 @@ Kraft inequality in chapter 5 of the book about information theory by
   eliminate the $x_j$ term through a clever choice of cost function.
 </ul></p>-->
 <p><h4><a name="problem_386289"></a><a href="#problem_386289">問題</a></h4><ul>
-    <li>学習に二次コストを使ったネットワークで出力ニューロンが飽和したときに学習の速度低下が起こることを時間をかけて議論してきました。学習を抑制する他の因子は、式<span id="margin_113861306005_reveal" class="equation_link">(61)</span><span id="margin_113861306005" class="marginequation" style="display: none;"><a href="chap3.html#eqtn61" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+    <li>学習に二次コストを使ったネットワークで出力ニューロンが飽和したときに学習の速度低下が起こることを時間をかけて議論してきました。学習を抑制する他の因子は、式<span id="margin_113861306005_reveal" class="equation_link">(61)</span><span id="margin_113861306005" class="marginequation" style="display: none;"><a href="chap3.html#eqtn61" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
           \frac{\partial C}{\partial w_j} =  \frac{1}{n} \sum_x x_j(\sigma(z)-y) \nonumber\end{eqnarray}</a></span><script>$('#margin_113861306005_reveal').click(function() {$('#margin_113861306005').toggle('slow', function() {});});</script>の$x_j$の項の存在です。この項により、入力$x_j$がゼロに近ければ対応する重み$w_j$の学習は遅くなります。賢いコスト関数を選んでも、この$x_j$の項を消すのは不可能であることを説明してください。
 </ul></p>
 <p><h3><a name="overfitting_and_regularization"></a><a href="#overfitting_and_regularization">Overfitting and regularization</a></h3></p><p>The Nobel prizewinning physicist Enrico Fermi was once asked his
