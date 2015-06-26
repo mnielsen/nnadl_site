@@ -1474,7 +1474,12 @@ $0.99$, and incorrect outputs have activation less than $0.01$. -->
 </li>
 </ul></p><p><center>
 <img src="images/tikz13.png"/>
-</center></p><p></p><p></p><p></p><p><h3><a name="learning_with_gradient_descent"></a><a href="#learning_with_gradient_descent">Learning with gradient descent</a></h3></p><p></p><p>Now that we have a design for our neural network, how can it learn to
+</center></p><p></p><p></p><p></p><p>
+<!-- <h3><a name="learning_with_gradient_descent"></a><a href="#learning_with_gradient_descent">Learning with gradient descent</a></h3> -->
+<h3><a name="learning_with_gradient_descent"></a><a href="#learning_with_gradient_descent">勾配降下法を用いた学習</a></h3>
+</p><p></p><p>
+<!--
+Now that we have a design for our neural network, how can it learn to
 recognize digits?  The first thing we'll need is a data set to learn
 from - a so-called training data set.  We'll use the
  <a href="http://yann.lecun.com/exdb/mnist/">MNIST
@@ -1484,7 +1489,10 @@ MNIST's name comes from the fact that it is a modified subset of two
 data sets collected by
 <a href="http://en.wikipedia.org/wiki/National_Institute_of_Standards_and_Technology">NIST</a>,
 the United States' National Institute of Standards and
-Technology. Here's a few images from MNIST:</p><p><center><img src="images/digits_separate.png" width="420px"></center> </p><p>As you can see, these digits are, in fact, the same as those shown
+Technology. Here's a few images from MNIST:
+-->
+今や私たちはニューラルネットワークのデザインを手に入れましたが、それはどのように数字の認識を学習することができるのでしょうか。最初に必要になるものはそれを用いて学習するための所謂トレーニングデータセットです。私たちは数万件の手書き数字スキャン画像とその正しい分類からなる<a href="http://yann.lecun.com/exdb/mnist/">MNISTデータセット</a>を用います。MNISTという名称は、それが<a href="http://en.wikipedia.org/wiki/National_Institute_of_Standards_and_Technology">アメリカ国立標準技術研究所（NIST）</a>によって収集および修正（Modify）された二つのデータセットから成り立っていることに由来しています。以下にMNISTの画像をいくつか示します。
+</p><p><center><img src="images/digits_separate.png" width="420px"></center> </p><p>As you can see, these digits are, in fact, the same as those shown
 at the <a
   href="#complete_zero">beginning of this chapter</a> as a challenge
 to recognize.  Of course, when testing our network we'll ask it to
