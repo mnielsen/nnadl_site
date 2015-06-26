@@ -30,6 +30,7 @@ network	 		ニューラルネットワーク(network単体でニューラルネ�
 neuron			ニューロン
 pertubation		摂動
 quadratic cost function	2乗コスト関数
+recognizer     認識器
 recurrent neural networks	再帰型ニューラルネットワーク
 rectified linear unit		Rectified Linear Unit/ReLU
 saturation/saturated	飽和/飽和している
