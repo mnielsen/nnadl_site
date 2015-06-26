@@ -2155,7 +2155,7 @@ Note that while the program appears lengthy, much of the code is
 documentation strings intended to make the code easy to understand.
 In fact, the program contains just 74 lines of non-whitespace,
 non-comment code.  All the code may be found on GitHub
-<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/code/network.py">here</a>.</p><p></p><p><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/network.py">here</a>.</p><p></p><p><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">network.py</span>
 <span class="sd">~~~~~~~~~~</span>
 
@@ -2545,7 +2545,7 @@ we compute how dark the image is, and then guess that it's whichever
 digit has the closest average darkness.  This is a simple procedure,
 and is easy to code up, so I won't explicitly write out the code -
 if you're interested it's in the
-<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/code/mnist_average_darkness.py">GitHub
+<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/mnist_average_darkness.py">GitHub
   repository</a>.  But it's a big improvement over random guessing,
 getting $2,225$ of the $10,000$ test images correct, i.e., $22.25$
 percent accuracy.</p><p><a name="SVM"></a></p><p>It's not difficult to find other ideas which achieve accuracies in the
@@ -2564,7 +2564,7 @@ SVMs known as
 <a href="http://www.csie.ntu.edu.tw/&#126;cjlin/libsvm/">LIBSVM</a>.</p><p>If we run scikit-learn's SVM classifier using the default settings,
 then it gets 9,435 of 10,000 test images correct.  (The code is
 available
-<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/code/mnist_svm.py">here</a>.)
+<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/mnist_svm.py">here</a>.)
 That's a big improvement over our naive approach of classifying an
 image based on how dark it is.  Indeed, it means that the SVM is
 performing roughly as well as our neural networks, just a little
