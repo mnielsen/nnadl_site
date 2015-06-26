@@ -282,7 +282,7 @@ introduced back in Chapter 1.  I'll remind you of the exact form of
 the cost function shortly, so there's no need to go and dig up the
 definition.  Note that you can run the animation multiple times by
 clicking on "Run" again.</p>-->
-<p>話をはっきりするために、初期の重みを$0.6$、バイアスを$0.9$としましょう。この設定は学習の前の設定として一般的なものです。とにかく特別な値を採用したわけではありません。ニューロンからの出力の初期値は$0.82$なので、ニューロンが望まれる出力の$0.0$を出すようになるようになるには、それなりの時間がかかりそうです。出力が$0.0$にとても近くなるまでにどのようにニューロンが学習していくかを見るには、右下にある「Run」ボタンを押してみてください。これは録画された動画ではないことに注意してください。ブラウザは実際に勾配を計算して、その勾配は重みとバイアスを更新するのに使われて、結果が表示されています。学習係数は$\eta = 0.15$であり、これの値は、なにが起こっているかを見るには十分に遅く、しかし数秒でそれなりの学習をさせるには十分に速い値です。コスト関数は、第1章で紹介した二次コスト関数です。コスト関数の厳密な式は後で復習するので、今とくに定義を深く追う必要はありません。このアニメーションは「Run」を押せば何度でも実行できます。
+<p>話をはっきりするために、初期の重みを$0.6$、バイアスを$0.9$としましょう。この設定は学習の前の設定として適当に選んだもので、とにかく特別な値を採用したわけではありません。ニューロンからの出力の初期値は$0.82$なので、ニューロンが望まれる出力の$0.0$を出すようになるようになるには、それなりの時間がかかりそうです。出力が$0.0$にとても近くなるまでにどのようにニューロンが学習していくかを見るには、右下にある「Run」ボタンを押してみてください。これは録画された動画ではないことに注意してください。ブラウザは実際に勾配を計算して、その勾配は重みとバイアスを更新するのに使われて、結果が表示されています。学習係数は$\eta = 0.15$であり、これの値は、なにが起こっているかを見るには十分に遅く、しかし数秒でそれなりの学習をさせるには十分に速い値です。コスト関数は、第1章で紹介した二次コスト関数です。コスト関数の厳密な式は後で復習するので、今とくに定義を深く追う必要はありません。このアニメーションは「Run」を押せば何度でも実行できます。
 </p>
 <p>
 <script type="text/javascript" src="js/paper.js"></script>
@@ -652,7 +652,7 @@ it is later on, as the neuron gets closer to the correct output; while
 with the cross-entropy learning is faster when the neuron is
 unambiguously wrong.  Those statements don't depend on how the
 learning rate is set.</p>-->
-<p>そんなことではグラフに意味がないではないかと、あなたは反対するかもしれません。学習率の選択法が決まっていないのに、ニューロンの学習する速さに誰が興味を持つだろうか！？そのような反対意見は重要な点を見逃しています。グラフで重要な点は学習の絶対的な速度についてではないのです。学習の速度がどのように変わっていくかが重要なのです。取り立てて言うと、二次コスト関数は、後に正しい出力値に近づいたときと比べて、ニューロンが誤解の余地なく悪い状態の時に<em>遅い</em>のです。一方で、クロスエントロピーは、誤解の余地なく悪い状態の時にも速いです。これらの話は学習率がどのように設定されたかに依存しません。
+<p>そんなことではグラフに意味がないではないかと、あなたは反対するかもしれません。学習率の選択法が決まっていないのに、ニューロンの学習する速さに誰が興味を持つだろうか！？そのような反対意見は重要な点を見逃しています。グラフで重要な点は学習の絶対的な速度についてではないのです。学習の速度がどのように変わっていくかが重要なのです。取り立てて言うと、二次コスト関数は、後に正しい出力値に近づいたときと比べて、ニューロンがあきらかに間違っている状態の時に<em>遅い</em>のです。一方で、クロスエントロピーは、あきらかに間違っている状態の時にも速いです。これらの話は学習率がどのように設定されたかに依存しません。
 </p>
 <!--<p>We've been studying the cross-entropy for a single neuron.  However,
 it's easy to generalize the cross-entropy to many-neuron multi-layer
@@ -808,7 +808,7 @@ $\sigma'(z^L_j)$の項が消え、ニューロンが一つでなく多層複数�
   \tag{70}\end{eqnarray}
 このことにより、もし出力ニューロンが線形ニューロンならば、二次コスト関数は学習の速度低下について何の問題も産まないことがわかります。このケースでは、二次コスト関数はそれどころか使うべき適切なコスト関数です。
 </ul></p>
-<p><h4><a name="using_the_cross-entropy_to_classify_mnist_digits"></a><a href="#using_the_cross-entropy_to_classify_mnist_digits">Using the cross-entropy to classify MNIST digits</a></h4></p><p></p><p>The cross-entropy is easy to implement as part of a program which
+<!--<p><h4><a name="using_the_cross-entropy_to_classify_mnist_digits"></a><a href="#using_the_cross-entropy_to_classify_mnist_digits">Using the cross-entropy to classify MNIST digits</a></h4></p><p></p><p>The cross-entropy is easy to implement as part of a program which
 learns using gradient descent and backpropagation.  We'll do that
 <a href="#handwriting_recognition_revisited_the_code">later in the
   chapter</a>, developing an improved version of our
@@ -819,7 +819,11 @@ incorporates not just the cross-entropy, but also several other
 techniques developed in this chapter*<span class="marginnote">
 *The code is available
   <a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/code/network2.py">on
-    GitHub</a>.</span>.  For now, let's look at how well our new program
+    GitHub</a>.</span>.-->
+<p><h4><a name="using_the_cross-entropy_to_classify_mnist_digits"></a><a href="#using_the_cross-entropy_to_classify_mnist_digits">クロスエントロピーを使ったMNISTの分類</a></h4></p><p></p><p>最急降下法とバックプロパゲーションを使って学習プログラムの一部として、クロスエントロピーを実装するのは簡単です。そのことは<a href="#handwriting_recognition_revisited_the_code">この章のあと</a>で、MNISTの手書き数字の分類に関する<a href="chap1.html#implementing_our_network_to_classify_digits">前述のプログラム</a><tt>network.py</tt>の改善版を開発することで示します。
+新しいプログラムは<tt>network2.py</tt>という名前で、これはだたクロスエントロピーを取り込んだだけではなく、この章で使ったいくつかのテクニックを取り込んでいます*<span class="marginnote">
+    *コードは<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/network2.py">GitHub上</a>から手に入れることができます。</span>。
+<!-- For now, let's look at how well our new program
 classifies MNIST digits.  As was the case in Chapter 1, we'll use a
 network with $30$ hidden neurons, and we'll use a mini-batch size of
 $10$.  We set the learning rate to $\eta = 0.5$*<span class="marginnote">
@@ -845,7 +849,20 @@ The interface to <tt>network2.py</tt> is slightly different than
 <tt>network.py</tt>, but it should still be clear what is going on.  You
 can, by the way, get documentation about <tt>network2.py</tt>'s
 interface by using commands such as <tt>help(network2.Network.SGD)</tt>
-in a Python shell.</p><p><div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">mnist_loader</span>
+in a Python shell.</p> -->
+ここで、私達の新しいプログラムがどのくらいうまくMNISTの数字を分類するかを見てみましょう。第1章と同様に、$30$個の隠れニューロンを持つネットワークを使い、ミニバッチサイズとして$10$を使います。学習率を$\eta = 0.5$*<span class="marginnote">
+  *1章では二次コスト関数を使い、学習率$\eta = 3.0$としました。前の議論により、コスト関数が違うときに「同じ」学習率を使うというのはどういうことか、正確に言うことはできません。両方のコスト関数について、私は実験をして、与えられたハイパーパラメータに対してほぼ最適なパフォーマンスを出す学習率を見つけました。<br/> <br/>クロスエントロピーと二次コストの学習率については、非常に大雑把な一般的な発見的手法が存在します。前に見たように、二次コストの勾配項の中には、$\sigma' = \sigma(1-\sigma)$という余計な項があります。この値を$\sigma$について平均をとってみると、$\int_0^1 d\sigma \sigma(1-\sigma) = 1/6$となります。これにより、（非常に大雑把にいうと）二次コストは同じ学習率について、平均すると$6$倍遅く学習するということがわかります。このことは、妥当な出発点は二次コストの学習率を$6$で割ることだということを示唆しています。もちろん、この議論は厳密からは程遠いですし、あまり真剣にとらえるべきではないです。とはいえ、それは時には役に立つ出発点となります。</span>とし、$30$エポック学習させます。
+<tt>network2.py</tt>のインターフェースは<tt>network.py</tt>と少し違いますが、何が起こっているかはわかると思います。ところで、<tt>network2.py</tt>のインターフェースに関するドキュメントは、Pythonのシェルから<tt>help(network2.Network.SGD)</tt>と入力することで見ることができます。</p>
+<!--<p><div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">mnist_loader</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">training_data</span><span class="p">,</span> <span class="n">validation_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> \
+<span class="o">...</span> <span class="n">mnist_loader</span><span class="o">.</span><span class="n">load_data_wrapper</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">network2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">net</span> <span class="o">=</span> <span class="n">network2</span><span class="o">.</span><span class="n">Network</span><span class="p">([</span><span class="mi">784</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">cost</span><span class="o">=</span><span class="n">network2</span><span class="o">.</span><span class="n">CrossEntropyCost</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">large_weight_initializer</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">evaluation_data</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span>
+<span class="o">...</span> <span class="n">monitor_evaluation_accuracy</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+  </pre></div>-->
+<p><div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">mnist_loader</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">training_data</span><span class="p">,</span> <span class="n">validation_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> \
 <span class="o">...</span> <span class="n">mnist_loader</span><span class="o">.</span><span class="n">load_data_wrapper</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">network2</span>
@@ -854,7 +871,7 @@ in a Python shell.</p><p><div class="highlight"><pre><span class="o">&gt;&gt;&gt
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">evaluation_data</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span>
 <span class="o">...</span> <span class="n">monitor_evaluation_accuracy</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
-</p><p>Note, by the way, that the <tt>net.large_weight_initializer()</tt>
+<!--</p><p>Note, by the way, that the <tt>net.large_weight_initializer()</tt>
 command is used to initialize the weights and biases in the same way
 as described in Chapter 1.  We need to run this command because later
 in this chapter we'll change the default weight initialization in our
@@ -869,7 +886,10 @@ classification accuracy of $96.59$ percent, using the quadratic cost.
 That may look like a small change, but consider that the error rate
 has dropped from $3.41$ percent to $3.18$ percent.  That is, we've
 eliminated about one in fourteen of the original errors.  That's quite
-a handy improvement.</p><p>It's encouraging that the cross-entropy cost gives us similar or
+  a handy improvement.</p>-->
+</p><p>ここで注意ですが<tt>net.large_weight_initializer()</tt>コマンドは第1章で示したのと同じように重みとバイアスを初期化します。このコマンドを実行しなければいけないのは、この章で後ほど、ネットワークの重みのデフォルト初期値を変更するからです。上記のコマンド列を実行した結果は$95.49$％の的中率になります。これは1章で二次コストによって得られた的中率$95.49$％にとても近いです。</p>
+<p>$100$個の隠れニューロンを使い、クロスエントロピーを使いそれ以外のパラメータは同じにしたケースを見てみましょう。この場合、的中率は$96.82$％になります。これは二次コストを使って的中率$96.59$であった1章の結果からすると大きな改善です。これは小さな変化に見えるかもしれませんが、誤り率は$.41$％から$3.18$％に下がっています。これは元の誤り14個につき1個を消したということです。これはとてもありがたい改善です。</p>
+<!--<p>It's encouraging that the cross-entropy cost gives us similar or
 better results than the quadratic cost.  However, these results don't
 conclusively prove that the cross-entropy is a better choice.  The
 reason is that I've put only a little effort into choosing
@@ -877,7 +897,10 @@ hyper-parameters such as learning rate, mini-batch size, and so on.
 For the improvement to be really convincing we'd need to do a thorough
 job optimizing such hyper-parameters.  Still, the results are
 encouraging, and reinforce our earlier theoretical argument that the
-cross-entropy is a better choice than the quadratic cost.</p><p>This, by the way, is part of a general pattern that we'll see through
+cross-entropy is a better choice than the quadratic cost.</p>-->
+<p>クロスエントロピーコストは二次コストと比べて同等かより良い結果をもたらすと言いたくなるかもしれません。しかし、これらの結果はクロスエントロピーがより良い選択であることを証明したと結論付けるわけにはいかないのです。なぜなら、学習率やミニバッチサイズのようなハイパーパラメータの選定にまだ十分な努力をしていないからです。この改善に本当に説得力を持たせるには、そのようなハイパーパラメータを徹底的に最適化しなければいけません。とはいってもここまでの結果は、クロスエントロピーは二次コストよりよいのではという前述の議論を後押し補強するものです。
+</p>
+<!--<p>This, by the way, is part of a general pattern that we'll see through
 this chapter and, indeed, through much of the rest of the book.  We'll
 develop a new technique, we'll try it out, and we'll get "improved"
 results.  It is, of course, nice that we see such improvements.  But
@@ -889,7 +912,10 @@ we're not usually going to do such an exhaustive investigation.
 Instead, we'll proceed on the basis of informal tests like those done
 above.  Still, you should keep in mind that such tests fall short of
 definitive proof, and remain alert to signs that the arguments are
-breaking down.</p><p>By now, we've discussed the cross-entropy at great length.  Why go to
+breaking down.</p>-->
+<p>ところでこれは、この章を通して見られる一般的なパターンであり、さらにはこの本の残りを通しても見られるパターンです。我々は新しいテクニックを展開し、それを試し、そして「改善した」結果を得るということを行います。もちろんそのような改善はよいことです。しかし、その改善の解釈はいつも問題があります。他のハイパーパラメータの最適化に莫大な努力をして改善が見られるときに、初めてそれらのテクニックは真の説得力を持ちます。それは大変な量の仕事で、多くの計算資源を必要とするので、通常はそのような網羅的な調査は行いません。そのかわり、いままでやってきたように非形式的なテストを行います。一方で、そのようなテストは絶対的な証明としては不十分だということを忘れず、議論が崩壊しそうな兆候には警戒し続けてください。
+</p>
+<!--<p>By now, we've discussed the cross-entropy at great length.  Why go to
 so much effort when it gives only a small improvement to our MNIST
 results?  Later in the chapter we'll see other techniques - notably,
 <a href="#overfitting_and_regularization">regularization</a> - which
@@ -900,11 +926,19 @@ reason is that neuron saturation is an important problem in neural
 nets, a problem we'll return to repeatedly throughout the book.  And
 so I've discussed the cross-entropy at length because it's a good
 laboratory to begin understanding neuron saturation and how it may be
-addressed.</p><p><h4><a name="what_does_the_cross-entropy_mean_where_does_it_come_from"></a><a href="#what_does_the_cross-entropy_mean_where_does_it_come_from">What does the cross-entropy mean?  Where does it come from?</a></h4></p><p>Our discussion of the cross-entropy has focused on algebraic analysis
+addressed.</p>-->
+<p>ここまでクロスエントロピーについて長い間議論してきました。MNISTの結果にほんの少しの改善をするだけなのに、なぜそんなに労力をつかうのでしょう? この章の後で他のテクニック、特に<a href="#overfitting_and_regularization">正規化</a>などを見ますが、それらはもっと大きな改善をします。ならばどうしてクロスエントロピーにそんなに力をいれるのでしょう? 理由の一つは、クロスエントロピーは広く使われているコスト関数でなので、よく理解する価値があるからです。しかしもっと大事な理由は、ニューロンの飽和がニューラルネットで重要な問題で、その問題はこの本を通して繰り返し触れることだからです。そのため、私はクロスエントロピーについて長く議論してきましたが、それはニューロンの飽和を理解し、どのように処理されるべきかを理解するために良い実験室であったのでした。
+</p>
+<!--<p><h4><a name="what_does_the_cross-entropy_mean_where_does_it_come_from"></a><a href="#what_does_the_cross-entropy_mean_where_does_it_come_from">What does the cross-entropy mean?  Where does it come from?</a></h4></p>-->
+<p><h4><a name="what_does_the_cross-entropy_mean_where_does_it_come_from"></a><a href="#what_does_the_cross-entropy_mean_where_does_it_come_from">クロスエントロピーは何を意味するのか?  それはどこから来たのか?</a></h4></p>
+<!--<p>Our discussion of the cross-entropy has focused on algebraic analysis
 and practical implementation.  That's useful, but it leaves unanswered
 broader conceptual questions, like: what does the cross-entropy mean?
 Is there some intuitive way of thinking about the cross-entropy?  And
-how could we have dreamed up the cross-entropy in the first place?</p><p>Let's begin with the last of these questions: what could have
+how could we have dreamed up the cross-entropy in the first place?</p>-->
+<p>クロスエントロピーについての私達の議論は、代数的な分析と実用的な実装に集中してきました。それは役に立ちますが、もっと大きな思想的な問題が解かれていません。例えば、クロスエントロピーは何を意味するのか? クロスエントロピーを直感的に考える方法があるだろうか? どうやったらクロスエントロピーのようなものを最初に思いつくのか? といったことです。
+</p>
+<!--<p>Let's begin with the last of these questions: what could have
 motivated us to think up the cross-entropy in the first place?
 Suppose we'd discovered the learning slowdown described earlier, and
 understood that the origin was the $\sigma'(z)$ terms in
@@ -919,8 +953,16 @@ satisfy
   \frac{\partial C}{\partial w_j} & = & x_j(a-y) \tag{71}\\
 
   \frac{\partial C}{\partial b } & = & (a-y).
+\tag{72}\end{eqnarray}-->
+これらの疑問のうち最後のもの：どうやったらクロスエントロピーのようなものを最初に思いつくのか?から始めましょう。前に述べたように学習の速度低下をすでに発見していて、その原因は式<span id="margin_957799962109_reveal" class="equation_link">(55)</span><span id="margin_957799962109" class="marginequation" style="display: none;"><a href="chap3.html#eqtn55" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial w} & = & (a-y)\sigma'(z) x = a \sigma'(z)  \nonumber\end{eqnarray}</a></span><script>$('#margin_957799962109_reveal').click(function() {$('#margin_957799962109').toggle('slow', function() {});});</script> and <span id="margin_397648571817_reveal" class="equation_link">(56)</span><span id="margin_397648571817" class="marginequation" style="display: none;"><a href="chap3.html#eqtn56" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+    \frac{\partial C}{\partial b} & = & (a-y)\sigma'(z) = a \sigma'(z) \nonumber\end{eqnarray}</a></span><script>$('#margin_397648571817_reveal').click(function() {$('#margin_397648571817').toggle('slow', function() {});});</script>の$\sigma'(z)$の項であるということまで分かっているとしましょう。これらの式を少しの間見ていると、どのようなコスト関数を選べば$\sigma'(z)$の項を消すことができるかを考えるようになるかもしれません。その場合、一つの学習データのサンプル$x$に対してコスト$C = C_x$は次を満たさなければいけません。
+<a class="displaced_anchor" name="eqtn71"></a><a class="displaced_anchor" name="eqtn72"></a>\begin{eqnarray}
+  \frac{\partial C}{\partial w_j} & = & x_j(a-y) \tag{71}\\
+
+  \frac{\partial C}{\partial b } & = & (a-y).
 \tag{72}\end{eqnarray}
-If we could choose the cost function to make these equations true,
+<!--If we could choose the cost function to make these equations true,
 then they would capture in a simple way the intuition that the greater
 the initial error, the faster the neuron learns.  They'd also
 eliminate the problem of a learning slowdown.  In fact, starting from
@@ -951,8 +993,31 @@ cost from a single training example, $x$.  To get the full cost
 function we must average over training examples, obtaining
 <a class="displaced_anchor" name="eqtn77"></a>\begin{eqnarray}
   C = -\frac{1}{n} \sum_x [y \ln a +(1-y) \ln(1-a)] + {\rm constant},
+\tag{77}\end{eqnarray}-->
+もし、これらの式が成り立つようなコスト関数が選べたとすると、初期誤りが大きければニューロンはより速く学習するという直感を簡単に実現することになります。またそのことは、学習の速度低下の問題も解決します。実際、この式から始めて単純に数学的な考えを進めると、クロスエントロピーの式を導くことができます。このことを見るため、まずは合成関数の微分の法則を考えます。
+<a class="displaced_anchor" name="eqtn73"></a>\begin{eqnarray}
+  \frac{\partial C}{\partial b} = \frac{\partial C}{\partial a}
+  \sigma'(z).
+\tag{73}\end{eqnarray}
+$\sigma'(z) = \sigma(z)(1-\sigma(z)) = a(1-a)$ということを使うと、2つ目の式は次のようになります。
+<a class="displaced_anchor" name="eqtn74"></a>\begin{eqnarray}
+  \frac{\partial C}{\partial b} = \frac{\partial C}{\partial a}
+  a(1-a).
+\tag{74}\end{eqnarray}
+式<span id="margin_645820283975_reveal" class="equation_link">(72)</span><span id="margin_645820283975" class="marginequation" style="display: none;"><a href="chap3.html#eqtn72" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial b } & = & (a-y) \nonumber\end{eqnarray}</a></span><script>$('#margin_645820283975_reveal').click(function() {$('#margin_645820283975').toggle('slow', function() {});});</script>と比べて、次を得ます。
+<a class="displaced_anchor" name="eqtn75"></a>\begin{eqnarray}
+  \frac{\partial C}{\partial a} = \frac{a-y}{a(1-a)}.
+\tag{75}\end{eqnarray}
+この式を$a$について積分すると次のような積分定数を持つ式を得ます。
+<a class="displaced_anchor" name="eqtn76"></a>\begin{eqnarray}
+  C = -[y \ln a + (1-y) \ln (1-a)]+ {\rm constant},
+\tag{76}\end{eqnarray}
+これが、学習データの一つサンプル$x$のコストに対する寄与です。コスト関数全体を得るには、学習サンプルの全てについて和をとり、次のようになります。
+<a class="displaced_anchor" name="eqtn77"></a>\begin{eqnarray}
+  C = -\frac{1}{n} \sum_x [y \ln a +(1-y) \ln(1-a)] + {\rm constant},
 \tag{77}\end{eqnarray}
-where the constant here is the average of the individual constants for
+<!--where the constant here is the average of the individual constants for
 each training example.  And so we see that
 Equations <span id="margin_172115178513_reveal" class="equation_link">(71)</span><span id="margin_172115178513" class="marginequation" style="display: none;"><a href="chap3.html#eqtn71" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w_j} & = & x_j(a-y)  \nonumber\end{eqnarray}</a></span><script>$('#margin_172115178513_reveal').click(function() {$('#margin_172115178513').toggle('slow', function() {});});</script>
@@ -961,7 +1026,12 @@ and <span id="margin_419838980882_reveal" class="equation_link">(72)</span><span
 of the cross-entropy, up to an overall constant term.  The
 cross-entropy isn't something that was miraculously pulled out of thin
 air.  Rather, it's something that we could have discovered in a simple
-and natural way.</p><p>What about the intuitive meaning of the cross-entropy?  How should we
+and natural way.</p>-->
+<p>ここでの定数はそれぞれの学習データのサンプルに対する定数の平均値です。
+式<span id="margin_172115178513_reveal" class="equation_link">(71)</span><span id="margin_172115178513" class="marginequation" style="display: none;"><a href="chap3.html#eqtn71" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial w_j} & = & x_j(a-y)  \nonumber\end{eqnarray}</a></span><script>$('#margin_172115178513_reveal').click(function() {$('#margin_172115178513').toggle('slow', function() {});});</script>と<span id="margin_419838980882_reveal" class="equation_link">(72)</span><span id="margin_419838980882" class="marginequation" style="display: none;"><a href="chap3.html#eqtn72" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+      \frac{\partial C}{\partial b } & = & (a-y) \nonumber\end{eqnarray}</a></span><script>$('#margin_419838980882_reveal').click(function() {$('#margin_419838980882').toggle('slow', function() {});});</script>により、クロスエントロピーの式を定数項を除いて唯一に定めます。クロスエントロピーは薄い空気の中から奇跡的に生まれるものではないのです。むしろ単純かつ自然に発見されるべきものなのです。</p>
+<!--<p>What about the intuitive meaning of the cross-entropy?  How should we
 think about it?  Explaining this in depth would take us further afield
 than I want to go.  However, it is worth mentioning that there is a
 standard way of interpreting the cross-entropy that comes from the
@@ -984,7 +1054,9 @@ But if you want to dig deeper, then Wikipedia contains a
   summary</a> that will get you started down the right track.  And the
 details can be filled in by working through the materials about the
 Kraft inequality in chapter 5 of the book about information theory by
-<a href="http://books.google.ca/books?id=VWq5GG6ycxMC">Cover and Thomas</a>.</p><p><h4><a name="problem_386289"></a><a href="#problem_386289">Problem</a></h4><ul>
+<a href="http://books.google.ca/books?id=VWq5GG6ycxMC">Cover and Thomas</a>.</p>-->
+<p>クロスエントロピーの直感的な意味はなんでしょうか? どうやったらそのようなことを考えられるのでしょう? このことを深く説明するのは、行きたいところよりさらに遠くに連れて行かれてしまうかもしれません。しかしクロスエントロピーは情報理論から来ているのですが、それを解釈する標準的方法があるということに触れておくことは価値があるでしょう。大雑把にいうと、クロスエントロピーとは驚きの尺度です。特に私達のニューロンは関数$x \rightarrow y = y(x)$を計算しようとしています。しかしそのかわり関数$x \rightarrow a = a(x)$を計算しようとしています。ここで$a$はニューロンが計算した$y$が$1$である確率だとして、同じように$1-a$は計算された$y$が$0$である確率だとしましょう。そうすると、クロスエントロピーは真の$y$の値を学習するときに平均的にどのくらい「驚き」を得るかを示します。出力が期待したどおりだとあまり驚かないし、期待していないものだと強く驚きます。もちろん私は「驚き」を正確に説明していないので、これは中身のないおしゃべりに見えるかもしれません。しかし実際に、驚きが何を意味するかを説明する、正確な情報理論的手法があるのです。これについて、良い、短い、自己完結したオンラインで入手可能な議論を私は見たことがないです。でももしこれについて掘り下げたいのなら、ウィキペディアは<a href="http://en.wikipedia.org/wiki/Cross_entropy#Motivation">簡単なまとめ</a>があり、これにより正しい方向に向かうことができるでしょう。情報理論についての本「<a href="http://books.google.ca/books?id=VWq5GG6ycxMC">Cover and Thomas</a>」の5章に書かれているKraft不等式についての説明をあたってみれば、さらに詳細を埋めることができるでしょう。</p>
+<!--<p><h4><a name="problem_386289"></a><a href="#problem_386289">Problem</a></h4><ul>
 <li> We've discussed at length the learning slowdown that can occur
   when output neurons saturate, in networks using the quadratic cost
   to train.  Another factor that may inhibit learning is the presence
@@ -993,7 +1065,12 @@ Kraft inequality in chapter 5 of the book about information theory by
   this term, when an input $x_j$ is near to zero, the corresponding
   weight $w_j$ will learn slowly.  Explain why it is not possible to
   eliminate the $x_j$ term through a clever choice of cost function.
-</ul></p><p><h3><a name="overfitting_and_regularization"></a><a href="#overfitting_and_regularization">Overfitting and regularization</a></h3></p><p>The Nobel prizewinning physicist Enrico Fermi was once asked his
+</ul></p>-->
+<p><h4><a name="problem_386289"></a><a href="#problem_386289">問題</a></h4><ul>
+    <li>学習に二次コストを使ったネットワークで出力ニューロンが飽和したときに学習の速度低下が起こることを時間をかけて議論してきました。学習を抑制する他の因子は、式<span id="margin_113861306005_reveal" class="equation_link">(61)</span><span id="margin_113861306005" class="marginequation" style="display: none;"><a href="chap3.html#eqtn61" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+          \frac{\partial C}{\partial w_j} =  \frac{1}{n} \sum_x x_j(\sigma(z)-y) \nonumber\end{eqnarray}</a></span><script>$('#margin_113861306005_reveal').click(function() {$('#margin_113861306005').toggle('slow', function() {});});</script>の$x_j$の項の存在です。この項により、入力$x_j$がゼロに近ければ対応する重み$w_j$の学習は遅くなります。賢いコスト関数を選んでも、この$x_j$の項を消すのは不可能であることを説明してください。
+</ul></p>
+<p><h3><a name="overfitting_and_regularization"></a><a href="#overfitting_and_regularization">Overfitting and regularization</a></h3></p><p>The Nobel prizewinning physicist Enrico Fermi was once asked his
 opinion of a mathematical model some colleagues had proposed as the
 solution to an important unsolved physics problem.  The model gave
 excellent agreement with experiment, but Fermi was skeptical.  He
@@ -2046,9 +2123,9 @@ references therein.</p><p><h4><a name="problem_735589"></a><a href="#problem_735
   examples graphed in this section.
 </ul></p><p></p><p></p><p></p><p></p><p></p><p><h3><a name="handwriting_recognition_revisited_the_code"></a><a href="#handwriting_recognition_revisited_the_code">Handwriting recognition revisited: the code</a></h3></p><p>Let's implement the ideas we've discussed in this chapter.  We'll
 develop a new program,
-<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/code/network2.py"><tt>network2.py</tt></a>,
+<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/network2.py"><tt>network2.py</tt></a>,
 which is an improved version of the program
-<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/code/network.py"><tt>network.py</tt></a>
+<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/network.py"><tt>network.py</tt></a>
 we developed in
 <a href="chap1.html#implementing_our_network_to_classify_digits">Chapter
   1</a>.  If you haven't looked at <tt>network.py</tt> in a while then you
@@ -2589,7 +2666,7 @@ lines.</p><p><h4><a name="problems_236423"></a><a href="#problems_236423">Proble
   regularization to classify MNIST digits using a $30$ hidden neuron
   network.  Can you find a regularization parameter that enables you
   to do better than running unregularized?</p><p><li> Take a look at the <tt>Network.cost_derivative</tt> method in
-  <a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/code/network.py"><tt>network.py</tt></a>.
+  <a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/network.py"><tt>network.py</tt></a>.
   That method was written for the quadratic cost.  How would you
   rewrite the method for the cross-entropy cost?  Can you think of a
   problem that might arise in the cross-entropy version?  In
