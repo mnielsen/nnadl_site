@@ -1514,7 +1514,13 @@ school students).  This helps give us confidence that our system can
 recognize digits from people whose writing it didn't see during
 training.
 -->
-</p><p>We'll use the notation $x$ to denote a training input.  It'll be
+</p><p>
+ここで訓練入力を $x$ と定義します。これで各入力 $28 \times 28 =
+784$-次元行列を $x$ とみなせ好都合です。行列の各成分は一つのピクセルの濃淡値を表しています。ここで出力を $y = y(x)$ と定義し、この $y$ を10次元の行列とします。
+仮に訓練用画像の$x$が$6$を示している場合 $y(x) = (0, 0, 0, 0, 0, 0, 1, 0, 0, 0)^T$ が期待されるネットワークからの出力です。
+ここで$T$は転置演算子であり行成分と列成分を入れ替えます。
+<!--
+We'll use the notation $x$ to denote a training input.  It'll be
 convenient to regard each training input $x$ as a $28 \times 28 =
 784$-dimensional vector.  Each entry in the vector represents the grey
 value for a single pixel in the image.  We'll denote the corresponding
@@ -1522,7 +1528,9 @@ desired output by $y = y(x)$, where $y$ is a $10$-dimensional vector.
 For example, if a particular training image, $x$, depicts a $6$, then
 $y(x) = (0, 0, 0, 0, 0, 0, 1, 0, 0, 0)^T$ is the desired output from
 the network.  Note that $T$ here is the transpose operation, turning a
-row vector into an ordinary (column) vector.</p><p>What we'd like is an algorithm which lets us find weights and biases
+row vector into an ordinary (column) vector.
+!-->
+</p><p>What we'd like is an algorithm which lets us find weights and biases
 so that the output from the network approximates $y(x)$ for all
 training inputs $x$.  To quantify how well we're achieving this goal
 we define a <em>cost function</em>*<span class="marginnote">
