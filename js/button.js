@@ -63,3 +63,7 @@ button.prototype.draw = function() {
 	(this.x1+this.x2)/2, (this.y1+this.y2)/2+5,
 	{"text-align": "center"});
 }
+
+
+
+

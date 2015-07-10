@@ -1407,7 +1407,7 @@ function plotSteps(context, values, yMax) {
     var xScale = scale(0, 1, 360.5, 544.5);
     var yScale = scale(0, yMax, 170.5, 14.5);
     // Sort so the values are in order of increasing s
-    values.sort(function(x, y) {return x.s > y.s});
+    values.sort(function(x, y) {return (x.s - y.s)});
     // graph is an assoc. array who elements are the x and y co-ords
     // of the step positions.
     var graph = [];
