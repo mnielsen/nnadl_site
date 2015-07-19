@@ -1518,9 +1518,9 @@ training.
 -->
 </p><p>
 ここで訓練入力を $x$ と定義します。これで各入力 $28 \times 28 =
-784$-次元行列を $x$ とみなせ好都合です。行列の各成分は一つのピクセルの濃淡値を表しています。ここで出力を $y = y(x)$ と定義し、この $y$ を10次元の行列とします。
+784$-次元ベクトルを $x$ とみなせ好都合です。ベクトルの各成分は一つのピクセルの濃淡値を表しています。ここで出力を $y = y(x)$ と定義し、この $y$ を10次元のベクトルとします。
 仮に訓練用画像の$x$が$6$を示している場合 $y(x) = (0, 0, 0, 0, 0, 0, 1, 0, 0, 0)^T$ が期待されるネットワークからの出力です。
-ここで$T$は転置演算子であり行成分と列成分を入れ替えます。
+ここで$T$は転置演算子であり行ベクトルと列ベクトルを入れ替えます。
 <!--
 We'll use the notation $x$ to denote a training input.  It'll be
 convenient to regard each training input $x$ as a $28 \times 28 =
@@ -1532,7 +1532,15 @@ $y(x) = (0, 0, 0, 0, 0, 0, 1, 0, 0, 0)^T$ is the desired output from
 the network.  Note that $T$ here is the transpose operation, turning a
 row vector into an ordinary (column) vector.
 !-->
-</p><p>What we'd like is an algorithm which lets us find weights and biases
+</p><p>
+私たちが得たいもの、それは全訓練入力 $x$ で $y(x)$ とネットワークの出力が近似する重みとバイアスを見つけるアルゴリズムです。この目標をどれだけ達成できたか測るため<em>コスト関数</em>を定義します*<span class="marginnote">
+*しばしば
+  <em>損失</em> 関数 または <em>目的</em> 関数とも呼ばれます。  私たちはこの本では一貫してコスト関数という用語を用いますが、ニューラルネットワークの論文や議論では他方の用語も頻繁に使われるので心に留めておくべきです。</span>:
+<a class="displaced_anchor" name="eqtn6"></a>\begin{eqnarray}  C(w,b) \equiv
+  \frac{1}{2n} \sum_x \| y(x) - a\|^2.
+\tag{6}\end{eqnarray}
+
+<!--What we'd like is an algorithm which lets us find weights and biases
 so that the output from the network approximates $y(x)$ for all
 training inputs $x$.  To quantify how well we're achieving this goal
 we define a <em>cost function</em>*<span class="marginnote">
@@ -1544,6 +1552,12 @@ we define a <em>cost function</em>*<span class="marginnote">
 <a class="displaced_anchor" name="eqtn6"></a>\begin{eqnarray}  C(w,b) \equiv
   \frac{1}{2n} \sum_x \| y(x) - a\|^2.
 \tag{6}\end{eqnarray}
+
+-->
+
+ここで $w$ はネットワーク中の全ての重み、 $b$ は全バイアス、 $n$ は訓練入力の総数、 $a$ は入力が $x$ の時にネットワークから出力されるベクトル、和は全ての訓練入力 $x$ です。もちろん出力 $a$ は $w$ と $b$ そして $x$ に依存しますが表記をシンプルにするためここでは敢えて明示しません。$\| v \|$はベクトル $v$ の距離関数を示す記号です。 $C$ は<em>2次</em>コスト関数と呼びましょう。これはしばしば<em>平均二乗誤差</em>あるいは単に<em>MSE</em>としても知られるものです。2次コスト関数の式を見てみると総和の中の全項目が非負であるため $C (w,b)$ は非負になることが分かります。また、 $C(w,b)$ が小さくなる時、すなわち $C(w,b)≈0$ の時は全訓練入力において $y(x)$ と出力がほぼ等しくなると分かります。つまり、私たちの訓練アルゴリズムは $C(w,b)≈0$ となるような重みとバイアスを見つけられた時に上手く機能します。対照的に $C(w,b)$ が大きいとき-大多数の入力において $y(x)$ と出力が近似しない場合は上手く機能しません。したがって、訓練アルゴリズムの狙いは重みとバイアスの関数 $C(w,b)$ の最小化だと言えます。言い換えれば可能な限りコストを小さくできる重みとバイアスの組を見つけたいのです。それを私たちは<em>勾配降下法</em>というアルゴリズムを使って行います。
+
+<!--
 Here, $w$ denotes the collection of all weights in the network, $b$
 all the biases, $n$ is the total number of training inputs, $a$ is the
 vector of outputs from the network when $x$ is input, and the sum is
@@ -1565,7 +1579,13 @@ number of inputs.  So the aim of our training algorithm will be to
 minimize the cost $C(w,b)$ as a function of the weights and biases.
 In other words, we want to find a set of weights and biases which make
 the cost as small as possible.  We'll do that using an algorithm known
-as <em>gradient descent</em>.</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p>
+as <em>gradient descent</em>.</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+-->
+
+<p>
+しかし、なぜ2次コストを導出するのでしょうか？結局のところ私たちが知りたいのはどれだけの画像がネットワークによって正しく分類されたかではないでしょうか？直接分類の正解数を最大化せずに2次コストを最小化するのはなぜでしょうか？その理由は分類の正解数がネットワーク中の重みとバイアスの滑らかな関数にならないことです。重みとバイアスに小さな変更を加えても正解数が変化することがほとんどないため、コストを改善するのに重みとバイアスをどう変更したら良いか分からないのです。代わりに2次コストのような滑らかなコスト関数を用いた場合、重みとバイアスに対してどう小変更を加えればコストを改善できるのかが簡単に分かるようになります。これが2次コストの最小化に焦点をあてる理由であり、この方法により分類の精度を精査できるようになります。
+
+<!--
 Why introduce the quadratic cost?  After all, aren't we primarily
 interested in the number of images correctly classified by the
 network?  Why not try to maximize that number directly, rather than
@@ -1580,7 +1600,19 @@ like the quadratic cost it turns out to be easy to figure out how to
 make small changes in the weights and biases so as to get an
 improvement in the cost.  That's why we focus first on minimizing the
 quadratic cost, and only after that will we examine the classification
-accuracy.</p><p></p><p>Even given that we want to use a smooth cost function, you may still
+accuracy.
+-->
+
+</p><p></p>
+
+<p>
+たとえ、滑らかなコスト関数を用いたいとしても、あなたは等式<span id="margin_589425638506_reveal" class="equation_link">(6)</span><span id="margin_589425638506" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv
+  \frac{1}{2n} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_589425638506_reveal').click(function() {$('#margin_589425638506').toggle('slow', function() {});});</script> を使った2次コスト関数を選択する理由についてはまだ不思議に思っているかもしれません。これはずいぶんと<em>アドホックな</em>選
+択ではないでしょうか？もし、仮に違うコスト関数を選んだ場合、最小化する重みとバイアスの組は全く異なってくるのではないでしょうか？それはもっともな心配で、後で私たちはコスト関数を再訪していくつかの修正を行うことになります。しかしながら、この2次コスト関数の等式<span id="margin_436040069757_reveal" class="equation_link">(6)</span><span id="margin_436040069757" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv
+  \frac{1}{2n} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_436040069757_reveal').click(function() {$('#margin_436040069757').toggle('slow', function() {});});</script>はニューラルネットワークの学習の基礎を理解するのにとても良く機能するので、今はこのまま続けることにします。
+
+<!--
+Even given that we want to use a smooth cost function, you may still
 wonder why we choose the quadratic function used in
 Equation <span id="margin_589425638506_reveal" class="equation_link">(6)</span><span id="margin_589425638506" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv
   \frac{1}{2n} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_589425638506_reveal').click(function() {$('#margin_589425638506').toggle('slow', function() {});});</script>.  Isn't this a rather <em>ad
@@ -1591,7 +1623,14 @@ some modifications.  However, the quadratic cost function of
 Equation <span id="margin_436040069757_reveal" class="equation_link">(6)</span><span id="margin_436040069757" class="marginequation" style="display: none;"><a href="chap1.html#eqtn6" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  C(w,b) \equiv
   \frac{1}{2n} \sum_x \| y(x) - a\|^2 \nonumber\end{eqnarray}</a></span><script>$('#margin_436040069757_reveal').click(function() {$('#margin_436040069757').toggle('slow', function() {});});</script> works perfectly well for
 understanding the basics of learning in neural networks, so we'll
-stick with it for now.</p><p>Recapping, our goal in training a neural network is to find weights
+stick with it for now.
+-->
+
+</p><p>
+要約すると、ニューラルネットワークの訓練における私たちのゴールは2次コスト関数 $C(w, b)$ を最小化する重みとバイアスを見つけることです。これは良設定問題ですが、たくさんの注意をそらす構成を持っていて、目下提起されたものとして-重みとバイアスの解釈、背後に潜んでいるシグモイド関数、ネットワーク構造の選択、MNIST等があります。これらが明らかにするのは、私たちは膨大な構成の大部分を無視して単に最小化の面に集中しているということです。そこで、私たちはコスト関数の詳細な式やニューラルネットワークとのつながり、その他諸々については一旦忘れましょう。その代わり、私たちにはたくさんの変数からなる関数がシンプルに与えられており、その関数を最小化したいと考えることにします。私たちは、このような最小化問題を解決できる<em>勾配降下法</em>と呼ばれるテクニックを開発するのです。その後、最小化したいニューラルネットワークの具体的な関数に戻ってきましょう。
+
+<!--
+Recapping, our goal in training a neural network is to find weights
 and biases which minimize the quadratic cost function $C(w, b)$.  This
 is a well-posed problem, but it's got a lot of distracting structure
 as currently posed - the interpretation of $w$ and $b$ as weights
@@ -1605,7 +1644,10 @@ we're going to imagine that we've simply been given a function of many
 variables and we want to minimize that function.  We're going to
 develop a technique called <em>gradient descent</em> which can be used
 to solve such minimization problems.  Then we'll come back to the
-specific function we want to minimize for neural networks.</p><p>Okay, let's suppose we're trying to minimize some function, $C(v)$.
+specific function we want to minimize for neural networks.
+-->
+
+</p><p>Okay, let's suppose we're trying to minimize some function, $C(v)$.
 This could be any real-valued function of many variables, $v = v_1,
 v_2, \ldots$.  Note that I've replaced the $w$ and $b$ notation by $v$
 to emphasize that this could be any function - we're not
