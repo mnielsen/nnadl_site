@@ -195,3 +195,8 @@ CanvasRenderingContext2D.prototype.plot = function(
 	    color, lineWidth)
     }
 }
+
+
+
+
+
