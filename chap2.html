@@ -15,7 +15,7 @@
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: {inlineMath: [['$','$']]},
-        "HTML-CSS": 
+        "HTML-CSS":
           {scale: 92},
         TeX: { equationNumbers: { autoNumber: "AMS" }}});
     </script>
@@ -245,8 +245,8 @@ changes the overall behaviour of the network.  That's well worth
 studying in detail.-->
 その理由はもちろん理解のためです。
 逆伝播の本質はコスト関数$C$のネットワークの重み$w$（もしくはバイアス$b$）に関する偏微分$\partial C / \partial w$ （$\partial C / \partial b$）です。
-<!-- 
-2014/12/24 Kenta OONO 
+<!--
+2014/12/24 Kenta OONO
 バイアスの場合の数式$\partial C / \partial b$を追加しました
 -->
 偏微分をみると、重みとバイアスを変化させた時のコスト関数の変化の度合いがわかります。
@@ -347,14 +347,14 @@ $(l-1)^{\rm th}$ layer by the equation (compare Equation
 <span id="margin_295319563926_reveal" class="equation_link">(4)</span>
 <span id="margin_295319563926" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
-    \begin{eqnarray} 
+    \begin{eqnarray}
     \frac{1}{1+\exp(-\sum_j w_j x_j-b)} \nonumber
     \end{eqnarray}
   </a>
 </span>
 <script>$('#margin_295319563926_reveal').click(function() {$('#margin_295319563926').toggle('slow', function() {});});</script>
  and surrounding discussion in the last chapter)
-<a class="displaced_anchor" name="eqtn23"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn23"></a>\begin{eqnarray}
   a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right),
 \tag{23}\end{eqnarray}
 where the sum is over all neurons $k$ in the $(l-1)^{\rm th}$ layer. -->
@@ -362,14 +362,14 @@ where the sum is over all neurons $k$ in the $(l-1)^{\rm th}$ layer. -->
 <span id="margin_295319563926_reveal" class="equation_link">(4)</span>
 <span id="margin_295319563926" class="marginequation" style="display: none;">
   <a href="chap1.html#eqtn4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
-    \begin{eqnarray} 
+    \begin{eqnarray}
     \frac{1}{1+\exp(-\sum_j w_j x_j-b)} \nonumber
     \end{eqnarray}
   </a>
 </span>
 <script>$('#margin_295319563926_reveal').click(function() {$('#margin_295319563926').toggle('slow', function() {});});</script>
 と前章の周辺の議論を比較してください）
-<a class="displaced_anchor" name="eqtn23"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn23"></a>\begin{eqnarray}
   a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right).
 \tag{23}\end{eqnarray}
 ここで、和は$(l-1)$番目の層の全てのニューロン$k$について足しています。
@@ -399,7 +399,7 @@ $l$番目の層の各ニューロンに対し1つの行列要素が伴います�
 <span id="margin_910880967978_reveal" class="equation_link">(23)</span>
 <span id="margin_910880967978" class="marginequation" style="display: none;">
   <a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
-  \begin{eqnarray} 
+  \begin{eqnarray}
     a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber
   \end{eqnarray}
   </a>
@@ -410,7 +410,7 @@ in a matrix form is the idea of vectorizing a function such as $\sigma$.
 <span id="margin_910880967978_reveal" class="equation_link">(23)</span>
 <span id="margin_910880967978" class="marginequation" style="display: none;">
   <a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
-  \begin{eqnarray} 
+  \begin{eqnarray}
     a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber
   \end{eqnarray}
   </a>
@@ -448,14 +448,14 @@ that is, the vectorized $f$ just squares every element of the vector.-->
 <span id="margin_948905994145_reveal" class="equation_link">(23)</span>
 <span id="margin_948905994145" class="marginequation" style="display: none;">
   <a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
-  \begin{eqnarray} 
+  \begin{eqnarray}
   a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber
   \end{eqnarray}</a>
 </span>
 <script>$('#margin_948905994145_reveal').click(function() {$('#margin_948905994145').toggle('slow', function() {});});</script>
 can be rewritten in the beautiful and compact vectorized form
 <a class="displaced_anchor" name="eqtn25"></a>
-\begin{eqnarray} 
+\begin{eqnarray}
   a^{l} = \sigma(w^l a^{l-1}+b^l). \tag{25}
 \end{eqnarray}
 -->
@@ -463,14 +463,14 @@ can be rewritten in the beautiful and compact vectorized form
 <span id="margin_948905994145_reveal" class="equation_link">(23)</span>
 <span id="margin_948905994145" class="marginequation" style="display: none;">
   <a href="chap2.html#eqtn23" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
-  \begin{eqnarray} 
+  \begin{eqnarray}
   a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right) \nonumber
   \end{eqnarray}</a>
 </span>
 <script>$('#margin_948905994145_reveal').click(function() {$('#margin_948905994145').toggle('slow', function() {});});</script>
 は次のような美しくコンパクトなベクトル形式で書けます。
 <a class="displaced_anchor" name="eqtn25"></a>
-\begin{eqnarray} 
+\begin{eqnarray}
   a^{l} = \sigma(w^l a^{l-1}+b^l). \tag{25}
 \end{eqnarray}
 <!--
@@ -490,7 +490,7 @@ the bias vector, and finally apply the $\sigma$ function*
   <span id="margin_305931363478_reveal" class="equation_link">(25)</span>
   <span id="margin_305931363478" class="marginequation" style="display: none;">
   <a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
-  \begin{eqnarray} 
+  \begin{eqnarray}
     a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber
   \end{eqnarray}</a></span>
   <script>$('#margin_305931363478_reveal').click(function() {$('#margin_305931363478').toggle('slow', function() {});});</script>
@@ -502,7 +502,7 @@ the bias vector, and finally apply the $\sigma$ function*
   <span id="margin_305931363478_reveal" class="equation_link">(25)</span>
   <span id="margin_305931363478" class="marginequation" style="display: none;">
   <a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">
-  \begin{eqnarray} 
+  \begin{eqnarray}
     a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber
   \end{eqnarray}</a></span>
   <script>$('#margin_305931363478_reveal').click(function() {$('#margin_305931363478').toggle('slow', function() {});});</script>
@@ -510,7 +510,7 @@ the bias vector, and finally apply the $\sigma$ function*
   些細な変更ですが、煩わしい上に「重み行列を掛ける」と簡単に言ったり（もしくは考えたり）できなくなってしまいます。
 </span>
 <!--
-That global view  
+That global view
 is often easier and more succinct (and involves fewer indices!) than
 the neuron-by-neuron view we've taken to now.  Think of it as a way of
 escaping index hell, while remaining precise about what's going on.
@@ -529,12 +529,12 @@ the behaviour of the network.-->
 </p>
 <p>
 <!--When using Equation
-<span id="margin_924913160001_reveal" class="equation_link">(25)</span><span id="margin_924913160001" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_924913160001_reveal" class="equation_link">(25)</span><span id="margin_924913160001" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_924913160001_reveal').click(function() {$('#margin_924913160001').toggle('slow', function() {});});</script>
  to compute $a^l$, we compute the intermediate quantity $z^l \equiv w^l a^{l-1}+b^l$
 along the way.-->
 $a^l$の計算のために式
-<span id="margin_924913160001_reveal" class="equation_link">(25)</span><span id="margin_924913160001" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_924913160001_reveal" class="equation_link">(25)</span><span id="margin_924913160001" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_924913160001_reveal').click(function() {$('#margin_924913160001').toggle('slow', function() {});});</script>
 を利用する時には、途中で$z^l \equiv w^l a^{l-1}+b^l$を計算しています。
 <!--This quantity turns out to be useful enough to be
@@ -545,11 +545,11 @@ later in the chapter. -->
 $z^l$を$l$番目の層に対する<em>重みつき入力</em>と呼ぶことにします。
 本章の以降の議論では重みつき入力$z^l$を頻繁に利用します。
 <!--Equation
-<span id="margin_957787478923_reveal" class="equation_link">(25)</span><span id="margin_957787478923" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_957787478923_reveal" class="equation_link">(25)</span><span id="margin_957787478923" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_957787478923_reveal').click(function() {$('#margin_957787478923').toggle('slow', function() {});});</script>
 is sometimes written in terms of the weighted input, as $a^l = \sigma(z^l)$. -->
 式
-<span id="margin_957787478923_reveal" class="equation_link">(25)</span><span id="margin_957787478923" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_957787478923_reveal" class="equation_link">(25)</span><span id="margin_957787478923" class="marginequation" style="display: none;"><a href="chap2.html#eqtn25" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   a^{l} = \sigma(w^l a^{l-1}+b^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_957787478923_reveal').click(function() {$('#margin_957787478923').toggle('slow', function() {});});</script>
 をしばしば重み付き入力を用いて$a^l = \sigma(z^l)$とも書きます。
 <!-- It's also worth noting that $z^l$ has components $z^l_j
@@ -677,7 +677,7 @@ $s \odot t$ are just $(s \odot t)_j = s_j t_j$. -->
 $s$と$t$が同じ次元のベクトルとした時、$s \odot t$を2つのベクトルの<em>要素ごと</em>の積とします。つまり、$s \odot t$の要素は$(s \odot t)_j = s_j t_j$です。
 <!-- As an example,
 <a class="displaced_anchor" name="eqtn28"></a>\begin{eqnarray}
-\left[\begin{array}{c} 1 \\ 2 \end{array}\right] 
+\left[\begin{array}{c} 1 \\ 2 \end{array}\right]
   \odot \left[\begin{array}{c} 3 \\ 4\end{array} \right]
 = \left[ \begin{array}{c} 1 * 3 \\ 2 * 4 \end{array} \right]
 = \left[ \begin{array}{c} 3 \\ 8 \end{array} \right].
@@ -689,7 +689,7 @@ implementations of the Hadamard product, and that comes in handy when
 implementing backpropagation.-->
 例えば、
 <a class="displaced_anchor" name="eqtn28"></a>\begin{eqnarray}
-\left[\begin{array}{c} 1 \\ 2 \end{array}\right] 
+\left[\begin{array}{c} 1 \\ 2 \end{array}\right]
   \odot \left[\begin{array}{c} 3 \\ 4\end{array} \right]
 = \left[ \begin{array}{c} 1 * 3 \\ 2 * 4 \end{array} \right]
 = \left[ \begin{array}{c} 3 \\ 8 \end{array} \right]
@@ -809,13 +809,13 @@ algebraically complicated. -->
 </p>
 <p>
 <!--<strong>Plan of attack:</strong> Backpropagation is based around four
-fundamental equations. 
-Together, those equations give us a way of computing both the error $\delta^l$ and the gradient of the cost function. 
-I state the four equations below. 
+fundamental equations.
+Together, those equations give us a way of computing both the error $\delta^l$ and the gradient of the cost function.
+I state the four equations below.
 Be warned, though: you shouldn't expect to instantaneously assimilate the equations.
-Such an expectation will lead to disappointment. 
-In fact, the backpropagation equations are so rich that understanding them well requires considerable time and patience as you gradually delve deeper into the equations. 
-The good news is that such patience is repaid many times over. 
+Such an expectation will lead to disappointment.
+In fact, the backpropagation equations are so rich that understanding them well requires considerable time and patience as you gradually delve deeper into the equations.
+The good news is that such patience is repaid many times over.
 And so the discussion in this section is merely a beginning, helping you on the way to a thorough understanding of the equations.-->
 <strong>攻略計画</strong>
 逆伝播は4つの基本的な式を基礎とします。
@@ -856,11 +856,11 @@ and natural.-->
 出力層での誤差$\delta^L$に関する式：
 </strong>
 <!--The components of $\delta^L$ are given by
-<a class="displaced_anchor" name="eqtnBP1"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtnBP1"></a>\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j).
 \tag{BP1}\end{eqnarray}-->
 $\delta^L$の各要素は
-<a class="displaced_anchor" name="eqtnBP1"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtnBP1"></a>\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j).
 \tag{BP1}\end{eqnarray}
 です。
@@ -877,11 +877,11 @@ activation function $\sigma$ is changing at $z^L_j$.-->
 </p>
 <p>
 <!--Notice that everything in
-<span id="margin_147792633206_reveal" class="equation_link">(BP1)</span><span id="margin_147792633206" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_147792633206_reveal" class="equation_link">(BP1)</span><span id="margin_147792633206" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_147792633206_reveal').click(function() {$('#margin_147792633206').toggle('slow', function() {});});</script>
 is easily computed.-->
 ここで注目すべきなのは
-<span id="margin_147792633206_reveal" class="equation_link">(BP1)</span><span id="margin_147792633206" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_147792633206_reveal" class="equation_link">(BP1)</span><span id="margin_147792633206" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_147792633206_reveal').click(function() {$('#margin_147792633206').toggle('slow', function() {});});</script>
 中の全ての項が簡単に計算できる事です。
 <!--In particular, we compute $z^L_j$ while computing the behaviour of the network, and it's only a small additional overhead to compute
@@ -902,16 +902,16 @@ easily computable.-->
 </p>
 <p>
 <!--Equation
-<span id="margin_352512149181_reveal" class="equation_link">(BP1)</span><span id="margin_352512149181" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_352512149181_reveal" class="equation_link">(BP1)</span><span id="margin_352512149181" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_352512149181_reveal').click(function() {$('#margin_352512149181').toggle('slow', function() {});});</script>
 is a componentwise expression for $\delta^L$.-->
-式<span id="margin_352512149181_reveal" class="equation_link">(BP1)</span><span id="margin_352512149181" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+式<span id="margin_352512149181_reveal" class="equation_link">(BP1)</span><span id="margin_352512149181" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_352512149181_reveal').click(function() {$('#margin_352512149181').toggle('slow', function() {});});</script>
 は$\delta^L$の各要素に対する表式です。
 <!--It's a perfectly good expression, but not the matrix-based form we
 want for backpropagation. However, it's easy to rewrite the equation
 in a matrix-based form, as
-<a class="displaced_anchor" name="eqtnBP1a"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtnBP1a"></a>\begin{eqnarray}
   \delta^L = \nabla_a C \odot \sigma'(z^L).
 \tag{BP1a}\end{eqnarray}
 Here, $\nabla_a C$ is defined to be a vector whose components are the
@@ -919,45 +919,45 @@ partial derivatives $\partial C / \partial a^L_j$.
 You can think of $\nabla_a C$ as expressing the rate of change of $C$ with respect to the output activations. -->
 この表式自体は悪くはないのですが、逆伝播で欲しい行列を用いた表式ではありません。
 この式を行列として書き直すのは容易で、以下の様に書けます
-<a class="displaced_anchor" name="eqtnBP1a"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtnBP1a"></a>\begin{eqnarray}
   \delta^L = \nabla_a C \odot \sigma'(z^L).
 \tag{BP1a}\end{eqnarray}
 ここで、$\nabla_a C$は偏微分$\partial C / \partial a^L_j$を並べたベクトルです。
 $\nabla_a C$は出力活性に対する$C$の変化率とみなせます。
 <!--It's easy to see that Equations
-<span id="margin_744045597073_reveal" class="equation_link">(BP1a)</span><span id="margin_744045597073" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1a" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_744045597073_reveal" class="equation_link">(BP1a)</span><span id="margin_744045597073" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1a" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L = \nabla_a C \odot \sigma'(z^L) \nonumber\end{eqnarray}</a></span><script>$('#margin_744045597073_reveal').click(function() {$('#margin_744045597073').toggle('slow', function() {});});</script>
 and
-<span id="margin_713595193686_reveal" class="equation_link">(BP1)</span><span id="margin_713595193686" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_713595193686_reveal" class="equation_link">(BP1)</span><span id="margin_713595193686" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_713595193686_reveal').click(function() {$('#margin_713595193686').toggle('slow', function() {});});</script>
 are equivalent, and for that reason from now on we'll use
-<span id="margin_645562843841_reveal" class="equation_link">(BP1)</span><span id="margin_645562843841" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_645562843841_reveal" class="equation_link">(BP1)</span><span id="margin_645562843841" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_645562843841_reveal').click(function() {$('#margin_645562843841').toggle('slow', function() {});});</script>
 interchangeably to refer to both equations.-->
-<span id="margin_744045597073_reveal" class="equation_link">(BP1a)</span><span id="margin_744045597073" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1a" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_744045597073_reveal" class="equation_link">(BP1a)</span><span id="margin_744045597073" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1a" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L = \nabla_a C \odot \sigma'(z^L) \nonumber\end{eqnarray}</a></span><script>$('#margin_744045597073_reveal').click(function() {$('#margin_744045597073').toggle('slow', function() {});});</script>
 と
-<span id="margin_713595193686_reveal" class="equation_link">(BP1)</span><span id="margin_713595193686" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_713595193686_reveal" class="equation_link">(BP1)</span><span id="margin_713595193686" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_713595193686_reveal').click(function() {$('#margin_713595193686').toggle('slow', function() {});});</script>
 は同値である事はすぐにわかります。ですので、以下では両者の式を参照するのに
-<span id="margin_645562843841_reveal" class="equation_link">(BP1)</span><span id="margin_645562843841" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_645562843841_reveal" class="equation_link">(BP1)</span><span id="margin_645562843841" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_645562843841_reveal').click(function() {$('#margin_645562843841').toggle('slow', function() {});});</script>
 を用いる事にします。
 <!--As an example, in the case of the quadratic cost we have $\nabla_a C = (a^L-y)$, and so the fully matrix-based form of
-<span id="margin_864112170226_reveal" class="equation_link">(BP1)</span><span id="margin_864112170226" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_864112170226_reveal" class="equation_link">(BP1)</span><span id="margin_864112170226" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_864112170226_reveal').click(function() {$('#margin_864112170226').toggle('slow', function() {});});</script>
 becomes
-<a class="displaced_anchor" name="eqtn30"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn30"></a>\begin{eqnarray}
   \delta^L = (a^L-y) \odot \sigma'(z^L).
 \tag{30}\end{eqnarray}
 As you can see, everything in this expression has a nice vector form,
 and is easily computed using a library such as Numpy.-->
 例として、2乗誤差コスト関数の例では$\nabla_a C = (a^L-y)$です。
 従って行列形式の
-<span id="margin_864112170226_reveal" class="equation_link">(BP1)</span><span id="margin_864112170226" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_864112170226_reveal" class="equation_link">(BP1)</span><span id="margin_864112170226" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_864112170226_reveal').click(function() {$('#margin_864112170226').toggle('slow', function() {});});</script>
 は以下のようになります。
-<a class="displaced_anchor" name="eqtn30"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn30"></a>\begin{eqnarray}
   \delta^L = (a^L-y) \odot \sigma'(z^L).
 \tag{30}\end{eqnarray}
 見ての通り、この表式内の全ての項がベクトル形式の表式となっており、Numpyなどのライブラリで簡単に計算できます。
@@ -966,19 +966,19 @@ and is easily computed using a library such as Numpy.-->
 誤差$\delta^{l}$の次層での誤差$\delta^{l+1}$に関する表式：
 </strong>
 <!--In particular
-<a class="displaced_anchor" name="eqtnBP2"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtnBP2"></a>\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l),
 \tag{BP2}\end{eqnarray}
 where $(w^{l+1})^T$ is the tranpose of the weight matrix $w^{l+1}$ for
 the $(l+1)^{\rm th}$ layer.-->
 これは以下の通りです
-<a class="displaced_anchor" name="eqtnBP2"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtnBP2"></a>\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l).
 \tag{BP2}\end{eqnarray}
 ここで、$(w^{l+1})^T$は$(l+1)$番目の層の重み行列$w^{l+1}$の転置です。
 <!-- This equation appears complicated, but each element has a nice interpretation.
-Suppose we know the error $\delta^{l+1}$ at the $l+1^{\rm th}$ layer. 
-When we apply the transpose weight matrix, $(w^{l+1})^T$, we can think intuitively of this as moving the error <em>backward</em> through the network, giving us some sort of measure of the error at the output of the $l^{\rm th}$ layer. 
+Suppose we know the error $\delta^{l+1}$ at the $l+1^{\rm th}$ layer.
+When we apply the transpose weight matrix, $(w^{l+1})^T$, we can think intuitively of this as moving the error <em>backward</em> through the network, giving us some sort of measure of the error at the output of the $l^{\rm th}$ layer.
 We then take the Hadamard product $\odot \sigma'(z^l)$.  This
 moves the error backward through the activation function in layer $l$,
 giving us the error $\delta^l$ in the weighted input to layer $l$.-->
@@ -992,40 +992,40 @@ $(l+1)$番目の層の誤差$\delta^{l+1}$番目が既知だとします。
 </p>
 <p>
 <!--By combining
-<span id="margin_333455157300_reveal" class="equation_link">(BP2)</span><span id="margin_333455157300" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_333455157300_reveal" class="equation_link">(BP2)</span><span id="margin_333455157300" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_333455157300_reveal').click(function() {$('#margin_333455157300').toggle('slow', function() {});});</script>
 with
-<span id="margin_168271461280_reveal" class="equation_link">(BP1)</span><span id="margin_168271461280" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_168271461280_reveal" class="equation_link">(BP1)</span><span id="margin_168271461280" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_168271461280_reveal').click(function() {$('#margin_168271461280').toggle('slow', function() {});});</script>
 we can compute the error $\delta^l$ for any layer in the network.-->
-<span id="margin_333455157300_reveal" class="equation_link">(BP2)</span><span id="margin_333455157300" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_333455157300_reveal" class="equation_link">(BP2)</span><span id="margin_333455157300" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_333455157300_reveal').click(function() {$('#margin_333455157300').toggle('slow', function() {});});</script>
 を
-<span id="margin_168271461280_reveal" class="equation_link">(BP1)</span><span id="margin_168271461280" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_168271461280_reveal" class="equation_link">(BP1)</span><span id="margin_168271461280" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_168271461280_reveal').click(function() {$('#margin_168271461280').toggle('slow', function() {});});</script>
 と組み合わせる事で、ニューラルネットワークの任意の層$l$での誤差$\delta^l$を計算できます。
 <!--We start by using
-<span id="margin_394578264286_reveal" class="equation_link">(BP1)</span><span id="margin_394578264286" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_394578264286_reveal" class="equation_link">(BP1)</span><span id="margin_394578264286" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_394578264286_reveal').click(function() {$('#margin_394578264286').toggle('slow', function() {});});</script>n
 to compute $\delta^L$,-->
 まず、$\delta^L$を式
-<span id="margin_394578264286_reveal" class="equation_link">(BP1)</span><span id="margin_394578264286" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_394578264286_reveal" class="equation_link">(BP1)</span><span id="margin_394578264286" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j). \nonumber\end{eqnarray}</a></span><script>$('#margin_394578264286_reveal').click(function() {$('#margin_394578264286').toggle('slow', function() {});});</script>
 で計算します。
 <!--then apply Equation
-<span id="margin_565392375859_reveal" class="equation_link">(BP2)</span><span id="margin_565392375859" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_565392375859_reveal" class="equation_link">(BP2)</span><span id="margin_565392375859" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_565392375859_reveal').click(function() {$('#margin_565392375859').toggle('slow', function() {});});</script>
 to compute $\delta^{L-1}$,-->
 次に、式
-<span id="margin_565392375859_reveal" class="equation_link">(BP2)</span><span id="margin_565392375859" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_565392375859_reveal" class="equation_link">(BP2)</span><span id="margin_565392375859" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_565392375859_reveal').click(function() {$('#margin_565392375859').toggle('slow', function() {});});</script>
 を適用して$\delta^{L-1}$を計算します。
 <!-- then Equation
-<span id="margin_646381930468_reveal" class="equation_link">(BP2)</span><span id="margin_646381930468" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_646381930468_reveal" class="equation_link">(BP2)</span><span id="margin_646381930468" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_646381930468_reveal').click(function() {$('#margin_646381930468').toggle('slow', function() {});});</script>
 again to compute $\delta^{L-2}$, and so on, all the way back through the network.-->
 その後、再び
-<span id="margin_646381930468_reveal" class="equation_link">(BP2)</span><span id="margin_646381930468" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_646381930468_reveal" class="equation_link">(BP2)</span><span id="margin_646381930468" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_646381930468_reveal').click(function() {$('#margin_646381930468').toggle('slow', function() {});});</script>
 を適用して、$\delta^{L-2}$を計算します。以下これを繰り返してニューラルネットワークを逆向きに辿る事ができます。
 </p>
@@ -1045,16 +1045,16 @@ change $\partial C / \partial b^l_j$. -->
 \tag{BP3}\end{eqnarray}
 すなわち、誤差$\delta^l_j$はコスト関数の変化率$\partial C / \partial b^l_j$と<em>完全に同一</em>です。
 <!--This is great news, since
-<span id="margin_553087553337_reveal" class="equation_link">(BP1)</span><span id="margin_553087553337" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_553087553337_reveal" class="equation_link">(BP1)</span><span id="margin_553087553337" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_553087553337_reveal').click(function() {$('#margin_553087553337').toggle('slow', function() {});});</script>
 and
-<span id="margin_416964584497_reveal" class="equation_link">(BP2)</span><span id="margin_416964584497" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_416964584497_reveal" class="equation_link">(BP2)</span><span id="margin_416964584497" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_416964584497_reveal').click(function() {$('#margin_416964584497').toggle('slow', function() {});});</script>
 have already told us how to compute $\delta^l_j$.-->
-<span id="margin_553087553337_reveal" class="equation_link">(BP1)</span><span id="margin_553087553337" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_553087553337_reveal" class="equation_link">(BP1)</span><span id="margin_553087553337" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_553087553337_reveal').click(function() {$('#margin_553087553337').toggle('slow', function() {});});</script>
 と
-<span id="margin_416964584497_reveal" class="equation_link">(BP2)</span><span id="margin_416964584497" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_416964584497_reveal" class="equation_link">(BP2)</span><span id="margin_416964584497" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_416964584497_reveal').click(function() {$('#margin_416964584497').toggle('slow', function() {});});</script>
 からこの値の計算方法は既にわかっているので、この事実はは好都合です。
 <!--We can rewrite
@@ -1119,40 +1119,40 @@ small.-->
 <!--In this case, we'll say the weight <em>learns slowly</em>,
 meaning that it's not changing much during gradient descent.  In other
 words, one consequence of
-<span id="margin_342844631908_reveal" class="equation_link">(BP4)</span><span id="margin_342844631908" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+<span id="margin_342844631908_reveal" class="equation_link">(BP4)</span><span id="margin_342844631908" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_342844631908_reveal').click(function() {$('#margin_342844631908').toggle('slow', function() {});});</script>
  is that weights output from low-activation neurons learn slowly.-->
 このような状態を重みの<em>学習が遅い</em>と表現します。その意味は、勾配降下法を行っている間、値が大きく変化しないという事です。
 同じ事の言い換えですが、式
-<span id="margin_342844631908_reveal" class="equation_link">(BP4)</span><span id="margin_342844631908" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+<span id="margin_342844631908_reveal" class="equation_link">(BP4)</span><span id="margin_342844631908" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_342844631908_reveal').click(function() {$('#margin_342844631908').toggle('slow', function() {});});</script>
 の帰結の1つとして、活性の低いニューロンから入力を受けとる重みは学習が遅いとわかります。
 </p>
 <p>
 <!--There are other insights along these lines which can be obtained from
-<span id="margin_757095973931_reveal" class="equation_link">(BP1)</span><span id="margin_757095973931" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_757095973931_reveal" class="equation_link">(BP1)</span><span id="margin_757095973931" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_757095973931_reveal').click(function() {$('#margin_757095973931').toggle('slow', function() {});});</script>
 -
-<span id="margin_724164157530_reveal" class="equation_link">(BP4)</span><span id="margin_724164157530" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+<span id="margin_724164157530_reveal" class="equation_link">(BP4)</span><span id="margin_724164157530" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_724164157530_reveal').click(function() {$('#margin_724164157530').toggle('slow', function() {});});</script>
 .-->
-<span id="margin_757095973931_reveal" class="equation_link">(BP1)</span><span id="margin_757095973931" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_757095973931_reveal" class="equation_link">(BP1)</span><span id="margin_757095973931" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_757095973931_reveal').click(function() {$('#margin_757095973931').toggle('slow', function() {});});</script>
 -
-<span id="margin_724164157530_reveal" class="equation_link">(BP4)</span><span id="margin_724164157530" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+<span id="margin_724164157530_reveal" class="equation_link">(BP4)</span><span id="margin_724164157530" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_724164157530_reveal').click(function() {$('#margin_724164157530').toggle('slow', function() {});});</script>
 からわかる事は他にもあります。
 <!--Let's start by looking at the output layer.
 Consider the term $\sigma'(z^L_j)$ in
-<span id="margin_239655849963_reveal" class="equation_link">(BP1)</span><span id="margin_239655849963" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_239655849963_reveal" class="equation_link">(BP1)</span><span id="margin_239655849963" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_239655849963_reveal').click(function() {$('#margin_239655849963').toggle('slow', function() {});});</script>.-->
 出力層から見てみましょう。
-<span id="margin_239655849963_reveal" class="equation_link">(BP1)</span><span id="margin_239655849963" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_239655849963_reveal" class="equation_link">(BP1)</span><span id="margin_239655849963" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_239655849963_reveal').click(function() {$('#margin_239655849963').toggle('slow', function() {});});</script>
 内の$\sigma'(z^L_j)$の項に注目します。
 <!--Recall from the
 <a href="chap1.html#sigmoid_graph">graph of the sigmoid function in the last chapter</a>
-that the $\sigma$ function becomes very flat when $\sigma(z^L_j)$ is approximately $0$ or $1$. 
+that the $\sigma$ function becomes very flat when $\sigma(z^L_j)$ is approximately $0$ or $1$.
 When this occurs we will have $\sigma'(z^L_j) \approx 0$.  And so the lesson is that a weight in the final layer will learn slowly if the output
 neuron is either low activation ($\approx 0$) or high activation
 ($\approx 1$).  In this case it's common to say the output neuron has
@@ -1168,11 +1168,11 @@ output neuron.-->
 <p>
 <!--We can obtain similar insights for earlier layers.  In particular,
 note the $\sigma'(z^l)$ term in
-<span id="margin_236897220270_reveal" class="equation_link">(BP2)</span><span id="margin_236897220270" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_236897220270_reveal" class="equation_link">(BP2)</span><span id="margin_236897220270" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_236897220270_reveal').click(function() {$('#margin_236897220270').toggle('slow', function() {});});</script>
 .-->
 出力層より前の層でも似た考察ができます。特に
-<span id="margin_236897220270_reveal" class="equation_link">(BP2)</span><span id="margin_236897220270" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_236897220270_reveal" class="equation_link">(BP2)</span><span id="margin_236897220270" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_236897220270_reveal').click(function() {$('#margin_236897220270').toggle('slow', function() {});});</script>
 内の$\sigma'(z^l)$の項に注目します。
 <!--This means that $\delta^l_j$ is likely to get small if the neuron is near saturation.
@@ -1218,16 +1218,16 @@ turn aroundの訳がうまく思いつかず。とりあえず逆向きと訳し
 すると、通常のシグモイド関数を用いたニューロンが飽和した際に起こってしまう学習の減速を防ぐ事が可能です。
 この本の後ろでは、この種の修正を活性化関数に対して施します。
 <!--Keeping the four equations
-<span id="margin_330673844442_reveal" class="equation_link">(BP1)</span><span id="margin_330673844442" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_330673844442_reveal" class="equation_link">(BP1)</span><span id="margin_330673844442" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_330673844442_reveal').click(function() {$('#margin_330673844442').toggle('slow', function() {});});</script>
 -
-<span id="margin_626656835558_reveal" class="equation_link">(BP4)</span><span id="margin_626656835558" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+<span id="margin_626656835558_reveal" class="equation_link">(BP4)</span><span id="margin_626656835558" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_626656835558_reveal').click(function() {$('#margin_626656835558').toggle('slow', function() {});});</script>
 in mind can help explain why such modifications are tried, and what impact they can have.-->
-<span id="margin_330673844442_reveal" class="equation_link">(BP1)</span><span id="margin_330673844442" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_330673844442_reveal" class="equation_link">(BP1)</span><span id="margin_330673844442" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_330673844442_reveal').click(function() {$('#margin_330673844442').toggle('slow', function() {});});</script>
 -
-<span id="margin_626656835558_reveal" class="equation_link">(BP4)</span><span id="margin_626656835558" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+<span id="margin_626656835558_reveal" class="equation_link">(BP4)</span><span id="margin_626656835558" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_626656835558_reveal').click(function() {$('#margin_626656835558').toggle('slow', function() {});});</script>
 の4つの式を覚えておくと、なぜこのような修正を行うのか、修正でどのような影響が起こるかを説明するのに役立ちます。
 </p>
@@ -1245,17 +1245,17 @@ in mind can help explain why such modifications are tried, and what impact they 
 誤差逆伝播の別の表示方法：
 </strong>
 <!-- I've stated the equations of backpropagation (notably
-<span id="margin_174707495294_reveal" class="equation_link">(BP1)</span><span id="margin_174707495294" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_174707495294_reveal" class="equation_link">(BP1)</span><span id="margin_174707495294" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_174707495294_reveal').click(function() {$('#margin_174707495294').toggle('slow', function() {});});</script>
 and
-<span id="margin_512047477177_reveal" class="equation_link">(BP2)</span><span id="margin_512047477177" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_512047477177_reveal" class="equation_link">(BP2)</span><span id="margin_512047477177" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_512047477177_reveal').click(function() {$('#margin_512047477177').toggle('slow', function() {});});</script>
 ) using the Hadamard product.-->
 これまで、誤差逆伝播の式（特に
-<span id="margin_174707495294_reveal" class="equation_link">(BP1)</span><span id="margin_174707495294" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_174707495294_reveal" class="equation_link">(BP1)</span><span id="margin_174707495294" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_174707495294_reveal').click(function() {$('#margin_174707495294').toggle('slow', function() {});});</script>
 と
-<span id="margin_512047477177_reveal" class="equation_link">(BP2)</span><span id="margin_512047477177" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_512047477177_reveal" class="equation_link">(BP2)</span><span id="margin_512047477177" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_512047477177_reveal').click(function() {$('#margin_512047477177').toggle('slow', function() {});});</script>
 ）をアダマール積を用いて記述していました。
 <!--This presentation may
@@ -1266,7 +1266,7 @@ and
 これらの式を通常の行列の掛け算に基づいて表示する別の方法があります。
 読者によってはこのアプローチは教育的かもしれません。
 <!--(1) Show that
-<span id="margin_667190610058_reveal" class="equation_link">(BP1)</span><span id="margin_667190610058" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_667190610058_reveal" class="equation_link">(BP1)</span><span id="margin_667190610058" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_667190610058_reveal').click(function() {$('#margin_667190610058').toggle('slow', function() {});});</script>
 may be rewritten as
   <a class="displaced_anchor" name="eqtn33"></a>\begin{eqnarray}
@@ -1277,7 +1277,7 @@ may be rewritten as
   zero.  Note that this matrix acts on $\nabla_a C$ by conventional
   matrix multiplication.-->
 (1)
-<span id="margin_667190610058_reveal" class="equation_link">(BP1)</span><span id="margin_667190610058" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_667190610058_reveal" class="equation_link">(BP1)</span><span id="margin_667190610058" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_667190610058_reveal').click(function() {$('#margin_667190610058').toggle('slow', function() {});});</script>
 を以下の様に書き換えられる事を示してください
   <a class="displaced_anchor" name="eqtn33"></a>\begin{eqnarray}
@@ -1286,14 +1286,14 @@ may be rewritten as
 ここで、$\Sigma'(z^L)$は$\sigma'(z^L_j)$を対角成分に持ち、非対角成分は$0$の正方行列です。
 この行列は$\nabla_a C$に通常の行列の掛け算で作用します。
 <!--(2) Show that
-<span id="margin_345345235028_reveal" class="equation_link">(BP2)</span><span id="margin_345345235028" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_345345235028_reveal" class="equation_link">(BP2)</span><span id="margin_345345235028" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_345345235028_reveal').click(function() {$('#margin_345345235028').toggle('slow', function() {});});</script>
 may be rewritten as
   <a class="displaced_anchor" name="eqtn34"></a>\begin{eqnarray}
     \delta^l = \Sigma'(z^l) (w^{l+1})^T \delta^{l+1}.
   \tag{34}\end{eqnarray}-->
 (2)
-<span id="margin_345345235028_reveal" class="equation_link">(BP2)</span><span id="margin_345345235028" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_345345235028_reveal" class="equation_link">(BP2)</span><span id="margin_345345235028" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_345345235028_reveal').click(function() {$('#margin_345345235028').toggle('slow', function() {});});</script>
 を以下の様に書き換えられる事を示してください
   <a class="displaced_anchor" name="eqtn34"></a>\begin{eqnarray}
@@ -1301,41 +1301,41 @@ may be rewritten as
   \tag{34}\end{eqnarray}
 <!--  (3) By combining observations (1) and (2) show that
   <a class="displaced_anchor" name="eqtn35"></a>\begin{eqnarray}
-    \delta^l = \Sigma'(z^l) (w^{l+1})^T \ldots \Sigma'(z^{L-1}) (w^L)^T 
+    \delta^l = \Sigma'(z^l) (w^{l+1})^T \ldots \Sigma'(z^{L-1}) (w^L)^T
     \Sigma'(z^L) \nabla_a C
   \tag{35}\end{eqnarray}-->
  (3) (1)と(2)を組み合わせて、以下の式を示してください。
   <a class="displaced_anchor" name="eqtn35"></a>\begin{eqnarray}
-    \delta^l = \Sigma'(z^l) (w^{l+1})^T \ldots \Sigma'(z^{L-1}) (w^L)^T 
+    \delta^l = \Sigma'(z^l) (w^{l+1})^T \ldots \Sigma'(z^{L-1}) (w^L)^T
     \Sigma'(z^L) \nabla_a C
   \tag{35}\end{eqnarray}
 <!--  For readers comfortable with matrix multiplication this equation may be easier to understand than
-<span id="margin_823951338021_reveal" class="equation_link">(BP1)</span><span id="margin_823951338021" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_823951338021_reveal" class="equation_link">(BP1)</span><span id="margin_823951338021" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_823951338021_reveal').click(function() {$('#margin_823951338021').toggle('slow', function() {});});</script>
 and
-<span id="margin_312530255170_reveal" class="equation_link">(BP2)</span><span id="margin_312530255170" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_312530255170_reveal" class="equation_link">(BP2)</span><span id="margin_312530255170" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_312530255170_reveal').click(function() {$('#margin_312530255170').toggle('slow', function() {});});</script>. -->
 行列の掛け算に慣れている読者にとっては
-<span id="margin_823951338021_reveal" class="equation_link">(BP1)</span><span id="margin_823951338021" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_823951338021_reveal" class="equation_link">(BP1)</span><span id="margin_823951338021" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_823951338021_reveal').click(function() {$('#margin_823951338021').toggle('slow', function() {});});</script>
 と
-<span id="margin_312530255170_reveal" class="equation_link">(BP2)</span><span id="margin_312530255170" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_312530255170_reveal" class="equation_link">(BP2)</span><span id="margin_312530255170" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_312530255170_reveal').click(function() {$('#margin_312530255170').toggle('slow', function() {});});</script>
 よりも、こちらの方が理解しやすいかもしれません。
 <!--The reason I've focused on
-<span id="margin_650030226543_reveal" class="equation_link">(BP1)</span><span id="margin_650030226543" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_650030226543_reveal" class="equation_link">(BP1)</span><span id="margin_650030226543" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_650030226543_reveal').click(function() {$('#margin_650030226543').toggle('slow', function() {});});</script>
 and
-<span id="margin_299731299416_reveal" class="equation_link">(BP2)</span><span id="margin_299731299416" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_299731299416_reveal" class="equation_link">(BP2)</span><span id="margin_299731299416" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_299731299416_reveal').click(function() {$('#margin_299731299416').toggle('slow', function() {});});</script>
 is because that approach turns out to be faster to implement numerically.
 </ul>
 -->
 それでも
-<span id="margin_650030226543_reveal" class="equation_link">(BP1)</span><span id="margin_650030226543" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_650030226543_reveal" class="equation_link">(BP1)</span><span id="margin_650030226543" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_650030226543_reveal').click(function() {$('#margin_650030226543').toggle('slow', function() {});});</script>
 と
-<span id="margin_299731299416_reveal" class="equation_link">(BP2)</span><span id="margin_299731299416" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_299731299416_reveal" class="equation_link">(BP2)</span><span id="margin_299731299416" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_299731299416_reveal').click(function() {$('#margin_299731299416').toggle('slow', function() {});});</script>
 の表式を用いたのは、こちらの方が実装時の数値計算が速いからです。
 </p>
@@ -1347,9 +1347,9 @@ is because that approach turns out to be faster to implement numerically.
 </h3> </p>
 <p>
 <!--We'll now prove the four fundamental equations
-<span id="margin_816792216456_reveal" class="equation_link">(BP1)</span><span id="margin_816792216456" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_816792216456_reveal" class="equation_link">(BP1)</span><span id="margin_816792216456" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_816792216456_reveal').click(function() {$('#margin_816792216456').toggle('slow', function() {});});</script>-<span id="margin_517979696409_reveal" class="equation_link">(BP4)</span><span id="margin_517979696409" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}    \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_517979696409_reveal').click(function() {$('#margin_517979696409').toggle('slow', function() {});});</script>.-->
-それでは、<span id="margin_816792216456_reveal" class="equation_link">(BP1)</span><span id="margin_816792216456" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+それでは、<span id="margin_816792216456_reveal" class="equation_link">(BP1)</span><span id="margin_816792216456" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_816792216456_reveal').click(function() {$('#margin_816792216456').toggle('slow', function() {});});</script>-<span id="margin_517979696409_reveal" class="equation_link">(BP4)</span><span id="margin_517979696409" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}    \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_517979696409_reveal').click(function() {$('#margin_517979696409').toggle('slow', function() {});});</script>を証明していきます。
 <!-- All four are consequences of the chain rule from multivariable calculus.
 If you're comfortable with the chain rule, then I strongly encourage you to attempt the derivation yourself before reading on.-->
@@ -1358,11 +1358,11 @@ If you're comfortable with the chain rule, then I strongly encourage you to atte
 </p>
 <p>
 <!--Let's begin with Equation
-<span id="margin_189404299769_reveal" class="equation_link">(BP1)</span><span id="margin_189404299769" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_189404299769_reveal" class="equation_link">(BP1)</span><span id="margin_189404299769" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_189404299769_reveal').click(function() {$('#margin_189404299769').toggle('slow', function() {});});</script>
 , which gives an expression for the output error, $\delta^L$.-->
 まず、出力での誤差$\delta^L$の表式
-<span id="margin_189404299769_reveal" class="equation_link">(BP1)</span><span id="margin_189404299769" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_189404299769_reveal" class="equation_link">(BP1)</span><span id="margin_189404299769" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_189404299769_reveal').click(function() {$('#margin_189404299769').toggle('slow', function() {});});</script>
 から証明しましょう。
 <!--To prove this equation, recall that by definition
@@ -1403,7 +1403,7 @@ can be written as $\sigma'(z^L_j)$, and the equation becomes
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j),
 \tag{39}\end{eqnarray}
 which is just
-<span id="margin_104919018101_reveal" class="equation_link">(BP1)</span><span id="margin_104919018101" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_104919018101_reveal" class="equation_link">(BP1)</span><span id="margin_104919018101" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_104919018101_reveal').click(function() {$('#margin_104919018101').toggle('slow', function() {});});</script>
 , in component form.-->
 $a^L_j = \sigma(z^L_j)$であった事を思い出すと、第2項は$\sigma'(z^L_j)$と書けて、
@@ -1411,24 +1411,24 @@ $a^L_j = \sigma(z^L_j)$であった事を思い出すと、第2項は$\sigma'(z^
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j)
 \tag{39}\end{eqnarray}
 となります。これを添字なしの形式で書くと
-<span id="margin_104919018101_reveal" class="equation_link">(BP1)</span><span id="margin_104919018101" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_104919018101_reveal" class="equation_link">(BP1)</span><span id="margin_104919018101" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP1" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j) \nonumber\end{eqnarray}</a></span><script>$('#margin_104919018101_reveal').click(function() {$('#margin_104919018101').toggle('slow', function() {});});</script>
 が得られます。
 </p>
 <p>
 <!--Next, we'll prove
-<span id="margin_987004185602_reveal" class="equation_link">(BP2)</span><span id="margin_987004185602" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_987004185602_reveal" class="equation_link">(BP2)</span><span id="margin_987004185602" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_987004185602_reveal').click(function() {$('#margin_987004185602').toggle('slow', function() {});});</script>
 , which gives an equation for the error $\delta^l$ in terms of the error in the next layer, $\delta^{l+1}$.-->
 次に、誤差$\delta^l$をその1つ後ろの層の誤差$\delta^{l+1}$を用いて表す
-<span id="margin_987004185602_reveal" class="equation_link">(BP2)</span><span id="margin_987004185602" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_987004185602_reveal" class="equation_link">(BP2)</span><span id="margin_987004185602" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_987004185602_reveal').click(function() {$('#margin_987004185602').toggle('slow', function() {});});</script>
 を証明します。
 <!--To do this, we want to rewrite $\delta^l_j = \partial C / \partial z^l_j$ in terms of $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$.
 We can do this using the chain rule,
 <a class="displaced_anchor" name="eqtn40"></a><a class="displaced_anchor" name="eqtn41"></a><a class="displaced_anchor" name="eqtn42"></a>\begin{eqnarray}
   \delta^l_j & = & \frac{\partial C}{\partial z^l_j} \tag{40}\\
-  & = & \sum_k \frac{\partial C}{\partial z^{l+1}_k} \frac{\partial z^{l+1}_k}{\partial z^l_j} \tag{41}\\ 
+  & = & \sum_k \frac{\partial C}{\partial z^{l+1}_k} \frac{\partial z^{l+1}_k}{\partial z^l_j} \tag{41}\\
   & = & \sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k,
 \tag{42}\end{eqnarray}
 where in the last line we have interchanged the two terms on the
@@ -1436,7 +1436,7 @@ right-hand side, and substituted the definition of $\delta^{l+1}_k$.-->
 そのために、連鎖律を用いて$\delta^l_j = \partial C / \partial z^l_j$を$\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$を用いて書き直します
 <a class="displaced_anchor" name="eqtn40"></a><a class="displaced_anchor" name="eqtn41"></a><a class="displaced_anchor" name="eqtn42"></a>\begin{eqnarray}
   \delta^l_j & = & \frac{\partial C}{\partial z^l_j} \tag{40}\\
-  & = & \sum_k \frac{\partial C}{\partial z^{l+1}_k} \frac{\partial z^{l+1}_k}{\partial z^l_j} \tag{41}\\ 
+  & = & \sum_k \frac{\partial C}{\partial z^{l+1}_k} \frac{\partial z^{l+1}_k}{\partial z^l_j} \tag{41}\\
   & = & \sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k.
 \tag{42}\end{eqnarray}
 ここで、最後の行は2つの項を交換し、第2項を$\delta^{l+1}_k$の定義で置き換えました。
@@ -1457,24 +1457,24 @@ Differentiating, we obtain
   \frac{\partial z^{l+1}_k}{\partial z^l_j} = w^{l+1}_{kj} \sigma'(z^l_j).
 \tag{44}\end{eqnarray}
 <!--Substituting back into
-<span id="margin_234573266012_reveal" class="equation_link">(42)</span><span id="margin_234573266012" class="marginequation" style="display: none;"><a href="chap2.html#eqtn42" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_234573266012_reveal" class="equation_link">(42)</span><span id="margin_234573266012" class="marginequation" style="display: none;"><a href="chap2.html#eqtn42" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   & = & \sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k \nonumber\end{eqnarray}</a></span><script>$('#margin_234573266012_reveal').click(function() {$('#margin_234573266012').toggle('slow', function() {});});</script>
  we obtain
 <a class="displaced_anchor" name="eqtn45"></a>\begin{eqnarray}
   \delta^l_j = \sum_k w^{l+1}_{kj}  \delta^{l+1}_k \sigma'(z^l_j).
 \tag{45}\end{eqnarray}-->
 この式で
-<span id="margin_234573266012_reveal" class="equation_link">(42)</span><span id="margin_234573266012" class="marginequation" style="display: none;"><a href="chap2.html#eqtn42" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_234573266012_reveal" class="equation_link">(42)</span><span id="margin_234573266012" class="marginequation" style="display: none;"><a href="chap2.html#eqtn42" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   & = & \sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k \nonumber\end{eqnarray}</a></span><script>$('#margin_234573266012_reveal').click(function() {$('#margin_234573266012').toggle('slow', function() {});});</script>
 を置き換えると、次の式が得られます
 <a class="displaced_anchor" name="eqtn45"></a>\begin{eqnarray}
   \delta^l_j = \sum_k w^{l+1}_{kj}  \delta^{l+1}_k \sigma'(z^l_j).
 \tag{45}\end{eqnarray}
 <!--This is just
-<span id="margin_475522318211_reveal" class="equation_link">(BP2)</span><span id="margin_475522318211" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_475522318211_reveal" class="equation_link">(BP2)</span><span id="margin_475522318211" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_475522318211_reveal').click(function() {$('#margin_475522318211').toggle('slow', function() {});});</script> written in component form.-->
 この式を添え字を用いずに書いたものが
-<span id="margin_475522318211_reveal" class="equation_link">(BP2)</span><span id="margin_475522318211" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_475522318211_reveal" class="equation_link">(BP2)</span><span id="margin_475522318211" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP2" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l) \nonumber\end{eqnarray}</a></span><script>$('#margin_475522318211_reveal').click(function() {$('#margin_475522318211').toggle('slow', function() {});});</script>
 そのものです。
 </p>
@@ -1483,7 +1483,7 @@ Differentiating, we obtain
 <span id="margin_3687779347_reveal" class="equation_link">(BP3)</span><span id="margin_3687779347" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
   \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_3687779347_reveal').click(function() {$('#margin_3687779347').toggle('slow', function() {});});</script>
 and
-<span id="margin_283549566641_reveal" class="equation_link">(BP4)</span><span id="margin_283549566641" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+<span id="margin_283549566641_reveal" class="equation_link">(BP4)</span><span id="margin_283549566641" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_283549566641_reveal').click(function() {$('#margin_283549566641').toggle('slow', function() {});});</script>
 .
 These also follow from the chain rule, in a manner similar to the proofs of the two equations above.  I leave them to you as an exercise. -->
@@ -1491,7 +1491,7 @@ These also follow from the chain rule, in a manner similar to the proofs of the 
 <span id="margin_3687779347_reveal" class="equation_link">(BP3)</span><span id="margin_3687779347" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
   \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_3687779347_reveal').click(function() {$('#margin_3687779347').toggle('slow', function() {});});</script>
 と
-<span id="margin_283549566641_reveal" class="equation_link">(BP4)</span><span id="margin_283549566641" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+<span id="margin_283549566641_reveal" class="equation_link">(BP4)</span><span id="margin_283549566641" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_283549566641_reveal').click(function() {$('#margin_283549566641').toggle('slow', function() {});});</script>
 です。
 これらの式もこれまでの2つの式と似た方法で連鎖律から導けます。
@@ -1506,13 +1506,13 @@ These also follow from the chain rule, in a manner similar to the proofs of the 
 <span id="margin_230723398849_reveal" class="equation_link">(BP3)</span><span id="margin_230723398849" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
   \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_230723398849_reveal').click(function() {$('#margin_230723398849').toggle('slow', function() {});});</script>
 and
-<span id="margin_300679567613_reveal" class="equation_link">(BP4)</span><span id="margin_300679567613" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+<span id="margin_300679567613_reveal" class="equation_link">(BP4)</span><span id="margin_300679567613" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_300679567613_reveal').click(function() {$('#margin_300679567613').toggle('slow', function() {});});</script>
 .-->
 <span id="margin_230723398849_reveal" class="equation_link">(BP3)</span><span id="margin_230723398849" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP3" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  \frac{\partial C}{\partial b^l_j} =
   \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_230723398849_reveal').click(function() {$('#margin_230723398849').toggle('slow', function() {});});</script>
 と
-<span id="margin_300679567613_reveal" class="equation_link">(BP4)</span><span id="margin_300679567613" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}  
+<span id="margin_300679567613_reveal" class="equation_link">(BP4)</span><span id="margin_300679567613" class="marginequation" style="display: none;"><a href="chap2.html#eqtnBP4" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j \nonumber\end{eqnarray}</a></span><script>$('#margin_300679567613_reveal').click(function() {$('#margin_300679567613').toggle('slow', function() {});});</script>
 を証明してください。
 </ul></p>
@@ -1522,7 +1522,7 @@ backpropagation.  The proof may seem complicated.  But it's really
 just the outcome of carefully applying the chain rule.  A little less
 succinctly, we can think of backpropagation as a way of computing the
 gradient of the cost function by systematically applying the chain
-rule from multi-variable calculus. 
+rule from multi-variable calculus.
 That's all there really is to backpropagation - the rest is details.-->
 以上で逆伝播の4つの基本的な式の証明が完了しました。
 証明は一見複雑かもしれません。
@@ -1698,9 +1698,9 @@ current <tt>mini_batch</tt> of training examples:-->
             <span class="n">delta_nabla_b</span><span class="p">,</span> <span class="n">delta_nabla_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backprop</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
             <span class="n">nabla_b</span> <span class="o">=</span> <span class="p">[</span><span class="n">nb</span><span class="o">+</span><span class="n">dnb</span> <span class="k">for</span> <span class="n">nb</span><span class="p">,</span> <span class="n">dnb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nabla_b</span><span class="p">,</span> <span class="n">delta_nabla_b</span><span class="p">)]</span>
             <span class="n">nabla_w</span> <span class="o">=</span> <span class="p">[</span><span class="n">nw</span><span class="o">+</span><span class="n">dnw</span> <span class="k">for</span> <span class="n">nw</span><span class="p">,</span> <span class="n">dnw</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nabla_w</span><span class="p">,</span> <span class="n">delta_nabla_w</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nw</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nw</span>
                         <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">nw</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="n">nabla_w</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nb</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nb</span>
                        <span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">nb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">,</span> <span class="n">nabla_b</span><span class="p">)]</span>
 </pre></div>
 -->
@@ -1717,9 +1717,9 @@ current <tt>mini_batch</tt> of training examples:-->
             <span class="n">delta_nabla_b</span><span class="p">,</span> <span class="n">delta_nabla_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backprop</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
             <span class="n">nabla_b</span> <span class="o">=</span> <span class="p">[</span><span class="n">nb</span><span class="o">+</span><span class="n">dnb</span> <span class="k">for</span> <span class="n">nb</span><span class="p">,</span> <span class="n">dnb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nabla_b</span><span class="p">,</span> <span class="n">delta_nabla_b</span><span class="p">)]</span>
             <span class="n">nabla_w</span> <span class="o">=</span> <span class="p">[</span><span class="n">nw</span><span class="o">+</span><span class="n">dnw</span> <span class="k">for</span> <span class="n">nw</span><span class="p">,</span> <span class="n">dnw</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nabla_w</span><span class="p">,</span> <span class="n">delta_nabla_w</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nw</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nw</span>
                         <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">nw</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="n">nabla_w</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nb</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="p">(</span><span class="n">eta</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mini_batch</span><span class="p">))</span><span class="o">*</span><span class="n">nb</span>
                        <span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">nb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">,</span> <span class="n">nabla_b</span><span class="p">)]</span>
 </pre></div>
 <!--Most of the work is done by the line
@@ -1784,7 +1784,7 @@ you up, you may find it helpful to consult
     <span class="k">def</span> <span class="nf">cost_derivative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_activations</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the vector of partial derivatives \partial C_x /</span>
 <span class="sd">        \partial a for the output activations.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">output_activations</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> 
+        <span class="k">return</span> <span class="p">(</span><span class="n">output_activations</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;The sigmoid function.&quot;&quot;&quot;</span>
@@ -1836,7 +1836,7 @@ you up, you may find it helpful to consult
     <span class="k">def</span> <span class="nf">cost_derivative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_activations</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;出力活性に対する偏微分\partial C_x / \partial a </span>
 <span class="sd">        のベクトルを返却する。&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">output_activations</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> 
+        <span class="k">return</span> <span class="p">(</span><span class="n">output_activations</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;シグモイド関数&quot;&quot;&quot;</span>
@@ -2094,11 +2094,11 @@ final layer, and then in the cost function:
 </center>
 <!--The change $\Delta C$ in the cost is related to the change $\Delta
 w^l_{jk}$ in the weight by the equation
-<a class="displaced_anchor" name="eqtn47"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn47"></a>\begin{eqnarray}
   \Delta C \approx \frac{\partial C}{\partial w^l_{jk}} \Delta w^l_{jk}.
 \tag{47}\end{eqnarray}-->
 コスト関数の変化$\Delta C$は重みの変化$\Delta w^l_{jk}$と次式で関連付けられます
-<a class="displaced_anchor" name="eqtn47"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn47"></a>\begin{eqnarray}
   \Delta C \approx \frac{\partial C}{\partial w^l_{jk}} \Delta w^l_{jk}.
 \tag{47}\end{eqnarray}
 <!--This suggests that a possible approach to computing $\frac{\partial
@@ -2112,17 +2112,20 @@ $\partial C / \partial w^l_{jk}$.-->
 </p>
 <p>
 <!--Let's try to carry this out.  The change $\Delta w^l_{jk}$ causes a
-small change $\Delta a^{l}_j$ in the activation of the $j^{\rm th}$ neuron in the $l^{\rm th}$ layer. 
+small change $\Delta a^{l}_j$ in the activation of the $j^{\rm th}$ neuron in the $l^{\rm th}$ layer.
 This change is given by
-<a class="displaced_anchor" name="eqtn48"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn48"></a>\begin{eqnarray}
   \Delta a^l_j \approx \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk}.
 \tag{48}\end{eqnarray}-->
+
 このアイデアを実行に移してみましょう。
 重みが$\Delta w^l_{jk}$だけ変化する事で$l$番目の層の$j$番目のニューロンの活性に微小な変化$\Delta a^{l}_j$が発生します。
 この変化は
-<a class="displaced_anchor" name="eqtn48"></a>\begin{eqnarray} 
+<a class="displaced_anchor" name="eqtn48"></a>\begin{eqnarray}
   \Delta a^l_j \approx \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk}
 で与えられます。
+\tag{48}\end{eqnarray}
+
 <!--The change in activation $\Delta a^l_{j}$ will cause changes in
 <em>all</em> the activations in the next layer, i.e., the $(l+1)^{\rm
   th}$ layer.  We'll concentrate on the way just a single one of those
@@ -2148,14 +2151,14 @@ $\Delta a^l_{j}$は次のような変化を引き起こします
   \Delta a^{l+1}_q \approx \frac{\partial a^{l+1}_q}{\partial a^l_j} \Delta a^l_j.
 \tag{49}\end{eqnarray}
 <!--Substituting in the expression from Equation
-<span id="margin_545387421716_reveal" class="equation_link">(48)</span><span id="margin_545387421716" class="marginequation" style="display: none;"><a href="chap2.html#eqtn48" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_545387421716_reveal" class="equation_link">(48)</span><span id="margin_545387421716" class="marginequation" style="display: none;"><a href="chap2.html#eqtn48" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta a^l_j \approx \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk} \nonumber\end{eqnarray}</a></span><script>$('#margin_545387421716_reveal').click(function() {$('#margin_545387421716').toggle('slow', function() {});});</script>
 , we get:
 <a class="displaced_anchor" name="eqtn50"></a>\begin{eqnarray}
   \Delta a^{l+1}_q \approx \frac{\partial a^{l+1}_q}{\partial a^l_j} \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk}.
 \tag{50}\end{eqnarray}-->
 式
-<span id="margin_545387421716_reveal" class="equation_link">(48)</span><span id="margin_545387421716" class="marginequation" style="display: none;"><a href="chap2.html#eqtn48" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_545387421716_reveal" class="equation_link">(48)</span><span id="margin_545387421716" class="marginequation" style="display: none;"><a href="chap2.html#eqtn48" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta a^l_j \approx \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk} \nonumber\end{eqnarray}</a></span><script>$('#margin_545387421716_reveal').click(function() {$('#margin_545387421716').toggle('slow', function() {});});</script>
 内の表式をこれで置き換えると、
 <a class="displaced_anchor" name="eqtn50"></a>\begin{eqnarray}
@@ -2171,7 +2174,7 @@ finally, a change in the cost at the output.-->
 実際には、$w^l_{jk}$から$C$までのパスのうちの1つを考えると、このパスでは活性のそれぞれの変化が次の活性の変化を引き起こし、最終的に出力でのコストの変化を引き起こしています。
 <!--If the path goes through activations $a^l_j, a^{l+1}_q, \ldots, a^{L-1}_n, a^L_m$ then the resulting expression is
 <a class="displaced_anchor" name="eqtn51"></a>\begin{eqnarray}
-  \Delta C \approx \frac{\partial C}{\partial a^L_m} 
+  \Delta C \approx \frac{\partial C}{\partial a^L_m}
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
   \frac{\partial a^{l+1}_q}{\partial a^l_j}
@@ -2182,7 +2185,7 @@ each additional neuron we've passed through, as well as the $\partial
 C/\partial a^L_m$ term at the end.-->
 もしこのパスが$a^l_j, a^{l+1}_q, \ldots, a^{L-1}_n, a^L_m$を通るとしたら、得られる表式は
 <a class="displaced_anchor" name="eqtn51"></a>\begin{eqnarray}
-  \Delta C \approx \frac{\partial C}{\partial a^L_m} 
+  \Delta C \approx \frac{\partial C}{\partial a^L_m}
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
   \frac{\partial a^{l+1}_q}{\partial a^l_j}
@@ -2193,62 +2196,62 @@ C/\partial a^L_m$ term at the end.-->
 この値は$C$の変化のうち、特定のパス内にある活性の変化に由来するものです。
 $w^l_{jk}$の変化を伝播しコストに影響を与えるパスは他にもたくさんあり、この式はその中の1つしか考慮していません。
 <!--To compute the total change in $C$ it is plausible that we should sum over all the possible paths between the weight and the final cost, i.e.,
-<a class="displaced_anchor" name="eqtn52"></a>\begin{eqnarray} 
-  \Delta C \approx \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
+<a class="displaced_anchor" name="eqtn52"></a>\begin{eqnarray}
+  \Delta C \approx \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m}
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
-  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
+  \frac{\partial a^{l+1}_q}{\partial a^l_j}
   \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk},
 \tag{52}\end{eqnarray}
 where we've summed over all possible choices for the intermediate neurons along the path. -->
 $C$の変化の合計を計算するには、最初の重みと最後のコストの間で取りうる全てのパスについて和を取れば良いです。すなわち、
-<a class="displaced_anchor" name="eqtn52"></a>\begin{eqnarray} 
-  \Delta C \approx \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
+<a class="displaced_anchor" name="eqtn52"></a>\begin{eqnarray}
+  \Delta C \approx \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m}
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
-  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
+  \frac{\partial a^{l+1}_q}{\partial a^l_j}
   \frac{\partial a^l_j}{\partial w^l_{jk}} \Delta w^l_{jk},
 \tag{52}\end{eqnarray}
 ここで、和はパスを通る中間ニューロンの選び方として考えられる全体について足し合わせます。
 <!--Comparing with
-<span id="margin_941820302952_reveal" class="equation_link">(47)</span><span id="margin_941820302952" class="marginequation" style="display: none;"><a href="chap2.html#eqtn47" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_941820302952_reveal" class="equation_link">(47)</span><span id="margin_941820302952" class="marginequation" style="display: none;"><a href="chap2.html#eqtn47" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta C \approx \frac{\partial C}{\partial w^l_{jk}} \Delta w^l_{jk} \nonumber\end{eqnarray}</a></span><script>$('#margin_941820302952_reveal').click(function() {$('#margin_941820302952').toggle('slow', function() {});});</script>
 we see that
-<a class="displaced_anchor" name="eqtn53"></a>\begin{eqnarray} 
-  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
+<a class="displaced_anchor" name="eqtn53"></a>\begin{eqnarray}
+  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m}
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
-  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
+  \frac{\partial a^{l+1}_q}{\partial a^l_j}
   \frac{\partial a^l_j}{\partial w^l_{jk}}.
 \tag{53}\end{eqnarray}-->
-<span id="margin_941820302952_reveal" class="equation_link">(47)</span><span id="margin_941820302952" class="marginequation" style="display: none;"><a href="chap2.html#eqtn47" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
+<span id="margin_941820302952_reveal" class="equation_link">(47)</span><span id="margin_941820302952" class="marginequation" style="display: none;"><a href="chap2.html#eqtn47" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
   \Delta C \approx \frac{\partial C}{\partial w^l_{jk}} \Delta w^l_{jk} \nonumber\end{eqnarray}</a></span><script>$('#margin_941820302952_reveal').click(function() {$('#margin_941820302952').toggle('slow', function() {});});</script>
 と比較すると、
-<a class="displaced_anchor" name="eqtn53"></a>\begin{eqnarray} 
-  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
+<a class="displaced_anchor" name="eqtn53"></a>\begin{eqnarray}
+  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m}
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
-  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
+  \frac{\partial a^{l+1}_q}{\partial a^l_j}
   \frac{\partial a^l_j}{\partial w^l_{jk}}
 \tag{53}\end{eqnarray}
 とわかります。
 <!--Now, Equation
-<span id="margin_315845878357_reveal" class="equation_link">(53)</span><span id="margin_315845878357" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
+<span id="margin_315845878357_reveal" class="equation_link">(53)</span><span id="margin_315845878357" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m}
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
-  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
+  \frac{\partial a^{l+1}_q}{\partial a^l_j}
   \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_315845878357_reveal').click(function() {$('#margin_315845878357').toggle('slow', function() {});});</script>
 looks complicated. -->
-式<span id="margin_315845878357_reveal" class="equation_link">(53)</span><span id="margin_315845878357" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
+式<span id="margin_315845878357_reveal" class="equation_link">(53)</span><span id="margin_315845878357" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m}
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
-  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
+  \frac{\partial a^{l+1}_q}{\partial a^l_j}
   \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_315845878357_reveal').click(function() {$('#margin_315845878357').toggle('slow', function() {});});</script>
 は一見すると複雑そうに見えます。
-<!--However, it has a nice intuitive interpretation. 
-We're computing the rate of change of $C$ with respect to a weight in the network. 
+<!--However, it has a nice intuitive interpretation.
+We're computing the rate of change of $C$ with respect to a weight in the network.
 What the equation tells us is that every edge between two neurons in the
 network is associated with a rate factor which is just the partial
 derivative of one neuron's activation with respect to the other
@@ -2284,19 +2287,19 @@ this argument.-->
 この方向で議論をさらに進める方法を簡単に紹介します。
 <!--First, you could derive explicit expressions for all
 the individual partial derivatives in Equation
-<span id="margin_881976946368_reveal" class="equation_link">(53)</span><span id="margin_881976946368" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
+<span id="margin_881976946368_reveal" class="equation_link">(53)</span><span id="margin_881976946368" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m}
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
-  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
+  \frac{\partial a^{l+1}_q}{\partial a^l_j}
   \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_881976946368_reveal').click(function() {$('#margin_881976946368').toggle('slow', function() {});});</script>
 .-->
 まず、式
-<span id="margin_881976946368_reveal" class="equation_link">(53)</span><span id="margin_881976946368" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
+<span id="margin_881976946368_reveal" class="equation_link">(53)</span><span id="margin_881976946368" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m}
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
-  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
+  \frac{\partial a^{l+1}_q}{\partial a^l_j}
   \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_881976946368_reveal').click(function() {$('#margin_881976946368').toggle('slow', function() {});});</script>
 内の偏微分はすべて具体的な表式を与えます。
 <!-- That's easy to do with a bit of calculus.  Having done that, you could then try to figure out how to write all the sums over indices as matrix multiplications.  This turns out to be tedious, and requires some persistence, but not extraordinary insight.  After doing all this, and then simplifying as much as possible, what you discover is that you end up with exactly the backpropagation algorithm!  And so you can think of the
@@ -2342,11 +2345,11 @@ you.So you repeat again. -->
 <!-- The result after a few iterations is the proof we saw earlier *<span class="marginnote">
 *There is one clever step required.  In
   Equation
-<span id="margin_558321628107_reveal" class="equation_link">(53)</span><span id="margin_558321628107" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
+<span id="margin_558321628107_reveal" class="equation_link">(53)</span><span id="margin_558321628107" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m}
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
-  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
+  \frac{\partial a^{l+1}_q}{\partial a^l_j}
   \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_558321628107_reveal').click(function() {$('#margin_558321628107').toggle('slow', function() {});});</script>
 the intermediate variables are
   activations like $a_q^{l+1}$.  The clever idea is to switch to using
@@ -2358,11 +2361,11 @@ the intermediate variables are
 これを数回繰り返すと、本章の前の方で挙げた、短いけれども、若干わかりにくい証明が得られます*<span class="marginnote">
 *1箇所賢い操作が必要な箇所があります。
 式
-<span id="margin_558321628107_reveal" class="equation_link">(53)</span><span id="margin_558321628107" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray} 
-  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m} 
+<span id="margin_558321628107_reveal" class="equation_link">(53)</span><span id="margin_558321628107" class="marginequation" style="display: none;"><a href="chap2.html#eqtn53" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
+  \frac{\partial C}{\partial w^l_{jk}} = \sum_{mnp\ldots q} \frac{\partial C}{\partial a^L_m}
   \frac{\partial a^L_m}{\partial a^{L-1}_n}
   \frac{\partial a^{L-1}_n}{\partial a^{L-2}_p} \ldots
-  \frac{\partial a^{l+1}_q}{\partial a^l_j} 
+  \frac{\partial a^{l+1}_q}{\partial a^l_j}
   \frac{\partial a^l_j}{\partial w^l_{jk}} \nonumber\end{eqnarray}</a></span><script>$('#margin_558321628107_reveal').click(function() {$('#margin_558321628107').toggle('slow', function() {});});</script>
 において、中間変数は$a_q^{l+1}$のような活性です。賢いアイデアというのは、中間変数を$z^{l+1}_q$のような重みつき入力に取り替えるというものです。このアイデアを採用せず、活性$a^{l+1}_q$を使い続けると、最終的に得られる証明は若干複雑になります。</span>。
 証明がわかりにくいのは、それを構成する際に道標となるようなものが除かれてしまった為です。
