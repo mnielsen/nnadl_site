@@ -28,11 +28,13 @@ mini-batch		ミニバッチ
 model			モデル
 network	 		ニューラルネットワーク(network単体でニューラルネットワークを意味している場合。)
 neuron			ニューロン
+overfitting 過適合
 pertubation		摂動
 quadratic cost function	2乗コスト関数
 recognizer     認識器
 recurrent neural networks	再帰型ニューラルネットワーク
 rectified linear unit		Rectified Linear Unit/ReLU
+regularization 規格化
 saturation/saturated	飽和/飽和している
 step function		ステップ関数
 technique       手法

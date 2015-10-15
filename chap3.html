@@ -1070,21 +1070,56 @@ Kraft inequality in chapter 5 of the book about information theory by
     <li>学習に二次コストを使ったネットワークで出力ニューロンが飽和したときに学習の速度低下が起こることを時間をかけて議論してきました。学習を抑制する他の因子は、式<span id="margin_113861306005_reveal" class="equation_link">(61)</span><span id="margin_113861306005" class="marginequation" style="display: none;"><a href="chap3.html#eqtn61" style="padding-bottom: 5px;" onMouseOver="this.style.borderBottom='1px solid #2A6EA6';" onMouseOut="this.style.borderBottom='0px';">\begin{eqnarray}
           \frac{\partial C}{\partial w_j} =  \frac{1}{n} \sum_x x_j(\sigma(z)-y) \nonumber\end{eqnarray}</a></span><script>$('#margin_113861306005_reveal').click(function() {$('#margin_113861306005').toggle('slow', function() {});});</script>の$x_j$の項の存在です。この項により、入力$x_j$がゼロに近ければ対応する重み$w_j$の学習は遅くなります。賢いコスト関数を選んでも、この$x_j$の項を消すのは不可能であることを説明してください。
 </ul></p>
-<p><h3><a name="overfitting_and_regularization"></a><a href="#overfitting_and_regularization">Overfitting and regularization</a></h3></p><p>The Nobel prizewinning physicist Enrico Fermi was once asked his
+<p>
+<!--  <h3><a name="overfitting_and_regularization"></a><a href="#overfitting_and_regularization">Overfitting and regularization</a></h3></p>-->
+<h3><a name="overfitting_and_regularization"></a><a href="#overfitting_and_regularization">過適合と規格化</a></h3></p>
+
+<!--
+<p>The Nobel prizewinning physicist Enrico Fermi was once asked his
 opinion of a mathematical model some colleagues had proposed as the
 solution to an important unsolved physics problem.  The model gave
 excellent agreement with experiment, but Fermi was skeptical.  He
 asked how many free parameters could be set in the model.  "Four"
-was the answer.  Fermi replied*<span class="marginnote">
+  was the answer.  Fermi replied*
+-->
+
+<p>ノーベル賞受賞者の物理学者エンリコ・フェルミはあるとき、
+  とある物理の未解決問題の解としてあるグループが提案した数学的モデルについての意見を求められました。
+  そのモデルは実験と非常に良い一致をみせていましたが  フェルミは懐疑的でした。
+  フェルミは、そのモデルには自由に設定できるパラメータがいくつあるか、と尋ねました。
+  答えは４つ、ということでした。
+  そこでフェルミはこう答えたそうです。
+
+
+  <span class="marginnote">
+*このエピソードは、
+  <a href="http://www.nature.com/nature/journal/v427/n6972/full/427297a.html">フリーマン・ダイソン
+  </a>
+  のチャーミングな文章から引用したものです。ダイソンはまさにフェルミが批判したモデルの提案者の一人でした。
+  4パラメータの象はここ
+  <a href="http://www.johndcook.com/blog/2011/06/21/how-to-fit-an-elephant/">
+  </a>にあります。 </span>:
+
+  <!--
+  <span class="marginnote">
 *The quote comes from a
   charming article by
   <a href="http://www.nature.com/nature/journal/v427/n6972/full/427297a.html">Freeman
     Dyson</a>, who is one of the people who proposed the flawed model. A
   four-parameter elephant may be found
   <a href="http://www.johndcook.com/blog/2011/06/21/how-to-fit-an-elephant/">here</a>. </span>:
+-->
+
+  <!--
 "I remember my friend Johnny von Neumann used to say, with four
 parameters I can fit an elephant, and with five I can make him wiggle
-his trunk.".</p><p>The point, of course, is that models with a large number of free
+his trunk.".
+    -->
+「私の友人ジョン・フォン・ノイマンが言っていたよ。私ならパラメータが4つあれば象だってフィッティングできる、5つあれば象の鼻を振れる、とね。」
+</p><p>
+
+  <!--
+The point, of course, is that models with a large number of free
 parameters can describe an amazingly wide range of phenomena.  Even if
 such a model agrees well with the available data, that doesn't make it
 a good model.  It may just mean there's enough freedom in the model
@@ -1093,12 +1128,40 @@ capturing any genuine insights into the underlying phenomenon.  When
 that happens the model will work well for the existing data, but will
 fail to generalize to new situations.  The true test of a model is its
 ability to make predictions in situations it hasn't been exposed to
-before.</p><p>Fermi and von Neumann were suspicious of models with four parameters.
+before.
+    -->
+
+この話のポイントは、もちろん、モデルの自由パラメータの数が多ければ、驚くほど多くの現象を説明できてしまう、という点です。
+たとえ手元のデータと良く一致したとしても、そのようなモデルが良いモデルだとは一概には言えません。
+  もしかすると、そのモデルは、与えられたデータの
+  背後にある現象になんら本質的な洞察を与えることなく、
+  パラメータの多さにまかせてとりあえず
+  フィットできてしまうだけなのかもしれません。
+  もしこれが起こっているなら、このモデルは既存のデータに対してはよくあてはまりますが、
+  新しい状況への汎化に失敗するでしょう。
+  モデルの真価は、そのモデルが経験したことないような状況での予言力で測られるのです。
+
+
+</p><p>
+<!--
+  Fermi and von Neumann were suspicious of models with four parameters.
 Our 30 hidden neuron network for classifying MNIST digits has nearly
 24,000 parameters!  That's a lot of parameters.  Our 100 hidden neuron
 network has nearly 80,000 parameters, and state-of-the-art deep neural
 nets sometimes contain millions or even billions of parameters.
-Should we trust the results?</p><p>Let's sharpen this problem up by constructing a situation where our
+  Should we trust the results? -->
+
+  フェルミとフォンノイマンは、4つしかパラメータのないモデルに対してすでに懐疑的でした。
+  30個の隠れニューロンを持つ私たちのMNIST分類ネットワークには、なんと約24,000個ものパラメータがあります！
+  うわっ、私のパラメータ、多すぎ？100個の隠れニューロンがあるネットワークなら、パラメータの数は8万個近くにもなり、
+  そして最新の深層学習ニューラルネットにはときに何百万、何億という数のパラメータが含まれます。
+  こんなものを信じて、大丈夫でしょうか？
+
+
+</p><p>
+
+<!--
+  Let's sharpen this problem up by constructing a situation where our
 network does a bad job generalizing to new situations.  We'll use our
 30 hidden neuron network, with its 23,860 parameters.  But we won't
 train the network using all 50,000 MNIST training images.  Instead,
@@ -1109,7 +1172,16 @@ function, with a learning rate of $\eta = 0.5$ and a mini-batch size
 of $10$.  However, we'll train for 400 epochs, a somewhat larger
 number than before, because we're not using as many training examples.
 Let's use <tt>network2</tt> to look at the way the cost function
-changes:</p><p><div class="highlight"><pre>
+  changes: -->
+
+  この問題の具体例として、私たちのニューラルネットワークが新しい状況に適応できない状態というのを
+  実際に作ってみましょう。まず、使うのは隠れニューロン30個、パラメータが23,860個のモデルです。ただし、
+  MNISTの50,000個の画像を全部使わず、先頭1,000個の画像だけを使います。データ集合を制限することで、汎化失敗現象が見やすくなります。
+  訓練方法は以前と同様、学習率$\eta = 0.5$、ミニバッチサイズ$10$を採用します。ただし、訓練例が少ないぶん、訓練期間は400エポックと、以前より長くします。
+  コスト関数の変化のようすを見るために<tt>network2</tt>を使いましょう：
+
+
+</p><p><div class="highlight"><pre>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">mnist_loader</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">training_data</span><span class="p">,</span> <span class="n">validation_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> \
 <span class="o">...</span> <span class="n">mnist_loader</span><span class="o">.</span><span class="n">load_data_wrapper</span><span class="p">()</span>
@@ -1119,12 +1191,27 @@ changes:</p><p><div class="highlight"><pre>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">net</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">training_data</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">evaluation_data</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span>
 <span class="o">...</span> <span class="n">monitor_evaluation_accuracy</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">monitor_training_cost</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
- </p><p>Using the results we can plot the way the cost changes as the network
+</p><p>
+
+<!--
+  Using the results we can plot the way the cost changes as the network
 learns*<span class="marginnote">
 *This and the next four graphs were generated by the
   program
   <a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/fig/overfitting.py">overfitting.py</a>.</span>
-:</p><p><center><img src="images/overfitting1.png" width="520px"></center></p><p>This looks encouraging, showing a smooth decrease in the cost, just as
+  :
+-->
+
+
+この結果を用いて、学習の進行に対するコスト関数の変化をプロットしてみます*
+<span class="marginnote">
+*このグラフと、次の4つのグラフは
+<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/fig/overfitting.py">overfitting.py</a>
+から生成しています。</span>
+  :
+
+
+</p><p><center><img src="images/overfitting1.png" width="520px"></center></p><p>This looks encouraging, showing a smooth decrease in the cost, just as
 we expect.  Note that I've only shown training epochs 200 through 399.
 This gives us a nice up-close view of the later stages of learning,
 which, as we'll see, turns out to be where the interesting action is.</p><p>Let's now look at how the classification accuracy on the test data
@@ -1207,7 +1294,9 @@ saturated*<span class="marginnote">
   continuing to improve.  I wouldn't be surprised if more learning
   could have occurred even after epoch 400, although the magnitude of
   any further improvement would likely be small.  So it's possible to
-  adopt more or less aggressive strategies for early stopping.</span>.</p><p>Why use the <tt>validation_data</tt> to prevent overfitting, rather than
+adopt more or less aggressive strategies for early stopping.</span>.
+
+</p><p>Why use the <tt>validation_data</tt> to prevent overfitting, rather than
 the <tt>test_data</tt>?  In fact, this is part of a more general
 strategy, which is to use the <tt>validation_data</tt> to evaluate
 different trial choices of hyper-parameters such as the number of
