@@ -29,6 +29,7 @@ model			モデル
 network	 		ニューラルネットワーク(network単体でニューラルネットワークを意味している場合。)
 neuron			ニューロン
 overfitting 過適合
+overtraining 過学習
 pertubation		摂動
 quadratic cost function	2乗コスト関数
 recognizer     認識器
@@ -42,5 +43,5 @@ training example        訓練例
 universal               万能な(for computation)
 universality theorem	普遍性定理
 vector			ベクトル
-weight	 		重み(パーセプトロンの)
+weight	　　　 		重み(パーセプトロンの)
 weighted input		重み付き入力

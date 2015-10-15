@@ -1218,11 +1218,17 @@ we expect.  Note that I've only shown training epochs 200 through 399.
 This gives us a nice up-close view of the later stages of learning,
   which, as we'll see, turns out to be where the interesting action is.
 
+  期待通り、コストはなめらかな減少を示しています。
+  学習後期のふるまいを拡大して観察したいので、
+  上図ではエポック200 - 399だけを表示しています。
+  この学習後期で起こっている面白い現象を、これからみていきます。
 </p><p>
 
 
   Let's now look at how the classification accuracy on the test data
   changes over time:
+
+  こんどは、試験データの分類精度がどう変化しているか見てみましょう：
 
 </p><p><center><img src="images/overfitting2.png" width="520px"></center></p><p>
 
@@ -1240,6 +1246,20 @@ no longer generalizes to the test data.  And so it's not useful
 learning.  We say the network is <em>overfitting</em> or
   <em>overtraining</em> beyond epoch 280.
 
+  またしても、ちょっとズームインした図です。図の範囲に入る以前の、最初の200エポックで
+  精度は82パーセント直前まで上昇しています。その後、学習はだんだん鈍化し、ついに280エポック付近で分類精度はほとんど改善がみられなくなります。
+  以降は、280エポックにて達成した精度のまわりに、小さな統計的ゆらぎが見られるだけになります。
+  このグラフと、訓練データのコスト関数がなめらかに減少しつづける以前のグラフを見比べてください。
+  コスト関数を見るかぎり、モデルの性能はいっけん良くなり続けているようです。しかし試験データの分類精度をみると、
+  コスト関数でみられた「改善」は幻であることがわかります。
+  エポック280以降のニューラルネットワークが学習した知識は、
+  フェルミがディスっていたモデルと同じく、試験データに一般化できない知識だったのです。
+  したがって、有用な学習ではなかった、といえます。このようなとき、エポック280以降のニューラルネットワークは
+ <em>過適合</em>している、
+  <em>過学習</em>している、などと言います。
+
+
+
 </p><p>
 
   You might wonder if the problem here is that I'm looking at the
@@ -1252,7 +1272,12 @@ measures?  Or perhaps we could compare the classification accuracy on
 both the training data and the test data?  In fact, essentially the
 same phenomenon shows up no matter how we do the comparison.  The
 details do change, however. For instance, let's look at the cost on
-the test data:</p><p><center><img src="images/overfitting3.png" width="520px"></center></p><p>We can see that the cost on the test data improves until around epoch
+the test data:
+
+</p><p>
+  <center><img src="images/overfitting3.png" width="520px"></center></p><p>
+
+  We can see that the cost on the test data improves until around epoch
 15, but after that it actually starts to get worse, even though the
 cost on the training data is continuing to get better.  This is
 another sign that our model is overfitting.  It poses a puzzle,
