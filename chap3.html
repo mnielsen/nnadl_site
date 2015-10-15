@@ -1211,11 +1211,22 @@ learns*<span class="marginnote">
   :
 
 
-</p><p><center><img src="images/overfitting1.png" width="520px"></center></p><p>This looks encouraging, showing a smooth decrease in the cost, just as
+</p><p><center><img src="images/overfitting1.png" width="520px"></center></p><p>
+
+  This looks encouraging, showing a smooth decrease in the cost, just as
 we expect.  Note that I've only shown training epochs 200 through 399.
 This gives us a nice up-close view of the later stages of learning,
-which, as we'll see, turns out to be where the interesting action is.</p><p>Let's now look at how the classification accuracy on the test data
-changes over time:</p><p><center><img src="images/overfitting2.png" width="520px"></center></p><p>Again, I've zoomed in quite a bit.  In the first 200 epochs (not
+  which, as we'll see, turns out to be where the interesting action is.
+
+</p><p>
+
+
+  Let's now look at how the classification accuracy on the test data
+  changes over time:
+
+</p><p><center><img src="images/overfitting2.png" width="520px"></center></p><p>
+
+  Again, I've zoomed in quite a bit.  In the first 200 epochs (not
 shown) the accuracy rises to just under 82 percent.  The learning then
 gradually slows down.  Finally, at around epoch 280 the classification
 accuracy pretty much stops improving.  Later epochs merely see small
@@ -1227,7 +1238,11 @@ test accuracy results show the improvement is an illusion.  Just like
 the model that Fermi disliked, what our network learns after epoch 280
 no longer generalizes to the test data.  And so it's not useful
 learning.  We say the network is <em>overfitting</em> or
-<em>overtraining</em> beyond epoch 280.</p><p>You might wonder if the problem here is that I'm looking at the
+  <em>overtraining</em> beyond epoch 280.
+
+</p><p>
+
+  You might wonder if the problem here is that I'm looking at the
 <em>cost</em> on the training data, as opposed to the
 <em>classification accuracy</em> on the test data.  In other words,
 maybe the problem is that we're making an apples and organges
