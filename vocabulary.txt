@@ -40,6 +40,8 @@ saturation/saturated	飽和/飽和している
 step function		ステップ関数
 technique       手法
 training example        訓練例
+training data           訓練データ
+test data               試験データ
 universal               万能な(for computation)
 universality theorem	普遍性定理
 vector			ベクトル

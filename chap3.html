@@ -1213,10 +1213,11 @@ learns*<span class="marginnote">
 
 </p><p><center><img src="images/overfitting1.png" width="520px"></center></p><p>
 
+  <!--
   This looks encouraging, showing a smooth decrease in the cost, just as
 we expect.  Note that I've only shown training epochs 200 through 399.
 This gives us a nice up-close view of the later stages of learning,
-  which, as we'll see, turns out to be where the interesting action is.
+  which, as we'll see, turns out to be where the interesting action is. -->
 
   期待通り、コストはなめらかな減少を示しています。
   学習後期のふるまいを拡大して観察したいので、
@@ -1224,14 +1225,15 @@ This gives us a nice up-close view of the later stages of learning,
   この学習後期で起こっている面白い現象を、これからみていきます。
 </p><p>
 
-
+<!--
   Let's now look at how the classification accuracy on the test data
-  changes over time:
+  changes over time:-->
 
   こんどは、試験データの分類精度がどう変化しているか見てみましょう：
 
 </p><p><center><img src="images/overfitting2.png" width="520px"></center></p><p>
 
+  <!--
   Again, I've zoomed in quite a bit.  In the first 200 epochs (not
 shown) the accuracy rises to just under 82 percent.  The learning then
 gradually slows down.  Finally, at around epoch 280 the classification
@@ -1244,9 +1246,9 @@ test accuracy results show the improvement is an illusion.  Just like
 the model that Fermi disliked, what our network learns after epoch 280
 no longer generalizes to the test data.  And so it's not useful
 learning.  We say the network is <em>overfitting</em> or
-  <em>overtraining</em> beyond epoch 280.
+  <em>overtraining</em> beyond epoch 280. -->
 
-  またしても、ちょっとズームインした図です。図の範囲に入る以前の、最初の200エポックで
+  この図も、かなり拡大して見せています。図の範囲に入る以前の、最初の200エポックで
   精度は82パーセント直前まで上昇しています。その後、学習はだんだん鈍化し、ついに280エポック付近で分類精度はほとんど改善がみられなくなります。
   以降は、280エポックにて達成した精度のまわりに、小さな統計的ゆらぎが見られるだけになります。
   このグラフと、訓練データのコスト関数がなめらかに減少しつづける以前のグラフを見比べてください。
@@ -1262,6 +1264,7 @@ learning.  We say the network is <em>overfitting</em> or
 
 </p><p>
 
+  <!--
   You might wonder if the problem here is that I'm looking at the
 <em>cost</em> on the training data, as opposed to the
 <em>classification accuracy</em> on the test data.  In other words,
@@ -1272,11 +1275,19 @@ measures?  Or perhaps we could compare the classification accuracy on
 both the training data and the test data?  In fact, essentially the
 same phenomenon shows up no matter how we do the comparison.  The
 details do change, however. For instance, let's look at the cost on
-the test data:
+the test data: -->
+
+もしかして、訓練データの<em>コスト関数</em>と、試験データの
+<em>分類精度</em>という、異なるものを比較したのがいけなかったのかもしれません。
+それでは、訓練データのコスト関数と試験データのコスト関数同士を較べたらどうでしょうか？
+逆に、訓練データと試験データの分類精度を比べたらどうでしょうか？実は、
+どの方法で比較しても、同じような過学習の兆候が見られます。ただし、
+細部には確かに違いがあります。例えば、試験データのコスト関数を見てみましょう：
 
 </p><p>
   <center><img src="images/overfitting3.png" width="520px"></center></p><p>
 
+  <!--
   We can see that the cost on the test data improves until around epoch
 15, but after that it actually starts to get worse, even though the
 cost on the training data is continuing to get better.  This is
@@ -1287,25 +1298,68 @@ practical point of view, what we really care about is improving
 classification accuracy on the test data, while the cost on the test
 data is no more than a proxy for classification accuracy.  And so it
 makes most sense to regard epoch 280 as the point beyond which
-overfitting is dominating learning in our neural network.</p><p>Another sign of overfitting may be seen in the classification accuracy
-on the training data:</p><p><center><img src="images/overfitting4.png" width="520px"></center></p><p>The accuracy rises all the way up to $100$ percent.  That is, our
+  overfitting is dominating learning in our neural network. -->
+
+  図から、試験データのコスト関数はエポック15あたりまでは改善していくが、その後は実は
+  悪化しはじめていたことがわかります。いっぽうで訓練データのコスト関数は改善しつづけていますから、
+  これもまた過適合の兆候であるといえます。もっとも、ここで1つの疑問がわいてきます。学習は
+  どの時点から過適合に陥ったと見做すべきでしょうか？
+  エポック15からでしょうか、それともエポック280？
+
+  実用的な観点からいえば、私たちの本来の目的は試験データの分類精度を向上させることであって、
+  試験データのコスト関数は分類精度の間接的な指標にすぎません。ですから、エポック280をもって
+  学習が過適合に陥った時点と見做すのが最も合理的といえます。
+
+
+</p><p>
+
+<!--
+  Another sign of overfitting may be seen in the classification accuracy
+  on the training data:-->
+
+  訓練データの分類精度にも、過学習の兆候が現れています：
+
+</p><p><center><img src="images/overfitting4.png" width="520px"></center></p><p>
+
+  <!--
+  The accuracy rises all the way up to $100$ percent.  That is, our
 network correctly classifies all $1,000$ training images!  Meanwhile,
 our test accuracy tops out at just $82.27$ percent.  So our network
 really is learning about peculiarities of the training set, not just
 recognizing digits in general.  It's almost as though our network is
 merely memorizing the training set, without understanding digits well
-enough to generalize to the test set.</p><p>Overfitting is a major problem in neural networks.  This is especially
+  enough to generalize to the test set. -->
+
+  精度が100パーセントまでひたすら向上しています。つまり、私たちのニューラルネットワークは
+  1,000件の訓練画像をすべて正しく分類しているのです！いっぽう、試験データの分類精度は
+  せいぜい82.27パーセント程度が最大です。つまり、私たちのニューラルネットワークはもはや
+  数字の認識一般を学習しているのではなく、訓練データ画像に特有の癖を学習してしまっているのです。
+  数字とは何かを理解し試験データにも汎化できるような理解を得ようとせずに、ただ訓練データを丸暗記してしまっている、
+  と言ってもよいでしょう。
+
+</p><p>
+
+  Overfitting is a major problem in neural networks.  This is especially
 true in modern networks, which often have very large numbers of
 weights and biases.  To train effectively, we need a way of detecting
 when overfitting is going on, so we don't overtrain.  And we'd like to
-have techniques for reducing the effects of overfitting.</p><p>The obvious way to detect overfitting is to use the approach above,
+  have techniques for reducing the effects of overfitting.
+
+</p><p>
+
+  The obvious way to detect overfitting is to use the approach above,
 keeping track of accuracy on the test data as our network trains.  If
 we see that the accuracy on the test data is no longer improving, then
 we should stop training.  Of course, strictly speaking, this is not
 necessarily a sign of overfitting.  It might be that accuracy on the
 test data and the training data both stop improving at the same time.
-Still, adopting this strategy will prevent overfitting.</p><p>In fact, we'll use a variation on this strategy.  Recall that when we
-load in the MNIST data we load in three data sets:
+  Still, adopting this strategy will prevent overfitting.
+
+</p><p>
+
+  In fact, we'll use a variation on this strategy.  Recall that when we
+  load in the MNIST data we load in three data sets:
+
 <div class="highlight"><pre>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">mnist_loader</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">training_data</span><span class="p">,</span> <span class="n">validation_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> \
