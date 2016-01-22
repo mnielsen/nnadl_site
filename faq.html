@@ -3,6 +3,7 @@
 <!-- Produced from a LaTeX source file.  Note that the production is done -->
 <!-- by a very rough-and-ready (and buggy) script, so the HTML and other  -->
 <!-- code is quite ugly!  Later versions should be better.                -->
+<head>
     <meta charset="utf-8">
     <meta name="citation_title" content="Neural Networks and Deep Learning">
     <meta name="citation_author" content="Nielsen, Michael A.">
@@ -19,12 +20,12 @@
           {scale: 92},
         TeX: { equationNumbers: { autoNumber: "AMS" }}});
     </script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
     <link href="assets/style.css" rel="stylesheet">
     <link href="assets/pygments.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
 <style>
 /* Adapted from */
@@ -33,20 +34,20 @@
 
 @font-face {
     font-family: 'MJX_Math';
-    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot'); /* IE9 Compat Modes */
-    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot?iefix') format('eot'),
-    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff')  format('woff'),
-    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf')  format('opentype'),
-    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/svg/MathJax_Math-Italic.svg#MathJax_Math-Italic') format('svg');
+    src: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot'); /* IE9 Compat Modes */
+    src: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot?iefix') format('eot'),
+    url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff')  format('woff'),
+    url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf')  format('opentype'),
+    url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/svg/MathJax_Math-Italic.svg#MathJax_Math-Italic') format('svg');
 }
 
 @font-face {
     font-family: 'MJX_Main';
-    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot'); /* IE9 Compat Modes */
-    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot?iefix') format('eot'),
-    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff')  format('woff'),
-    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf')  format('opentype'),
-    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/svg/MathJax_Main-Regular.svg#MathJax_Main-Regular') format('svg');
+    src: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot'); /* IE9 Compat Modes */
+    src: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot?iefix') format('eot'),
+    url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff')  format('woff'),
+    url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf')  format('opentype'),
+    url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/svg/MathJax_Main-Regular.svg#MathJax_Main-Regular') format('svg');
 }
 </style>
 
@@ -141,17 +142,15 @@ src='assets/visionsmarts.png' width='160px' style="padding: 0px 0px
 0px 0px; border-style: none;"></a> <br/> 
 
 <p class="sidebar">Thanks to all the <a
-href="supporters.html">supporters</a> who made the book possible.
-Thanks also to all the contributors to the <a
-href="bugfinder.html">Bugfinder Hall of Fame</a>.  </p>
-
-<p class="sidebar">The book is currently a beta release, and is still
-under active development.  Please send error reports to
-mn@michaelnielsen.org.  For other enquiries, please see the <a
-href="faq.html">FAQ</a> first.</p>
+href="supporters.html">supporters</a> who made the book possible, with
+especial thanks to Pavel Dudrenov.  Thanks also to all the
+contributors to the <a href="bugfinder.html">Bugfinder Hall of
+Fame</a>.  </p>
 
 <hr>
 <span class="sidebar_title">Resources</span>
+
+<p class="sidebar"><a href="faq.html">Book FAQ</a></p>
 
 <p class="sidebar">
 <a href="https://github.com/mnielsen/neural-networks-and-deep-learning">Code repository</a></p>
@@ -168,10 +167,10 @@ Courville</p>
 <a href="http://michaelnielsen.org"><img src="assets/Michael_Nielsen_Web_Small.jpg" width="160px" style="border-style: none;"/></a>
 
 <p class="sidebar">
-By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Aug 2015
+By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Jan 2016
 </p>
 </div>
-</p><p><strong>Is there a pdf or print version of the book available, or  planned?</strong>  There's no pdf or print version available, nor planned.</p><p>People sometimes suggest that it would be easy to convert the book topdf or print.  However, the book contains dozens of interactiveJavaScript elements, and the narrative often depends on the readerinteracting with those elements in some way.  Doing the "easy"conversion would result in a poor quality product.  Of course, thoseinteractive parts could be rewritten to make sense in static form, butdoing it well would be a big job.</p><p><strong>Can you help me a mathematical problem, or with debugging my  work?</strong>  No.  I suggest chatting about your problem with friends orcolleagues.  If that's no help, try an appropriate online forum to askyour question.</p><p><strong>Do you have solutions to the exercises and problems?</strong> Sorry,no.</p><p><strong>I'd like to do a translation into another language.  Is that  okay?</strong>  It's fine under the terms of the book's license (see thepage footer for details), provided: (1) you're not doing it for aproduct which is commercial in some way (e.g., you intend to sell it);and (2) you acknowledge me as the original author.  I'd alsoappreciate a link, of course.  If you have a commercial interest,please get in touch so we can discuss (mn@michaelnielsen.org).</p><p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p><p></div><div class="footer"> <span class="left_footer"> In academic work,
+</p><p><strong>Is there a pdf or print version of the book available, or  planned?</strong>  There's no pdf or print version available, nor planned.</p><p>People sometimes suggest that it would be easy to convert the book topdf or print.  However, the book contains dozens of interactiveJavaScript elements, and the narrative often depends on the readerinteracting with those elements in some way.  Doing the "easy"conversion would result in a poor quality product.  Of course, thoseinteractive parts could be rewritten to make sense in static form, butdoing it well would be a big job.</p><p><strong>Can you help me with a mathematical problem, or with debugging  my work?</strong>  No.  I suggest chatting about your problem with friendsor colleagues.  If that's no help, try an appropriate online forum toask your question.</p><p><strong>Do you have solutions to the exercises and problems?</strong> Sorry,no.</p><p><strong>I'd like to do a translation into another language.  Is that  okay?</strong>  It's fine under the terms of the book's license (see thepage footer for details), provided: (1) you're not doing it for aproduct which is commercial in some way (e.g., you intend to sell it);and (2) you acknowledge me as the original author.  I'd alsoappreciate a link, of course.  If you have a commercial interest,please get in touch so we can discuss (mn@michaelnielsen.org).</p><p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p><p></div><div class="footer"> <span class="left_footer"> In academic work,
 please cite this book as: Michael A. Nielsen, "Neural Networks and
 Deep Learning", Determination Press, 2015
 
@@ -187,7 +186,7 @@ commercial use, please <a
 href="mailto:mn@michaelnielsen.org">contact me</a>.
 </span>
 <span class="right_footer">
-Last update: Thu Aug 13 11:49:43 2015
+Last update: Fri Jan 22 14:09:50 2016
 <br/>
 <br/>
 <br/>

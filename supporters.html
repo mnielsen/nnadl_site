@@ -3,6 +3,7 @@
 <!-- Produced from a LaTeX source file.  Note that the production is done -->
 <!-- by a very rough-and-ready (and buggy) script, so the HTML and other  -->
 <!-- code is quite ugly!  Later versions should be better.                -->
+<head>
     <meta charset="utf-8">
     <meta name="citation_title" content="Neural Networks and Deep Learning">
     <meta name="citation_author" content="Nielsen, Michael A.">
@@ -19,12 +20,12 @@
           {scale: 92},
         TeX: { equationNumbers: { autoNumber: "AMS" }}});
     </script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
     <link href="assets/style.css" rel="stylesheet">
     <link href="assets/pygments.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
 <style>
 /* Adapted from */
@@ -33,20 +34,20 @@
 
 @font-face {
     font-family: 'MJX_Math';
-    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot'); /* IE9 Compat Modes */
-    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot?iefix') format('eot'),
-    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff')  format('woff'),
-    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf')  format('opentype'),
-    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/svg/MathJax_Math-Italic.svg#MathJax_Math-Italic') format('svg');
+    src: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot'); /* IE9 Compat Modes */
+    src: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot?iefix') format('eot'),
+    url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff')  format('woff'),
+    url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf')  format('opentype'),
+    url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/svg/MathJax_Math-Italic.svg#MathJax_Math-Italic') format('svg');
 }
 
 @font-face {
     font-family: 'MJX_Main';
-    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot'); /* IE9 Compat Modes */
-    src: url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot?iefix') format('eot'),
-    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff')  format('woff'),
-    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf')  format('opentype'),
-    url('http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/svg/MathJax_Main-Regular.svg#MathJax_Main-Regular') format('svg');
+    src: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot'); /* IE9 Compat Modes */
+    src: url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot?iefix') format('eot'),
+    url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff')  format('woff'),
+    url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf')  format('opentype'),
+    url('https://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/svg/MathJax_Main-Regular.svg#MathJax_Main-Regular') format('svg');
 }
 </style>
 
@@ -141,17 +142,15 @@ src='assets/visionsmarts.png' width='160px' style="padding: 0px 0px
 0px 0px; border-style: none;"></a> <br/> 
 
 <p class="sidebar">Thanks to all the <a
-href="supporters.html">supporters</a> who made the book possible.
-Thanks also to all the contributors to the <a
-href="bugfinder.html">Bugfinder Hall of Fame</a>.  </p>
-
-<p class="sidebar">The book is currently a beta release, and is still
-under active development.  Please send error reports to
-mn@michaelnielsen.org.  For other enquiries, please see the <a
-href="faq.html">FAQ</a> first.</p>
+href="supporters.html">supporters</a> who made the book possible, with
+especial thanks to Pavel Dudrenov.  Thanks also to all the
+contributors to the <a href="bugfinder.html">Bugfinder Hall of
+Fame</a>.  </p>
 
 <hr>
 <span class="sidebar_title">Resources</span>
+
+<p class="sidebar"><a href="faq.html">Book FAQ</a></p>
 
 <p class="sidebar">
 <a href="https://github.com/mnielsen/neural-networks-and-deep-learning">Code repository</a></p>
@@ -168,7 +167,7 @@ Courville</p>
 <a href="http://michaelnielsen.org"><img src="assets/Michael_Nielsen_Web_Small.jpg" width="160px" style="border-style: none;"/></a>
 
 <p class="sidebar">
-By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Aug 2015
+By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Jan 2016
 </p>
 </div>
 <p>A big thankyou to all the supporters whose contributions have made this work possible.  Supporters include:</p>
@@ -256,290 +255,290 @@ By <a href="http://michaelnielsen.org">Michael Nielsen</a> / Aug 2015
 <tr>
 <td>Michael J. Douglas</td>
 <td>Daniel George Drumea</td>
-<td>Igor Dzreyev</td>
+<td>Pavel Dudrenov</td>
 </tr>
 <tr>
+<td>Igor Dzreyev</td>
 <td>Jeff Elmore</td>
 <td>Mark England</td>
-<td>Brian Eoff</td>
 </tr>
 <tr>
+<td>Brian Eoff</td>
 <td>Geoff Ericksson</td>
 <td>Daniel Fernandes</td>
-<td>Chris Ferrie</td>
 </tr>
 <tr>
+<td>Chris Ferrie</td>
 <td>Ivo Flipse</td>
 <td>Jelle Foks</td>
-<td>Mardini Fouad</td>
 </tr>
 <tr>
+<td>Mardini Fouad</td>
 <td>Rod Frey</td>
 <td>Curtis Frye</td>
-<td>Manoel Galdino</td>
 </tr>
 <tr>
+<td>Manoel Galdino</td>
 <td>Senthil Gandhi</td>
 <td>Inmar Givoni</td>
-<td>Jeffrey Gold</td>
 </tr>
 <tr>
+<td>Jeffrey Gold</td>
 <td>Vojimir Golem</td>
 <td>Christopher Granade</td>
-<td>Ilya Grigorik</td>
 </tr>
 <tr>
+<td>Ilya Grigorik</td>
 <td>Steven Grimm</td>
 <td>Joel Grus</td>
-<td>Miki Habryn</td>
 </tr>
 <tr>
+<td>Miki Habryn</td>
 <td>Ward M. Haggard</td>
 <td>Russell Hanson</td>
-<td>Kathryne Hawthorne</td>
 </tr>
 <tr>
+<td>Kathryne Hawthorne</td>
 <td>Frank Hecker</td>
 <td>Pablo Loyola Heufemann</td>
-<td>Jens Christian Hillerup</td>
 </tr>
 <tr>
+<td>Jens Christian Hillerup</td>
 <td>Isaac A. Hodes</td>
 <td>J. Paul Hoest</td>
-<td>Jordan Holcombe</td>
 </tr>
 <tr>
+<td>Jordan Holcombe</td>
 <td>Juan Rodriguez Hortala</td>
 <td>Steve Houghton</td>
-<td>Tommi Hovi</td>
 </tr>
 <tr>
+<td>Tommi Hovi</td>
 <td>Jeremy Howard</td>
 <td>Tatsuya Ishihara</td>
-<td>Paweł Jacewicz</td>
 </tr>
 <tr>
+<td>Paweł Jacewicz</td>
 <td>Amit Jain</td>
 <td>Damian Jordan</td>
-<td>Victor Joukov</td>
 </tr>
 <tr>
+<td>Victor Joukov</td>
 <td>Guilherme Juraszek</td>
 <td>Erkin Kanlioglu</td>
-<td>Bart Kastermans</td>
 </tr>
 <tr>
+<td>Bart Kastermans</td>
 <td>Jason Kelly</td>
 <td>Alasdair K. King</td>
-<td>SGJ Kockelkoren</td>
 </tr>
 <tr>
+<td>SGJ Kockelkoren</td>
 <td>Douglas Kratky</td>
 <td>Charles Krempeaux</td>
-<td>Dragisa Krsmanovic</td>
 </tr>
 <tr>
+<td>Dragisa Krsmanovic</td>
 <td>Jason Kyle</td>
 <td>Samuel Lampa</td>
-<td>Michael Lachanski</td>
 </tr>
 <tr>
+<td>Michael Lachanski</td>
 <td>Alex Lang</td>
 <td>Ethan Langevin</td>
-<td>Elmar Langholz</td>
 </tr>
 <tr>
+<td>Elmar Langholz</td>
 <td>Christian Langreiter</td>
 <td>Eugene Lazutkin</td>
-<td>Jimmy Lee</td>
 </tr>
 <tr>
+<td>Jimmy Lee</td>
 <td>Matthew Leifer</td>
 <td>Daniel Lemire</td>
-<td>Fuzz Leonard</td>
 </tr>
 <tr>
+<td>Fuzz Leonard</td>
 <td>Anselm Levskaya</td>
 <td>Joseph Lewis</td>
-<td>Jian Liang</td>
 </tr>
 <tr>
+<td>Jian Liang</td>
 <td>Greg Linden</td>
 <td>Chris Lintott</td>
-<td>Baiyang Liu</td>
 </tr>
 <tr>
+<td>Baiyang Liu</td>
 <td>James Lloyd</td>
 <td>Tobias Lohse</td>
-<td>Damien Loïc</td>
 </tr>
 <tr>
+<td>Damien Loïc</td>
 <td>Sergey Lymar</td>
 <td>Gholson J. Lyon</td>
-<td>James McCoy</td>
 </tr>
 <tr>
+<td>James McCoy</td>
 <td>Brent McWatters</td>
 <td>Jean Maillard</td>
-<td>Benoit Maison</td>
 </tr>
 <tr>
+<td>Benoit Maison</td>
 <td>Vito Mandorino</td>
 <td>Stephen Marney</td>
-<td>Maurice Mauser</td>
 </tr>
 <tr>
+<td>Maurice Mauser</td>
 <td>Spyridon Michalakis</td>
 <td>Florian Minges</td>
-<td>Melanie Mitchell</td>
 </tr>
 <tr>
+<td>Melanie Mitchell</td>
 <td>Takashi Miyazaki</td>
 <td>Nathan Mosher</td>
-<td>Mike Murray</td>
 </tr>
 <tr>
+<td>Mike Murray</td>
 <td>Aditiyaa Nagarajan</td>
 <td>Sandeep Nayak</td>
-<td>Alexandru Nedel</td>
 </tr>
 <tr>
+<td>Alexandru Nedel</td>
 <td>Eric Amir Nichols</td>
 <td>Ken Nickerson</td>
-<td>Kate Nielsen</td>
 </tr>
 <tr>
+<td>Kate Nielsen</td>
 <td>Wendy Nielsen</td>
 <td>Michael Noll-Hussong</td>
-<td>Antonio Macias Ojeda</td>
 </tr>
 <tr>
+<td>Antonio Macias Ojeda</td>
 <td>Nicholas O'Neill</td>
 <td>Tom Parslow</td>
-<td>Joan Puigcerver i Perez</td>
 </tr>
 <tr>
+<td>Joan Puigcerver i Perez</td>
 <td>Juan Carlos Kuri Pinto</td>
 <td>Uffe V. Poulsen</td>
-<td>Brian Du Preez</td>
 </tr>
 <tr>
+<td>Brian Du Preez</td>
 <td>Sujith Radhakrishna</td>
 <td>Hannu Rajaniemi</td>
-<td>Rahul Ravu</td>
 </tr>
 <tr>
+<td>Rahul Ravu</td>
 <td>Julien Rebetez</td>
 <td>Dave Revell</td>
-<td>Brendan Rogers</td>
 </tr>
 <tr>
+<td>Brendan Rogers</td>
 <td>Konstantin Root</td>
 <td>Peter Rudenko</td>
-<td>Cody Russell</td>
 </tr>
 <tr>
+<td>Cody Russell</td>
 <td>Michael Russo</td>
 <td>Ross Ryder</td>
-<td>Arthur Safira</td>
 </tr>
 <tr>
+<td>Arthur Safira</td>
 <td>Josep Saldaña</td>
 <td>Christopher Sammon</td>
-<td>Andrés G. Saravia</td>
 </tr>
 <tr>
+<td>Andrés G. Saravia</td>
 <td>Kathryn Schmitt</td>
 <td>Maximilian Schoefmann</td>
-<td>Tim Schröder</td>
 </tr>
 <tr>
+<td>Tim Schröder</td>
 <td>John D. Schulman</td>
 <td>David Schwab</td>
-<td>Jan Sedlák</td>
 </tr>
 <tr>
+<td>Jan Sedlák</td>
 <td>Satish Shankar</td>
 <td>Gareth Shepherd</td>
-<td>Makimoto Shimpei</td>
 </tr>
 <tr>
+<td>Makimoto Shimpei</td>
 <td>Ekaterina Shmeleva</td>
 <td>Keith Siilats</td>
-<td>Christopher Silvia</td>
 </tr>
 <tr>
+<td>Christopher Silvia</td>
 <td>Leif-Gerrit Singer</td>
 <td>Harkanwal Singh</td>
-<td>Rajob K. Singh</td>
 </tr>
 <tr>
+<td>Rajob K. Singh</td>
 <td>John Skarha</td>
 <td>Arfon Smith</td>
-<td>Mark Smith</td>
 </tr>
 <tr>
+<td>Mark Smith</td>
 <td>Ezekiel Smithburg</td>
 <td>Xavier Snelgrove</td>
-<td>Robert Solovay</td>
 </tr>
 <tr>
+<td>Robert Solovay</td>
 <td>Matthew Sottile</td>
 <td>Chris Squibb</td>
-<td>Helge Stahlmann</td>
 </tr>
 <tr>
+<td>Helge Stahlmann</td>
 <td>Jan Stette</td>
 <td>John Stockton</td>
-<td>Wim Stubbe</td>
 </tr>
 <tr>
+<td>Wim Stubbe</td>
 <td>Timo Sulg</td>
 <td>Dave Sullivan</td>
-<td>Daniel Suo</td>
 </tr>
 <tr>
+<td>Daniel Suo</td>
 <td>James Tauber</td>
 <td>Oskar Thorén</td>
-<td>Ben Toner</td>
 </tr>
 <tr>
+<td>Ben Toner</td>
 <td>Luke Toop</td>
 <td>Christian Tschanz</td>
-<td>Peter Tutelaers</td>
 </tr>
 <tr>
+<td>Peter Tutelaers</td>
 <td>Matthew Trentacoste</td>
 <td>Alexander van Dijk</td>
-<td>Gregg Vesonder</td>
 </tr>
 <tr>
+<td>Gregg Vesonder</td>
 <td>Ricardo Vidal</td>
 <td>Wai Keen Vong</td>
-<td>Will Walmsley</td>
 </tr>
 <tr>
+<td>Will Walmsley</td>
 <td>Georg Walther</td>
 <td>Matt Wells</td>
-<td>Karijn Wessing</td>
 </tr>
 <tr>
+<td>Karijn Wessing</td>
 <td>Ryan Whitnah</td>
 <td>Nick Williamson</td>
-<td>Brett Witty</td>
 </tr>
 <tr>
+<td>Brett Witty</td>
 <td>Charles Wooters</td>
 <td>Yusuke Yambe</td>
-<td>Artem Yankov</td>
 </tr>
 <tr>
+<td>Artem Yankov</td>
 <td>Doron Yotam</td>
 <td>Benjamin Sichit Yu</td>
-<td>Zolmeister</td>
 </tr>
 <tr>
-<td></td>
+<td>Zolmeister</td>
 <td></td>
 <td></td>
 </tr>
@@ -559,7 +558,7 @@ commercial use, please <a
 href="mailto:mn@michaelnielsen.org">contact me</a>.
 </span>
 <span class="right_footer">
-Last update: Thu Aug 13 11:49:43 2015
+Last update: Fri Jan 22 14:09:50 2016
 <br/>
 <br/>
 <br/>
